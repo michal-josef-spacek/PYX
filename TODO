@@ -1,0 +1,13 @@
+$Id: TODO,v 1.1 2005-06-17 20:02:22 skim Exp $
+
+TODO
+====
+1. Udelat testy na PYX.
+2. Udelat testy na PYX::Utils.
+3. Zkusit vymyslet implementaci parsovani pres HTML::TagReader. Viz pyx2.
+4. Zkusit vymyslet implementaci parsovani pres XML::Parser. Viz puvodni pyx.
+5. Zkusit vymyslet implementaci pres lame parsovani jako u straeho pyx.
+6.
+
+Applied
+=======
