@@ -1,0 +1,13 @@
+bin/pyx2
+Makefile.PL
+MANIFEST
+PYX.pm
+PYX/Utils.pm
+samples/code2
+samples/code3
+samples/code4
+samples/xml.xml
+t/PyxUtils/01_version.t
+t/Pyx/01_version.t
+t/01_pyx.t
+t/02_pyx_utils.t

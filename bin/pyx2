@@ -1,0 +1,52 @@
+#!/usr/bin/perl
+# $Id: pyx2,v 1.1 2005-06-17 19:58:18 skim Exp $
+
+# Pragmas.
+use strict;
+use warnings;
+
+# Modules.
+use PYX;
+use Tags::Parse;
+use HTML::TagReader;
+
+# Input file.
+if ($#ARGV == -1) {
+        print "Usage: $0 filename\n";
+        exit 0;
+}
+
+# Object.
+my $tag_reader = HTML::TagReader->new($ARGV[0]);
+
+# Set to zero or undef to omit warnings about html error.
+my $showerr = 1;
+
+# For every tags.
+while (my ($data, $tag_type) = $tag_reader->getbytoken($showerr)) {
+	if ($tag_type) {
+
+		# End tag.
+		if ($tag_type =~ /^\//) {
+			$tag_type =~ s/^\/(.*)/$1/;
+			print PYX::end_tag($tag_type), "\n";
+
+		# Start tag.
+		} else {
+
+			# Parse tag.
+			my $ret = Tags::Parse::parse($data);
+
+			# Print start tag.
+			print join("\n", PYX::start_tag($ret->{'name'},
+				%{$ret->{'attribute'}})), "\n";
+
+			# Print end tag if simple tag.
+			if ($ret->{'end'}) {
+				print PYX::end_tag($ret->{'name'}), "\n";
+			}
+		}
+	} else {
+		print PYX::char($data), "\n";
+	}
+}
