@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-# $Id: pyx2,v 1.1 2005-06-17 19:58:18 skim Exp $
+# $Id: pyx2,v 1.2 2005-06-17 23:30:14 skim Exp $
 
 # Pragmas.
 use strict;
@@ -24,10 +24,16 @@ my $showerr = 1;
 
 # For every tags.
 while (my ($data, $tag_type) = $tag_reader->getbytoken($showerr)) {
+print "data=$data\n";
+print "tag_type=$tag_type\n";
 	if ($tag_type) {
 
+		# Special tag.
+		if ($tag_type =~ /^!/) {
+			print PYX::char($data), "\n";
+
 		# End tag.
-		if ($tag_type =~ /^\//) {
+		} elsif ($tag_type =~ /^\//) {
 			$tag_type =~ s/^\/(.*)/$1/;
 			print PYX::end_tag($tag_type), "\n";
 
