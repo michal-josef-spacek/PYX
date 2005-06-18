@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Checker;
 #------------------------------------------------------------------------------
-# $Id: Checker.pm,v 1.2 2005-06-18 01:00:54 skim Exp $
+# $Id: Checker.pm,v 1.3 2005-06-18 01:01:55 skim Exp $
 
 # Version.
 our $VERSION = 0.1;
@@ -17,6 +17,8 @@ sub new {
 	my $class = shift;
 	my $self = {};
 	bless $self, $class;
+
+	# TODO Params.
 
 	# Stack of tags.
 	$self->{'stack'} = [];
