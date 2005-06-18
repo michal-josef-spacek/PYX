@@ -1,0 +1,33 @@
+#!/usr/bin/perl
+# $Id: pyx_checker,v 1.1 2005-06-18 01:08:30 skim Exp $
+
+# Pragmas.
+use strict;
+use warnings;
+
+# Modules.
+use PYX::Checker;
+
+# Open file.
+my $file_handler = 'STDIN';
+if ($ARGV[0]) {
+	if (! open(INF, "<$ARGV[0]")) {
+		die "Cannot open file '$ARGV[0]'.";
+	}
+	$file_handler = *INF;
+}
+
+# PYX::Checker object.
+my $checker = PYX::Checker->new();
+
+# For every lines.
+while (my $line = <$file_handler>) {
+	chomp $line;
+	$checker->data($line);
+}
+
+# Close file.
+if ($ARGV[0]) {
+	close(INF);
+}
+
