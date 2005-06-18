@@ -1,4 +1,4 @@
-$Id: TODO,v 1.4 2005-06-18 00:49:02 skim Exp $
+$Id: TODO,v 1.5 2005-06-18 09:39:25 skim Exp $
 
 TODO
 ====
@@ -7,10 +7,12 @@ TODO
 3. Zkusit vymyslet implementaci parsovani pres HTML::TagReader. Viz pyx2.
 4. Zkusit vymyslet implementaci parsovani pres XML::Parser. Viz puvodni pyx.
 5. Zkusit vymyslet implementaci pres lame parsovani jako u straeho pyx.
-6. Opravit Makefile.PL tak, aby binarka sla do /usr/local adresare.
 7. Pokud bude komentar, tak umoznit jeho odstraneni.
 8. Nejak promyslet PYX::Filter;
 9.
 
 Applied
 =======
+6. Opravit Makefile.PL tak, aby binarka sla do /usr/local adresare.
+Tohle se delat takhle: perl Makefile.PL PREFIX=/usr/local/
+NONE [20050618] skim

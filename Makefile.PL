@@ -1,4 +1,4 @@
-# $Id: Makefile.PL,v 1.2 2005-06-17 20:00:27 skim Exp $
+# $Id: Makefile.PL,v 1.3 2005-06-18 09:37:47 skim Exp $
 
 # Modules.
 use ExtUtils::MakeMaker;
@@ -12,5 +12,6 @@ WriteMakefile(
 	# Scripts.
 	'EXE_FILES' => [
 		'bin/pyx2',
+		'bin/pyx_checker',
 	],
 );
