@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-# $Id: pyx_checker,v 1.1 2005-06-18 01:08:30 skim Exp $
+# $Id: pyx_checker,v 1.2 2005-06-18 01:11:37 skim Exp $
 
 # Pragmas.
 use strict;
@@ -18,7 +18,9 @@ if ($ARGV[0]) {
 }
 
 # PYX::Checker object.
-my $checker = PYX::Checker->new();
+my $checker = PYX::Checker->new(
+	'debug' => 1,
+);
 
 # For every lines.
 while (my $line = <$file_handler>) {

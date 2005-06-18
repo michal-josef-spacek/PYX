@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Checker;
 #------------------------------------------------------------------------------
-# $Id: Checker.pm,v 1.3 2005-06-18 01:01:55 skim Exp $
+# $Id: Checker.pm,v 1.4 2005-06-18 01:11:36 skim Exp $
 
 # Version.
 our $VERSION = 0.1;
@@ -18,7 +18,19 @@ sub new {
 	my $self = {};
 	bless $self, $class;
 
-	# TODO Params.
+	# Debug.
+	$self->{'debug'} = 0;
+
+	# Process params.
+	croak "$class: Created with odd number of parameters - should be ".
+		"of the form option => value." if (@_ % 2);
+	for (my $x = 0; $x <= $#_; $x += 2) {
+		if (exists $self->{$_[$x]}) {
+			$self->{$_[$x]} = $_[$x+1];
+		} else {
+			croak "$class: Bad parameter '$_[$x]'.";
+		}
+	}
 
 	# Stack of tags.
 	$self->{'stack'} = [];
@@ -60,6 +72,7 @@ sub add_tag {
 
 	my $self = shift;
 	my $tag = shift;
+	print "Start of '$tag'.\n" if $self->{'debug'};
 	push @{$self->{'stack'}}, $tag;
 }
 
@@ -70,6 +83,7 @@ sub remove_tag {
 
 	my $self = shift;
 	my $tag = shift;
+	print "End of '$tag'.\n" if $self->{'debug'};
 	if (${$self->{'stack'}}[$#{$self->{'stack'}}] =~ $tag) {
 		pop @{$self->{'stack'}};
 	} else {
