@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Checker;
 #------------------------------------------------------------------------------
-# $Id: Checker.pm,v 1.1 2005-06-18 01:00:19 skim Exp $
+# $Id: Checker.pm,v 1.2 2005-06-18 01:00:54 skim Exp $
 
 # Version.
 our $VERSION = 0.1;
@@ -37,13 +37,13 @@ sub data {
 	my $data = shift;
 
 	# Begin of tag.
-	if ($data =~ /^(/) {
-		$data =~ s/^(//;
+	if ($data =~ /^\(/) {
+		$data =~ s/^\(//;
 		$self->add_tag($data);
 
 	# End of tag.
-	} elsif ($data =~ /^)/) {
-		$data =~ s/^)//;
+	} elsif ($data =~ /^\)/) {
+		$data =~ s/^\)//;
 		$self->remove_tag($data);
 		
 	# Nop.
