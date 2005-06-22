@@ -1,10 +1,21 @@
 #------------------------------------------------------------------------------
 package PYX::Utils;
 #------------------------------------------------------------------------------
-# $Id: Utils.pm,v 1.2 2005-06-18 10:48:03 skim Exp $
+# $Id: Utils.pm,v 1.3 2005-06-22 17:15:39 skim Exp $
 
 # Version.
 our $VERSION = 0.1;
+
+# Global variables.
+use vars qw(%entities $encode);
+
+# Encoding table.
+%entities = (
+        '<' => '&lt;',
+        '&' => '&amp;',
+        '"' => '&quot;',
+);
+$entities = join('', keys(%entities));
 
 #------------------------------------------------------------------------------
 sub encode {
@@ -23,6 +34,16 @@ sub decode {
 
 	my $text = shift;
 	$text =~ s/\\n/\n/g;
+	return $text;
+}
+
+#------------------------------------------------------------------------------
+sub entity_encode {
+#------------------------------------------------------------------------------
+# Encode some chars for html.
+
+	my $text = shift;
+	$text =~ s/([$entities])/$entities{$1}/g;	
 	return $text;
 }
 

@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Write::Tags;
 #------------------------------------------------------------------------------
-# $Id: Tags.pm,v 1.1 2005-06-18 11:29:25 skim Exp $
+# $Id: Tags.pm,v 1.2 2005-06-22 17:15:51 skim Exp $
 
 # Version.
 our $VERSION = 0.1;
@@ -55,6 +55,13 @@ sub new {
 		'attribute' => \&_attribute,
 	);
 
+	# Output handler.
+	$self->{'output_handler'} = '';
+	if (! $self->{'tags_obj'}->{'output_handler'}) {
+		$self->{'output_handler'} 
+			= $self->{'tags_obj'}->{'output_handler'};
+	}
+
 	# Tags object.
 	$tags = $self->{'tags_obj'};
 
@@ -95,7 +102,10 @@ sub _end_tag {
 
 	my $tag = shift;
 	_flush_tag();
-	print $tags->print(['end_'.$tag]);
+	my $ret = $tags->print(['end_'.$tag]);
+	if (! $self->{'output_handler'}) {
+		print $ret;
+	}
 }
 
 #------------------------------------------------------------------------------
@@ -105,7 +115,10 @@ sub _data {
 
 	my $data = PYX::Utils::decode(shift);
 	_flush_tag();
-	print $tags->print([\$data]);
+	my $ret = $tags->print([\$data]);
+	if (! $self->{'output_handler'}) {
+		print $ret;
+	}
 }
 
 #------------------------------------------------------------------------------
@@ -130,7 +143,10 @@ sub _flush_tag {
 # Flush tag values.
 
 	if ($#tag > -1) {
-		print $tags->print([@tag]);
+		my $ret = $tags->print([@tag]);
+		if (! $self->{'output_handler'}) {
+			print $ret;
+		}
 		@tag = ();
 	}
 }
