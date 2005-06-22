@@ -1,12 +1,11 @@
-$Id: TODO,v 1.5 2005-06-18 09:39:25 skim Exp $
+$Id: TODO,v 1.6 2005-06-22 13:32:03 skim Exp $
 
 TODO
 ====
 1. Udelat testy na PYX.
-2. Udelat testy na PYX::Utils.
 3. Zkusit vymyslet implementaci parsovani pres HTML::TagReader. Viz pyx2.
 4. Zkusit vymyslet implementaci parsovani pres XML::Parser. Viz puvodni pyx.
-5. Zkusit vymyslet implementaci pres lame parsovani jako u straeho pyx.
+5. Zkusit vymyslet implementaci pres lame parsovani jako u stareho pyx.
 7. Pokud bude komentar, tak umoznit jeho odstraneni.
 8. Nejak promyslet PYX::Filter;
 9.
@@ -16,3 +15,6 @@ Applied
 6. Opravit Makefile.PL tak, aby binarka sla do /usr/local adresare.
 Tohle se delat takhle: perl Makefile.PL PREFIX=/usr/local/
 NONE [20050618] skim
+
+2. Udelat testy na PYX::Utils.
+OK [20050622] skim
