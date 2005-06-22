@@ -1,4 +1,4 @@
-$Id: TODO,v 1.6 2005-06-22 13:32:03 skim Exp $
+$Id: TODO,v 1.7 2005-06-22 17:32:55 skim Exp $
 
 TODO
 ====
@@ -8,7 +8,7 @@ TODO
 5. Zkusit vymyslet implementaci pres lame parsovani jako u stareho pyx.
 7. Pokud bude komentar, tak umoznit jeho odstraneni.
 8. Nejak promyslet PYX::Filter;
-9.
+11.
 
 Applied
 =======
@@ -17,4 +17,10 @@ Tohle se delat takhle: perl Makefile.PL PREFIX=/usr/local/
 NONE [20050618] skim
 
 2. Udelat testy na PYX::Utils.
+OK [20050622] skim
+
+9. Implementace pyx2xml pres Tags.
+OK [20050622] skim
+
+10. Implementace pyx2xml pres lame vystup. Viz puvodni pyx2.
 OK [20050622] skim
