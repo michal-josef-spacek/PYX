@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-# $Id: pyx2,v 1.3 2005-06-17 23:30:29 skim Exp $
+# $Id: pyx2,v 1.4 2005-06-22 13:37:16 skim Exp $
 
 # Pragmas.
 use strict;
@@ -12,8 +12,8 @@ use HTML::TagReader;
 
 # Input file.
 if ($#ARGV == -1) {
-        print "Usage: $0 filename\n";
-        exit 0;
+	print "Usage: $0 filename\n";
+	exit 0;
 }
 
 # Object.
@@ -32,8 +32,8 @@ while (my ($data, $tag_type) = $tag_reader->getbytoken($showerr)) {
 
 		# End tag.
 		} elsif ($tag_type =~ /^\//) {
-			$tag_type =~ s/^\/(.*)/$1/;
-			print PYX::end_tag($tag_type), "\n";
+			$data =~ s/<\/(.*)>/$1/;
+			print PYX::end_tag($data), "\n";
 
 		# Start tag.
 		} else {
