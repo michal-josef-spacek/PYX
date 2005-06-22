@@ -1,0 +1,30 @@
+#!/usr/bin/perl
+# $Id: pyx2xml_raw,v 1.1 2005-06-22 17:27:54 skim Exp $
+
+# Pragmas.
+use strict;
+use warnings;
+
+# Modules.
+use PYX::Write::Raw;
+
+# Open file.
+my $file_handler = 'STDIN';
+if ($ARGV[0]) {
+	if (! open(INF, "<$ARGV[0]")) {
+		die "Cannot open file '$ARGV[0]'.";
+	}
+	$file_handler = *INF;
+}
+
+# PYX::Write::Tags object.
+my $writer = PYX::Write::Raw->new(
+	'input_file_handler' => $file_handler,
+);
+$writer->parse();
+
+# Close file.
+if ($ARGV[0]) {
+	close(INF);
+}
+
