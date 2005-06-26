@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-# $Id: pyx2xml_tags,v 1.1 2005-06-18 11:29:35 skim Exp $
+# $Id: pyx2xml_tags,v 1.2 2005-06-26 09:58:39 skim Exp $
 
 # Pragmas.
 use strict;
@@ -21,6 +21,7 @@ if ($ARGV[0]) {
 # Tags::Running object.
 my $tags = Tags::Running->new(
 	'set_indent' => 1,
+	'data_optimalization' => 1,
 );
 
 # PYX::Write::Tags object.
