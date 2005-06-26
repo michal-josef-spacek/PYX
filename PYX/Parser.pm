@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Parser;
 #------------------------------------------------------------------------------
-# $Id: Parser.pm,v 1.1 2005-06-18 10:47:57 skim Exp $
+# $Id: Parser.pm,v 1.2 2005-06-26 12:20:20 skim Exp $
 
 # Version.
 our $VERSION = 0.1;
@@ -27,6 +27,7 @@ sub new {
 	$self->{'end_tag'} = '';
 	$self->{'special_tag'} = '';
 	$self->{'data'} = '';
+	$self->{'comment'} = '';
 
 	# Process params.
 	croak "$class: Created with odd number of parameters - should be ".
@@ -44,7 +45,8 @@ sub new {
 		&& ! $self->{'attribute'}
 		&& ! $self->{'end_tag'}
 		&& ! $self->{'special_tag'}
-		&& ! $self->{'data'}) {
+		&& ! $self->{'data'}
+		&& ! $self->{'comment'}) {
 
 		carp "$class: Cannot defined handlers.";
 	}
@@ -99,6 +101,11 @@ sub parse {
 		} elsif ($type eq '?') {
 			&{$self->{'special_tag'}}($value)
 				if $self->{'special_tag'};
+
+		# Comment.
+		} elsif ($type eq 'C') {
+			&{$self->{'comment'}}($value)
+				if $self->{'comment'};
 		}
 	}
 }

@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Write::Raw;
 #------------------------------------------------------------------------------
-# $Id: Raw.pm,v 1.1 2005-06-22 17:27:26 skim Exp $
+# $Id: Raw.pm,v 1.2 2005-06-26 12:18:52 skim Exp $
 
 # Version.
 our $VERSION = 0.1;
@@ -45,6 +45,7 @@ sub new {
 		'data' => \&_data,
 		'special_tag' => \&_special_tag,
 		'attribute' => \&_attribute,
+		'comment' => \&_comment,
 	);
 
 	# Tag values.
@@ -128,6 +129,16 @@ sub _end_of_start_tag {
 		print '>';
 		$tag_open = 0;
 	}
+}
+
+#------------------------------------------------------------------------------
+sub _comment {
+#------------------------------------------------------------------------------
+# Process comment.
+
+	my $comment = PYX::Utils::decode(shift);
+	print $comment;
+	
 }
 
 1;
