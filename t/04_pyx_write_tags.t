@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-# $Id: 04_pyx_write_tags.t,v 1.2 2005-06-26 09:59:00 skim Exp $
+# $Id: 04_pyx_write_tags.t,v 1.3 2005-06-26 10:10:27 skim Exp $
 
 # Pragmas.
 use strict;
@@ -14,8 +14,8 @@ use vars qw/$debug $obj $class $dir/;
 
 BEGIN {
 	# Name of class.
-	$class = 'PYX::Write::Tags';
-	$dir = 'PyxWriteTags';
+	$dir = $class = 'PYX::Write::Tags';
+	$dir =~ s/:://g;
 
         my $tests = `grep -r \"^ok(\" t/$dir/*.t | wc -l`;
         chomp $tests;
