@@ -1,5 +1,4 @@
 bin/add_simple
-bin/.add_simple.swp
 bin/pyx2
 bin/pyx2xml_raw
 bin/pyx2xml_tags
@@ -7,14 +6,12 @@ examples/pyx_checker
 examples/pyx_parser
 Makefile.PL
 MANIFEST
-namespace2.pyx
 PYX/Filter.pm
 PYX/Checker.pm
 PYX/Parser.pm
 PYX.pm
 PYX/Utils.pm
 PYX/Write/Raw.pm
-PYX/Write/.Raw.pm.swp
 PYX/Write/Tags.pm
 TODO
 t/PYXFilter/01_version.t
@@ -22,12 +19,14 @@ t/PYXUtils/01_version.t
 t/PYXUtils/02_encode.t
 t/PYXUtils/03_decode.t
 t/PYXUtils/04_entity_encode.t
+t/PYXWriteRaw/01_version.t
 t/PYXWriteTags/01_version.t
 t/PYX/01_version.t
 t/01_pyx.t
 t/02_pyx_utils.t
 t/03_pyx_filter.t
 t/04_pyx_write_tags.t
+t/05_pyx_write_raw.t
 xml_samples/code2.xml
 xml_samples/code3.xml
 xml_samples/code4.xml
