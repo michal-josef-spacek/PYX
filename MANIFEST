@@ -15,6 +15,9 @@ PYX/Write/Raw.pm
 PYX/Write/Tags.pm
 TODO
 t/PYXFilter/01_version.t
+t/PYXParser/data/example1.pyx
+t/PYXParser/01_version.t
+t/PYXParser/02_constructor.t
 t/PYXUtils/01_version.t
 t/PYXUtils/02_encode.t
 t/PYXUtils/03_decode.t
@@ -22,11 +25,17 @@ t/PYXUtils/04_entity_encode.t
 t/PYXWriteRaw/01_version.t
 t/PYXWriteTags/01_version.t
 t/PYX/01_version.t
+t/PYX/02_char.t
+t/PYX/03_start_tag.t
+t/PYX/04_end_tag.t
+t/PYX/05_instruction.t
+t/PYX/06_comment.t
 t/01_pyx.t
 t/02_pyx_utils.t
 t/03_pyx_filter.t
 t/04_pyx_write_tags.t
 t/05_pyx_write_raw.t
+t/06_pyx_parser.t
 xml_samples/code2.xml
 xml_samples/code3.xml
 xml_samples/code4.xml
