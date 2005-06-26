@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Write::Tags;
 #------------------------------------------------------------------------------
-# $Id: Tags.pm,v 1.2 2005-06-22 17:15:51 skim Exp $
+# $Id: Tags.pm,v 1.3 2005-06-26 09:58:53 skim Exp $
 
 # Version.
 our $VERSION = 0.1;
@@ -41,9 +41,11 @@ sub new {
 	}
 
 	# If doesn't exist Tags object.
-	# TODO use ISA.
-	croak "$class: Cannot use Tags object '$self->{'tags_obj'}'."
-		if $self->{'tags_obj'} eq '';
+	unless ($self->{'tags_obj'} && ($self->{'tags_obj'}->isa('Tags')
+		|| $self->{'tags_obj'}->isa('Tags::Running'))) {
+
+		croak "$class: Bad 'Tags' object '$self->{'tags_obj'}'.";
+	}
 
 	# PYX::Parser object.
 	$self->{'pyx_parser'} = PYX::Parser->new(
