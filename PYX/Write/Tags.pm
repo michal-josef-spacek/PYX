@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Write::Tags;
 #------------------------------------------------------------------------------
-# $Id: Tags.pm,v 1.3 2005-06-26 09:58:53 skim Exp $
+# $Id: Tags.pm,v 1.4 2005-06-26 12:19:57 skim Exp $
 
 # Version.
 our $VERSION = 0.1;
@@ -55,6 +55,7 @@ sub new {
 		'data' => \&_data,
 		'special_tag' => \&_special_tag,
 		'attribute' => \&_attribute,
+		'comment' => \&_comment,
 	);
 
 	# Output handler.
@@ -151,6 +152,15 @@ sub _flush_tag {
 		}
 		@tag = ();
 	}
+}
+
+#------------------------------------------------------------------------------
+sub _comment {
+#------------------------------------------------------------------------------
+# Process comments.
+
+	my $comment = PYX::Utils::decode(shift);
+	# TODO Comment by Tags.
 }
 
 1;
