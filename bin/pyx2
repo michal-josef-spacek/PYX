@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-# $Id: pyx2,v 1.4 2005-06-22 13:37:16 skim Exp $
+# $Id: pyx2,v 1.5 2005-06-26 12:48:24 skim Exp $
 
 # Pragmas.
 use strict;
@@ -7,7 +7,7 @@ use warnings;
 
 # Modules.
 use PYX;
-use Tags::Parse;
+use Tag::Parse;
 use HTML::TagReader;
 
 # Input file.
@@ -39,7 +39,7 @@ while (my ($data, $tag_type) = $tag_reader->getbytoken($showerr)) {
 		} else {
 
 			# Parse tag.
-			my $ret = Tags::Parse::parse($data);
+			my $ret = Tag::Parse::parse($data);
 
 			# Print start tag.
 			print join("\n", PYX::start_tag($ret->{'name'},
