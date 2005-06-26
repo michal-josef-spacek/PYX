@@ -1,4 +1,4 @@
-$Id: TODO,v 1.8 2005-06-26 12:20:59 skim Exp $
+$Id: TODO,v 1.9 2005-06-26 12:48:30 skim Exp $
 
 TODO
 ====
@@ -8,7 +8,7 @@ TODO
 5. Zkusit vymyslet implementaci pres lame parsovani jako u stareho pyx.
 7. Pokud bude komentar, tak umoznit jeho odstraneni.
 8. Nejak promyslet PYX::Filter;
-11. PYX.pm presunout do Tag::Write::PYX.
+11. PYX.pm presunout do Tags::PYX.
 13.
 
 Applied
