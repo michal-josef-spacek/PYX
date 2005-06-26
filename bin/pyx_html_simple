@@ -1,0 +1,44 @@
+#!/usr/bin/perl
+# $Id: pyx_html_simple,v 1.1 2005-06-26 16:02:01 skim Exp $
+
+# Pragmas.
+use strict;
+use warnings;
+
+# Modules.
+use PYX::Parser;
+
+# Open file.
+my $file_handler = 'STDIN';
+if ($ARGV[0]) {
+	if (! open(INF, "<$ARGV[0]")) {
+		die "Cannot open file '$ARGV[0]'.";
+	}
+	$file_handler = *INF;
+}
+
+# PYX::Parser object.
+$self->{'pyx_parser'} = PYX::Parser->new(
+	'input_file_handler' => $self->{'input_file_handler'},
+	'start_tag' => \&_start_tag,
+	'end_tag' => \&_end_tag,
+	'data' => \&_data,
+	'attribute' => \&_attribute,
+);
+
+# Close file.
+if ($ARGV[0]) {
+	close(INF);
+}
+
+sub _start_tag {
+}
+
+sub _end_tag {
+}
+
+sub _data {
+}
+
+sub _attribute {
+}
