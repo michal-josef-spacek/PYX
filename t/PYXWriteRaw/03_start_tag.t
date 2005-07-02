@@ -1,4 +1,4 @@
-# $Id: 03_start_tag.t,v 1.1 2005-07-02 12:46:37 skim Exp $
+# $Id: 03_start_tag.t,v 1.2 2005-07-02 12:50:51 skim Exp $
 
 # Test directory.
 my $test_dir = "$ENV{'PWD'}/t/PYXWriteRaw";
@@ -21,7 +21,7 @@ sub go {
 		$obj->parse();
 	};
 	if ($@) {
-		print $@;
+		print STDERR $@;
 	}
 	untie *STDOUT;
 	close($input_handler);
@@ -32,6 +32,6 @@ print "Testing: Start tag writing.\n" if $debug;
 ok(go($class, "$test_dir/data/start_tag1.pyx"), '<tag>');
 ok(go($class, "$test_dir/data/start_tag2.pyx"), '<tag par="val">');
 ok(go($class, "$test_dir/data/start_tag3.pyx"), "<tag par=\"val\nval\">");
-#ok(go($class, "$test_dir/data/start_tag4.pyx"), '<tag');
-#ok(go($class, "$test_dir/data/start_tag5.pyx"), '<tag par="val"');
-#ok(go($class, "$test_dir/data/start_tag6.pyx"), "<tag par=\"val\nval\"");
+ok(go($class, "$test_dir/data/start_tag4.pyx"), '<tag');
+ok(go($class, "$test_dir/data/start_tag5.pyx"), '<tag par="val"');
+ok(go($class, "$test_dir/data/start_tag6.pyx"), "<tag par=\"val\nval\"");
