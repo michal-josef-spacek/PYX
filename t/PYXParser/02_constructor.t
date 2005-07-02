@@ -1,7 +1,4 @@
-# $Id: 02_constructor.t,v 1.1 2005-06-26 19:52:03 skim Exp $
-
-# Tests directory.
-my $test_dir = "$ENV{'PWD'}/t/Tags";
+# $Id: 02_constructor.t,v 1.2 2005-07-02 13:17:06 skim Exp $
 
 # Modules.
 use IO::Scalar;
