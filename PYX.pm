@@ -1,7 +1,10 @@
 #------------------------------------------------------------------------------
 package PYX;
 #------------------------------------------------------------------------------
-# $Id: PYX.pm,v 1.3 2005-07-02 13:29:39 skim Exp $
+# $Id: PYX.pm,v 1.4 2005-07-02 16:18:44 skim Exp $
+
+# Pragmas.
+use strict;
 
 # Version.
 our $VERSION = 0.1;
@@ -19,18 +22,12 @@ sub char {
 }
 
 #------------------------------------------------------------------------------
-sub start_tag {
+sub comment {
 #------------------------------------------------------------------------------
-# Process begin tag.
+# Process comment.
 
-	my ($tag, @attr) = @_;
-	my @ret = ();
-	push @ret, '('.$tag;
-	while (@attr) {
-		my ($key, $val) = (shift @attr, shift @attr);
-		push @ret, "A$key ".PYX::Utils::decode($val);
-	}
-	return @ret;
+	my ($comment) = @_;
+	return 'C'.PYX::Utils::decode($comment);
 }
 
 #------------------------------------------------------------------------------
@@ -52,12 +49,18 @@ sub instruction {
 }
 
 #------------------------------------------------------------------------------
-sub comment {
+sub start_tag {
 #------------------------------------------------------------------------------
-# Process comment.
+# Process begin tag.
 
-	my ($comment) = @_;
-	return 'C'.PYX::Utils::decode($comment);
+	my ($tag, @attr) = @_;
+	my @ret = ();
+	push @ret, '('.$tag;
+	while (@attr) {
+		my ($key, $val) = (shift @attr, shift @attr);
+		push @ret, "A$key ".PYX::Utils::decode($val);
+	}
+	return @ret;
 }
 
 1;

@@ -1,10 +1,10 @@
 #------------------------------------------------------------------------------
 package PYX::Write::Raw;
 #------------------------------------------------------------------------------
-# $Id: Raw.pm,v 1.5 2005-07-02 13:29:57 skim Exp $
+# $Id: Raw.pm,v 1.6 2005-07-02 16:20:58 skim Exp $
 
-# Version.
-our $VERSION = 0.1;
+# Pragmas.
+use strict;
 
 # Modules.
 use Carp;
@@ -13,6 +13,9 @@ use PYX::Utils;
 
 # Global variables.
 use vars qw(@tag $tag_open);
+
+# Version.
+our $VERSION = 0.1;
 
 #------------------------------------------------------------------------------
 sub new {
