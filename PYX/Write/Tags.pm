@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Write::Tags;
 #------------------------------------------------------------------------------
-# $Id: Tags.pm,v 1.5 2005-07-02 10:41:50 skim Exp $
+# $Id: Tags.pm,v 1.6 2005-07-02 13:30:03 skim Exp $
 
 # Version.
 our $VERSION = 0.1;
@@ -53,7 +53,7 @@ sub new {
 		'start_tag' => \&_start_tag,
 		'end_tag' => \&_end_tag,
 		'data' => \&_data,
-		'special_tag' => \&_special_tag,
+		'instruction' => \&_instruction,
 		'attribute' => \&_attribute,
 		'comment' => \&_comment,
 	);
@@ -119,7 +119,7 @@ sub _data {
 # Process data.
 
 	shift;
-	my $data = PYX::Utils::decode(shift);
+	my $data = PYX::Utils::encode(shift);
 	_flush_tag();
 	my $ret = $tags->print([\$data]);
 	if (! $self->{'output_handler'}) {
@@ -137,9 +137,9 @@ sub _attribute {
 }
 
 #------------------------------------------------------------------------------
-sub _special_tag {
+sub _instruction {
 #------------------------------------------------------------------------------
-# Process special tag.
+# Process instruction tag.
 
 	shift;
 	my $tag = shift;
@@ -165,7 +165,7 @@ sub _comment {
 # Process comments.
 
 	shift;
-	my $comment = PYX::Utils::decode(shift);
+	my $comment = PYX::Utils::encode(shift);
 	# TODO Comment by Tags.
 }
 

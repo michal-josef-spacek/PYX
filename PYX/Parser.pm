@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Parser;
 #------------------------------------------------------------------------------
-# $Id: Parser.pm,v 1.3 2005-07-02 10:39:50 skim Exp $
+# $Id: Parser.pm,v 1.4 2005-07-02 13:29:31 skim Exp $
 
 # Version.
 our $VERSION = 0.1;
@@ -25,7 +25,7 @@ sub new {
 	$self->{'start_tag'} = '';
 	$self->{'attribute'} = '';
 	$self->{'end_tag'} = '';
-	$self->{'special_tag'} = '';
+	$self->{'instruction'} = '';
 	$self->{'data'} = '';
 	$self->{'comment'} = '';
 
@@ -50,7 +50,7 @@ sub new {
 	if (! $self->{'start_tag'} 
 		&& ! $self->{'attribute'}
 		&& ! $self->{'end_tag'}
-		&& ! $self->{'special_tag'}
+		&& ! $self->{'instruction'}
 		&& ! $self->{'data'}
 		&& ! $self->{'comment'}) {
 
@@ -83,7 +83,7 @@ sub parse {
 	while (my $line = <$tmp>) {
 		chomp $line;
 		$self->{'line'} = $line;
-		my ($type, $value) = $line =~ m/\A([A()?-])(.*)\Z/;
+		my ($type, $value) = $line =~ m/\A([A()\?\-C])(.*)\Z/;
 
 		# Attribute.
 		if ($type eq 'A') {
@@ -122,8 +122,10 @@ sub parse {
 
 		# Special tag.
 		} elsif ($type eq '?') {
-			if ($self->{'special_tag'}) {
-				&{$self->{'special_tag'}}($self, $value);
+			my ($target, $data) = $line =~ m/\A\?([^\s]+)\s*(.*)\Z/;
+			if ($self->{'instruction'}) {
+				&{$self->{'instruction'}}($self, $target, 
+					$data);
 			} elsif ($self->{'output_rewrite'}) {
 				print $out $line, "\n";
 			}

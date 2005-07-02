@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Write::Raw;
 #------------------------------------------------------------------------------
-# $Id: Raw.pm,v 1.4 2005-07-02 10:49:21 skim Exp $
+# $Id: Raw.pm,v 1.5 2005-07-02 13:29:57 skim Exp $
 
 # Version.
 our $VERSION = 0.1;
@@ -47,10 +47,14 @@ sub new {
 		'start_tag' => \&_start_tag,
 		'end_tag' => \&_end_tag,
 		'data' => \&_data,
-		'special_tag' => \&_special_tag,
+		'instruction' => \&_instruction,
 		'attribute' => \&_attribute,
 		'comment' => \&_comment,
 	);
+
+	# Open tag.
+	$self->{'tag_open'} = 0;
+	$tag_open = \$self->{'tag_open'};
 
 	# Tag values.
 	@tag = ();
@@ -80,9 +84,9 @@ sub _start_tag {
 	my $pyx_parser_obj = shift;
 	my $out = $pyx_parser_obj->{'output_handler'};
 	my $tag = shift;
-	_end_of_start_tag();
+	_end_of_start_tag($pyx_parser_obj);
 	print $out "<$tag";
-	$tag_open = 1;
+	${$tag_open} = 1;
 }
 
 #------------------------------------------------------------------------------
@@ -93,7 +97,7 @@ sub _end_tag {
 	my $pyx_parser_obj = shift;
 	my $out = $pyx_parser_obj->{'output_handler'};
 	my $tag = shift;
-	_end_of_start_tag();
+	_end_of_start_tag($pyx_parser_obj);
 	print $out "</$tag>";
 }
 
@@ -104,8 +108,8 @@ sub _data {
 
 	my $pyx_parser_obj = shift;
 	my $out = $pyx_parser_obj->{'output_handler'};
-	my $data = PYX::Utils::decode(shift);
-	_end_of_start_tag();
+	my $data = PYX::Utils::encode(shift);
+	_end_of_start_tag($pyx_parser_obj);
 	print $out PYX::Utils::entity_encode($data);	
 }
 
@@ -123,15 +127,15 @@ sub _attribute {
 }
 
 #------------------------------------------------------------------------------
-sub _special_tag {
+sub _instruction {
 #------------------------------------------------------------------------------
-# Process special tag.
+# Process instruction.
 
 	my $pyx_parser_obj = shift;
 	my $out = $pyx_parser_obj->{'output_handler'};
-	my $tag = shift;
-	_end_of_start_tag($out);
-	print $out "<?", PYX::Utils::entity_encode($value), "?>";
+	my ($target, $data) = @_;
+	_end_of_start_tag($pyx_parser_obj);
+	print $out "<?$target ", PYX::Utils::encode($data), "?>";
 }
 
 #------------------------------------------------------------------------------
@@ -139,10 +143,11 @@ sub _end_of_start_tag {
 #------------------------------------------------------------------------------
 # Ends start tag.
 
-	my $out = shift;
-	if ($tag_open) {
+	my $pyx_parser_obj = shift;
+	my $out = $pyx_parser_obj->{'output_handler'};
+	if (${$tag_open}) {
 		print $out '>';
-		$tag_open = 0;
+		${$tag_open} = 0;
 	}
 }
 
@@ -153,8 +158,8 @@ sub _comment {
 
 	my $pyx_parser_obj = shift;
 	my $out = $pyx_parser_obj->{'output_handler'};
-	my $comment = PYX::Utils::decode(shift);
-	print $out $comment;
+	my $comment = shift;
+	print $out '<!--'.PYX::Utils::encode($comment).'-->';
 }
 
 1;

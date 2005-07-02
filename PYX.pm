@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX;
 #------------------------------------------------------------------------------
-# $Id: PYX.pm,v 1.2 2005-06-26 12:20:47 skim Exp $
+# $Id: PYX.pm,v 1.3 2005-07-02 13:29:39 skim Exp $
 
 # Version.
 our $VERSION = 0.1;
@@ -15,7 +15,7 @@ sub char {
 # Process char between tags.
 
 	my $char = shift;
-	return '-'.PYX::Utils::encode($char);
+	return '-'.PYX::Utils::decode($char);
 }
 
 #------------------------------------------------------------------------------
@@ -28,7 +28,7 @@ sub start_tag {
 	push @ret, '('.$tag;
 	while (@attr) {
 		my ($key, $val) = (shift @attr, shift @attr);
-		push @ret, "A$key ".PYX::Utils::encode($val);
+		push @ret, "A$key ".PYX::Utils::decode($val);
 	}
 	return @ret;
 }
@@ -48,7 +48,7 @@ sub instruction {
 # Process instruction.
 
 	my ($target, $data) = @_;
-	return '?'.$target.' '.PYX::Utils::encode($data);
+	return '?'.$target.' '.PYX::Utils::decode($data);
 }
 
 #------------------------------------------------------------------------------
@@ -57,7 +57,7 @@ sub comment {
 # Process comment.
 
 	my ($comment) = @_;
-	return 'C'.PYX::Utils::encode($comment);
+	return 'C'.PYX::Utils::decode($comment);
 }
 
 1;
