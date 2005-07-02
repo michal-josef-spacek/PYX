@@ -1,4 +1,4 @@
-$Id: TODO,v 1.10 2005-06-26 19:53:12 skim Exp $
+$Id: TODO,v 1.11 2005-07-02 10:39:30 skim Exp $
 
 TODO
 ====
@@ -8,7 +8,9 @@ TODO
 7. Pokud bude komentar, tak umoznit jeho odstraneni. To by melo byt ve filterch.
 8. Nejak promyslet PYX::Filter;
 11. PYX.pm presunout do Tags::PYX.
-13.
+14. Testy pro PYX::Write::Raw.
+15. Testy pro PYX::Write::Tags.
+16.
 
 Applied
 =======
@@ -30,3 +32,9 @@ OK [20050626] skim
 
 1. Udelat testy na PYX.
 OK [20050626] skim
+
+13. Upravy v PYX::Parser. Mel by se predavat do handleru vlastni objekt? Jako u
+    Expatu? Co s tim prepisovanim?
+Predava se i objekt. Pridana funkce, na prime vykresleni vstupu na vystup. A
+moznost prepisovat vstup na vystup automaticky.
+OK [20050702] skim
