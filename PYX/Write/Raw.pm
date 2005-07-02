@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Write::Raw;
 #------------------------------------------------------------------------------
-# $Id: Raw.pm,v 1.2 2005-06-26 12:18:52 skim Exp $
+# $Id: Raw.pm,v 1.3 2005-07-02 10:41:50 skim Exp $
 
 # Version.
 our $VERSION = 0.1;
@@ -73,6 +73,7 @@ sub _start_tag {
 #------------------------------------------------------------------------------
 # Process start of tag.
 
+	shift;
 	my $tag = shift;
 	_end_of_start_tag();
 	print "<$tag";
@@ -84,6 +85,7 @@ sub _end_tag {
 #------------------------------------------------------------------------------
 # Process end of tag.
 
+	shift;
 	my $tag = shift;
 	_end_of_start_tag();
 	print "</$tag>";
@@ -94,6 +96,7 @@ sub _data {
 #------------------------------------------------------------------------------
 # Process data.
 
+	shift;
 	my $data = PYX::Utils::decode(shift);
 	_end_of_start_tag();
 	print PYX::Utils::entity_encode($data);	
@@ -104,6 +107,7 @@ sub _attribute {
 #------------------------------------------------------------------------------
 # Process attribute.
 
+	shift;
 	while (@_) {
 		my ($att, $attval) = (shift @_, shift @_);
 		print " $att=\"", PYX::Utils::entity_encode($attval), '"';
@@ -115,6 +119,7 @@ sub _special_tag {
 #------------------------------------------------------------------------------
 # Process special tag.
 
+	shift;
 	my $tag = shift;
 	_end_of_start_tag();
 	print "<?", PYX::Utils::entity_encode($value), "?>";
@@ -136,6 +141,7 @@ sub _comment {
 #------------------------------------------------------------------------------
 # Process comment.
 
+	shift;
 	my $comment = PYX::Utils::decode(shift);
 	print $comment;
 	

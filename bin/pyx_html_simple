@@ -1,12 +1,21 @@
 #!/usr/bin/perl
-# $Id: pyx_html_simple,v 1.2 2005-06-26 16:02:41 skim Exp $
+# $Id: pyx_html_simple,v 1.3 2005-07-02 10:39:38 skim Exp $
 
 # Pragmas.
 use strict;
 use warnings;
 
+# Global variables.
+use vars qw(@tags @stack $debug);
+
 # Modules.
 use PYX::Parser;
+
+# Tags, that are simple.
+@tags = ('meta', 'link', 'br', 'hr');
+
+# Debug.
+$debug = 1;
 
 # Open file.
 my $file_handler = 'STDIN';
@@ -18,13 +27,14 @@ if ($ARGV[0]) {
 }
 
 # PYX::Parser object.
-$self->{'pyx_parser'} = PYX::Parser->new(
-	'input_file_handler' => $self->{'input_file_handler'},
+my $pyx_parser = PYX::Parser->new(
+	'input_file_handler' => $file_handler,
 	'start_tag' => \&_start_tag,
 	'end_tag' => \&_end_tag,
 	'data' => \&_data,
-	'attribute' => \&_attribute,
+	'output_rewrite' => 1,
 );
+$pyx_parser->parse();
 
 # Close file.
 if ($ARGV[0]) {
@@ -34,24 +44,46 @@ if ($ARGV[0]) {
 #------------------------------------------------------------------------------
 sub _start_tag {
 #------------------------------------------------------------------------------
-# TODO
+# Process start tag.
+
+	my $obj = shift;
+	my $tag = shift;
+	_single();
+	print "push: " if $debug;	
+	push @stack, $tag;
+	print "$tag\n" if $debug;
+	$obj->get_line();
 }
 
 #------------------------------------------------------------------------------
 sub _end_tag {
 #------------------------------------------------------------------------------
-# TODO
+# Process end tag.
+
+	my $obj = shift;
+	print "pop: " if $debug;
+	my $x = pop @stack;
+	print "$x\n" if $debug;
+	$obj->get_line();
 }
 
 #------------------------------------------------------------------------------
 sub _data {
 #------------------------------------------------------------------------------
-# TODO
+# Process data.
+
+	my $obj = shift;
+	_single();
+	$obj->get_line();
 }
 
 #------------------------------------------------------------------------------
-sub _attribute {
+sub _single {
 #------------------------------------------------------------------------------
-# TODO
+# Process end of single.
 
+	my $tag = $stack[$#stack];
+	if ($tag && grep(/^$tag$/, @tags)) {
+		print ')'.$tag."\n";
+	}
 }

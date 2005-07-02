@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Parser;
 #------------------------------------------------------------------------------
-# $Id: Parser.pm,v 1.2 2005-06-26 12:20:20 skim Exp $
+# $Id: Parser.pm,v 1.3 2005-07-02 10:39:50 skim Exp $
 
 # Version.
 our $VERSION = 0.1;
@@ -28,6 +28,12 @@ sub new {
 	$self->{'special_tag'} = '';
 	$self->{'data'} = '';
 	$self->{'comment'} = '';
+
+	# Output rewrite.
+	$self->{'output_rewrite'} = 0;
+
+	# Output handler.
+	$self->{'output_handler'} = *STDOUT;
 
 	# Process params.
 	croak "$class: Created with odd number of parameters - should be ".
@@ -59,6 +65,9 @@ sub new {
 	# Class.
 	$self->{'class'} = $class;
 
+	# Processing line.
+	$self->{'line'} = '';
+
 	# Object.
 	return $self;
 }
@@ -70,44 +79,74 @@ sub parse {
 
 	my $self = shift;
 	my $tmp = $self->{'input_file_handler'};
+	my $out = shift || $self->{'output_handler'};
 	while (my $line = <$tmp>) {
 		chomp $line;
+		$self->{'line'} = $line;
 		my ($type, $value) = $line =~ m/\A([A()?-])(.*)\Z/;
 
 		# Attribute.
 		if ($type eq 'A') {
 			my ($att, $attval) = $line =~ m/\AA([^\s]+)\s*(.*)\Z/;
-			&{$self->{'attribute'}}($att, $attval)
-				if $self->{'attribute'};
+			if ($self->{'attribute'}) {
+				&{$self->{'attribute'}}($self, $att, $attval);
+			} elsif ($self->{'output_rewrite'}) {
+				print $out $line, "\n";
+			}
 		}
 
 		# Start of tag.
 		if ($type eq '(') {
-			&{$self->{'start_tag'}}($value)
-				if $self->{'start_tag'};
+			if ($self->{'start_tag'}) {
+				&{$self->{'start_tag'}}($self, $value);
+			} elsif ($self->{'output_rewrite'}) {
+				print $out $line, "\n";
+			}
 			$tag_open = 1;
 
 		# End of tag.
 		} elsif ($type eq ')') {
-			&{$self->{'end_tag'}}($value)
-				if $self->{'end_tag'};
+			if ($self->{'end_tag'}) {
+				&{$self->{'end_tag'}}($self, $value);
+			} elsif ($self->{'output_rewrite'}) {
+				print $out $line, "\n";
+			}
 
 		# Data.
 		} elsif ($type eq '-') {
-			&{$self->{'data'}}($value)
-				if $self->{'data'};		
+			if ($self->{'data'}) {
+				&{$self->{'data'}}($self, $value);
+			} elsif ($self->{'output_rewrite'}) {
+				print $out $line, "\n";
+			}
 
 		# Special tag.
 		} elsif ($type eq '?') {
-			&{$self->{'special_tag'}}($value)
-				if $self->{'special_tag'};
+			if ($self->{'special_tag'}) {
+				&{$self->{'special_tag'}}($self, $value);
+			} elsif ($self->{'output_rewrite'}) {
+				print $out $line, "\n";
+			}
 
 		# Comment.
 		} elsif ($type eq 'C') {
-			&{$self->{'comment'}}($value)
-				if $self->{'comment'};
+			if ($self->{'comment'}) {
+				&{$self->{'comment'}}($self, $value);
+			} elsif ($self->{'output_rewrite'}) {
+				print $out $line, "\n";
+			}
 		}
 	}
+}
+
+#------------------------------------------------------------------------------
+sub get_line {
+#------------------------------------------------------------------------------
+# Get line.
+
+	my $self = shift;
+	my $out = shift || $self->{'output_handler'};
+	print $out $self->{'line'}, "\n";
 }
 
 1;

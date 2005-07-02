@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Write::Tags;
 #------------------------------------------------------------------------------
-# $Id: Tags.pm,v 1.4 2005-06-26 12:19:57 skim Exp $
+# $Id: Tags.pm,v 1.5 2005-07-02 10:41:50 skim Exp $
 
 # Version.
 our $VERSION = 0.1;
@@ -93,6 +93,7 @@ sub _start_tag {
 #------------------------------------------------------------------------------
 # Process start of tag.
 
+	shift;
 	my $tag = shift;
 	_flush_tag();
 	push @tag, $tag, [];
@@ -103,6 +104,7 @@ sub _end_tag {
 #------------------------------------------------------------------------------
 # Process end of tag.
 
+	shift;
 	my $tag = shift;
 	_flush_tag();
 	my $ret = $tags->print(['end_'.$tag]);
@@ -116,6 +118,7 @@ sub _data {
 #------------------------------------------------------------------------------
 # Process data.
 
+	shift;
 	my $data = PYX::Utils::decode(shift);
 	_flush_tag();
 	my $ret = $tags->print([\$data]);
@@ -129,6 +132,7 @@ sub _attribute {
 #------------------------------------------------------------------------------
 # Process attribute.
 
+	shift;
 	push @{$tag[$#tag]}, @_;
 }
 
@@ -137,6 +141,7 @@ sub _special_tag {
 #------------------------------------------------------------------------------
 # Process special tag.
 
+	shift;
 	my $tag = shift;
 }
 
@@ -159,6 +164,7 @@ sub _comment {
 #------------------------------------------------------------------------------
 # Process comments.
 
+	shift;
 	my $comment = PYX::Utils::decode(shift);
 	# TODO Comment by Tags.
 }
