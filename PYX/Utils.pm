@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Utils;
 #------------------------------------------------------------------------------
-# $Id: Utils.pm,v 1.5 2005-07-02 16:20:57 skim Exp $
+# $Id: Utils.pm,v 1.6 2005-07-02 18:08:17 skim Exp $
 
 # Pragmas.
 use strict;
@@ -10,7 +10,7 @@ use strict;
 our $VERSION = 0.1;
 
 # Global variables.
-use vars qw(%entities $encode);
+use vars qw(%entities $entities);
 
 # Encoding table.
 %entities = (

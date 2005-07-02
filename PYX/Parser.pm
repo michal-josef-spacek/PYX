@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Parser;
 #------------------------------------------------------------------------------
-# $Id: Parser.pm,v 1.5 2005-07-02 16:20:57 skim Exp $
+# $Id: Parser.pm,v 1.6 2005-07-02 18:08:17 skim Exp $
 
 # Pragmas.
 use strict;
@@ -105,7 +105,6 @@ sub parse {
 			} elsif ($self->{'output_rewrite'}) {
 				print $out $line, "\n";
 			}
-			$tag_open = 1;
 
 		# End of tag.
 		} elsif ($type eq ')') {
