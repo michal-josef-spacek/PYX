@@ -1,4 +1,4 @@
-$Id: TODO,v 1.11 2005-07-02 10:39:30 skim Exp $
+$Id: TODO,v 1.12 2005-07-02 10:49:11 skim Exp $
 
 TODO
 ====
@@ -10,7 +10,8 @@ TODO
 11. PYX.pm presunout do Tags::PYX.
 14. Testy pro PYX::Write::Raw.
 15. Testy pro PYX::Write::Tags.
-16.
+17. V PYX::Write::Tags udelat vystup do output_handler.
+18.
 
 Applied
 =======
@@ -37,4 +38,7 @@ OK [20050626] skim
     Expatu? Co s tim prepisovanim?
 Predava se i objekt. Pridana funkce, na prime vykresleni vstupu na vystup. A
 moznost prepisovat vstup na vystup automaticky.
+OK [20050702] skim
+
+16. V PYX::Write::Raw udelat vystup do output_handler.
 OK [20050702] skim
