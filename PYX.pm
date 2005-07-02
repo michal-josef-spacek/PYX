@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX;
 #------------------------------------------------------------------------------
-# $Id: PYX.pm,v 1.4 2005-07-02 16:18:44 skim Exp $
+# $Id: PYX.pm,v 1.5 2005-07-02 18:05:22 skim Exp $
 
 # Pragmas.
 use strict;
@@ -64,3 +64,54 @@ sub start_tag {
 }
 
 1;
+
+=head1 NAME
+
+PYX - A perl module for indent handling.
+
+=head1 SYNOPSIS
+
+ # Pragmas.
+ use strict;
+ use warnings;
+
+ # Modules.
+ use PYX;
+
+ # PYX object.
+ my $pyx = PYX->new(
+ );
+
+=head1 DESCRIPTION
+
+TODO
+
+=head1 METHODS
+
+=over 4
+
+=item char
+
+TODO
+
+=item comment
+
+TODO
+
+=item end_tag
+
+TODO
+
+=item instruction
+
+TODO
+
+=item start_tag
+
+TODO
+
+=head1 AUTHORS
+
+Michal Spacek <F<skim@skim.cz>> wrote version 0.1.
+
+=cut
