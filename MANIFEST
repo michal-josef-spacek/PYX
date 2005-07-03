@@ -27,8 +27,11 @@ t/PYX/04_end_tag.t
 t/PYX/05_instruction.t
 t/PYX/06_comment.t
 t/PYXFilter/01_version.t
+t/PYXParser/00_subs.t
 t/PYXParser/01_version.t
 t/PYXParser/02_constructor.t
+t/PYXParser/03_parse.t
+t/PYXParser/04_rewrite.t
 t/PYXParser/data/char1.pyx
 t/PYXParser/data/char2.pyx
 t/PYXParser/data/comment1.pyx
@@ -37,6 +40,7 @@ t/PYXParser/data/end_tag1.pyx
 t/PYXParser/data/example1.pyx
 t/PYXParser/data/instruction1.pyx
 t/PYXParser/data/instruction2.pyx
+t/PYXParser/data/parse.pyx
 t/PYXParser/data/start_tag1.pyx
 t/PYXParser/data/start_tag2.pyx
 t/PYXParser/data/start_tag3.pyx
