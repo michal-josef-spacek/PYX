@@ -1,4 +1,4 @@
-$Id: TODO,v 1.18 2005-07-03 21:14:05 skim Exp $
+$Id: TODO,v 1.19 2005-07-03 21:29:27 skim Exp $
 
 TODO
 ====
@@ -8,8 +8,6 @@ TODO
 7. Pokud bude komentar, tak umoznit jeho odstraneni. To by melo byt ve filterch.
 8. Nejak promyslet PYX::Filter;
 11. PYX.pm presunout do Tags::PYX.
-18. Testy pro PYX::Parser.
-20. Doplnit testy pro 19).
 21. Do PYX::Parser pridat parsovani souboru.
 22. Do PYX::Parser pridat parsovani stringu primo funkci.
 23.
@@ -55,4 +53,10 @@ OK [20050703] skim
 
 19. Udelat moznost prepisovat na vystup jine nez zakladani tagy.
 Pridan handler, ktery resi ostatni. Pokud neni definovan, tak vyhodi chybu.
+OK [20050703] skim
+
+18. Testy pro PYX::Parser.
+OK [20050703] skim
+
+20. Doplnit testy pro 19).
 OK [20050703] skim
