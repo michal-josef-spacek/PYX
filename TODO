@@ -1,4 +1,4 @@
-$Id: TODO,v 1.16 2005-07-03 13:53:53 skim Exp $
+$Id: TODO,v 1.17 2005-07-03 14:01:15 skim Exp $
 
 TODO
 ====
@@ -9,8 +9,8 @@ TODO
 8. Nejak promyslet PYX::Filter;
 11. PYX.pm presunout do Tags::PYX.
 18. Testy pro PYX::Parser.
-19. Udelat moznost prepisovat na vystup jine nez zakladani tagy.
-20.
+20. Doplnit testy pro 19).
+21.
 
 Applied
 =======
@@ -49,4 +49,8 @@ OK [20050702] skim
 OK [20050702] skim
 
 17. V PYX::Write::Tags udelat vystup do output_handler.
+OK [20050703] skim
+
+19. Udelat moznost prepisovat na vystup jine nez zakladani tagy.
+Pridan handler, ktery resi ostatni. Pokud neni definovan, tak vyhodi chybu.
 OK [20050703] skim
