@@ -1,10 +1,10 @@
-# $Id: 00_subs.t,v 1.2 2005-07-03 13:08:51 skim Exp $
+# $Id: 00_subs.t,v 1.3 2005-07-03 13:10:22 skim Exp $
 
 # Modules.
 use IO::Scalar;
 use Tags::Running;
 
-# Function.
+# First version. Output is default '*STDOUT' at PYX::Write::Tags.
 sub go {
 	my $class = shift;
 	my $file = shift;
@@ -39,7 +39,7 @@ sub go {
 	return $stdout;
 }
 
-# Function.
+# Second version. Output is Tags::Running '*STDERR'.
 sub go2 {
 	my $class = shift;
 	my $file = shift;
@@ -75,7 +75,8 @@ sub go2 {
 	return $stdout;
 }
 
-# Function.
+# Third version. Output is PYX::Write::Tags '*STDERR'. Tags::Running output is
+# default ''.
 sub go3 {
 	my $class = shift;
 	my $file = shift;
