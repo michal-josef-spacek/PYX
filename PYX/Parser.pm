@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Parser;
 #------------------------------------------------------------------------------
-# $Id: Parser.pm,v 1.7 2005-07-03 13:53:55 skim Exp $
+# $Id: Parser.pm,v 1.8 2005-07-03 14:00:32 skim Exp $
 
 # Pragmas.
 use strict;
@@ -31,6 +31,7 @@ sub new {
 	$self->{'instruction'} = '';
 	$self->{'data'} = '';
 	$self->{'comment'} = '';
+	$self->{'other'} = '';
 
 	# Output rewrite.
 	$self->{'output_rewrite'} = 0;
@@ -55,7 +56,8 @@ sub new {
 		&& ! $self->{'end_tag'}
 		&& ! $self->{'instruction'}
 		&& ! $self->{'data'}
-		&& ! $self->{'comment'}) {
+		&& ! $self->{'comment'}
+		&& ! $self->{'other'}) {
 
 		carp "$class: Cannot defined handlers.";
 	}
@@ -141,7 +143,11 @@ sub parse {
 
 		# Others.
 		} else {
-			croak "$self->{'class'}: Bad PYX tag '$type'.";
+			if ($self->{'other'}) {
+				&{$self->{'other'}}($self, $line);
+			} else {
+				croak "$self->{'class'}: Bad PYX tag '$type'.";
+			}
 		}
 	}
 }
