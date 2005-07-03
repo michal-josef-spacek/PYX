@@ -1,15 +1,18 @@
 #------------------------------------------------------------------------------
 package PYX::Write::Tags;
 #------------------------------------------------------------------------------
-# $Id: Tags.pm,v 1.6 2005-07-02 13:30:03 skim Exp $
+# $Id: Tags.pm,v 1.7 2005-07-03 12:59:04 skim Exp $
 
-# Version.
-our $VERSION = 0.1;
+# Pragmas.
+use strict;
 
 # Modules.
 use Carp;
 use PYX::Parser;
 use PYX::Utils;
+
+# Version.
+our $VERSION = 0.1;
 
 # Global variables.
 use vars qw($tags @tag);
@@ -28,6 +31,9 @@ sub new {
 
 	# Input file handler.
 	$self->{'input_file_handler'} = '';
+
+	# Output handler.
+	$self->{'output_handler'} = *STDOUT;
 
 	# Process params.
 	croak "$class: Created with odd number of parameters - should be ".
@@ -50,6 +56,7 @@ sub new {
 	# PYX::Parser object.
 	$self->{'pyx_parser'} = PYX::Parser->new(
 		'input_file_handler' => $self->{'input_file_handler'},
+		'output_handler' => $self->{'output_handler'},
 		'start_tag' => \&_start_tag,
 		'end_tag' => \&_end_tag,
 		'data' => \&_data,
@@ -57,13 +64,6 @@ sub new {
 		'attribute' => \&_attribute,
 		'comment' => \&_comment,
 	);
-
-	# Output handler.
-	$self->{'output_handler'} = '';
-	if (! $self->{'tags_obj'}->{'output_handler'}) {
-		$self->{'output_handler'} 
-			= $self->{'tags_obj'}->{'output_handler'};
-	}
 
 	# Tags object.
 	$tags = $self->{'tags_obj'};
@@ -85,7 +85,7 @@ sub parse {
 }
 
 #------------------------------------------------------------------------------
-# Private methods.
+# Internal methods.
 #------------------------------------------------------------------------------
 
 #------------------------------------------------------------------------------
@@ -93,9 +93,10 @@ sub _start_tag {
 #------------------------------------------------------------------------------
 # Process start of tag.
 
-	shift;
+	my $pyx_parser_obj = shift;
+	my $out = $pyx_parser_obj->{'output_handler'};
 	my $tag = shift;
-	_flush_tag();
+	_flush_tag($pyx_parser_obj);
 	push @tag, $tag, [];
 }
 
@@ -104,12 +105,15 @@ sub _end_tag {
 #------------------------------------------------------------------------------
 # Process end of tag.
 
-	shift;
+	my $pyx_parser_obj = shift;
+	my $out = $pyx_parser_obj->{'output_handler'};
 	my $tag = shift;
-	_flush_tag();
-	my $ret = $tags->print(['end_'.$tag]);
-	if (! $self->{'output_handler'}) {
-		print $ret;
+	_flush_tag($pyx_parser_obj);
+	if ($tags->{'output_handler'}) {
+		$tags->print(['end_'.$tag]);
+	} else {
+		my $ret = $tags->print(['end_'.$tag]);
+		print $out $ret;
 	}
 }
 
@@ -118,12 +122,15 @@ sub _data {
 #------------------------------------------------------------------------------
 # Process data.
 
-	shift;
+	my $pyx_parser_obj = shift;
+	my $out = $pyx_parser_obj->{'output_handler'};
 	my $data = PYX::Utils::encode(shift);
-	_flush_tag();
-	my $ret = $tags->print([\$data]);
-	if (! $self->{'output_handler'}) {
-		print $ret;
+	_flush_tag($pyx_parser_obj);
+	if ($tags->{'output_handler'}) {
+		$tags->print([\$data]);
+	} else {
+		my $ret = $tags->print([\$data]);
+		print $out $ret;
 	}
 }
 
@@ -142,7 +149,7 @@ sub _instruction {
 # Process instruction tag.
 
 	shift;
-	my $tag = shift;
+	my ($target, $data) = @_;
 }
 
 #------------------------------------------------------------------------------
@@ -150,10 +157,14 @@ sub _flush_tag {
 #------------------------------------------------------------------------------
 # Flush tag values.
 
+	my $pyx_parser_obj = shift;
+	my $out = $pyx_parser_obj->{'output_handler'};
 	if ($#tag > -1) {
-		my $ret = $tags->print([@tag]);
-		if (! $self->{'output_handler'}) {
-			print $ret;
+		if ($tags->{'output_handler'}) {
+			$tags->print([@tag]);
+		} else {
+			my $ret = $tags->print([@tag]);
+			print $out $ret;
 		}
 		@tag = ();
 	}
