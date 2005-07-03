@@ -1,4 +1,4 @@
-$Id: TODO,v 1.17 2005-07-03 14:01:15 skim Exp $
+$Id: TODO,v 1.18 2005-07-03 21:14:05 skim Exp $
 
 TODO
 ====
@@ -10,7 +10,9 @@ TODO
 11. PYX.pm presunout do Tags::PYX.
 18. Testy pro PYX::Parser.
 20. Doplnit testy pro 19).
-21.
+21. Do PYX::Parser pridat parsovani souboru.
+22. Do PYX::Parser pridat parsovani stringu primo funkci.
+23.
 
 Applied
 =======
