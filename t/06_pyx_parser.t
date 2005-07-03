@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-# $Id: 06_pyx_parser.t,v 1.1 2005-06-26 19:52:02 skim Exp $
+# $Id: 06_pyx_parser.t,v 1.2 2005-07-03 21:28:09 skim Exp $
 
 # Pragmas.
 use strict;
@@ -17,7 +17,7 @@ BEGIN {
 	$dir = $class = 'PYX::Parser';
 	$dir =~ s/:://g;
 
-        my $tests = `grep -r \"^ok(\" t/$dir/*.t | wc -l`;
+        my $tests = `egrep -r \"^[[:space:]]*ok\\(\" t/$dir/*.t | wc -l`;
         chomp $tests;
         plan('tests' => $tests);
 
