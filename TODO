@@ -1,4 +1,4 @@
-$Id: TODO,v 1.14 2005-07-02 13:31:40 skim Exp $
+$Id: TODO,v 1.15 2005-07-03 13:13:17 skim Exp $
 
 TODO
 ====
@@ -8,7 +8,6 @@ TODO
 7. Pokud bude komentar, tak umoznit jeho odstraneni. To by melo byt ve filterch.
 8. Nejak promyslet PYX::Filter;
 11. PYX.pm presunout do Tags::PYX.
-17. V PYX::Write::Tags udelat vystup do output_handler.
 18. Testy pro PYX::Parser.
 19.
 
@@ -47,3 +46,6 @@ OK [20050702] skim
 
 15. Testy pro PYX::Write::Tags.
 OK [20050702] skim
+
+17. V PYX::Write::Tags udelat vystup do output_handler.
+OK [20050703] skim
