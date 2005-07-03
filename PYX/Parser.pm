@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Parser;
 #------------------------------------------------------------------------------
-# $Id: Parser.pm,v 1.6 2005-07-02 18:08:17 skim Exp $
+# $Id: Parser.pm,v 1.7 2005-07-03 13:53:55 skim Exp $
 
 # Pragmas.
 use strict;
@@ -96,10 +96,9 @@ sub parse {
 			} elsif ($self->{'output_rewrite'}) {
 				print $out $line, "\n";
 			}
-		}
 
 		# Start of tag.
-		if ($type eq '(') {
+		} elsif ($type eq '(') {
 			if ($self->{'start_tag'}) {
 				&{$self->{'start_tag'}}($self, $value);
 			} elsif ($self->{'output_rewrite'}) {
@@ -139,6 +138,10 @@ sub parse {
 			} elsif ($self->{'output_rewrite'}) {
 				print $out $line, "\n";
 			}
+
+		# Others.
+		} else {
+			croak "$self->{'class'}: Bad PYX tag '$type'.";
 		}
 	}
 }

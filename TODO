@@ -1,4 +1,4 @@
-$Id: TODO,v 1.15 2005-07-03 13:13:17 skim Exp $
+$Id: TODO,v 1.16 2005-07-03 13:53:53 skim Exp $
 
 TODO
 ====
@@ -9,7 +9,8 @@ TODO
 8. Nejak promyslet PYX::Filter;
 11. PYX.pm presunout do Tags::PYX.
 18. Testy pro PYX::Parser.
-19.
+19. Udelat moznost prepisovat na vystup jine nez zakladani tagy.
+20.
 
 Applied
 =======
