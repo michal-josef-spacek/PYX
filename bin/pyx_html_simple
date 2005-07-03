@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-# $Id: pyx_html_simple,v 1.6 2005-07-03 21:42:40 skim Exp $
+# $Id: pyx_html_simple,v 1.7 2005-07-03 21:54:04 skim Exp $
 
 # Pragmas.
 use strict;
@@ -12,7 +12,7 @@ use vars qw(@tags @stack $debug);
 use PYX::Parser;
 
 # Tags, that are simple.
-@tags = ('meta', 'link', 'br', 'hr', 'img');
+@tags = ('meta', 'link', 'br', 'hr', 'img', 'input');
 
 # Debug.
 $debug = 0;
@@ -35,6 +35,9 @@ my $pyx_parser = PYX::Parser->new(
 	'output_rewrite' => 1,
 );
 $pyx_parser->parse();
+
+# TODO
+# Control stack.
 
 # Close file.
 if ($ARGV[0]) {
@@ -61,6 +64,7 @@ sub _end_tag {
 # Process end tag.
 
 	my $obj = shift;
+	_single();
 	print "pop: " if $debug;
 	my $x = pop @stack;
 	print "$x\n" if $debug;
@@ -85,6 +89,8 @@ sub _single {
 	my $tag = $stack[$#stack];
 	if ($tag && grep(/^$tag$/, @tags)) {
 		print ')'.$tag."\n";
-		pop @stack;
+		print "pop: " if $debug;
+		my $x = pop @stack;
+		print "$x\n" if $debug;
 	}
 }
