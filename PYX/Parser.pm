@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Parser;
 #------------------------------------------------------------------------------
-# $Id: Parser.pm,v 1.9 2005-07-03 21:11:41 skim Exp $
+# $Id: Parser.pm,v 1.10 2005-07-03 21:28:28 skim Exp $
 
 # Pragmas.
 use strict;
@@ -89,6 +89,7 @@ sub parse {
 		chomp $line;
 		$self->{'line'} = $line;
 		my ($type, $value) = $line =~ m/\A([A()\?\-C])(.*)\Z/;
+		if (! $type) { $type = 'X'; }
 
 		# Attribute.
 		if ($type eq 'A') {

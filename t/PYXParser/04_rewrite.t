@@ -1,4 +1,4 @@
-# $Id: 04_rewrite.t,v 1.1 2005-07-03 13:53:36 skim Exp $
+# $Id: 04_rewrite.t,v 1.2 2005-07-03 21:28:16 skim Exp $
 
 # Test directory.
 my $test_dir = "$ENV{'PWD'}/t/PYXParser";
@@ -51,3 +51,4 @@ ok(go($class, "$test_dir/data/example1.pyx"), <<'END');
 -text
 )xml
 END
+
