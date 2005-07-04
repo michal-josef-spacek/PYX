@@ -1,5 +1,6 @@
 #!/usr/bin/perl
-# $Id: pyx2,v 1.5 2005-06-26 12:48:24 skim Exp $
+# $Id: pyx2,v 1.6 2005-07-04 20:40:16 skim Exp $
+# TODO Rewrite as Tags::Parse.
 
 # Pragmas.
 use strict;
@@ -7,7 +8,7 @@ use warnings;
 
 # Modules.
 use PYX;
-use Tag::Parse;
+use Tag::Parse qw(parse_normal);
 use HTML::TagReader;
 
 # Input file.
@@ -39,7 +40,7 @@ while (my ($data, $tag_type) = $tag_reader->getbytoken($showerr)) {
 		} else {
 
 			# Parse tag.
-			my $ret = Tag::Parse::parse($data);
+			my $ret = parse_normal($data);
 
 			# Print start tag.
 			print join("\n", PYX::start_tag($ret->{'name'},
