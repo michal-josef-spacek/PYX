@@ -1,6 +1,6 @@
 #!/usr/bin/perl
-# $Id: pyx2,v 1.6 2005-07-04 20:40:16 skim Exp $
-# TODO Rewrite as Tags::Parse.
+# $Id: pyx2,v 1.7 2005-07-04 20:40:51 skim Exp $
+# TODO Rewrite as Tags::PYX.
 
 # Pragmas.
 use strict;
