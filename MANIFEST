@@ -9,7 +9,6 @@ MANIFEST
 MANIFEST.SKIP
 PYX.pm
 PYX/Checker.pm
-PYX/Filter.pm
 PYX/Parser.pm
 PYX/Utils.pm
 PYX/Write/Raw.pm
