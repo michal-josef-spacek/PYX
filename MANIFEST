@@ -7,7 +7,7 @@ bin/pyx_html_simple
 examples/pyx_checker
 examples/pyx_parser
 Makefile.PL
-MANIFEST
+MANIFEST			This list of files
 MANIFEST.SKIP
 PYX.pm
 PYX/Checker.pm
@@ -22,6 +22,7 @@ t/03_pyx_filter.t
 t/04_pyx_write_tags.t
 t/05_pyx_write_raw.t
 t/06_pyx_parser.t
+t/07_pyx_write_tags_code.t
 t/PYX/01_version.t
 t/PYX/02_char.t
 t/PYX/03_start_tag.t
@@ -86,6 +87,21 @@ t/PYXWriteTags/data/instruction2.pyx
 t/PYXWriteTags/data/tag1.pyx
 t/PYXWriteTags/data/tag2.pyx
 t/PYXWriteTags/data/tag3.pyx
+t/PYXWriteTagsCode/00_subs.t
+t/PYXWriteTagsCode/01_version.t
+t/PYXWriteTagsCode/02_char.t
+t/PYXWriteTagsCode/03_instruction.t
+t/PYXWriteTagsCode/04_comment.t
+t/PYXWriteTagsCode/05_tag.t
+t/PYXWriteTagsCode/data/char1.pyx
+t/PYXWriteTagsCode/data/char2.pyx
+t/PYXWriteTagsCode/data/comment1.pyx
+t/PYXWriteTagsCode/data/comment2.pyx
+t/PYXWriteTagsCode/data/instruction1.pyx
+t/PYXWriteTagsCode/data/instruction2.pyx
+t/PYXWriteTagsCode/data/tag1.pyx
+t/PYXWriteTagsCode/data/tag2.pyx
+t/PYXWriteTagsCode/data/tag3.pyx
 xml_samples/code2.xml
 xml_samples/code3.xml
 xml_samples/code4.xml

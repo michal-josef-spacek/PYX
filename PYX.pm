@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX;
 #------------------------------------------------------------------------------
-# $Id: PYX.pm,v 1.5 2005-07-02 18:05:22 skim Exp $
+# $Id: PYX.pm,v 1.6 2005-07-13 14:14:01 skim Exp $
 
 # Pragmas.
 use strict;
@@ -10,7 +10,7 @@ use strict;
 our $VERSION = 0.1;
 
 # Modules.
-use PYX::Utils;
+use PYX::Utils qw(decode);
 
 #------------------------------------------------------------------------------
 sub char {
@@ -18,7 +18,7 @@ sub char {
 # Process char between tags.
 
 	my $char = shift;
-	return '-'.PYX::Utils::decode($char);
+	return '-'.decode($char);
 }
 
 #------------------------------------------------------------------------------
@@ -27,7 +27,7 @@ sub comment {
 # Process comment.
 
 	my ($comment) = @_;
-	return 'C'.PYX::Utils::decode($comment);
+	return 'C'.decode($comment);
 }
 
 #------------------------------------------------------------------------------
@@ -45,7 +45,7 @@ sub instruction {
 # Process instruction.
 
 	my ($target, $data) = @_;
-	return '?'.$target.' '.PYX::Utils::decode($data);
+	return '?'.$target.' '.decode($data);
 }
 
 #------------------------------------------------------------------------------
@@ -58,7 +58,7 @@ sub start_tag {
 	push @ret, '('.$tag;
 	while (@attr) {
 		my ($key, $val) = (shift @attr, shift @attr);
-		push @ret, "A$key ".PYX::Utils::decode($val);
+		push @ret, "A$key ".decode($val);
 	}
 	return @ret;
 }
