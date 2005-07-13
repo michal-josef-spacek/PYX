@@ -1,6 +1,8 @@
 bin/pyx2
 bin/pyx2xml_raw
 bin/pyx2xml_tags
+bin/pyx2xml_tags_code
+bin/pyx2xml_tags_without_indent
 bin/pyx_html_simple
 examples/pyx_checker
 examples/pyx_parser
@@ -13,6 +15,7 @@ PYX/Parser.pm
 PYX/Utils.pm
 PYX/Write/Raw.pm
 PYX/Write/Tags.pm
+PYX/Write/Tags/Code.pm
 t/01_pyx.t
 t/02_pyx_utils.t
 t/03_pyx_filter.t
