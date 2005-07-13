@@ -1,4 +1,4 @@
-# $Id: Makefile.PL,v 1.7 2005-07-03 21:59:02 skim Exp $
+# $Id: Makefile.PL,v 1.8 2005-07-13 13:35:29 skim Exp $
 
 # Modules.
 use ExtUtils::MakeMaker;
@@ -18,5 +18,6 @@ WriteMakefile(
 		'bin/pyx2xml_tags_without_indent',
 		'bin/pyx2xml_raw',
 		'bin/pyx_html_simple',
+		'bin/pyx2xml_tags_code',
 	],
 );
