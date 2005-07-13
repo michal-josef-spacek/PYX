@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Write::Tags::Code;
 #------------------------------------------------------------------------------
-# $Id: Code.pm,v 1.1 2005-07-13 13:32:09 skim Exp $
+# $Id: Code.pm,v 1.2 2005-07-13 14:09:30 skim Exp $
 
 # Pragmas.
 use strict;
@@ -95,7 +95,7 @@ sub _start_tag {
 	shift;
 	my $tag = shift;
 	_flush_tag();
-	push @tag, $tag, [];
+	push @tag, $tag;
 }
 
 #------------------------------------------------------------------------------
@@ -126,6 +126,7 @@ sub _attribute {
 # Process attribute.
 
 	shift;
+	push @tag, [];
 	push @{$tag[$#tag]}, @_;
 }
 

@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Write::Tags;
 #------------------------------------------------------------------------------
-# $Id: Tags.pm,v 1.8 2005-07-13 13:23:57 skim Exp $
+# $Id: Tags.pm,v 1.9 2005-07-13 14:09:28 skim Exp $
 
 # Pragmas.
 use strict;
@@ -97,7 +97,7 @@ sub _start_tag {
 	my $out = $pyx_parser_obj->{'output_handler'};
 	my $tag = shift;
 	_flush_tag($pyx_parser_obj);
-	push @tag, $tag, [];
+	push @tag, $tag;
 }
 
 #------------------------------------------------------------------------------
@@ -140,6 +140,7 @@ sub _attribute {
 # Process attribute.
 
 	shift;
+	push @tag, [];
 	push @{$tag[$#tag]}, @_;
 }
 
