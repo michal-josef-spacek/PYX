@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Write::Raw;
 #------------------------------------------------------------------------------
-# $Id: Raw.pm,v 1.7 2005-07-03 12:59:04 skim Exp $
+# $Id: Raw.pm,v 1.8 2005-07-13 13:24:43 skim Exp $
 
 # Pragmas.
 use strict;
@@ -9,7 +9,7 @@ use strict;
 # Modules.
 use Carp;
 use PYX::Parser;
-use PYX::Utils;
+use PYX::Utils qw(encode entity_encode);
 
 # Global variables.
 use vars qw(@tag $tag_open);
@@ -111,9 +111,9 @@ sub _data {
 
 	my $pyx_parser_obj = shift;
 	my $out = $pyx_parser_obj->{'output_handler'};
-	my $data = PYX::Utils::encode(shift);
+	my $data = encode(shift);
 	_end_of_start_tag($pyx_parser_obj);
-	print $out PYX::Utils::entity_encode($data);	
+	print $out entity_encode($data);	
 }
 
 #------------------------------------------------------------------------------
@@ -125,7 +125,7 @@ sub _attribute {
 	my $out = $pyx_parser_obj->{'output_handler'};
 	while (@_) {
 		my ($att, $attval) = (shift @_, shift @_);
-		print $out " $att=\"", PYX::Utils::entity_encode($attval), '"';
+		print $out " $att=\"", entity_encode($attval), '"';
 	}
 }
 
@@ -138,7 +138,7 @@ sub _instruction {
 	my $out = $pyx_parser_obj->{'output_handler'};
 	my ($target, $data) = @_;
 	_end_of_start_tag($pyx_parser_obj);
-	print $out "<?$target ", PYX::Utils::encode($data), "?>";
+	print $out "<?$target ", encode($data), "?>";
 }
 
 #------------------------------------------------------------------------------
@@ -162,7 +162,7 @@ sub _comment {
 	my $pyx_parser_obj = shift;
 	my $out = $pyx_parser_obj->{'output_handler'};
 	my $comment = shift;
-	print $out '<!--'.PYX::Utils::encode($comment).'-->';
+	print $out '<!--'.encode($comment).'-->';
 }
 
 1;

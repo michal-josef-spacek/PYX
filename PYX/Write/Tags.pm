@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Write::Tags;
 #------------------------------------------------------------------------------
-# $Id: Tags.pm,v 1.7 2005-07-03 12:59:04 skim Exp $
+# $Id: Tags.pm,v 1.8 2005-07-13 13:23:57 skim Exp $
 
 # Pragmas.
 use strict;
@@ -9,7 +9,7 @@ use strict;
 # Modules.
 use Carp;
 use PYX::Parser;
-use PYX::Utils;
+use PYX::Utils qw(encode);
 
 # Version.
 our $VERSION = 0.1;
@@ -124,7 +124,7 @@ sub _data {
 
 	my $pyx_parser_obj = shift;
 	my $out = $pyx_parser_obj->{'output_handler'};
-	my $data = PYX::Utils::encode(shift);
+	my $data = encode(shift);
 	_flush_tag($pyx_parser_obj);
 	if ($tags->{'output_handler'}) {
 		$tags->print([\$data]);
@@ -176,7 +176,7 @@ sub _comment {
 # Process comments.
 
 	shift;
-	my $comment = PYX::Utils::encode(shift);
+	my $comment = encode(shift);
 	# TODO Comment by Tags.
 }
 

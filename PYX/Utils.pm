@@ -1,16 +1,25 @@
 #------------------------------------------------------------------------------
 package PYX::Utils;
 #------------------------------------------------------------------------------
-# $Id: Utils.pm,v 1.6 2005-07-02 18:08:17 skim Exp $
+# $Id: Utils.pm,v 1.7 2005-07-13 13:24:54 skim Exp $
 
 # Pragmas.
 use strict;
+
+# Modules.
+use Exporter;
 
 # Version.
 our $VERSION = 0.1;
 
 # Global variables.
-use vars qw(%entities $entities);
+use vars qw(%entities $entities @ISA @EXPORT_OK);
+
+# Inheritance.
+@ISA = ('Exporter');
+
+# Export.
+@EXPORT_OK = ('decode', 'encode', 'entity_encode');
 
 # Encoding table.
 %entities = (
