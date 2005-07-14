@@ -1,0 +1,40 @@
+#!/usr/bin/perl
+# $Id: pyx2xml_tags2,v 1.1 2005-07-14 21:57:28 skim Exp $
+
+# Pragmas.
+use strict;
+use warnings;
+
+# Modules.
+use PYX::Write::Tags2;
+use Tags2;
+
+# Open file.
+my $file_handler = 'STDIN';
+if ($ARGV[0]) {
+	if (! open(INF, "<$ARGV[0]")) {
+		die "Cannot open file '$ARGV[0]'.";
+	}
+	$file_handler = *INF;
+}
+
+# Tags2 object.
+my $tags = Tags2->new(
+	'output_handler' => *STDOUT,
+);
+
+# PYX::Write::Tags2 object.
+my $writer = PYX::Write::Tags2->new(
+	'input_file_handler' => $file_handler,
+	'tags_obj' => $tags,
+);
+$writer->parse();
+
+$tags->flush;
+print "\n";
+
+# Close file.
+if ($ARGV[0]) {
+	close(INF);
+}
+
