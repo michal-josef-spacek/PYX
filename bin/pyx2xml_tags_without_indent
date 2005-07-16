@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-# $Id: pyx2xml_tags_without_indent,v 1.1 2005-07-03 21:59:03 skim Exp $
+# $Id: pyx2xml_tags_without_indent,v 1.2 2005-07-16 23:08:52 skim Exp $
 
 # Pragmas.
 use strict;
@@ -29,7 +29,7 @@ my $writer = PYX::Write::Tags->new(
 	'input_file_handler' => $file_handler,
 	'tags_obj' => $tags,
 );
-$writer->parse();
+$writer->parse;
 
 # Close file.
 if ($ARGV[0]) {
