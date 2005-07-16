@@ -1,4 +1,4 @@
-$Id: TODO,v 1.23 2005-07-14 21:42:05 skim Exp $
+$Id: TODO,v 1.24 2005-07-16 23:43:06 skim Exp $
 
 TODO
 ====
@@ -12,8 +12,8 @@ TODO
 22. Do PYX::Parser pridat parsovani stringu primo funkci.
 24. Pro PYX::Write::Tags::Code udelat dokumentaci.
 25. Pridat kompatibilitu pro puvodni XML::PYX?.
-26. Napsat PYX::Write::Tags2.
-27.
+27. Dodelat testy pro PYXWriteTags2.
+28.
 
 Applied
 =======
@@ -66,3 +66,6 @@ OK [20050703] skim
 
 23. Pro PYX::Write::Tags::Code udelat testy.
 OK [20050713] skim
+
+26. Napsat PYX::Write::Tags2.
+OK [20050717] skim
