@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Write::Tags;
 #------------------------------------------------------------------------------
-# $Id: Tags.pm,v 1.9 2005-07-13 14:09:28 skim Exp $
+# $Id: Tags.pm,v 1.10 2005-07-18 12:12:18 skim Exp $
 
 # Pragmas.
 use strict;
@@ -23,8 +23,7 @@ sub new {
 # Constructor.
 
 	my $class = shift;
-	my $self = {};
-	bless $self, $class;
+	my $self = bless {}, $class;
 
 	# Tags object.
 	$self->{'tags_obj'} = '';

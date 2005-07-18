@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Write::Tags::Code;
 #------------------------------------------------------------------------------
-# $Id: Code.pm,v 1.2 2005-07-13 14:09:30 skim Exp $
+# $Id: Code.pm,v 1.3 2005-07-18 12:12:19 skim Exp $
 
 # Pragmas.
 use strict;
@@ -23,8 +23,7 @@ sub new {
 # Constructor.
 
 	my $class = shift;
-	my $self = {};
-	bless $self, $class;
+	my $self = bless {}, $class;
 
 	# Input file handler.
 	$self->{'input_file_handler'} = '';

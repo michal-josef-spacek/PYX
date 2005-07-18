@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Checker;
 #------------------------------------------------------------------------------
-# $Id: Checker.pm,v 1.5 2005-07-02 16:20:57 skim Exp $
+# $Id: Checker.pm,v 1.6 2005-07-18 12:12:50 skim Exp $
 
 # Pragmas.
 use strict;
@@ -18,8 +18,7 @@ sub new {
 # Constructor.
 
 	my $class = shift;
-	my $self = {};
-	bless $self, $class;
+	my $self = bless {}, $class;
 
 	# Debug.
 	$self->{'debug'} = 0;

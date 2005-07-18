@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Write::Raw;
 #------------------------------------------------------------------------------
-# $Id: Raw.pm,v 1.8 2005-07-13 13:24:43 skim Exp $
+# $Id: Raw.pm,v 1.9 2005-07-18 12:12:18 skim Exp $
 
 # Pragmas.
 use strict;
@@ -23,8 +23,7 @@ sub new {
 # Constructor.
 
 	my $class = shift;
-	my $self = {};
-	bless $self, $class;
+	my $self = bless {}, $class;
 
 	# Input file handler.
 	$self->{'input_file_handler'} = '';

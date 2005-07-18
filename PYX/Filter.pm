@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Filter;
 #------------------------------------------------------------------------------
-# $Id: Filter.pm,v 1.4 2005-07-04 09:51:01 skim Exp $
+# $Id: Filter.pm,v 1.5 2005-07-18 12:12:50 skim Exp $
 # Rules:
 # - policy - accept, drop
 # - accept
@@ -25,8 +25,7 @@ sub new {
 # Constructor.
 
 	my $class = shift;
-	my $self = {};
-	bless $self, $class;
+	my $self = bless {}, $class;
 
 	# Rules.
 	$self->{'rule'} = []; 

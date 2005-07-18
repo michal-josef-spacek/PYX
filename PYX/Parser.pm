@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Parser;
 #------------------------------------------------------------------------------
-# $Id: Parser.pm,v 1.10 2005-07-03 21:28:28 skim Exp $
+# $Id: Parser.pm,v 1.11 2005-07-18 12:12:50 skim Exp $
 
 # Pragmas.
 use strict;
@@ -18,7 +18,7 @@ sub new {
 # Constructor.
 
 	my $class = shift;
-	my $self = {};
+	my $self = bless {}, $class;
 	bless $self, $class;
 
 	# Input file handler.
