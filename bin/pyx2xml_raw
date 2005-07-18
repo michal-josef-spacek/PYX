@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-# $Id: pyx2xml_raw,v 1.2 2005-07-16 23:09:55 skim Exp $
+# $Id: pyx2xml_raw,v 1.3 2005-07-18 13:01:55 skim Exp $
 
 # Pragmas.
 use strict;
@@ -17,7 +17,7 @@ if ($ARGV[0]) {
 	$file_handler = *INF;
 }
 
-# PYX::Write::Tags object.
+# PYX::Write::Raw object.
 my $writer = PYX::Write::Raw->new(
 	'input_file_handler' => $file_handler,
 );
