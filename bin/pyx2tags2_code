@@ -1,0 +1,36 @@
+#!/usr/bin/perl
+# $Id: pyx2tags2_code,v 1.1 2005-07-18 15:59:26 skim Exp $
+
+# Pragmas.
+use strict;
+use warnings;
+
+# Modules.
+use PYX::Write::Tags2::Code;
+use Dumpvalue;
+
+# Open file.
+my $file_handler = 'STDIN';
+if ($ARGV[0]) {
+	if (! open(INF, "<$ARGV[0]")) {
+		die "Cannot open file '$ARGV[0]'.";
+	}
+	$file_handler = *INF;
+}
+
+# PYX::Write::Tags2::Code object.
+my $writer = PYX::Write::Tags2::Code->new(
+	'input_file_handler' => $file_handler,
+);
+$writer->parse;
+my $ret = $writer->get_tags_code;
+
+# Dump.
+my $dump = Dumpvalue->new;
+$dump->dumpValues($ret);
+
+# Close file.
+if ($ARGV[0]) {
+	close(INF);
+}
+

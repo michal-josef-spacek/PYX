@@ -1,0 +1,30 @@
+#!/usr/bin/perl
+# $Id: pyx_attr_sort,v 1.1 2005-07-18 15:58:33 skim Exp $
+
+# Pragmas.
+use strict;
+use warnings;
+
+# Modules.
+use PYX::Sort;
+
+# Open file.
+my $file_handler = 'STDIN';
+if ($ARGV[0]) {
+	if (! open(INF, "<$ARGV[0]")) {
+		die "Cannot open file '$ARGV[0]'.";
+	}
+	$file_handler = *INF;
+}
+
+# PYX::Sort object.
+my $sorter = PYX::Sort->new(
+	'input_file_handler' => $file_handler,
+);
+$sorter->parse;
+
+# Close file.
+if ($ARGV[0]) {
+	close(INF);
+}
+
