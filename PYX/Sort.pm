@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Sort;
 #------------------------------------------------------------------------------
-# $Id: Sort.pm,v 1.1 2005-07-18 15:58:26 skim Exp $
+# $Id: Sort.pm,v 1.2 2005-07-18 16:20:54 skim Exp $
 
 # Pragmas.
 use strict;
@@ -105,7 +105,7 @@ sub _flush {
 	my $out = $pyx_parser_obj->{'output_handler'};
 	if (scalar %{$tag}) {
 		foreach my $key (sort keys %{$tag}) {
-			print $out $key.'="'.$tag->{$key}.'"'."\n";
+			print $out 'A'.$key.'="'.$tag->{$key}.'"'."\n";
 		}
 		$tag = {};
 	}
