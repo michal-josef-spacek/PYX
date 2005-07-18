@@ -19,6 +19,7 @@ PYX/Write/Raw.pm
 PYX/Write/Tags.pm
 PYX/Write/Tags/Code.pm
 PYX/Write/Tags2.pm
+PYX/Write/Tags2/Code.pm
 t/01_pyx.t
 t/02_pyx_utils.t
 t/03_pyx_filter.t
@@ -27,6 +28,7 @@ t/05_pyx_write_raw.t
 t/06_pyx_parser.t
 t/07_pyx_write_tags_code.t
 t/08_pyx_write_tags2.t
+t/09_pyx_write_tags2_code.t
 t/PYX/01_version.t
 t/PYX/02_char.t
 t/PYX/03_start_tag.t
@@ -106,6 +108,21 @@ t/PYXWriteTags2/data/instruction2.pyx
 t/PYXWriteTags2/data/tag1.pyx
 t/PYXWriteTags2/data/tag2.pyx
 t/PYXWriteTags2/data/tag3.pyx
+t/PYXWriteTags2Code/00_subs.t
+t/PYXWriteTags2Code/01_version.t
+t/PYXWriteTags2Code/02_char.t
+t/PYXWriteTags2Code/03_instruction.t
+t/PYXWriteTags2Code/04_comment.t
+t/PYXWriteTags2Code/05_tag.t
+t/PYXWriteTags2Code/data/char1.pyx
+t/PYXWriteTags2Code/data/char2.pyx
+t/PYXWriteTags2Code/data/comment1.pyx
+t/PYXWriteTags2Code/data/comment2.pyx
+t/PYXWriteTags2Code/data/instruction1.pyx
+t/PYXWriteTags2Code/data/instruction2.pyx
+t/PYXWriteTags2Code/data/tag1.pyx
+t/PYXWriteTags2Code/data/tag2.pyx
+t/PYXWriteTags2Code/data/tag3.pyx
 t/PYXWriteTagsCode/00_subs.t
 t/PYXWriteTagsCode/01_version.t
 t/PYXWriteTagsCode/02_char.t
