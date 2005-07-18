@@ -1,4 +1,4 @@
-$Id: TODO,v 1.24 2005-07-16 23:43:06 skim Exp $
+$Id: TODO,v 1.25 2005-07-18 10:06:35 skim Exp $
 
 TODO
 ====
@@ -13,7 +13,8 @@ TODO
 24. Pro PYX::Write::Tags::Code udelat dokumentaci.
 25. Pridat kompatibilitu pro puvodni XML::PYX?.
 27. Dodelat testy pro PYXWriteTags2.
-28.
+28. Skript, ktery pretridi atributy v pyx formatu podle abecedy.
+29.
 
 Applied
 =======
