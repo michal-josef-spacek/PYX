@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Parser;
 #------------------------------------------------------------------------------
-# $Id: Parser.pm,v 1.11 2005-07-18 12:12:50 skim Exp $
+# $Id: Parser.pm,v 1.12 2005-07-18 15:32:02 skim Exp $
 
 # Pragmas.
 use strict;
@@ -19,7 +19,6 @@ sub new {
 
 	my $class = shift;
 	my $self = bless {}, $class;
-	bless $self, $class;
 
 	# Input file handler.
 	$self->{'input_file_handler'} = '';
