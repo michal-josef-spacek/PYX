@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Write::Raw;
 #------------------------------------------------------------------------------
-# $Id: Raw.pm,v 1.9 2005-07-18 12:12:18 skim Exp $
+# $Id: Raw.pm,v 1.10 2005-07-18 15:58:17 skim Exp $
 
 # Pragmas.
 use strict;
@@ -122,10 +122,8 @@ sub _attribute {
 
 	my $pyx_parser_obj = shift;
 	my $out = $pyx_parser_obj->{'output_handler'};
-	while (@_) {
-		my ($att, $attval) = (shift @_, shift @_);
-		print $out " $att=\"", entity_encode($attval), '"';
-	}
+	my ($att, $attval) = (shift, shift);
+	print $out " $att=\"", entity_encode($attval), '"';
 }
 
 #------------------------------------------------------------------------------
