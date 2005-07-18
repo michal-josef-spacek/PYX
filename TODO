@@ -1,4 +1,4 @@
-$Id: TODO,v 1.25 2005-07-18 10:06:35 skim Exp $
+$Id: TODO,v 1.26 2005-07-18 16:15:47 skim Exp $
 
 TODO
 ====
@@ -12,8 +12,6 @@ TODO
 22. Do PYX::Parser pridat parsovani stringu primo funkci.
 24. Pro PYX::Write::Tags::Code udelat dokumentaci.
 25. Pridat kompatibilitu pro puvodni XML::PYX?.
-27. Dodelat testy pro PYXWriteTags2.
-28. Skript, ktery pretridi atributy v pyx formatu podle abecedy.
 29.
 
 Applied
@@ -70,3 +68,9 @@ OK [20050713] skim
 
 26. Napsat PYX::Write::Tags2.
 OK [20050717] skim
+
+28. Skript, ktery pretridi atributy v pyx formatu podle abecedy.
+OK [20050718] skim
+
+27. Dodelat testy pro PYXWriteTags2.
+OK [20050718] skim
