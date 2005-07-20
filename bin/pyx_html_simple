@@ -1,5 +1,5 @@
-#!/usr/bin/perl
-# $Id: pyx_html_simple,v 1.8 2005-07-16 23:09:55 skim Exp $
+#!/usr/bin/env perl
+# $Id: pyx_html_simple,v 1.9 2005-07-20 20:58:10 skim Exp $
 
 # Pragmas.
 use strict;
