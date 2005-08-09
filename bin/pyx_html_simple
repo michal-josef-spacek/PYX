@@ -1,5 +1,5 @@
 #!/usr/bin/env perl
-# $Id: pyx_html_simple,v 1.9 2005-07-20 20:58:10 skim Exp $
+# $Id: pyx_html_simple,v 1.10 2005-08-09 10:55:10 skim Exp $
 
 # Pragmas.
 use strict;
@@ -12,7 +12,7 @@ use vars qw(@tags @stack $debug);
 use PYX::Parser;
 
 # Tags, that are simple.
-@tags = ('meta', 'link', 'br', 'hr', 'img', 'input');
+@tags = ('meta', 'link', 'br', 'hr', 'img', 'input', 'option');
 
 # Debug.
 $debug = 0;
