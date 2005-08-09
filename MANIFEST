@@ -133,12 +133,3 @@ t/PYXWriteTagsCode/data/instruction2.pyx
 t/PYXWriteTagsCode/data/tag1.pyx
 t/PYXWriteTagsCode/data/tag2.pyx
 t/PYXWriteTagsCode/data/tag3.pyx
-xml_samples/code2.xml
-xml_samples/code3.xml
-xml_samples/code4.xml
-xml_samples/example.xml
-xml_samples/example2.xml
-xml_samples/example3.xml
-xml_samples/namespace.xml
-xml_samples/namespace2.xml
-xml_samples/xml.xml
