@@ -1,4 +1,4 @@
-$Id: TODO,v 1.32 2005-08-09 09:02:32 skim Exp $
+$Id: TODO,v 1.33 2005-08-09 09:03:18 skim Exp $
 
 TODO
 ====
@@ -17,7 +17,8 @@ TODO
 32. Skript check_xml
 33. V t/ udelat poradek po odstraneni PYX::Utils.
 34. Do Makefile.PL pridat pozadavek na Tags a Tags2 nebo vypnout pouziti.
-35.
+35. Testy pro PYX::Stack.
+36.
 
 Applied
 =======
