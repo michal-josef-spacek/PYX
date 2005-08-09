@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Parser;
 #------------------------------------------------------------------------------
-# $Id: Parser.pm,v 1.12 2005-07-18 15:32:02 skim Exp $
+# $Id: Parser.pm,v 1.13 2005-08-09 06:41:23 skim Exp $
 
 # Pragmas.
 use strict;
@@ -39,15 +39,12 @@ sub new {
 	$self->{'output_handler'} = *STDOUT;
 
 	# Process params.
-	croak "$class: Created with odd number of parameters - should be ".
-		"of the form option => value." if (@_ % 2);
-	for (my $x = 0; $x <= $#_; $x += 2) {
-		if (exists $self->{$_[$x]}) {
-			$self->{$_[$x]} = $_[$x+1];
-		} else {
-			croak "$class: Bad parameter '$_[$x]'.";
-		}
-	}
+        while (@_) {
+                my $key = shift;
+                my $val = shift;
+                croak "Unknown parameter '$key'." if ! exists $self->{$key};
+                $self->{$key} = $val;
+        }
 
 	# Warning about handlers.
 	if (! $self->{'start_tag'} 
