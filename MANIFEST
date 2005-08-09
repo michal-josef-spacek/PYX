@@ -1,8 +1,10 @@
+bin/pyx2tags2_code
 bin/pyx2tags_code
 bin/pyx2xml_raw
 bin/pyx2xml_tags
 bin/pyx2xml_tags2
 bin/pyx2xml_tags_without_indent
+bin/pyx_attr_sort
 bin/pyx_filter
 bin/pyx_html_simple
 examples/pyx_checker
@@ -12,6 +14,7 @@ MANIFEST			This list of files
 MANIFEST.SKIP
 PYX/Checker.pm
 PYX/Parser.pm
+PYX/Sort.pm
 PYX/Write/Raw.pm
 PYX/Write/Tags.pm
 PYX/Write/Tags/Code.pm
