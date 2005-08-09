@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-# $Id: 06_pyx_parser.t,v 1.2 2005-07-03 21:28:09 skim Exp $
+# $Id: 06_pyx_parser.t,v 1.3 2005-08-09 08:45:50 skim Exp $
 
 # Pragmas.
 use strict;
@@ -10,7 +10,7 @@ use PYX::Parser;
 use Test;
 
 # Global variables.
-use vars qw/$debug $obj $class $dir/;
+use vars qw/$debug $class $dir/;
 
 BEGIN {
 	# Name of class.

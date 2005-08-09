@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-# $Id: 03_pyx_filter.t,v 1.3 2005-06-26 10:10:27 skim Exp $
+# $Id: 03_pyx_filter.t,v 1.4 2005-08-09 08:45:50 skim Exp $
 
 # Pragmas.
 use strict;
@@ -10,7 +10,7 @@ use PYX::Filter;
 use Test;
 
 # Global variables.
-use vars qw/$debug $obj $class $dir/;
+use vars qw/$debug $class $dir/;
 
 BEGIN {
 	# Name of class.

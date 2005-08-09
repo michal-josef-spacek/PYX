@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-# $Id: 07_pyx_write_tags_code.t,v 1.1 2005-07-13 14:10:09 skim Exp $
+# $Id: 07_pyx_write_tags_code.t,v 1.2 2005-08-09 08:45:50 skim Exp $
 
 # Pragmas.
 use strict;
@@ -10,7 +10,7 @@ use PYX::Write::Tags::Code;
 use Test;
 
 # Global variables.
-use vars qw/$debug $obj $class $dir/;
+use vars qw/$debug $class $dir/;
 
 BEGIN {
 	# Name of class.

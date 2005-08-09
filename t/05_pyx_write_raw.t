@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-# $Id: 05_pyx_write_raw.t,v 1.1 2005-06-26 12:22:23 skim Exp $
+# $Id: 05_pyx_write_raw.t,v 1.2 2005-08-09 08:45:50 skim Exp $
 
 # Pragmas.
 use strict;
@@ -10,7 +10,7 @@ use PYX::Write::Raw;
 use Test;
 
 # Global variables.
-use vars qw/$debug $obj $class $dir/;
+use vars qw/$debug $class $dir/;
 
 BEGIN {
 	# Name of class.
