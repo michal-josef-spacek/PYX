@@ -1,0 +1,31 @@
+#!/usr/bin/env perl
+# $Id: pyx_stack,v 1.1 2005-08-09 08:21:15 skim Exp $
+
+# Pragmas.
+use strict;
+use warnings;
+
+# Modules.
+use PYX::Stack;
+
+# Open file.
+my $file_handler = 'STDIN';
+if ($ARGV[0]) {
+	if (! open(INF, "<$ARGV[0]")) {
+		die "Cannot open file '$ARGV[0]'.";
+	}
+	$file_handler = *INF;
+}
+
+# PYX::Stack object.
+my $sorter = PYX::Stack->new(
+	'input_file_handler' => $file_handler,
+	'verbose' => 1,
+);
+$sorter->parse;
+
+# Close file.
+if ($ARGV[0]) {
+	close(INF);
+}
+
