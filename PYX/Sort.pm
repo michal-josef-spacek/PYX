@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Sort;
 #------------------------------------------------------------------------------
-# $Id: Sort.pm,v 1.3 2005-08-09 07:59:09 skim Exp $
+# $Id: Sort.pm,v 1.4 2005-08-09 08:10:21 skim Exp $
 
 # Pragmas.
 use strict;
@@ -32,14 +32,11 @@ sub new {
 	$self->{'output_handler'} = *STDOUT;
 
 	# Process params.
-	croak "$class: Created with odd number of parameters - should be ".
-		"of the form option => value." if (@_ % 2);
-	for (my $x = 0; $x <= $#_; $x += 2) {
-		if (exists $self->{$_[$x]}) {
-			$self->{$_[$x]} = $_[$x+1];
-		} else {
-			croak "$class: Bad parameter '$_[$x]'.";
-		}
+	while (@_) {
+		my $key = shift;
+		my $val = shift;
+		croak "Unknown parameter '$key'." if ! exists $self->{$key};
+		$self->{$key} = $val;
 	}
 
 	# PYX::Parser object.
