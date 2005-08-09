@@ -1,4 +1,4 @@
-$Id: TODO,v 1.28 2005-07-18 16:34:07 skim Exp $
+$Id: TODO,v 1.29 2005-08-09 06:41:09 skim Exp $
 
 TODO
 ====
@@ -15,7 +15,8 @@ TODO
 29. Testy pro PYX::Sort.
 30. Udelat skript pro zjisteni cetnosti.
 31. Udelat konfiguraci, ktera bude platit pro vsechny skripty.
-32.
+32. Skript check_xml
+33.
 
 Applied
 =======
