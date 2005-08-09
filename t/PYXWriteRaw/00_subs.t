@@ -1,10 +1,13 @@
-# $Id: 00_subs.t,v 1.1 2005-07-02 13:03:27 skim Exp $
+# $Id: 00_subs.t,v 1.2 2005-08-09 08:47:41 skim Exp $
 
 # Modules.
 use IO::Scalar;
 
-# Function.
+#------------------------------------------------------------------------------
 sub go {
+#------------------------------------------------------------------------------
+# Helper function.
+
 	my $class = shift;
 	my $file = shift;
 	my $input_handler;

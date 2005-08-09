@@ -1,9 +1,10 @@
-# $Id: 02_constructor.t,v 1.2 2005-07-02 13:17:06 skim Exp $
+# $Id: 02_constructor.t,v 1.3 2005-08-09 08:47:40 skim Exp $
 
 # Modules.
 use IO::Scalar;
 
 print "Testing: new('') bad constructor.\n" if $debug;
+my $obj;
 eval {
 	$obj = $class->new('');
 };

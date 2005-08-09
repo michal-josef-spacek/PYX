@@ -1,5 +1,5 @@
-#!/usr/bin/perl
-# $Id: 04_pyx_write_tags.t,v 1.4 2005-08-09 08:45:50 skim Exp $
+#!/usr/bin/env perl
+# $Id: 04_pyx_write_tags.t,v 1.5 2005-08-09 08:50:09 skim Exp $
 
 # Pragmas.
 use strict;
