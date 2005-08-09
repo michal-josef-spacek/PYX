@@ -1,12 +1,10 @@
-# $Id: Makefile.PL,v 1.15 2005-08-09 08:21:07 skim Exp $
+# $Id: Makefile.PL,v 1.16 2005-08-09 09:11:57 skim Exp $
 
 # Modules.
 use ExtUtils::MakeMaker;
 
 # Definition.
 WriteMakefile(
-	'NAME' => 'PYX',
-	'VERSION_FROM' => 'PYX/Parser.pm',
 	'AUTHOR' => 'Michal Spacek',
 	'EXE_FILES' => [
 		'bin/pyx2xml_tags',
@@ -19,7 +17,9 @@ WriteMakefile(
 		'bin/pyx2tags2_code',
 		'bin/pyx_stack',
 	],
+	'NAME' => 'PYX',
 	'PREREQ_PM' => {
 		'PYX::Utils' => 0.01,
 	}
+	'VERSION_FROM' => 'PYX/Parser.pm',
 );
