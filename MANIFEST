@@ -7,6 +7,7 @@ bin/pyx2xml_tags_without_indent
 bin/pyx_attr_sort
 bin/pyx_filter
 bin/pyx_html_simple
+bin/pyx_stack
 examples/pyx_checker
 examples/pyx_parser
 Makefile.PL
@@ -15,11 +16,13 @@ MANIFEST.SKIP
 PYX/Checker.pm
 PYX/Parser.pm
 PYX/Sort.pm
+PYX/Stack.pm
 PYX/Write/Raw.pm
 PYX/Write/Tags.pm
 PYX/Write/Tags/Code.pm
 PYX/Write/Tags2.pm
 PYX/Write/Tags2/Code.pm
+pyx_examples/ex1.pyx
 t/01_pyx.t
 t/03_pyx_filter.t
 t/04_pyx_write_tags.t
