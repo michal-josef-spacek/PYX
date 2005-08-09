@@ -1,4 +1,4 @@
-# $Id: 02_constructor.t,v 1.3 2005-08-09 08:47:40 skim Exp $
+# $Id: 02_constructor.t,v 1.4 2005-08-09 09:01:23 skim Exp $
 
 # Modules.
 use IO::Scalar;
@@ -9,21 +9,20 @@ eval {
 	$obj = $class->new('');
 };
 $@ =~ s/(.*)\ at.*\n/$1/;
-ok($@, "$class: Created with odd number of parameters - should be of ".
-	"the form option => value.");
+ok($@, "$class: Unknown parameter ''.");
 
 print "Testing: new('something' => 'value') bad constructor.\n" if $debug;
 eval {
 	$obj = $class->new('something' => 'value');
 };
 $@ =~ s/(.*)\ at.*\n/$1/;
-ok($@, "$class: Bad parameter 'something'.");
+ok($@, "$class: Unknown parameter 'something'.");
 
 print "Testing: new() bad constructor - without handlers.\n" if $debug;
 my $stderr;
 tie *STDERR, 'IO::Scalar', \$stderr;
 eval {
-	$obj = $class->new();
+	$obj = $class->new;
 };
 untie *STDERR;
 $@ =~ s/(.*)\ at.*\n/$1/;

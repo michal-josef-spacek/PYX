@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Stack;
 #------------------------------------------------------------------------------
-# $Id: Stack.pm,v 1.1 2005-08-09 08:20:58 skim Exp $
+# $Id: Stack.pm,v 1.2 2005-08-09 09:00:18 skim Exp $
 
 # Pragmas.
 use strict;
@@ -37,7 +37,8 @@ sub new {
 	while (@_) {
 		my $key = shift;
 		my $val = shift;
-		croak "Unknown parameter '$key'." if ! exists $self->{$key};
+		croak "$class: Unknown parameter '$key'." 
+			if ! exists $self->{$key};
 		$self->{$key} = $val;
 	}
 
