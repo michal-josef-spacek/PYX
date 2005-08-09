@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Sort;
 #------------------------------------------------------------------------------
-# $Id: Sort.pm,v 1.2 2005-07-18 16:20:54 skim Exp $
+# $Id: Sort.pm,v 1.3 2005-08-09 07:59:09 skim Exp $
 
 # Pragmas.
 use strict;
@@ -12,7 +12,7 @@ use PYX;
 use PYX::Parser;
 
 # Version.
-our $VERSION = 0.1;
+our $VERSION = 0.01;
 
 # Global variables.
 use vars qw($tag);

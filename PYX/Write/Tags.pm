@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Write::Tags;
 #------------------------------------------------------------------------------
-# $Id: Tags.pm,v 1.10 2005-07-18 12:12:18 skim Exp $
+# $Id: Tags.pm,v 1.11 2005-08-09 07:59:10 skim Exp $
 
 # Pragmas.
 use strict;
@@ -12,7 +12,7 @@ use PYX::Parser;
 use PYX::Utils qw(encode);
 
 # Version.
-our $VERSION = 0.1;
+our $VERSION = 0.01;
 
 # Global variables.
 use vars qw($tags @tag);
