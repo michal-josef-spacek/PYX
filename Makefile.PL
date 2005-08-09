@@ -1,4 +1,4 @@
-# $Id: Makefile.PL,v 1.16 2005-08-09 09:11:57 skim Exp $
+# $Id: Makefile.PL,v 1.17 2005-08-09 10:55:34 skim Exp $
 
 # Modules.
 use ExtUtils::MakeMaker;
@@ -20,6 +20,6 @@ WriteMakefile(
 	'NAME' => 'PYX',
 	'PREREQ_PM' => {
 		'PYX::Utils' => 0.01,
-	}
+	},
 	'VERSION_FROM' => 'PYX/Parser.pm',
 );
