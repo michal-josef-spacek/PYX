@@ -1,4 +1,4 @@
-$Id: TODO,v 1.31 2005-08-09 07:24:39 skim Exp $
+$Id: TODO,v 1.32 2005-08-09 09:02:32 skim Exp $
 
 TODO
 ====
@@ -16,7 +16,8 @@ TODO
 31. Udelat konfiguraci, ktera bude platit pro vsechny skripty.
 32. Skript check_xml
 33. V t/ udelat poradek po odstraneni PYX::Utils.
-34.
+34. Do Makefile.PL pridat pozadavek na Tags a Tags2 nebo vypnout pouziti.
+35.
 
 Applied
 =======
