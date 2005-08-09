@@ -1,4 +1,4 @@
-$Id: TODO,v 1.30 2005-08-09 07:00:34 skim Exp $
+$Id: TODO,v 1.31 2005-08-09 07:24:39 skim Exp $
 
 TODO
 ====
@@ -7,7 +7,6 @@ TODO
 5. Zkusit vymyslet implementaci pres lame parsovani jako u stareho pyx.
 7. Pokud bude komentar, tak umoznit jeho odstraneni. To by melo byt ve filterch.
 8. Nejak promyslet PYX::Filter;
-11. PYX.pm presunout do Tags::PYX.
 21. Do PYX::Parser pridat parsovani souboru.
 22. Do PYX::Parser pridat parsovani stringu primo funkci.
 24. Pro PYX::Write::Tags::Code udelat dokumentaci.
@@ -79,3 +78,6 @@ OK [20050718] skim
 
 27. Dodelat testy pro PYXWriteTags2.
 OK [20050718] skim
+
+11. PYX.pm presunout do Tags::PYX.
+OK [20050809] skim
