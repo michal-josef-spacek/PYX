@@ -1,4 +1,4 @@
-$Id: TODO,v 1.35 2005-08-10 14:55:26 skim Exp $
+$Id: TODO,v 1.36 2005-08-10 14:56:11 skim Exp $
 
 TODO
 ====
@@ -14,7 +14,6 @@ TODO
 30. Udelat skript pro zjisteni cetnosti.
 31. Udelat konfiguraci, ktera bude platit pro vsechny skripty.
 32. Skript check_xml
-33. V t/ udelat poradek po odstraneni PYX::Utils.
 34. Do Makefile.PL pridat pozadavek na Tags a Tags2 nebo vypnout pouziti.
 36. Udelat asi PYX::Cross pro doplnovani tagu, kdyz musi byt doplnene. 
     Jakasi normalizace na xml. napr: '<tr><td>neco</tr>'. Pred </tr> musi byt </td>.
@@ -88,4 +87,8 @@ OK [20050809] skim
 OK [20050810] skim
 
 35. Testy pro PYX::Stack.
+OK [20050810] skim
+
+33. V t/ udelat poradek po odstraneni PYX::Utils.
+Spravilo se samo pridanim testu pro PYX::Sort a PYX::Stack.
 OK [20050810] skim
