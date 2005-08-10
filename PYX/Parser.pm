@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Parser;
 #------------------------------------------------------------------------------
-# $Id: Parser.pm,v 1.15 2005-08-09 09:00:18 skim Exp $
+# $Id: Parser.pm,v 1.16 2005-08-10 13:23:49 skim Exp $
 
 # Pragmas.
 use strict;
@@ -144,7 +144,8 @@ sub parse {
 			if ($self->{'other'}) {
 				&{$self->{'other'}}($self, $line);
 			} else {
-				croak "$self->{'class'}: Bad PYX tag '$type'.";
+				croak "$self->{'class'}: Bad PYX tag at ".
+					"line '$line'.";
 			}
 		}
 	}
