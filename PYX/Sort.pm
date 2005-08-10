@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Sort;
 #------------------------------------------------------------------------------
-# $Id: Sort.pm,v 1.6 2005-08-10 14:17:59 skim Exp $
+# $Id: Sort.pm,v 1.7 2005-08-10 14:30:47 skim Exp $
 
 # Pragmas.
 use strict;
@@ -34,7 +34,8 @@ sub new {
 	while (@_) {
 		my $key = shift;
 		my $val = shift;
-		croak "Unknown parameter '$key'." if ! exists $self->{$key};
+		croak "$class: Unknown parameter '$key'." 
+			if ! exists $self->{$key};
 		$self->{$key} = $val;
 	}
 
