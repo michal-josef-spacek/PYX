@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Sort;
 #------------------------------------------------------------------------------
-# $Id: Sort.pm,v 1.5 2005-08-09 08:20:48 skim Exp $
+# $Id: Sort.pm,v 1.6 2005-08-10 14:17:59 skim Exp $
 
 # Pragmas.
 use strict;
@@ -37,6 +37,11 @@ sub new {
 		croak "Unknown parameter '$key'." if ! exists $self->{$key};
 		$self->{$key} = $val;
 	}
+
+	# If doesn't exist input file handler.
+	croak "$class: Cannot exist input file handler ".
+		"'$self->{'input_file_handler'}'."
+		if $self->{'input_file_handler'} eq '';
 
 	# PYX::Parser object.
 	$self->{'pyx_parser'} = PYX::Parser->new(
