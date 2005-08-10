@@ -23,6 +23,8 @@ PYX/Write/Tags/Code.pm
 PYX/Write/Tags2.pm
 PYX/Write/Tags2/Code.pm
 pyx_examples/ex1.pyx
+t/01_pyx_stack.t
+t/02_pyx_sort.t
 t/03_pyx_filter.t
 t/04_pyx_write_tags.t
 t/05_pyx_write_raw.t
@@ -48,6 +50,16 @@ t/PYXParser/data/parse.pyx
 t/PYXParser/data/start_tag1.pyx
 t/PYXParser/data/start_tag2.pyx
 t/PYXParser/data/start_tag3.pyx
+t/PYXSort/00_subs.t
+t/PYXSort/01_version.t
+t/PYXSort/02_constructor.t
+t/PYXSort/03_parse.t
+t/PYXSort/data/example1.pyx
+t/PYXSort/data/example2.pyx
+t/PYXStack/01_version.t
+t/PYXStack/02_constructor.t
+t/PYXStack/03_parse.t
+t/PYXStack/data/example1.pyx
 t/PYXWriteRaw/00_subs.t
 t/PYXWriteRaw/01_version.t
 t/PYXWriteRaw/02_char.t
