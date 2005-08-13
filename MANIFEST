@@ -13,6 +13,7 @@ examples/pyx_parser
 Makefile.PL
 MANIFEST			This list of files
 MANIFEST.SKIP
+PYX.pm
 PYX/Checker.pm
 PYX/Parser.pm
 PYX/Sort.pm
@@ -32,6 +33,13 @@ t/06_pyx_parser.t
 t/07_pyx_write_tags_code.t
 t/08_pyx_write_tags2.t
 t/09_pyx_write_tags2_code.t
+t/10_pyx.t
+t/PYX/01_version.t
+t/PYX/02_char.t
+t/PYX/03_start_tag.t
+t/PYX/04_end_tag.t
+t/PYX/05_instruction.t
+t/PYX/06_comment.t
 t/PYXFilter/01_version.t
 t/PYXParser/00_subs.t
 t/PYXParser/01_version.t
