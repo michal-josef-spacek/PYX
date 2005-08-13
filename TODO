@@ -1,10 +1,7 @@
-$Id: TODO,v 1.38 2005-08-13 22:48:54 skim Exp $
+$Id: TODO,v 1.39 2005-08-13 23:12:50 skim Exp $
 
 TODO
 ====
-3. Zkusit vymyslet implementaci parsovani pres HTML::TagReader. Viz pyx2.
-4. Zkusit vymyslet implementaci parsovani pres XML::Parser. Viz puvodni pyx.
-5. Zkusit vymyslet implementaci pres lame parsovani jako u stareho pyx.
 7. Pokud bude komentar, tak umoznit jeho odstraneni. To by melo byt ve filterch.
 8. Nejak promyslet PYX::Filter;
 21. Do PYX::Parser pridat parsovani souboru.
@@ -14,7 +11,8 @@ TODO
 30. Udelat skript pro zjisteni cetnosti.
 31. Udelat konfiguraci, ktera bude platit pro vsechny skripty.
 32. Skript check_xml.
-34. Do Makefile.PL pridat pozadavek na Tags a Tags2 nebo vypnout pouziti.
+34. Kdyz se testuje Vystup do Tags a Tags2, tak musi byt ty moduly 
+    nainstalovane, jinak skip.
 36. Udelat asi PYX::Cross pro doplnovani tagu, kdyz musi byt doplnene. 
     Jakasi normalizace na xml. napr: '<tr><td>neco</tr>'. Pred </tr> musi byt </td>.
 37. Skript, ktery vyhodi bila mista v datovych tagach a bila mista na zacatku 
@@ -94,3 +92,15 @@ OK [20050810] skim
 33. V t/ udelat poradek po odstraneni PYX::Utils.
 Spravilo se samo pridanim testu pro PYX::Sort a PYX::Stack.
 OK [20050810] skim
+
+3. Zkusit vymyslet implementaci parsovani pres HTML::TagReader. Viz pyx2.
+Tohle tady neresim. Resim to v Tags::Parser. Tam je to tak udelane.
+NONE [20050814] skim
+
+4. Zkusit vymyslet implementaci parsovani pres XML::Parser. Viz puvodni pyx.
+Tohle tady neresim. Resim to v Tags::Parser. Tohle nebudu delat.
+NONE [20050814] skim
+
+5. Zkusit vymyslet implementaci pres lame parsovani jako u stareho pyx.
+Tohle tady neresim. Resim to v Tags::Parser. Tohle nebudu delat.
+NONE [20050814] skim
