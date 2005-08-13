@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Parser;
 #------------------------------------------------------------------------------
-# $Id: Parser.pm,v 1.16 2005-08-10 13:23:49 skim Exp $
+# $Id: Parser.pm,v 1.17 2005-08-13 14:16:03 skim Exp $
 
 # Pragmas.
 use strict;
@@ -121,7 +121,7 @@ sub parse {
 				print $out $line, "\n";
 			}
 
-		# Special tag.
+		# Instruction.
 		} elsif ($type eq '?') {
 			my ($target, $data) = $line =~ m/\A\?([^\s]+)\s*(.*)\Z/;
 			if ($self->{'instruction'}) {
