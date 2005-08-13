@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
-package Tags::PYX;
+package PYX;
 #------------------------------------------------------------------------------
-# $Id: PYX.pm,v 1.9 2005-08-13 20:32:47 skim Exp $
+# $Id: PYX.pm,v 1.10 2005-08-13 20:33:31 skim Exp $
 
 # Pragmas.
 use strict;
@@ -77,7 +77,7 @@ sub start_tag {
 
 =head1 NAME
 
-Tags::PYX - A perl module for pyx handling.
+PYX - A perl module for pyx handling.
 
 =head1 SYNOPSIS
 
@@ -86,10 +86,10 @@ Tags::PYX - A perl module for pyx handling.
  use warnings;
 
  # Modules.
- use Tags::PYX;
+ use PYX;
 
  # PYX object.
- my $pyx = Tags::PYX->new(
+ my $pyx = PYX->new(
  );
 
 =head1 DESCRIPTION
