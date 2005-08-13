@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX;
 #------------------------------------------------------------------------------
-# $Id: PYX.pm,v 1.10 2005-08-13 20:33:31 skim Exp $
+# $Id: PYX.pm,v 1.11 2005-08-13 21:32:07 skim Exp $
 
 # Pragmas.
 use strict;
@@ -17,7 +17,8 @@ use vars qw(@ISA @EXPORT_OK);
 @ISA = ('Exporter');
 
 # Export.
-@EXPORT_OK = ('char', 'comment', 'end_tag', 'start_tag', 'instruction');
+@EXPORT_OK = ('char', 'comment', 'end_tag', 'start_tag', 'instruction', 
+	'attribute');
 
 # Version.
 our $VERSION = 0.01;
@@ -66,6 +67,17 @@ sub start_tag {
 	my ($tag, @attr) = @_;
 	my @ret = ();
 	push @ret, '('.$tag;
+	push @ret, attribute(@attr) if $#attr > -1;
+	return @ret;
+}
+
+#------------------------------------------------------------------------------
+sub attribute {
+#------------------------------------------------------------------------------
+# Process attribute.
+
+	my (@attr) = @_;
+	my @ret = ();
 	while (@attr) {
 		my ($key, $val) = (shift @attr, shift @attr);
 		push @ret, "A$key ".decode($val);
