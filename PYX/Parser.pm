@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Parser;
 #------------------------------------------------------------------------------
-# $Id: Parser.pm,v 1.19 2005-08-13 14:18:28 skim Exp $
+# $Id: Parser.pm,v 1.18 2005-08-13 14:18:15 skim Exp $
 
 # Pragmas.
 use strict;
@@ -132,7 +132,7 @@ sub parse {
 			}
 
 		# Comment.
-		} elsif ($type eq '_') {
+		} elsif ($type eq 'C') {
 			if ($self->{'comment'}) {
 				&{$self->{'comment'}}($self, $value);
 			} elsif ($self->{'output_rewrite'}) {
