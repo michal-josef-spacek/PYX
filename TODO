@@ -1,4 +1,4 @@
-$Id: TODO,v 1.37 2005-08-10 14:56:36 skim Exp $
+$Id: TODO,v 1.38 2005-08-13 22:48:54 skim Exp $
 
 TODO
 ====
@@ -17,7 +17,9 @@ TODO
 34. Do Makefile.PL pridat pozadavek na Tags a Tags2 nebo vypnout pouziti.
 36. Udelat asi PYX::Cross pro doplnovani tagu, kdyz musi byt doplnene. 
     Jakasi normalizace na xml. napr: '<tr><td>neco</tr>'. Pred </tr> musi byt </td>.
-37.
+37. Skript, ktery vyhodi bila mista v datovych tagach a bila mista na zacatku 
+    a konci v datovem a komentarovem tagu.
+38.
 
 Applied
 =======
