@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Parser;
 #------------------------------------------------------------------------------
-# $Id: Parser.pm,v 1.17 2005-08-13 14:16:03 skim Exp $
+# $Id: Parser.pm,v 1.19 2005-08-13 14:18:28 skim Exp $
 
 # Pragmas.
 use strict;
@@ -85,7 +85,7 @@ sub parse {
 	while (my $line = <$tmp>) {
 		chomp $line;
 		$self->{'line'} = $line;
-		my ($type, $value) = $line =~ m/\A([A()\?\-C])(.*)\Z/;
+		my ($type, $value) = $line =~ m/\A([A()\?\-_])(.*)\Z/;
 		if (! $type) { $type = 'X'; }
 
 		# Attribute.
@@ -132,7 +132,7 @@ sub parse {
 			}
 
 		# Comment.
-		} elsif ($type eq 'C') {
+		} elsif ($type eq '_') {
 			if ($self->{'comment'}) {
 				&{$self->{'comment'}}($self, $value);
 			} elsif ($self->{'output_rewrite'}) {

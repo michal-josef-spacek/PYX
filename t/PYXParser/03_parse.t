@@ -1,4 +1,4 @@
-# $Id: 03_parse.t,v 1.2 2005-07-03 21:28:16 skim Exp $
+# $Id: 03_parse.t,v 1.3 2005-08-13 14:16:42 skim Exp $
 
 # Test directory.
 my $test_dir = "$ENV{'PWD'}/t/PYXParser";
@@ -78,7 +78,7 @@ sub comment {
 # Process comment.
 
 	my ($self, $comment) = @_;
-	ok($self->{'line'}, "C$comment");
+	ok($self->{'line'}, "_$comment");
 }
 
 #------------------------------------------------------------------------------
