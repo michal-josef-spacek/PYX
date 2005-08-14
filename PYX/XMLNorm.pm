@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::XMLNorm;
 #------------------------------------------------------------------------------
-# $Id: XMLNorm.pm,v 1.6 2005-08-14 08:59:54 skim Exp $
+# $Id: XMLNorm.pm,v 1.7 2005-08-14 09:24:31 skim Exp $
 
 # Pragmas.
 use strict;
@@ -101,7 +101,7 @@ sub _start_tag {
 					pop @{$stack};
 				}
 			}
-		}	
+		}
 	}
 	if (exists $rules->{'*'}) {
 		foreach my $tmp (@{$rules->{'*'}}) {
@@ -111,9 +111,9 @@ sub _start_tag {
 					pop @{$stack};
 				}
 			}
-		}	
+		}
 	}
-	push @{$stack}, $tag;	
+	push @{$stack}, $tag;
 	print $out $pyx_parser->{'line'}, "\n";
 }
 
@@ -135,6 +135,16 @@ sub _end_tag {
 			}
 		}	
 	}
+	if (exists $rules->{'*'}) {
+		foreach my $tmp (@{$rules->{'*'}}) {
+			if ($tmp ne $tag && $stack->[$#{$stack}] eq $tmp) {
+				print $out end_tag($tmp), "\n";
+				if ($stack->[$#{$stack}] eq $tmp) {
+					pop @{$stack};
+				}
+			}
+		}
+	}
 	if ($stack->[$#{$stack}] eq $tag) {
 		pop @{$stack};
 	}
@@ -153,7 +163,7 @@ sub _final {
 			if ($stack->[$#{$stack}] eq $tmp) {
 				print $out end_tag($tmp), "\n";
 			}
-		}	
+		}
 	}
 }
 
