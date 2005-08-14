@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::XMLNorm;
 #------------------------------------------------------------------------------
-# $Id: XMLNorm.pm,v 1.3 2005-08-14 08:33:37 skim Exp $
+# $Id: XMLNorm.pm,v 1.2 2005-08-14 08:31:50 skim Exp $
 
 # Pragmas.
 use strict;
@@ -119,13 +119,6 @@ sub _end_tag {
 	my $pyx_parser = shift;
 	my $out = $pyx_parser->{'output_handler'};
 	my $tag = shift;
-	if (exists $rules->{$tag}) {
-		foreach my $tmp (@{$rules->{$tag}}) {
-			if ($stack->[$#{$stack}] eq $tmp) {
-				print $out end_tag($tmp), "\n";
-			}
-		}	
-	}
 	if ($stack->[$#{$stack}] eq $tag) {
 		pop @{$stack};
 	}
