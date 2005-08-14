@@ -1,4 +1,4 @@
-# $Id: 00_subs.t,v 1.1 2005-07-13 14:10:10 skim Exp $
+# $Id: 00_subs.t,v 1.2 2005-08-14 18:29:42 skim Exp $
 
 #------------------------------------------------------------------------------
 sub go {
@@ -19,13 +19,13 @@ sub go {
 
 	# Parse.
 	eval {
-		$obj->parse();
+		$obj->parse;
 	};
 	if ($@) {
 		print STDERR $@;
 	}
 
 	# Return Tags struct.
-	return $obj->get_tags_code();
+	return $obj->get_tags_code;
 }
 

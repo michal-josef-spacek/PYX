@@ -1,4 +1,4 @@
-# $Id: 03_parse.t,v 1.1 2005-08-10 14:25:24 skim Exp $
+# $Id: 03_parse.t,v 1.2 2005-08-14 18:29:36 skim Exp $
 
 # Modules.
 use IO::Scalar;
@@ -21,7 +21,7 @@ my $obj = $class->new(
 # Parse.
 my $stdout;
 tie *STDOUT, 'IO::Scalar', \$stdout;
-$obj->parse();
+$obj->parse;
 untie *STDOUT;
 
 # Close file.

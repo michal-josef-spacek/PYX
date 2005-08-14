@@ -1,4 +1,4 @@
-# $Id: 00_subs.t,v 1.1 2005-07-16 23:42:36 skim Exp $
+# $Id: 00_subs.t,v 1.2 2005-08-14 18:29:39 skim Exp $
 
 # Modules.
 use IO::Scalar;
@@ -13,7 +13,7 @@ sub go {
 	my $file = shift;
 
 	# Tags2 object.
-	my $tags = Tags2->new();
+	my $tags = Tags2->new;
 
 	# Open file.
 	my $input_handler;
@@ -88,7 +88,7 @@ sub go3 {
 	my $file = shift;
 
 	# Tags2 object.
-	my $tags = Tags2->new();
+	my $tags = Tags2->new;
 
 	# Open file.
 	my $input_handler;

@@ -1,4 +1,4 @@
-# $Id: 00_subs.t,v 1.4 2005-07-13 14:09:48 skim Exp $
+# $Id: 00_subs.t,v 1.5 2005-08-14 18:29:38 skim Exp $
 
 # Modules.
 use IO::Scalar;
@@ -32,7 +32,7 @@ sub go {
 	my $stdout;
 	tie *STDOUT, 'IO::Scalar', \$stdout;
 	eval {
-		$obj->parse();
+		$obj->parse;
 	};
 	if ($@) {
 		print STDERR $@;
@@ -71,7 +71,7 @@ sub go2 {
 	my $stdout;
 	tie *STDERR, 'IO::Scalar', \$stdout;
 	eval {
-		$obj->parse();
+		$obj->parse;
 	};
 	if ($@) {
 		print STDERR $@;
@@ -111,7 +111,7 @@ sub go3 {
 	my $stdout;
 	tie *STDERR, 'IO::Scalar', \$stdout;
 	eval {
-		$obj->parse();
+		$obj->parse;
 	};
 	if ($@) {
 		print STDERR $@;
