@@ -1,5 +1,5 @@
 #!/usr/bin/env perl
-# $Id: pyx_xml_normalization,v 1.7 2005-08-14 08:49:21 skim Exp $
+# $Id: pyx_xml_normalization,v 1.8 2005-08-14 09:40:38 skim Exp $
 
 # Pragmas.
 use strict;
@@ -17,6 +17,9 @@ if ($ARGV[0]) {
 	$file_handler = *INF;
 }
 
+# TODO
+# Pridat flag pro flush stack :p
+
 # PYX::XMLNorm object.
 my $sorter = PYX::XMLNorm->new(
 	'input_file_handler' => $file_handler,
@@ -24,6 +27,7 @@ my $sorter = PYX::XMLNorm->new(
 		'tr' => ['td', 'tr'],
 		'td' => ['td'],
 		'table' => ['td', 'tr'],
+		'html' => ['body'],
 		'*' => ['br', 'hr', 'link', 'meta', 'input']
 	},
 );
