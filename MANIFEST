@@ -8,6 +8,7 @@ bin/pyx_attr_sort
 bin/pyx_html_simple
 bin/pyx_optimalization
 bin/pyx_stack
+bin/pyx_xml_normalization
 examples/pyx_checker
 examples/pyx_parser
 Makefile.PL
@@ -24,8 +25,10 @@ PYX/Write/Tags.pm
 PYX/Write/Tags/Code.pm
 PYX/Write/Tags2.pm
 PYX/Write/Tags2/Code.pm
+PYX/XMLNorm.pm
 pyx_examples/ex1.pyx
 pyx_examples/ex2.pyx
+pyx_examples/ex3.pyx
 t/01_pyx_stack.t
 t/02_pyx_sort.t
 t/03_pyx_filter.t
