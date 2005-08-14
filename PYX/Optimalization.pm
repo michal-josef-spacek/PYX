@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Optimalization;
 #------------------------------------------------------------------------------
-# $Id: Optimalization.pm,v 1.1 2005-08-14 07:03:02 skim Exp $
+# $Id: Optimalization.pm,v 1.2 2005-08-14 07:07:08 skim Exp $
 
 # Pragmas.
 use strict;
@@ -46,9 +46,8 @@ sub new {
 	$self->{'pyx_parser'} = PYX::Parser->new(
 		'input_file_handler' => $self->{'input_file_handler'},
 		'output_handler' => $self->{'output_handler'},
-		'char' => \&_char,
+		'data' => \&_data,
 		'comment' => \&_comment,
-		'default' => \&_char,
 	);
 
 	# Object.
@@ -69,9 +68,9 @@ sub parse {
 #------------------------------------------------------------------------------
 
 #------------------------------------------------------------------------------
-sub _char {
+sub _data {
 #------------------------------------------------------------------------------
-# Process character and default.
+# Process data.
 
 	my $pyx_parser_obj = shift;
 	my $data = shift;

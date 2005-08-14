@@ -5,7 +5,6 @@ bin/pyx2xml_tags
 bin/pyx2xml_tags2
 bin/pyx2xml_tags_without_indent
 bin/pyx_attr_sort
-bin/pyx_filter
 bin/pyx_html_simple
 bin/pyx_stack
 examples/pyx_checker
