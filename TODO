@@ -1,4 +1,4 @@
-$Id: TODO,v 1.39 2005-08-13 23:12:50 skim Exp $
+$Id: TODO,v 1.40 2005-08-14 07:19:45 skim Exp $
 
 TODO
 ====
@@ -15,8 +15,6 @@ TODO
     nainstalovane, jinak skip.
 36. Udelat asi PYX::Cross pro doplnovani tagu, kdyz musi byt doplnene. 
     Jakasi normalizace na xml. napr: '<tr><td>neco</tr>'. Pred </tr> musi byt </td>.
-37. Skript, ktery vyhodi bila mista v datovych tagach a bila mista na zacatku 
-    a konci v datovem a komentarovem tagu.
 38.
 
 Applied
@@ -104,3 +102,7 @@ NONE [20050814] skim
 5. Zkusit vymyslet implementaci pres lame parsovani jako u stareho pyx.
 Tohle tady neresim. Resim to v Tags::Parser. Tohle nebudu delat.
 NONE [20050814] skim
+
+37. Skript, ktery vyhodi bila mista v datovych tagach a bila mista na zacatku 
+    a konci v datovem a komentarovem tagu.
+OK [20050814] skim
