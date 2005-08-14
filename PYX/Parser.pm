@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Parser;
 #------------------------------------------------------------------------------
-# $Id: Parser.pm,v 1.18 2005-08-13 14:18:15 skim Exp $
+# $Id: Parser.pm,v 1.20 2005-08-14 08:09:54 skim Exp $
 
 # Pragmas.
 use strict;
@@ -24,12 +24,14 @@ sub new {
 	$self->{'input_file_handler'} = '';
 
 	# Parse handlers.
-	$self->{'start_tag'} = '';
 	$self->{'attribute'} = '';
-	$self->{'end_tag'} = '';
-	$self->{'instruction'} = '';
-	$self->{'data'} = '';
 	$self->{'comment'} = '';
+	$self->{'data'} = '';
+	$self->{'end_tag'} = '';
+	$self->{'final'} = '';
+	$self->{'init'} = '';
+	$self->{'instruction'} = '';
+	$self->{'start_tag'} = '';
 	$self->{'other'} = '';
 
 	# Output rewrite.
@@ -50,10 +52,12 @@ sub new {
 	# Warning about handlers.
 	if (! $self->{'start_tag'} 
 		&& ! $self->{'attribute'}
-		&& ! $self->{'end_tag'}
-		&& ! $self->{'instruction'}
-		&& ! $self->{'data'}
 		&& ! $self->{'comment'}
+		&& ! $self->{'data'}
+		&& ! $self->{'end_tag'}
+		&& ! $self->{'final'}
+		&& ! $self->{'init'}
+		&& ! $self->{'instruction'}
 		&& ! $self->{'other'}) {
 
 		carp "$class: Cannot defined handlers.";
@@ -82,6 +86,9 @@ sub parse {
 	my $self = shift;
 	my $tmp = $self->{'input_file_handler'};
 	my $out = shift || $self->{'output_handler'};
+	if ($self->{'init'}) {
+		&{$self->{'init'}}($self, $att, $attval);
+	}
 	while (my $line = <$tmp>) {
 		chomp $line;
 		$self->{'line'} = $line;
@@ -132,7 +139,7 @@ sub parse {
 			}
 
 		# Comment.
-		} elsif ($type eq 'C') {
+		} elsif ($type eq '_') {
 			if ($self->{'comment'}) {
 				&{$self->{'comment'}}($self, $value);
 			} elsif ($self->{'output_rewrite'}) {
@@ -148,6 +155,9 @@ sub parse {
 					"line '$line'.";
 			}
 		}
+	}
+	if ($self->{'final'}) {
+		&{$self->{'final'}}($self, $att, $attval);
 	}
 }
 
