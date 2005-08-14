@@ -1,5 +1,5 @@
 #!/usr/bin/env perl
-# $Id: pyx_xml_normalization,v 1.6 2005-08-14 08:47:32 skim Exp $
+# $Id: pyx_xml_normalization,v 1.7 2005-08-14 08:49:21 skim Exp $
 
 # Pragmas.
 use strict;
@@ -23,7 +23,7 @@ my $sorter = PYX::XMLNorm->new(
 	'rules' => {
 		'tr' => ['td', 'tr'],
 		'td' => ['td'],
-		'table' => ['tr'],
+		'table' => ['td', 'tr'],
 		'*' => ['br', 'hr', 'link', 'meta', 'input']
 	},
 );
