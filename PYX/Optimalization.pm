@@ -1,15 +1,16 @@
 #------------------------------------------------------------------------------
 package PYX::Optimalization;
 #------------------------------------------------------------------------------
-# $Id: Optimalization.pm,v 1.2 2005-08-14 07:07:08 skim Exp $
+# $Id: Optimalization.pm,v 1.3 2005-08-14 07:19:20 skim Exp $
 
 # Pragmas.
 use strict;
 
 # Modules.
 use Carp;
-use PYX::Parser;
 use PYX qw(char comment);
+use PYX::Parser;
+use PYX::Utils qw(encode decode);
 
 # Version.
 our $VERSION = 0.01;
@@ -74,13 +75,15 @@ sub _data {
 
 	my $pyx_parser_obj = shift;
 	my $data = shift;
-	if ($data =~ /^[\s\n]*$/) {
+	my $tmp = encode($data);
+	if ($tmp =~ /^[\s\n]*$/) {
 		return;
 	}
-	$data =~ s/^[\s\n]*//;
-	$data =~ s/[\s\n]*$//;
+	$tmp =~ s/^[\s\n]*//s;
+	$tmp =~ s/[\s\n]*$//s;
+	$data = decode($tmp);
 	my $out = $pyx_parser_obj->{'output_handler'};
-	print $out char($data);
+	print $out char($data), "\n";
 }
 
 #------------------------------------------------------------------------------
@@ -90,11 +93,15 @@ sub _comment {
 
 	my $pyx_parser_obj = shift;
 	my $comment = shift;
-	if ($comment =~ /^[\s\n]*$/) {
+	my $tmp = encode($comment);
+	if ($tmp =~ /^[\s\n]*$/) {
 		return;
 	}
+	$tmp =~ s/^[\s\n]*//s;
+	$tmp =~ s/[\s\n]*$//s;
+	$comment = decode($tmp);
 	my $out = $pyx_parser_obj->{'output_handler'};
-	print $out comment($comment);
+	print $out comment($comment), "\n";
 }
 
 1;
