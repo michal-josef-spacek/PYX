@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Parser;
 #------------------------------------------------------------------------------
-# $Id: Parser.pm,v 1.20 2005-08-14 08:09:54 skim Exp $
+# $Id: Parser.pm,v 1.21 2005-08-14 08:12:07 skim Exp $
 
 # Pragmas.
 use strict;
@@ -87,7 +87,7 @@ sub parse {
 	my $tmp = $self->{'input_file_handler'};
 	my $out = shift || $self->{'output_handler'};
 	if ($self->{'init'}) {
-		&{$self->{'init'}}($self, $att, $attval);
+		&{$self->{'init'}}($self);
 	}
 	while (my $line = <$tmp>) {
 		chomp $line;
@@ -157,7 +157,7 @@ sub parse {
 		}
 	}
 	if ($self->{'final'}) {
-		&{$self->{'final'}}($self, $att, $attval);
+		&{$self->{'final'}}($self);
 	}
 }
 
