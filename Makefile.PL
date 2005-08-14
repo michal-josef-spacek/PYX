@@ -1,4 +1,4 @@
-# $Id: Makefile.PL,v 1.18 2005-08-14 07:06:59 skim Exp $
+# $Id: Makefile.PL,v 1.19 2005-08-14 08:16:20 skim Exp $
 
 # Modules.
 use ExtUtils::MakeMaker;
@@ -17,6 +17,7 @@ WriteMakefile(
 		'bin/pyx2tags2_code',
 		'bin/pyx_stack',
 		'bin/pyx_optimalization',
+		'bin/pyx_xml_normalization',
 	],
 	'NAME' => 'PYX',
 	'PREREQ_PM' => {
