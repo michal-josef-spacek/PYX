@@ -1,4 +1,4 @@
-$Id: TODO,v 1.41 2005-08-14 07:35:46 skim Exp $
+$Id: TODO,v 1.42 2005-08-14 09:41:27 skim Exp $
 
 TODO
 ====
@@ -14,8 +14,6 @@ TODO
     a podobne informace.
 34. Kdyz se testuje Vystup do Tags a Tags2, tak musi byt ty moduly 
     nainstalovane, jinak skip.
-36. Udelat asi PYX::XMLNorm pro doplnovani tagu, kdyz musi byt doplnene. 
-    Jakasi normalizace na xml. napr: '<tr><td>neco</tr>'. Pred </tr> musi byt </td>.
 38.
 
 Applied
@@ -106,4 +104,8 @@ NONE [20050814] skim
 
 37. Skript, ktery vyhodi bila mista v datovych tagach a bila mista na zacatku 
     a konci v datovem a komentarovem tagu.
+OK [20050814] skim
+
+36. Udelat asi PYX::XMLNorm pro doplnovani tagu, kdyz musi byt doplnene. 
+    Jakasi normalizace na xml. napr: '<tr><td>neco</tr>'. Pred </tr> musi byt </td>.
 OK [20050814] skim
