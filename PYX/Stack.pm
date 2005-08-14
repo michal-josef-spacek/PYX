@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Stack;
 #------------------------------------------------------------------------------
-# $Id: Stack.pm,v 1.4 2005-08-14 07:03:11 skim Exp $
+# $Id: Stack.pm,v 1.5 2005-08-14 08:12:47 skim Exp $
 
 # Pragmas.
 use strict;
@@ -51,8 +51,8 @@ sub new {
 	$self->{'pyx_parser'} = PYX::Parser->new(
 		'input_file_handler' => $self->{'input_file_handler'},
 		'output_handler' => $self->{'output_handler'},
-		'start_tag' => \&_start_tag,
 		'end_tag' => \&_end_tag,
+		'start_tag' => \&_start_tag,
 	);
 
 	# Tag values.
@@ -86,7 +86,7 @@ sub _start_tag {
 	my $pyx_parser_obj = shift;
 	my $tag = shift;
 	my $out = $pyx_parser_obj->{'output_handler'};
-	push @{$stack}, $tag;	
+	push @{$stack}, $tag;
 	print $out join('/', @{$stack}), "\n" if $verbose;
 }
 
