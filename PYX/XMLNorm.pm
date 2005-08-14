@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::XMLNorm;
 #------------------------------------------------------------------------------
-# $Id: XMLNorm.pm,v 1.7 2005-08-14 09:24:31 skim Exp $
+# $Id: XMLNorm.pm,v 1.8 2005-08-14 09:40:28 skim Exp $
 
 # Pragmas.
 use strict;
@@ -15,7 +15,7 @@ use PYX::Parser;
 our $VERSION = 0.01;
 
 # Global variables.
-use vars qw($stack $rules);
+use vars qw($stack $rules $flush_stack);
 
 #------------------------------------------------------------------------------
 sub new {
@@ -33,6 +33,9 @@ sub new {
 
 	# XML normalization rules.
 	$self->{'rules'} = {};
+
+	# Flush stack on finalization.
+	$self->{'flush_stack'} = 0;
 
 	# Process params.
 	while (@_) {
@@ -68,6 +71,9 @@ sub new {
 	# Rules.
 	$rules = $self->{'rules'};
 
+	# Flush stack.
+	$flush_stack = $self->{'flush_stack'};
+
 	# Object.
 	return $self;
 }
@@ -93,8 +99,8 @@ sub _start_tag {
 	my $pyx_parser = shift;
 	my $out = $pyx_parser->{'output_handler'};
 	my $tag = shift;
-	if (exists $rules->{$tag}) {
-		foreach my $tmp (@{$rules->{$tag}}) {
+	if (exists $rules->{'*'}) {
+		foreach my $tmp (@{$rules->{'*'}}) {
 			if ($stack->[$#{$stack}] eq $tmp) {
 				print $out end_tag($tmp), "\n";
 				if ($stack->[$#{$stack}] eq $tmp) {
@@ -103,8 +109,8 @@ sub _start_tag {
 			}
 		}
 	}
-	if (exists $rules->{'*'}) {
-		foreach my $tmp (@{$rules->{'*'}}) {
+	if (exists $rules->{$tag}) {
+		foreach my $tmp (@{$rules->{$tag}}) {
 			if ($stack->[$#{$stack}] eq $tmp) {
 				print $out end_tag($tmp), "\n";
 				if ($stack->[$#{$stack}] eq $tmp) {
@@ -125,16 +131,6 @@ sub _end_tag {
 	my $pyx_parser = shift;
 	my $out = $pyx_parser->{'output_handler'};
 	my $tag = shift;
-	if (exists $rules->{$tag}) {
-		foreach my $tmp (@{$rules->{$tag}}) {
-			if ($tmp ne $tag && $stack->[$#{$stack}] eq $tmp) {
-				print $out end_tag($tmp), "\n";
-				if ($stack->[$#{$stack}] eq $tmp) {
-					pop @{$stack};
-				}
-			}
-		}	
-	}
 	if (exists $rules->{'*'}) {
 		foreach my $tmp (@{$rules->{'*'}}) {
 			if ($tmp ne $tag && $stack->[$#{$stack}] eq $tmp) {
@@ -144,6 +140,16 @@ sub _end_tag {
 				}
 			}
 		}
+	}
+	if (exists $rules->{$tag}) {
+		foreach my $tmp (@{$rules->{$tag}}) {
+			if ($tmp ne $tag && $stack->[$#{$stack}] eq $tmp) {
+				print $out end_tag($tmp), "\n";
+				if ($stack->[$#{$stack}] eq $tmp) {
+					pop @{$stack};
+				}
+			}
+		}	
 	}
 	if ($stack->[$#{$stack}] eq $tag) {
 		pop @{$stack};
@@ -158,9 +164,18 @@ sub _final {
 
 	my $pyx_parser = shift;
 	my $out = $pyx_parser->{'output_handler'};
-	if (exists $rules->{'*'}) {
-		foreach my $tmp (@{$rules->{'*'}}) {
-			if ($stack->[$#{$stack}] eq $tmp) {
+	if ($#{$stack} > -1) {
+		if (exists $rules->{'*'}) {
+			foreach my $tmp (@{$rules->{'*'}}) {
+				if ($stack->[$#{$stack}] eq $tmp) {
+					print $out end_tag($tmp), "\n";
+				}
+			}
+		}
+
+		# If set, than flush stack.
+		if ($flush_stack) {
+			foreach my $tmp (reverse @{$stack}) {
 				print $out end_tag($tmp), "\n";
 			}
 		}
