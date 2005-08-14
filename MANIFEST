@@ -6,6 +6,7 @@ bin/pyx2xml_tags2
 bin/pyx2xml_tags_without_indent
 bin/pyx_attr_sort
 bin/pyx_html_simple
+bin/pyx_optimalization
 bin/pyx_stack
 examples/pyx_checker
 examples/pyx_parser
@@ -14,6 +15,7 @@ MANIFEST			This list of files
 MANIFEST.SKIP
 PYX.pm
 PYX/Checker.pm
+PYX/Optimalization.pm
 PYX/Parser.pm
 PYX/Sort.pm
 PYX/Stack.pm
@@ -23,6 +25,7 @@ PYX/Write/Tags/Code.pm
 PYX/Write/Tags2.pm
 PYX/Write/Tags2/Code.pm
 pyx_examples/ex1.pyx
+pyx_examples/ex2.pyx
 t/01_pyx_stack.t
 t/02_pyx_sort.t
 t/03_pyx_filter.t
@@ -33,6 +36,7 @@ t/07_pyx_write_tags_code.t
 t/08_pyx_write_tags2.t
 t/09_pyx_write_tags2_code.t
 t/10_pyx.t
+t/11_pyx_optimalization.t
 t/PYX/01_version.t
 t/PYX/02_char.t
 t/PYX/03_start_tag.t
@@ -40,6 +44,13 @@ t/PYX/04_end_tag.t
 t/PYX/05_instruction.t
 t/PYX/06_comment.t
 t/PYXFilter/01_version.t
+t/PYXOptimalization/00_subs.t
+t/PYXOptimalization/01_version.t
+t/PYXOptimalization/02_constructor.t
+t/PYXOptimalization/03_parse.t
+t/PYXOptimalization/data/example1.pyx
+t/PYXOptimalization/data/example2.pyx
+t/PYXOptimalization/data/example3.pyx
 t/PYXParser/00_subs.t
 t/PYXParser/01_version.t
 t/PYXParser/02_constructor.t
