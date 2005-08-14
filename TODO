@@ -1,4 +1,4 @@
-$Id: TODO,v 1.40 2005-08-14 07:19:45 skim Exp $
+$Id: TODO,v 1.41 2005-08-14 07:35:46 skim Exp $
 
 TODO
 ====
@@ -10,10 +10,11 @@ TODO
 25. Pridat kompatibilitu pro puvodni XML::PYX?.
 30. Udelat skript pro zjisteni cetnosti.
 31. Udelat konfiguraci, ktera bude platit pro vsechny skripty.
-32. Skript check_xml.
+32. Skript check_xml. Vypise, jestli je to xml. Jestli jde validovat podle dtd 
+    a podobne informace.
 34. Kdyz se testuje Vystup do Tags a Tags2, tak musi byt ty moduly 
     nainstalovane, jinak skip.
-36. Udelat asi PYX::Cross pro doplnovani tagu, kdyz musi byt doplnene. 
+36. Udelat asi PYX::XMLNorm pro doplnovani tagu, kdyz musi byt doplnene. 
     Jakasi normalizace na xml. napr: '<tr><td>neco</tr>'. Pred </tr> musi byt </td>.
 38.
 
