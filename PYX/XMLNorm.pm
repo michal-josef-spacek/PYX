@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::XMLNorm;
 #------------------------------------------------------------------------------
-# $Id: XMLNorm.pm,v 1.2 2005-08-14 08:31:50 skim Exp $
+# $Id: XMLNorm.pm,v 1.4 2005-08-14 08:48:00 skim Exp $
 
 # Pragmas.
 use strict;
@@ -93,10 +93,14 @@ sub _start_tag {
 	my $pyx_parser = shift;
 	my $out = $pyx_parser->{'output_handler'};
 	my $tag = shift;
+	print $out join('/', @{$stack}), "\n";
 	if (exists $rules->{$tag}) {
 		foreach my $tmp (@{$rules->{$tag}}) {
 			if ($stack->[$#{$stack}] eq $tmp) {
 				print $out end_tag($tmp), "\n";
+				if ($stack->[$#{$stack}] eq $tmp) {
+					pop @{$stack};
+				}
 			}
 		}	
 	}
@@ -104,6 +108,9 @@ sub _start_tag {
 		foreach my $tmp (@{$rules->{'*'}}) {
 			if ($stack->[$#{$stack}] eq $tmp) {
 				print $out end_tag($tmp), "\n";
+				if ($stack->[$#{$stack}] eq $tmp) {
+					pop @{$stack};
+				}
 			}
 		}	
 	}
@@ -119,6 +126,16 @@ sub _end_tag {
 	my $pyx_parser = shift;
 	my $out = $pyx_parser->{'output_handler'};
 	my $tag = shift;
+	if (exists $rules->{$tag}) {
+		foreach my $tmp (@{$rules->{$tag}}) {
+			if ($stack->[$#{$stack}] eq $tmp) {
+				print $out end_tag($tmp), "\n";
+				if ($stack->[$#{$stack}] eq $tmp) {
+					pop @{$stack};
+				}
+			}
+		}	
+	}
 	if ($stack->[$#{$stack}] eq $tag) {
 		pop @{$stack};
 	}
