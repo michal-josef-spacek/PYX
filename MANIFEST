@@ -29,6 +29,9 @@ PYX/XMLNorm.pm
 pyx_examples/ex1.pyx
 pyx_examples/ex2.pyx
 pyx_examples/ex3.pyx
+pyx_examples/ex4.pyx
+pyx_examples/ex5.pyx
+pyx_examples/ex6.pyx
 t/01_pyx_stack.t
 t/02_pyx_sort.t
 t/03_pyx_filter.t
@@ -40,6 +43,7 @@ t/08_pyx_write_tags2.t
 t/09_pyx_write_tags2_code.t
 t/10_pyx.t
 t/11_pyx_optimalization.t
+t/12_pyx_xml_normalization.t
 t/PYX/01_version.t
 t/PYX/02_char.t
 t/PYX/03_start_tag.t
@@ -162,3 +166,10 @@ t/PYXWriteTagsCode/data/instruction2.pyx
 t/PYXWriteTagsCode/data/tag1.pyx
 t/PYXWriteTagsCode/data/tag2.pyx
 t/PYXWriteTagsCode/data/tag3.pyx
+t/PYXXMLNorm/00_subs.t
+t/PYXXMLNorm/01_version.t
+t/PYXXMLNorm/02_constructor.t
+t/PYXXMLNorm/03_parse.t
+t/PYXXMLNorm/data/example1.pyx
+t/PYXXMLNorm/data/example2.pyx
+t/PYXXMLNorm/data/example3.pyx
