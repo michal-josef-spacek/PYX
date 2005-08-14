@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Optimalization;
 #------------------------------------------------------------------------------
-# $Id: Optimalization.pm,v 1.3 2005-08-14 07:19:20 skim Exp $
+# $Id: Optimalization.pm,v 1.4 2005-08-14 07:28:10 skim Exp $
 
 # Pragmas.
 use strict;
@@ -47,6 +47,7 @@ sub new {
 	$self->{'pyx_parser'} = PYX::Parser->new(
 		'input_file_handler' => $self->{'input_file_handler'},
 		'output_handler' => $self->{'output_handler'},
+		'output_rewrite' => 1,
 		'data' => \&_data,
 		'comment' => \&_comment,
 	);
