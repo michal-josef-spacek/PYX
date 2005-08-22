@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX;
 #------------------------------------------------------------------------------
-# $Id: PYX.pm,v 1.11 2005-08-13 21:32:07 skim Exp $
+# $Id: PYX.pm,v 1.12 2005-08-22 16:31:52 skim Exp $
 
 # Pragmas.
 use strict;
@@ -10,14 +10,11 @@ use strict;
 use PYX::Utils qw(decode);
 use Exporter;
 
-# Global variables.
-use vars qw(@ISA @EXPORT_OK);
-
 # Inheritance.
-@ISA = ('Exporter');
+our @ISA = ('Exporter');
 
 # Export.
-@EXPORT_OK = ('char', 'comment', 'end_tag', 'start_tag', 'instruction', 
+our @EXPORT_OK = ('char', 'comment', 'end_tag', 'start_tag', 'instruction', 
 	'attribute');
 
 # Version.
