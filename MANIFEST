@@ -121,6 +121,7 @@ t/PYXWriteTags/data/instruction2.pyx
 t/PYXWriteTags/data/tag1.pyx
 t/PYXWriteTags/data/tag2.pyx
 t/PYXWriteTags/data/tag3.pyx
+t/PYXWriteTags/data/tag4.pyx
 t/PYXWriteTags2/00_subs.t
 t/PYXWriteTags2/01_version.t
 t/PYXWriteTags2/02_char.t
@@ -151,6 +152,7 @@ t/PYXWriteTags2Code/data/instruction2.pyx
 t/PYXWriteTags2Code/data/tag1.pyx
 t/PYXWriteTags2Code/data/tag2.pyx
 t/PYXWriteTags2Code/data/tag3.pyx
+t/PYXWriteTags2Code/data/tag4.pyx
 t/PYXWriteTagsCode/00_subs.t
 t/PYXWriteTagsCode/01_version.t
 t/PYXWriteTagsCode/02_char.t
@@ -166,6 +168,7 @@ t/PYXWriteTagsCode/data/instruction2.pyx
 t/PYXWriteTagsCode/data/tag1.pyx
 t/PYXWriteTagsCode/data/tag2.pyx
 t/PYXWriteTagsCode/data/tag3.pyx
+t/PYXWriteTagsCode/data/tag4.pyx
 t/PYXXMLNorm/00_subs.t
 t/PYXXMLNorm/01_version.t
 t/PYXXMLNorm/02_constructor.t
