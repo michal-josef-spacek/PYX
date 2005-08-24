@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Write::Tags::Code;
 #------------------------------------------------------------------------------
-# $Id: Code.pm,v 1.6 2005-08-14 18:29:31 skim Exp $
+# $Id: Code.pm,v 1.7 2005-08-24 09:35:51 skim Exp $
 
 # Pragmas.
 use strict;
@@ -125,7 +125,9 @@ sub _attribute {
 # Process attribute.
 
 	shift;
-	push @tag, [];
+	if (ref $tag[-1] ne 'ARRAY') {
+		push @tag, [];
+	}
 	push @{$tag[$#tag]}, @_;
 }
 
