@@ -1,4 +1,4 @@
-$Id: TODO,v 1.42 2005-08-14 09:41:27 skim Exp $
+$Id: TODO,v 1.43 2005-08-25 12:30:27 skim Exp $
 
 TODO
 ====
@@ -14,7 +14,8 @@ TODO
     a podobne informace.
 34. Kdyz se testuje Vystup do Tags a Tags2, tak musi byt ty moduly 
     nainstalovane, jinak skip.
-38.
+38. Implementovat to same jako SimpleXML
+39.
 
 Applied
 =======
