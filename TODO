@@ -1,4 +1,4 @@
-$Id: TODO,v 1.43 2005-08-25 12:30:27 skim Exp $
+$Id: TODO,v 1.44 2005-08-25 16:50:25 skim Exp $
 
 TODO
 ====
@@ -15,7 +15,9 @@ TODO
 34. Kdyz se testuje Vystup do Tags a Tags2, tak musi byt ty moduly 
     nainstalovane, jinak skip.
 38. Implementovat to same jako SimpleXML
-39.
+39. Optimalizovat PYX::Parser pomoci _is_sub. Hlavne odzkouset.
+40. Testy pro handler 'rewrite' u PYX::Parser.
+41.
 
 Applied
 =======
