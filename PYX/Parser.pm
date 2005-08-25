@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Parser;
 #------------------------------------------------------------------------------
-# $Id: Parser.pm,v 1.21 2005-08-14 08:12:07 skim Exp $
+# $Id: Parser.pm,v 1.22 2005-08-25 16:50:39 skim Exp $
 
 # Pragmas.
 use strict;
@@ -58,7 +58,8 @@ sub new {
 		&& ! $self->{'final'}
 		&& ! $self->{'init'}
 		&& ! $self->{'instruction'}
-		&& ! $self->{'other'}) {
+		&& ! $self->{'other'}
+		&& ! $self->{'rewrite'}) {
 
 		carp "$class: Cannot defined handlers.";
 	}
@@ -98,53 +99,59 @@ sub parse {
 		# Attribute.
 		if ($type eq 'A') {
 			my ($att, $attval) = $line =~ m/\AA([^\s]+)\s*(.*)\Z/;
-			if ($self->{'attribute'}) {
-				&{$self->{'attribute'}}($self, $att, $attval);
-			} elsif ($self->{'output_rewrite'}) {
-				print $out $line, "\n";
-			}
+#			if ($self->{'attribute'}) {
+#				&{$self->{'attribute'}}($self, $att, $attval);
+#			} elsif ($self->{'output_rewrite'}) {
+#				print $out $line, "\n";
+#			}
+			$self->_is_sub('attribute', $out, $att, $attval);
 
 		# Start of tag.
 		} elsif ($type eq '(') {
-			if ($self->{'start_tag'}) {
-				&{$self->{'start_tag'}}($self, $value);
-			} elsif ($self->{'output_rewrite'}) {
-				print $out $line, "\n";
-			}
+#			if ($self->{'start_tag'}) {
+#				&{$self->{'start_tag'}}($self, $value);
+#			} elsif ($self->{'output_rewrite'}) {
+#				print $out $line, "\n";
+#			}
+			$self->_is_sub('start_tag', $out, $value);
 
 		# End of tag.
 		} elsif ($type eq ')') {
-			if ($self->{'end_tag'}) {
-				&{$self->{'end_tag'}}($self, $value);
-			} elsif ($self->{'output_rewrite'}) {
-				print $out $line, "\n";
-			}
+#			if ($self->{'end_tag'}) {
+#				&{$self->{'end_tag'}}($self, $value);
+#			} elsif ($self->{'output_rewrite'}) {
+#				print $out $line, "\n";
+#			}
+			$self->_is_sub('end_tag', $out, $value);
 
 		# Data.
 		} elsif ($type eq '-') {
-			if ($self->{'data'}) {
-				&{$self->{'data'}}($self, $value);
-			} elsif ($self->{'output_rewrite'}) {
-				print $out $line, "\n";
-			}
+#			if ($self->{'data'}) {
+#				&{$self->{'data'}}($self, $value);
+#			} elsif ($self->{'output_rewrite'}) {
+#				print $out $line, "\n";
+#			}
+			$self->_is_sub('data', $out, $value);
 
 		# Instruction.
 		} elsif ($type eq '?') {
 			my ($target, $data) = $line =~ m/\A\?([^\s]+)\s*(.*)\Z/;
-			if ($self->{'instruction'}) {
-				&{$self->{'instruction'}}($self, $target, 
-					$data);
-			} elsif ($self->{'output_rewrite'}) {
-				print $out $line, "\n";
-			}
+#			if ($self->{'instruction'}) {
+#				&{$self->{'instruction'}}($self, $target, 
+#					$data);
+#			} elsif ($self->{'output_rewrite'}) {
+#				print $out $line, "\n";
+#			}
+			$self->_is_sub('instruction', $out, $target, $data);
 
 		# Comment.
 		} elsif ($type eq '_') {
-			if ($self->{'comment'}) {
-				&{$self->{'comment'}}($self, $value);
-			} elsif ($self->{'output_rewrite'}) {
-				print $out $line, "\n";
-			}
+#			if ($self->{'comment'}) {
+#				&{$self->{'comment'}}($self, $value);
+#			} elsif ($self->{'output_rewrite'}) {
+#				print $out $line, "\n";
+#			}
+			$self->_is_sub('comment', $out, $value);
 
 		# Others.
 		} else {
@@ -158,6 +165,33 @@ sub parse {
 	}
 	if ($self->{'final'}) {
 		&{$self->{'final'}}($self);
+	}
+}
+
+#------------------------------------------------------------------------------
+# Private methods.
+#------------------------------------------------------------------------------
+
+#------------------------------------------------------------------------------
+sub _is_sub {
+#------------------------------------------------------------------------------
+# Helper to defined handlers.
+
+	my ($self, $key, $out, @values) = @_;
+
+	# Handler with name '$key'.
+	if (exists $self->{$key} && ref $self->{$key} eq 'CODE') {
+		&{$self->{$key}}($self, @values);
+
+	# Handler rewrite.
+	} elsif (exists $self->{'rewrite'} 
+		&& ref $self->{'rewrite'} eq 'CODE') {
+
+		&{$self->{'rewrite'}}($self, $self->{'line'});
+
+	# Raw output to output handler handler.
+	} elsif ($self->{'output_rewrite'}) {
+		print $out $self->{'line'}, "\n";
 	}
 }
 
