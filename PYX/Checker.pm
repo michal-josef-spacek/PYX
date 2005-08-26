@@ -1,13 +1,13 @@
 #------------------------------------------------------------------------------
 package PYX::Checker;
 #------------------------------------------------------------------------------
-# $Id: Checker.pm,v 1.7 2005-08-09 07:59:09 skim Exp $
+# $Id: Checker.pm,v 1.8 2005-08-26 19:35:28 skim Exp $
 
 # Pragmas.
 use strict;
 
 # Modules.
-use Carp;
+use Error::Simple;
 
 # Version.
 our $VERSION = 0.01;
@@ -24,21 +24,16 @@ sub new {
 	$self->{'debug'} = 0;
 
 	# Process params.
-	croak "$class: Created with odd number of parameters - should be ".
-		"of the form option => value." if (@_ % 2);
-	for (my $x = 0; $x <= $#_; $x += 2) {
-		if (exists $self->{$_[$x]}) {
-			$self->{$_[$x]} = $_[$x+1];
-		} else {
-			croak "$class: Bad parameter '$_[$x]'.";
-		}
-	}
+        while (@_) {
+                my $key = shift;
+                my $val = shift;
+                err "Unknown parameter '$key'." 
+			if ! exists $self->{$key};
+                $self->{$key} = $val;
+        }
 
 	# Stack of tags.
 	$self->{'stack'} = [];
-
-	# Class.
-	$self->{'class'} = $class;
 
 	# Object.
 	return $self;
@@ -89,7 +84,7 @@ sub remove_tag {
 	if (${$self->{'stack'}}[$#{$self->{'stack'}}] =~ $tag) {
 		pop @{$self->{'stack'}};
 	} else {
-		croak "$self->{'class'}: Cannot remove tag '$tag'.";
+		err "Cannot remove tag '$tag'.";
 	}
 }
 

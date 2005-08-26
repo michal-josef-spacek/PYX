@@ -1,13 +1,13 @@
 #------------------------------------------------------------------------------
 package PYX::XMLNorm;
 #------------------------------------------------------------------------------
-# $Id: XMLNorm.pm,v 1.9 2005-08-14 09:50:01 skim Exp $
+# $Id: XMLNorm.pm,v 1.10 2005-08-26 19:35:28 skim Exp $
 
 # Pragmas.
 use strict;
 
 # Modules.
-use Carp;
+use Error::Simple;
 use PYX qw(end_tag);
 use PYX::Parser;
 
@@ -41,18 +41,18 @@ sub new {
 	while (@_) {
 		my $key = shift;
 		my $val = shift;
-		croak "$class: Unknown parameter '$key'." 
+		err "Unknown parameter '$key'." 
 			if ! exists $self->{$key};
 		$self->{$key} = $val;
 	}
 
 	# If doesn't exist input file handler.
-	croak "$class: Cannot exist input file handler ".
+	err "Cannot exist input file handler ".
 		"'$self->{'input_file_handler'}'."
 		if $self->{'input_file_handler'} eq '';
 
 	# Check to rules.
-	croak "$class: Cannot exist XML normalization rules."
+	err "Cannot exist XML normalization rules."
 		if keys %{$self->{'rules'}} == 0;
 
 	# PYX::Parser object.

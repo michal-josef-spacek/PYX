@@ -1,13 +1,13 @@
 #------------------------------------------------------------------------------
 package PYX::Write::Tags2::Code;
 #------------------------------------------------------------------------------
-# $Id: Code.pm,v 1.3 2005-08-14 18:29:32 skim Exp $
+# $Id: Code.pm,v 1.4 2005-08-26 19:35:32 skim Exp $
 
 # Pragmas.
 use strict;
 
 # Modules.
-use Carp;
+use Error::Simple;
 use PYX::Parser;
 use PYX::Utils qw(encode);
 
@@ -32,15 +32,13 @@ sub new {
 	$self->{'output_handler'} = *STDOUT;
 
 	# Process params.
-	croak "$class: Created with odd number of parameters - should be ".
-		"of the form option => value." if (@_ % 2);
-	for (my $x = 0; $x <= $#_; $x += 2) {
-		if (exists $self->{$_[$x]}) {
-			$self->{$_[$x]} = $_[$x+1];
-		} else {
-			croak "$class: Bad parameter '$_[$x]'.";
-		}
-	}
+        while (@_) {
+                my $key = shift;
+                my $val = shift;
+                err "Unknown parameter '$key'." 
+			if ! exists $self->{$key};
+                $self->{$key} = $val;
+        }
 
 	# PYX::Parser object.
 	$self->{'pyx_parser'} = PYX::Parser->new(

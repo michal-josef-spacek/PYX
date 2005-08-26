@@ -1,13 +1,13 @@
 #------------------------------------------------------------------------------
 package PYX::Write::Tags2;
 #------------------------------------------------------------------------------
-# $Id: Tags2.pm,v 1.4 2005-08-14 18:29:30 skim Exp $
+# $Id: Tags2.pm,v 1.5 2005-08-26 19:35:29 skim Exp $
 
 # Pragmas.
 use strict;
 
 # Modules.
-use Carp;
+use Error::Simple;
 use PYX::Parser;
 use PYX::Utils qw(encode);
 
@@ -38,14 +38,14 @@ sub new {
         while (@_) {
                 my $key = shift;
                 my $val = shift;
-                croak "Bad parameter '$key'." if ! exists $self->{$key};
+                err "Bad parameter '$key'." if ! exists $self->{$key};
                 $self->{$key} = $val;
         }
 
 	# If doesn't exist Tags object.
 	unless ($self->{'tags_obj'} && ($self->{'tags_obj'}->isa('Tags2'))) {
 
-		croak "$class: Bad 'Tags2' object '$self->{'tags_obj'}'.";
+		err "Bad 'Tags2' object '$self->{'tags_obj'}'.";
 	}
 
 	# PYX::Parser object.

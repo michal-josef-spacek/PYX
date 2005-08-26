@@ -1,13 +1,13 @@
 #------------------------------------------------------------------------------
 package PYX::Stack;
 #------------------------------------------------------------------------------
-# $Id: Stack.pm,v 1.5 2005-08-14 08:12:47 skim Exp $
+# $Id: Stack.pm,v 1.6 2005-08-26 19:35:28 skim Exp $
 
 # Pragmas.
 use strict;
 
 # Modules.
-use Carp;
+use Error::Simple;
 use PYX::Parser;
 
 # Version.
@@ -37,13 +37,13 @@ sub new {
 	while (@_) {
 		my $key = shift;
 		my $val = shift;
-		croak "$class: Unknown parameter '$key'." 
+		err "Unknown parameter '$key'." 
 			if ! exists $self->{$key};
 		$self->{$key} = $val;
 	}
 
 	# If doesn't exist input file handler.
-	croak "$class: Cannot exist input file handler ".
+	err "Cannot exist input file handler ".
 		"'$self->{'input_file_handler'}'."
 		if $self->{'input_file_handler'} eq '';
 

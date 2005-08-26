@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Filter;
 #------------------------------------------------------------------------------
-# $Id: Filter.pm,v 1.6 2005-08-09 07:59:09 skim Exp $
+# $Id: Filter.pm,v 1.7 2005-08-26 19:35:28 skim Exp $
 # Rules:
 # - policy - accept, drop
 # - accept
@@ -14,7 +14,7 @@ package PYX::Filter;
 use strict;
 
 # Modules.
-use Carp;
+use Error::Simple;
 
 # Version.
 our $VERSION = 0.01;
@@ -31,15 +31,13 @@ sub new {
 	$self->{'rule'} = []; 
 
 	# Process params.
-	croak "$class: Created with odd number of parameters - should be ".
-		"of the form option => value." if (@_ % 2);
-	for (my $x = 0; $x <= $#_; $x += 2) {
-		if (exists $self->{$_[$x]}) {
-			$self->{$_[$x]} = $_[$x+1];
-		} else {
-			croak "$class: Bad parameter '$_[$x]'.";
-		}
-	}
+        while (@_) {
+                my $key = shift;
+                my $val = shift;
+                err "Unknown parameter '$key'." 
+			if ! exists $self->{$key};
+                $self->{$key} = $val;
+        }
 
 	# PYX::Parser object.
 	$self->{'pyx_parser'} = PYX::Parser->new(

@@ -1,13 +1,14 @@
 #------------------------------------------------------------------------------
 package PYX::Parser;
 #------------------------------------------------------------------------------
-# $Id: Parser.pm,v 1.22 2005-08-25 16:50:39 skim Exp $
+# $Id: Parser.pm,v 1.23 2005-08-26 19:35:28 skim Exp $
 
 # Pragmas.
 use strict;
 
 # Modules.
 use Carp;
+use Error::Simple;
 
 # Version.
 our $VERSION = 0.01;
@@ -44,7 +45,7 @@ sub new {
         while (@_) {
                 my $key = shift;
                 my $val = shift;
-                croak "$class: Unknown parameter '$key'." 
+                err "Unknown parameter '$key'." 
 			if ! exists $self->{$key};
                 $self->{$key} = $val;
         }
@@ -65,12 +66,9 @@ sub new {
 	}
 
 	# If doesn't exist input file handler.
-	croak "$class: Cannot exist input file handler ".
+	err "Cannot exist input file handler ".
 		"'$self->{'input_file_handler'}'."
 		if $self->{'input_file_handler'} eq '';
-
-	# Class.
-	$self->{'class'} = $class;
 
 	# Processing line.
 	$self->{'line'} = '';
@@ -158,8 +156,7 @@ sub parse {
 			if ($self->{'other'}) {
 				&{$self->{'other'}}($self, $line);
 			} else {
-				croak "$self->{'class'}: Bad PYX tag at ".
-					"line '$line'.";
+				err "Bad PYX tag at line '$line'.";
 			}
 		}
 	}
