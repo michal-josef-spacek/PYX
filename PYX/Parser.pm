@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Parser;
 #------------------------------------------------------------------------------
-# $Id: Parser.pm,v 1.23 2005-08-26 19:35:28 skim Exp $
+# $Id: Parser.pm,v 1.24 2005-08-27 23:04:48 skim Exp $
 
 # Pragmas.
 use strict;
@@ -97,58 +97,27 @@ sub parse {
 		# Attribute.
 		if ($type eq 'A') {
 			my ($att, $attval) = $line =~ m/\AA([^\s]+)\s*(.*)\Z/;
-#			if ($self->{'attribute'}) {
-#				&{$self->{'attribute'}}($self, $att, $attval);
-#			} elsif ($self->{'output_rewrite'}) {
-#				print $out $line, "\n";
-#			}
 			$self->_is_sub('attribute', $out, $att, $attval);
 
 		# Start of tag.
 		} elsif ($type eq '(') {
-#			if ($self->{'start_tag'}) {
-#				&{$self->{'start_tag'}}($self, $value);
-#			} elsif ($self->{'output_rewrite'}) {
-#				print $out $line, "\n";
-#			}
 			$self->_is_sub('start_tag', $out, $value);
 
 		# End of tag.
 		} elsif ($type eq ')') {
-#			if ($self->{'end_tag'}) {
-#				&{$self->{'end_tag'}}($self, $value);
-#			} elsif ($self->{'output_rewrite'}) {
-#				print $out $line, "\n";
-#			}
 			$self->_is_sub('end_tag', $out, $value);
 
 		# Data.
 		} elsif ($type eq '-') {
-#			if ($self->{'data'}) {
-#				&{$self->{'data'}}($self, $value);
-#			} elsif ($self->{'output_rewrite'}) {
-#				print $out $line, "\n";
-#			}
 			$self->_is_sub('data', $out, $value);
 
 		# Instruction.
 		} elsif ($type eq '?') {
 			my ($target, $data) = $line =~ m/\A\?([^\s]+)\s*(.*)\Z/;
-#			if ($self->{'instruction'}) {
-#				&{$self->{'instruction'}}($self, $target, 
-#					$data);
-#			} elsif ($self->{'output_rewrite'}) {
-#				print $out $line, "\n";
-#			}
 			$self->_is_sub('instruction', $out, $target, $data);
 
 		# Comment.
 		} elsif ($type eq '_') {
-#			if ($self->{'comment'}) {
-#				&{$self->{'comment'}}($self, $value);
-#			} elsif ($self->{'output_rewrite'}) {
-#				print $out $line, "\n";
-#			}
 			$self->_is_sub('comment', $out, $value);
 
 		# Others.
