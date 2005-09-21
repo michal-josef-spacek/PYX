@@ -1,4 +1,4 @@
-$Id: TODO,v 1.44 2005-08-25 16:50:25 skim Exp $
+$Id: TODO,v 1.45 2005-09-21 15:56:06 skim Exp $
 
 TODO
 ====
@@ -17,7 +17,9 @@ TODO
 38. Implementovat to same jako SimpleXML
 39. Optimalizovat PYX::Parser pomoci _is_sub. Hlavne odzkouset.
 40. Testy pro handler 'rewrite' u PYX::Parser.
-41.
+41. Do pyx_optimalization pridat odstraneni \n v kodu, ktery neni preserve.
+42. Skript na odstraneni komentaru.
+43.
 
 Applied
 =======
