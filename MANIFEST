@@ -14,7 +14,6 @@ examples/pyx_checker
 examples/pyx_parser
 Makefile.PL
 MANIFEST			This list of files
-MANIFEST.SKIP
 PYX.pm
 PYX/Checker.pm
 PYX/Get.pm
