@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Optimalization;
 #------------------------------------------------------------------------------
-# $Id: Optimalization.pm,v 1.5 2005-08-26 19:35:28 skim Exp $
+# $Id: Optimalization.pm,v 1.6 2005-09-26 17:24:50 skim Exp $
 
 # Pragmas.
 use strict;
@@ -80,8 +80,16 @@ sub _data {
 	if ($tmp =~ /^[\s\n]*$/) {
 		return;
 	}
+
+	# White space on begin of data.
 	$tmp =~ s/^[\s\n]*//s;
+
+	# White space on end of data.
 	$tmp =~ s/[\s\n]*$//s;
+
+	# White space on middle of data.
+	$tmp =~ s/[\s\n]+/\ /sg;
+
 	$data = decode($tmp);
 	my $out = $pyx_parser_obj->{'output_handler'};
 	print $out char($data), "\n";
