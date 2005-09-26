@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Optimalization;
 #------------------------------------------------------------------------------
-# $Id: Optimalization.pm,v 1.6 2005-09-26 17:24:50 skim Exp $
+# $Id: Optimalization.pm,v 1.7 2005-09-26 17:26:31 skim Exp $
 
 # Pragmas.
 use strict;
@@ -80,6 +80,8 @@ sub _data {
 	if ($tmp =~ /^[\s\n]*$/) {
 		return;
 	}
+
+	# TODO Preserve?
 
 	# White space on begin of data.
 	$tmp =~ s/^[\s\n]*//s;
