@@ -59,6 +59,7 @@ t/PYXOptimalization/03_parse.t
 t/PYXOptimalization/data/example1.pyx
 t/PYXOptimalization/data/example2.pyx
 t/PYXOptimalization/data/example3.pyx
+t/PYXOptimalization/data/example4.pyx
 t/PYXParser/00_subs.t
 t/PYXParser/01_version.t
 t/PYXParser/02_constructor.t
