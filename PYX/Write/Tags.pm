@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Write::Tags;
 #------------------------------------------------------------------------------
-# $Id: Tags.pm,v 1.14 2005-08-26 19:35:29 skim Exp $
+# $Id: Tags.pm,v 1.15 2005-10-13 15:03:12 skim Exp $
 
 # Pragmas.
 use strict;
@@ -38,8 +38,7 @@ sub new {
         while (@_) {
                 my $key = shift;
                 my $val = shift;
-                err "Unknown parameter '$key'." 
-			if ! exists $self->{$key};
+                err "Unknown parameter '$key'." if ! exists $self->{$key};
                 $self->{$key} = $val;
         }
 
@@ -59,7 +58,6 @@ sub new {
 		'data' => \&_data,
 		'instruction' => \&_instruction,
 		'attribute' => \&_attribute,
-		'comment' => \&_comment,
 	);
 
 	# Tags object.
@@ -168,16 +166,6 @@ sub _flush_tag {
 		}
 		@tag = ();
 	}
-}
-
-#------------------------------------------------------------------------------
-sub _comment {
-#------------------------------------------------------------------------------
-# Process comments.
-
-	shift;
-	my $comment = encode(shift);
-	# TODO Comment by Tags.
 }
 
 1;
