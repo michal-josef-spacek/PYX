@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Checker;
 #------------------------------------------------------------------------------
-# $Id: Checker.pm,v 1.8 2005-08-26 19:35:28 skim Exp $
+# $Id: Checker.pm,v 1.9 2005-10-13 16:00:43 skim Exp $
 
 # Pragmas.
 use strict;
@@ -27,8 +27,7 @@ sub new {
         while (@_) {
                 my $key = shift;
                 my $val = shift;
-                err "Unknown parameter '$key'." 
-			if ! exists $self->{$key};
+                err "Unknown parameter '$key'." if ! exists $self->{$key};
                 $self->{$key} = $val;
         }
 

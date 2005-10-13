@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Get;
 #------------------------------------------------------------------------------
-# $Id: Get.pm,v 1.1 2005-08-26 19:47:42 skim Exp $
+# $Id: Get.pm,v 1.2 2005-10-13 16:00:43 skim Exp $
 
 # Pragmas.
 use strict;
@@ -40,8 +40,7 @@ sub new {
 	while (@_) {
 		my $key = shift;
 		my $val = shift;
-		err "Unknown parameter '$key'." 
-			if ! exists $self->{$key};
+		err "Unknown parameter '$key'." if ! exists $self->{$key};
 		$self->{$key} = $val;
 	}
 

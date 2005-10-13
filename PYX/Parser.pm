@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Parser;
 #------------------------------------------------------------------------------
-# $Id: Parser.pm,v 1.24 2005-08-27 23:04:48 skim Exp $
+# $Id: Parser.pm,v 1.25 2005-10-13 16:00:59 skim Exp $
 
 # Pragmas.
 use strict;
@@ -45,8 +45,7 @@ sub new {
         while (@_) {
                 my $key = shift;
                 my $val = shift;
-                err "Unknown parameter '$key'." 
-			if ! exists $self->{$key};
+                err "Unknown parameter '$key'." if ! exists $self->{$key};
                 $self->{$key} = $val;
         }
 

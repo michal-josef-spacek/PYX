@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Optimalization;
 #------------------------------------------------------------------------------
-# $Id: Optimalization.pm,v 1.7 2005-09-26 17:26:31 skim Exp $
+# $Id: Optimalization.pm,v 1.8 2005-10-13 16:00:43 skim Exp $
 
 # Pragmas.
 use strict;
@@ -33,8 +33,7 @@ sub new {
 	while (@_) {
 		my $key = shift;
 		my $val = shift;
-		err "Unknown parameter '$key'." 
-			if ! exists $self->{$key};
+		err "Unknown parameter '$key'." if ! exists $self->{$key};
 		$self->{$key} = $val;
 	}
 
