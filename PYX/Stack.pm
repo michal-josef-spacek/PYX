@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Stack;
 #------------------------------------------------------------------------------
-# $Id: Stack.pm,v 1.7 2005-10-13 16:00:43 skim Exp $
+# $Id: Stack.pm,v 1.8 2005-11-01 12:20:33 skim Exp $
 
 # Pragmas.
 use strict;
@@ -97,7 +97,7 @@ sub _end_tag {
 	my $pyx_parser_obj = shift;
 	my $tag = shift;
 	my $out = $pyx_parser_obj->{'output_handler'};
-	if ($stack->[$#{$stack}] eq $tag) {
+	if ($stack->[-1] eq $tag) {
 		pop @{$stack};
 	}
 	print $out join('/', @{$stack}), "\n" if $verbose && $#{$stack} > -1;

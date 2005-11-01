@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::XMLNorm;
 #------------------------------------------------------------------------------
-# $Id: XMLNorm.pm,v 1.11 2005-10-13 16:00:43 skim Exp $
+# $Id: XMLNorm.pm,v 1.12 2005-11-01 12:20:33 skim Exp $
 
 # Pragmas.
 use strict;
@@ -100,9 +100,9 @@ sub _start_tag {
 	my $tag = shift;
 	if (exists $rules->{'*'}) {
 		foreach my $tmp (@{$rules->{'*'}}) {
-			if ($#{$stack} > -1 && $stack->[$#{$stack}] eq $tmp) {
+			if ($#{$stack} > -1 && $stack->[-1] eq $tmp) {
 				print $out end_tag($tmp), "\n";
-				if ($stack->[$#{$stack}] eq $tmp) {
+				if ($stack->[-1] eq $tmp) {
 					pop @{$stack};
 				}
 			}
@@ -110,9 +110,9 @@ sub _start_tag {
 	}
 	if (exists $rules->{$tag}) {
 		foreach my $tmp (@{$rules->{$tag}}) {
-			if ($#{$stack} > -1 && $stack->[$#{$stack}] eq $tmp) {
+			if ($#{$stack} > -1 && $stack->[-1] eq $tmp) {
 				print $out end_tag($tmp), "\n";
-				if ($stack->[$#{$stack}] eq $tmp) {
+				if ($stack->[-1] eq $tmp) {
 					pop @{$stack};
 				}
 			}
@@ -132,9 +132,9 @@ sub _end_tag {
 	my $tag = shift;
 	if (exists $rules->{'*'}) {
 		foreach my $tmp (@{$rules->{'*'}}) {
-			if ($tmp ne $tag && $stack->[$#{$stack}] eq $tmp) {
+			if ($tmp ne $tag && $stack->[-1] eq $tmp) {
 				print $out end_tag($tmp), "\n";
-				if ($stack->[$#{$stack}] eq $tmp) {
+				if ($stack->[-1] eq $tmp) {
 					pop @{$stack};
 				}
 			}
@@ -142,15 +142,15 @@ sub _end_tag {
 	}
 	if (exists $rules->{$tag}) {
 		foreach my $tmp (@{$rules->{$tag}}) {
-			if ($tmp ne $tag && $stack->[$#{$stack}] eq $tmp) {
+			if ($tmp ne $tag && $stack->[-1] eq $tmp) {
 				print $out end_tag($tmp), "\n";
-				if ($stack->[$#{$stack}] eq $tmp) {
+				if ($stack->[-1] eq $tmp) {
 					pop @{$stack};
 				}
 			}
 		}	
 	}
-	if ($stack->[$#{$stack}] eq $tag) {
+	if ($stack->[-1] eq $tag) {
 		pop @{$stack};
 	}
 	print $out $pyx_parser->{'line'}, "\n";
@@ -166,7 +166,7 @@ sub _final {
 	if ($#{$stack} > -1) {
 		if (exists $rules->{'*'}) {
 			foreach my $tmp (@{$rules->{'*'}}) {
-				if ($stack->[$#{$stack}] eq $tmp) {
+				if ($stack->[-1] eq $tmp) {
 					print $out end_tag($tmp), "\n";
 				}
 			}

@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Checker;
 #------------------------------------------------------------------------------
-# $Id: Checker.pm,v 1.9 2005-10-13 16:00:43 skim Exp $
+# $Id: Checker.pm,v 1.10 2005-11-01 12:20:33 skim Exp $
 
 # Pragmas.
 use strict;
@@ -80,7 +80,7 @@ sub remove_tag {
 	my $self = shift;
 	my $tag = shift;
 	print "End of '$tag'.\n" if $self->{'debug'};
-	if (${$self->{'stack'}}[$#{$self->{'stack'}}] =~ $tag) {
+	if (${$self->{'stack'}}[-1] =~ $tag) {
 		pop @{$self->{'stack'}};
 	} else {
 		err "Cannot remove tag '$tag'.";
