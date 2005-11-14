@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Filter;
 #------------------------------------------------------------------------------
-# $Id: Filter.pm,v 1.7 2005-08-26 19:35:28 skim Exp $
+# $Id: Filter.pm,v 1.8 2005-11-14 15:55:13 skim Exp $
 # Rules:
 # - policy - accept, drop
 # - accept
@@ -14,7 +14,7 @@ package PYX::Filter;
 use strict;
 
 # Modules.
-use Error::Simple;
+use Error::Simple::Multiple;
 
 # Version.
 our $VERSION = 0.01;

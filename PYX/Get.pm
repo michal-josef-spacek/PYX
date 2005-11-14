@@ -1,13 +1,13 @@
 #------------------------------------------------------------------------------
 package PYX::Get;
 #------------------------------------------------------------------------------
-# $Id: Get.pm,v 1.3 2005-11-01 12:20:49 skim Exp $
+# $Id: Get.pm,v 1.4 2005-11-14 15:55:13 skim Exp $
 
 # Pragmas.
 use strict;
 
 # Modules.
-use Error::Simple;
+use Error::Simple::Multiple;
 use PYX::Parser;
 
 # Version.

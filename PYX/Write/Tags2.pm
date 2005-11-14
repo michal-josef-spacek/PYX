@@ -1,13 +1,13 @@
 #------------------------------------------------------------------------------
 package PYX::Write::Tags2;
 #------------------------------------------------------------------------------
-# $Id: Tags2.pm,v 1.5 2005-08-26 19:35:29 skim Exp $
+# $Id: Tags2.pm,v 1.6 2005-11-14 15:55:14 skim Exp $
 
 # Pragmas.
 use strict;
 
 # Modules.
-use Error::Simple;
+use Error::Simple::Multiple;
 use PYX::Parser;
 use PYX::Utils qw(encode);
 

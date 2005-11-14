@@ -1,13 +1,13 @@
 #------------------------------------------------------------------------------
 package PYX::Optimalization;
 #------------------------------------------------------------------------------
-# $Id: Optimalization.pm,v 1.8 2005-10-13 16:00:43 skim Exp $
+# $Id: Optimalization.pm,v 1.9 2005-11-14 15:55:13 skim Exp $
 
 # Pragmas.
 use strict;
 
 # Modules.
-use Error::Simple;
+use Error::Simple::Multiple;
 use PYX qw(char comment);
 use PYX::Parser;
 use PYX::Utils qw(encode decode);

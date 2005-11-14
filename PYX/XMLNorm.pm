@@ -1,13 +1,13 @@
 #------------------------------------------------------------------------------
 package PYX::XMLNorm;
 #------------------------------------------------------------------------------
-# $Id: XMLNorm.pm,v 1.12 2005-11-01 12:20:33 skim Exp $
+# $Id: XMLNorm.pm,v 1.13 2005-11-14 15:55:13 skim Exp $
 
 # Pragmas.
 use strict;
 
 # Modules.
-use Error::Simple;
+use Error::Simple::Multiple;
 use PYX qw(end_tag);
 use PYX::Parser;
 

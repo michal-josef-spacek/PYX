@@ -1,13 +1,13 @@
 #------------------------------------------------------------------------------
 package PYX::Write::Tags::Code;
 #------------------------------------------------------------------------------
-# $Id: Code.pm,v 1.9 2005-11-01 12:04:33 skim Exp $
+# $Id: Code.pm,v 1.10 2005-11-14 15:55:17 skim Exp $
 
 # Pragmas.
 use strict;
 
 # Modules.
-use Error::Simple;
+use Error::Simple::Multiple;
 use PYX::Parser;
 use PYX::Utils qw(encode);
 

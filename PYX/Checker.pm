@@ -1,13 +1,13 @@
 #------------------------------------------------------------------------------
 package PYX::Checker;
 #------------------------------------------------------------------------------
-# $Id: Checker.pm,v 1.10 2005-11-01 12:20:33 skim Exp $
+# $Id: Checker.pm,v 1.11 2005-11-14 15:55:13 skim Exp $
 
 # Pragmas.
 use strict;
 
 # Modules.
-use Error::Simple;
+use Error::Simple::Multiple;
 
 # Version.
 our $VERSION = 0.01;
@@ -27,7 +27,7 @@ sub new {
         while (@_) {
                 my $key = shift;
                 my $val = shift;
-                err "Unknown parameter '$key'." if ! exists $self->{$key};
+                err "Unknown parameter '$key'." unless exists $self->{$key};
                 $self->{$key} = $val;
         }
 
