@@ -1,13 +1,13 @@
 #------------------------------------------------------------------------------
 package PYX::Stack;
 #------------------------------------------------------------------------------
-# $Id: Stack.pm,v 1.8 2005-11-01 12:20:33 skim Exp $
+# $Id: Stack.pm,v 1.9 2005-11-14 15:52:41 skim Exp $
 
 # Pragmas.
 use strict;
 
 # Modules.
-use Error::Simple;
+use Error::Simple::Multiple;
 use PYX::Parser;
 
 # Version.
@@ -37,7 +37,7 @@ sub new {
 	while (@_) {
 		my $key = shift;
 		my $val = shift;
-		err "Unknown parameter '$key'." if ! exists $self->{$key};
+		err "Unknown parameter '$key'." unless exists $self->{$key};
 		$self->{$key} = $val;
 	}
 

@@ -1,14 +1,14 @@
 #------------------------------------------------------------------------------
 package PYX;
 #------------------------------------------------------------------------------
-# $Id: PYX.pm,v 1.12 2005-08-22 16:31:52 skim Exp $
+# $Id: PYX.pm,v 1.13 2005-11-14 15:52:36 skim Exp $
 
 # Pragmas.
 use strict;
 
 # Modules.
-use PYX::Utils qw(decode);
 use Exporter;
+use PYX::Utils qw(decode);
 
 # Inheritance.
 our @ISA = ('Exporter');
