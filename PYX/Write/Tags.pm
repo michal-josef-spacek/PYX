@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Write::Tags;
 #------------------------------------------------------------------------------
-# $Id: Tags.pm,v 1.16 2005-11-01 12:04:30 skim Exp $
+# $Id: Tags.pm,v 1.17 2005-11-14 15:50:08 skim Exp $
 
 # Pragmas.
 use strict;
@@ -31,14 +31,11 @@ sub new {
 	# Input file handler.
 	$self->{'input_file_handler'} = '';
 
-	# Output handler.
-	$self->{'output_handler'} = *STDOUT;
-
 	# Process params.
         while (@_) {
                 my $key = shift;
                 my $val = shift;
-                err "Unknown parameter '$key'." if ! exists $self->{$key};
+                err "Unknown parameter '$key'." unless exists $self->{$key};
                 $self->{$key} = $val;
         }
 
@@ -88,10 +85,9 @@ sub _start_tag {
 #------------------------------------------------------------------------------
 # Process start of tag.
 
-	my $pyx_parser_obj = shift;
-	my $out = $pyx_parser_obj->{'output_handler'};
+	shift;
 	my $tag = shift;
-	_flush_tag($pyx_parser_obj);
+	_flush_tag();
 	push @tag, $tag;
 }
 
@@ -100,16 +96,10 @@ sub _end_tag {
 #------------------------------------------------------------------------------
 # Process end of tag.
 
-	my $pyx_parser_obj = shift;
-	my $out = $pyx_parser_obj->{'output_handler'};
+	shift;
 	my $tag = shift;
-	_flush_tag($pyx_parser_obj);
-	if ($tags->{'output_handler'}) {
-		$tags->print(['end_'.$tag]);
-	} else {
-		my $ret = $tags->print(['end_'.$tag]);
-		print $out $ret;
-	}
+	_flush_tag();
+	$tags->print(['end_'.$tag]);
 }
 
 #------------------------------------------------------------------------------
@@ -117,16 +107,10 @@ sub _data {
 #------------------------------------------------------------------------------
 # Process data.
 
-	my $pyx_parser_obj = shift;
-	my $out = $pyx_parser_obj->{'output_handler'};
+	shift;
 	my $data = encode(shift);
-	_flush_tag($pyx_parser_obj);
-	if ($tags->{'output_handler'}) {
-		$tags->print([\$data]);
-	} else {
-		my $ret = $tags->print([\$data]);
-		print $out $ret;
-	}
+	_flush_tag();
+	$tags->print([\$data]);
 }
 
 #------------------------------------------------------------------------------
@@ -148,6 +132,7 @@ sub _instruction {
 
 	shift;
 	my ($target, $data) = @_;
+	# XXX Doesn't support.
 }
 
 #------------------------------------------------------------------------------
@@ -155,15 +140,8 @@ sub _flush_tag {
 #------------------------------------------------------------------------------
 # Flush tag values.
 
-	my $pyx_parser_obj = shift;
-	my $out = $pyx_parser_obj->{'output_handler'};
 	if ($#tag > -1) {
-		if ($tags->{'output_handler'}) {
-			$tags->print([@tag]);
-		} else {
-			my $ret = $tags->print([@tag]);
-			print $out $ret;
-		}
+		$tags->print([@tag]);
 		@tag = ();
 	}
 }
