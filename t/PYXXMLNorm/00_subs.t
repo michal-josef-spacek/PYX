@@ -1,4 +1,4 @@
-# $Id: 00_subs.t,v 1.2 2005-08-14 18:29:43 skim Exp $
+# $Id: 00_subs.t,v 1.3 2005-11-14 17:00:58 skim Exp $
 
 # Modules.
 use IO::Scalar;
@@ -24,7 +24,7 @@ sub go {
 	# Parse example.
 	my $stdout;
 	tie *STDOUT, 'IO::Scalar', \$stdout;
-	$obj->parse;
+	$obj->parse_handler;
 	untie *STDOUT;
 	close($input_handler);
 

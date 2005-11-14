@@ -1,4 +1,4 @@
-# $Id: 00_subs.t,v 1.3 2005-08-14 18:29:34 skim Exp $
+# $Id: 00_subs.t,v 1.4 2005-11-14 17:00:46 skim Exp $
 
 # Modules.
 use IO::Scalar;
@@ -23,13 +23,13 @@ sub go {
 		'output_rewrite' => 1,
 	);
 	untie *STDERR;
-	$stderr =~ s/(.*)\ at.*\n/$1/;
+	$stderr =~ s/(.*)\ at.*\n/$1/ if $stderr;
 
 	# Parse example.
 	my $stdout;
 	tie *STDOUT, 'IO::Scalar', \$stdout;
 	eval {
-		$obj->parse;
+		$obj->parse_handler;
 	};
 	if ($@) {
 		print STDERR $@;

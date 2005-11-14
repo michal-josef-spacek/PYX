@@ -1,4 +1,4 @@
-# $Id: 00_subs.t,v 1.2 2005-08-14 18:29:41 skim Exp $
+# $Id: 00_subs.t,v 1.3 2005-11-14 17:00:56 skim Exp $
 
 #------------------------------------------------------------------------------
 sub go {
@@ -19,7 +19,7 @@ sub go {
 
 	# Parse.
 	eval {
-		$obj->parse;
+		$obj->parse_handler;
 	};
 	if ($@) {
 		print STDERR $@;

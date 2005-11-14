@@ -1,4 +1,4 @@
-# $Id: 03_parse.t,v 1.4 2005-08-14 18:29:34 skim Exp $
+# $Id: 03_parse.t,v 1.5 2005-11-14 17:00:46 skim Exp $
 
 # Test directory.
 my $test_dir = "$ENV{'PWD'}/t/PYXParser";
@@ -22,7 +22,7 @@ my $obj = $class->new(
 );
 
 # Parse.
-$obj->parse;
+$obj->parse_handler;
 
 # Close file.
 close($input_handler);

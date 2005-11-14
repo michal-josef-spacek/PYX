@@ -1,4 +1,4 @@
-# $Id: 02_constructor.t,v 1.2 2005-08-26 19:44:47 skim Exp $
+# $Id: 02_constructor.t,v 1.3 2005-11-14 17:00:58 skim Exp $
 
 # Modules.
 use IO::Scalar;
@@ -15,10 +15,4 @@ eval {
 	$obj = $class->new('something' => 'value');
 };
 ok($@, "$class: Unknown parameter 'something'.\n");
-
-print "Testing: new() bad constructor - without handlers.\n" if $debug;
-eval {
-	$obj = $class->new;
-};
-ok($@, "$class: Cannot exist input file handler ''.\n");
 
