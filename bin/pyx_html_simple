@@ -1,5 +1,5 @@
 #!/usr/bin/env perl
-# $Id: pyx_html_simple,v 1.13 2005-11-01 12:04:34 skim Exp $
+# $Id: pyx_html_simple,v 1.14 2005-11-14 17:04:32 skim Exp $
 
 # Pragmas.
 use strict;
@@ -34,7 +34,7 @@ my $pyx_parser = PYX::Parser->new(
 	'data' => \&_data,
 	'output_rewrite' => 1,
 );
-$pyx_parser->parse;
+$pyx_parser->parse_handler;
 
 # Close file.
 if ($ARGV[0]) {

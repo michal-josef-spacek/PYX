@@ -1,5 +1,5 @@
 #!/usr/bin/env perl
-# $Id: pyx_xml_normalization,v 1.12 2005-08-14 09:46:48 skim Exp $
+# $Id: pyx_xml_normalization,v 1.13 2005-11-14 17:04:32 skim Exp $
 
 # Pragmas.
 use strict;
@@ -34,7 +34,7 @@ my $sorter = PYX::XMLNorm->new(
 		'*' => ['br', 'hr', 'link', 'meta', 'input', 'img']
 	},
 );
-$sorter->parse;
+$sorter->parse_handler;
 
 # Close file.
 if ($ARGV[0]) {

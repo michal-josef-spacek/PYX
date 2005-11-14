@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Write::Tags2;
 #------------------------------------------------------------------------------
-# $Id: Tags2.pm,v 1.6 2005-11-14 15:55:14 skim Exp $
+# $Id: Tags2.pm,v 1.7 2005-11-14 17:04:48 skim Exp $
 
 # Pragmas.
 use strict;
@@ -44,7 +44,6 @@ sub new {
 
 	# If doesn't exist Tags object.
 	unless ($self->{'tags_obj'} && ($self->{'tags_obj'}->isa('Tags2'))) {
-
 		err "Bad 'Tags2' object '$self->{'tags_obj'}'.";
 	}
 
@@ -73,10 +72,23 @@ sub new {
 #------------------------------------------------------------------------------
 sub parse {
 #------------------------------------------------------------------------------
-# Start of parsing.
+# Parse text.
 
 	my $self = shift;
-	$self->{'pyx_parser'}->parse;
+	my $pyx_array_ref = shift;
+	my $out = shift || $self->{'output_handler'};
+	$self->{'pyx_parser'}->parse($pyx_array_ref, $out);
+}
+
+#------------------------------------------------------------------------------
+sub parse_handler {
+#------------------------------------------------------------------------------
+# Parse from handler.
+
+	my $self = shift;
+	my $tmp = shift || $self->{'input_file_handler'};
+	my $out = shift || $self->{'output_handler'};
+	$self->{'pyx_parser'}->parse_handler($tmp, $out);
 }
 
 #------------------------------------------------------------------------------

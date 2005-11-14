@@ -1,5 +1,5 @@
 #!/usr/bin/env perl
-# $Id: pyx_optimalization,v 1.1 2005-08-14 07:07:16 skim Exp $
+# $Id: pyx_optimalization,v 1.2 2005-11-14 17:04:32 skim Exp $
 
 # Pragmas.
 use strict;
@@ -21,7 +21,7 @@ if ($ARGV[0]) {
 my $sorter = PYX::Optimalization->new(
 	'input_file_handler' => $file_handler,
 );
-$sorter->parse;
+$sorter->parse_handler;
 
 # Close file.
 if ($ARGV[0]) {

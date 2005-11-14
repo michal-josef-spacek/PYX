@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Stack;
 #------------------------------------------------------------------------------
-# $Id: Stack.pm,v 1.9 2005-11-14 15:52:41 skim Exp $
+# $Id: Stack.pm,v 1.10 2005-11-14 17:04:47 skim Exp $
 
 # Pragmas.
 use strict;
@@ -41,11 +41,6 @@ sub new {
 		$self->{$key} = $val;
 	}
 
-	# If doesn't exist input file handler.
-	err "Cannot exist input file handler ".
-		"'$self->{'input_file_handler'}'."
-		if $self->{'input_file_handler'} eq '';
-
 	# PYX::Parser object.
 	$self->{'pyx_parser'} = PYX::Parser->new(
 		'input_file_handler' => $self->{'input_file_handler'},
@@ -67,10 +62,23 @@ sub new {
 #------------------------------------------------------------------------------
 sub parse {
 #------------------------------------------------------------------------------
-# Start of parsing.
+# Parse text.
 
 	my $self = shift;
-	$self->{'pyx_parser'}->parse;
+	my $pyx_array_ref = shift;
+	my $out = shift || $self->{'output_handler'};
+	$self->{'pyx_parser'}->parse($pyx_array_ref, $out);
+}
+
+#------------------------------------------------------------------------------
+sub parse_handler {
+#------------------------------------------------------------------------------
+# Parse from handler.
+
+	my $self = shift;
+	my $tmp = shift || $self->{'input_file_handler'};
+	my $out = shift || $self->{'output_handler'};
+	$self->{'pyx_parser'}->parse_handler($tmp, $out);
 }
 
 #------------------------------------------------------------------------------

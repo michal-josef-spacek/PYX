@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Write::Tags2::Code;
 #------------------------------------------------------------------------------
-# $Id: Code.pm,v 1.5 2005-11-14 15:55:18 skim Exp $
+# $Id: Code.pm,v 1.6 2005-11-14 17:04:51 skim Exp $
 
 # Pragmas.
 use strict;
@@ -35,8 +35,7 @@ sub new {
         while (@_) {
                 my $key = shift;
                 my $val = shift;
-                err "Unknown parameter '$key'." 
-			if ! exists $self->{$key};
+                err "Unknown parameter '$key'." unless exists $self->{$key};
                 $self->{$key} = $val;
         }
 
@@ -60,21 +59,34 @@ sub new {
 }
 
 #------------------------------------------------------------------------------
-sub parse {
-#------------------------------------------------------------------------------
-# Start of parsing.
-
-	my $self = shift;
-	$self->{'pyx_parser'}->parse;
-}
-
-#------------------------------------------------------------------------------
 sub get_tags_code {
 #------------------------------------------------------------------------------
 # Gets tags code.
 
 	my $self = shift;
 	return $self->{'tag_code'};
+}
+
+#------------------------------------------------------------------------------
+sub parse {
+#------------------------------------------------------------------------------
+# Parse text.
+
+	my $self = shift;
+	my $pyx_array_ref = shift;
+	my $out = shift || $self->{'output_handler'};
+	$self->{'pyx_parser'}->parse($pyx_array_ref, $out);
+}
+
+#------------------------------------------------------------------------------
+sub parse_handler {
+#------------------------------------------------------------------------------
+# Parse from handler.
+
+	my $self = shift;
+	my $tmp = shift || $self->{'input_file_handler'};
+	my $out = shift || $self->{'output_handler'};
+	$self->{'pyx_parser'}->parse_handler($tmp, $out);
 }
 
 #------------------------------------------------------------------------------

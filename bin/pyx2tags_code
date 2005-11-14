@@ -1,5 +1,5 @@
 #!/usr/bin/env perl
-# $Id: pyx2tags_code,v 1.4 2005-08-13 18:30:00 skim Exp $
+# $Id: pyx2tags_code,v 1.5 2005-11-14 17:04:32 skim Exp $
 
 # Pragmas.
 use strict;
@@ -22,7 +22,7 @@ if ($ARGV[0]) {
 my $writer = PYX::Write::Tags::Code->new(
 	'input_file_handler' => $file_handler,
 );
-$writer->parse;
+$writer->parse_handler;
 my $ret = $writer->get_tags_code;
 
 # Dump.

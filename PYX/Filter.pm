@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Filter;
 #------------------------------------------------------------------------------
-# $Id: Filter.pm,v 1.8 2005-11-14 15:55:13 skim Exp $
+# $Id: Filter.pm,v 1.9 2005-11-14 17:04:47 skim Exp $
 # Rules:
 # - policy - accept, drop
 # - accept
@@ -34,8 +34,7 @@ sub new {
         while (@_) {
                 my $key = shift;
                 my $val = shift;
-                err "Unknown parameter '$key'." 
-			if ! exists $self->{$key};
+                err "Unknown parameter '$key'." unless exists $self->{$key};
                 $self->{$key} = $val;
         }
 
