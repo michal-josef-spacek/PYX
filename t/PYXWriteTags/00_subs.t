@@ -1,4 +1,4 @@
-# $Id: 00_subs.t,v 1.5 2005-08-14 18:29:38 skim Exp $
+# $Id: 00_subs.t,v 1.6 2005-11-14 15:58:38 skim Exp $
 
 # Modules.
 use IO::Scalar;
@@ -7,7 +7,7 @@ use Tags::Running;
 #------------------------------------------------------------------------------
 sub go {
 #------------------------------------------------------------------------------
-# First version. Output is default '*STDOUT' at PYX::Write::Tags.
+# First version. Output is default '*STDOUT' at Tags::Running.
 
 	my $class = shift;
 	my $file = shift;
@@ -81,42 +81,3 @@ sub go2 {
 	return $stdout;
 }
 
-#------------------------------------------------------------------------------
-sub go3 {
-#------------------------------------------------------------------------------
-# Third version. Output is PYX::Write::Tags '*STDERR'. Tags::Running output is
-# default ''.
-
-	my $class = shift;
-	my $file = shift;
-
-	# Tags::Running object.
-	my $tags = Tags::Running->new(
-		'set_indent' => 1,
-		'data_optimalization' => 1,
-	);
-
-	# Open file.
-	my $input_handler;
-	open($input_handler, "<$file");
-
-	# PYX::Write::Tags object.
-	my $obj = $class->new(
-		'input_file_handler' => $input_handler,
-		'tags_obj' => $tags,
-		'output_handler' => *STDERR,
-	);
-
-	# Parse example.
-	my $stdout;
-	tie *STDERR, 'IO::Scalar', \$stdout;
-	eval {
-		$obj->parse;
-	};
-	if ($@) {
-		print STDERR $@;
-	}
-	untie *STDERR;
-	close($input_handler);
-	return $stdout;
-}

@@ -1,4 +1,4 @@
-# $Id: 05_tag.t,v 1.3 2005-08-24 09:29:05 skim Exp $
+# $Id: 05_tag.t,v 1.4 2005-11-14 15:58:38 skim Exp $
 
 # Test directory.
 my $test_dir = "$ENV{'PWD'}/t/PYXWriteTags";
@@ -16,8 +16,3 @@ ok(go2($class, "$test_dir/data/tag3.pyx"), "<tag par=\"val\\nval\">\n</tag>\n");
 ok(go2($class, "$test_dir/data/tag4.pyx"), 
 	"<tag par1=\"val1\" par2=\"val2\">\n</tag>\n");
 
-ok(go3($class, "$test_dir/data/tag1.pyx"), "<tag>\n</tag>\n");
-ok(go3($class, "$test_dir/data/tag2.pyx"), "<tag par=\"val\">\n</tag>\n");
-ok(go3($class, "$test_dir/data/tag3.pyx"), "<tag par=\"val\\nval\">\n</tag>\n");
-ok(go3($class, "$test_dir/data/tag4.pyx"), 
-	"<tag par1=\"val1\" par2=\"val2\">\n</tag>\n");
