@@ -1,4 +1,4 @@
-$Id: TODO,v 1.47 2005-09-26 17:31:38 skim Exp $
+$Id: TODO,v 1.48 2006-01-09 13:14:21 skim Exp $
 
 TODO
 ====
@@ -18,7 +18,9 @@ TODO
 40. Testy pro handler 'rewrite' u PYX::Parser.
 42. Skript na odstraneni komentaru.
 43. PYX::Optimalization navazat na dtd (preserve).
-44.
+44. Udelat skript pyx_sort pro setrideni celeho dokumentu. Pro testovani 
+    stejnosti xml dokumentu.
+45.
 
 Applied
 =======
