@@ -1,5 +1,5 @@
 #!/usr/bin/env perl
-# $Id: pyx2tags2_code,v 1.4 2005-11-14 17:04:32 skim Exp $
+# $Id: pyx2tags2_code,v 1.5 2006-02-17 12:39:28 skim Exp $
 
 # Pragmas.
 use strict;
@@ -10,17 +10,17 @@ use PYX::Write::Tags2::Code;
 use Dumpvalue;
 
 # Open file.
-my $file_handler = *STDIN;
+my $input_file_handler = *STDIN;
 if ($ARGV[0]) {
 	if (! open(INF, "<$ARGV[0]")) {
 		die "Cannot open file '$ARGV[0]'.";
 	}
-	$file_handler = *INF;
+	$input_file_handler = *INF;
 }
 
 # PYX::Write::Tags2::Code object.
 my $writer = PYX::Write::Tags2::Code->new(
-	'input_file_handler' => $file_handler,
+	'input_file_handler' => $input_file_handler,
 );
 $writer->parse_handler;
 my $ret = $writer->get_tags_code;

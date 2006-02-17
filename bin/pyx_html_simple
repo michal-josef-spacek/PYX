@@ -1,5 +1,5 @@
 #!/usr/bin/env perl
-# $Id: pyx_html_simple,v 1.14 2005-11-14 17:04:32 skim Exp $
+# $Id: pyx_html_simple,v 1.15 2006-02-17 12:39:28 skim Exp $
 
 # Pragmas.
 use strict;
@@ -18,17 +18,17 @@ use PYX::Parser;
 $debug = 0;
 
 # Open file.
-my $file_handler = *STDIN;
+my $input_file_handler = *STDIN;
 if ($ARGV[0]) {
 	if (! open(INF, "<$ARGV[0]")) {
 		die "Cannot open file '$ARGV[0]'.";
 	}
-	$file_handler = *INF;
+	$input_file_handler = *INF;
 }
 
 # PYX::Parser object.
 my $pyx_parser = PYX::Parser->new(
-	'input_file_handler' => $file_handler,
+	'input_file_handler' => $input_file_handler,
 	'start_tag' => \&_start_tag,
 	'end_tag' => \&_end_tag,
 	'data' => \&_data,
