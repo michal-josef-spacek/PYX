@@ -1,4 +1,4 @@
-# $Id: 00_subs.t,v 1.4 2005-11-14 17:00:46 skim Exp $
+# $Id: 00_subs.t,v 1.5 2006-02-17 13:49:29 skim Exp $
 
 # Modules.
 use IO::Scalar;
@@ -8,18 +8,12 @@ sub go {
 #------------------------------------------------------------------------------
 # Helper function.
 
-	my $class = shift;
-	my $file = shift;
-
-	# Open file.
-	my $input_handler;
-	open($input_handler, "<$file");
+	my ($class, $file) = @_;
 
 	# PYX::Parser object.
 	my $stderr;
 	tie *STDERR, 'IO::Scalar', \$stderr;
 	my $obj = $class->new(
-		'input_file_handler' => $input_handler,
 		'output_rewrite' => 1,
 	);
 	untie *STDERR;
@@ -29,13 +23,12 @@ sub go {
 	my $stdout;
 	tie *STDOUT, 'IO::Scalar', \$stdout;
 	eval {
-		$obj->parse_handler;
+		$obj->parse_file($file);
 	};
 	if ($@) {
 		print STDERR $@;
 	}
 	untie *STDOUT;
-	close($input_handler);
 	return $stdout;
 }
 

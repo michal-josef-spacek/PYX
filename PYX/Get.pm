@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Get;
 #------------------------------------------------------------------------------
-# $Id: Get.pm,v 1.5 2005-11-14 17:04:47 skim Exp $
+# $Id: Get.pm,v 1.6 2006-02-17 13:49:21 skim Exp $
 
 # Pragmas.
 use strict;
@@ -24,9 +24,6 @@ sub new {
 	my $class = shift;
 	my $self = bless {}, $class;
 
-	# Input file handler.
-	$self->{'input_file_handler'} = '';
-
 	# Output handler.
 	$self->{'output_handler'} = *STDOUT;
 
@@ -40,13 +37,12 @@ sub new {
 	while (@_) {
 		my $key = shift;
 		my $val = shift;
-		err "Unknown parameter '$key'." if ! exists $self->{$key};
+		err "Unknown parameter '$key'." unless exists $self->{$key};
 		$self->{$key} = $val;
 	}
 
 	# PYX::Parser object.
 	$self->{'pyx_parser'} = PYX::Parser->new(
-		'input_file_handler' => $self->{'input_file_handler'},
 		'output_handler' => $self->{'output_handler'},
 		'end_tag' => \&_end_tag,
 		'start_tag' => \&_start_tag,
@@ -66,12 +62,19 @@ sub new {
 #------------------------------------------------------------------------------
 sub parse {
 #------------------------------------------------------------------------------
-# Parse text.
+# Parse pyx text or array of pyx text.
 
-	my $self = shift;
-	my $pyx_array_ref = shift;
-	my $out = shift || $self->{'output_handler'};
-	$self->{'pyx_parser'}->parse($pyx_array_ref, $out);
+	my ($self, $pyx, $out) = @_;
+	$self->{'pyx_parser'}->parse($pyx, $out);
+}
+
+#------------------------------------------------------------------------------
+sub parse_file {
+#------------------------------------------------------------------------------
+# Parse file with pyx text.
+
+	my ($self, $file) = @_;
+	$self->{'pyx_parser'}->parse_file($file);
 }
 
 #------------------------------------------------------------------------------
@@ -79,10 +82,8 @@ sub parse_handler {
 #------------------------------------------------------------------------------
 # Parse from handler.
 
-	my $self = shift;
-	my $tmp = shift || $self->{'input_file_handler'};
-	my $out = shift || $self->{'output_handler'};
-	$self->{'pyx_parser'}->parse_handler($tmp, $out);
+	my ($self, $input_file_handler, $out) = @_;
+	$self->{'pyx_parser'}->parse_handler($input_file_handler, $out);
 }
 
 #------------------------------------------------------------------------------

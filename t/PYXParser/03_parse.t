@@ -1,17 +1,12 @@
-# $Id: 03_parse.t,v 1.5 2005-11-14 17:00:46 skim Exp $
+# $Id: 03_parse.t,v 1.6 2006-02-17 13:49:29 skim Exp $
 
 # Test directory.
 my $test_dir = "$ENV{'PWD'}/t/PYXParser";
 
-print "Testing: parse() method.\n" if $debug;
-
-# Open file.
-my $input_handler;
-open($input_handler, "<$test_dir/data/parse.pyx");
+print "Testing: parse_file() method.\n" if $debug;
 
 # PYX::Parser object.
 my $obj = $class->new(
-	'input_file_handler' => $input_handler,
 	'attribute' => \&attribute,
 	'start_tag' => \&start_tag,
 	'end_tag' => \&end_tag,
@@ -22,10 +17,7 @@ my $obj = $class->new(
 );
 
 # Parse.
-$obj->parse_handler;
-
-# Close file.
-close($input_handler);
+$obj->parse_file($test_dir.'/data/parse.pyx');
 
 #------------------------------------------------------------------------------
 sub attribute {

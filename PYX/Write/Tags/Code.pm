@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Write::Tags::Code;
 #------------------------------------------------------------------------------
-# $Id: Code.pm,v 1.11 2005-11-14 17:04:50 skim Exp $
+# $Id: Code.pm,v 1.12 2006-02-17 13:49:23 skim Exp $
 
 # Pragmas.
 use strict;
@@ -25,9 +25,6 @@ sub new {
 	my $class = shift;
 	my $self = bless {}, $class;
 
-	# Input file handler.
-	$self->{'input_file_handler'} = '';
-
 	# Output handler.
 	$self->{'output_handler'} = *STDOUT;
 
@@ -41,8 +38,6 @@ sub new {
 
 	# PYX::Parser object.
 	$self->{'pyx_parser'} = PYX::Parser->new(
-		'input_file_handler' => $self->{'input_file_handler'},
-		'output_handler' => $self->{'output_handler'},
 		'start_tag' => \&_start_tag,
 		'end_tag' => \&_end_tag,
 		'data' => \&_data,
@@ -62,14 +57,30 @@ sub new {
 }
 
 #------------------------------------------------------------------------------
-sub parse {
+sub get_tags_code {
 #------------------------------------------------------------------------------
-# Parse text.
+# Gets tags code.
 
 	my $self = shift;
-	my $pyx_array_ref = shift;
-	my $out = shift || $self->{'output_handler'};
-	$self->{'pyx_parser'}->parse($pyx_array_ref, $out);
+	return $self->{'tag_code'};
+}
+
+#------------------------------------------------------------------------------
+sub parse {
+#------------------------------------------------------------------------------
+# Parse pyx text or array of pyx text.
+
+	my ($self, $pyx, $out) = @_;
+	$self->{'pyx_parser'}->parse($pyx, $out);
+}
+
+#------------------------------------------------------------------------------
+sub parse_file {
+#------------------------------------------------------------------------------
+# Parse file with pyx text.
+
+	my ($self, $file) = @_;
+	$self->{'pyx_parser'}->parse_file($file);
 }
 
 #------------------------------------------------------------------------------
@@ -77,19 +88,8 @@ sub parse_handler {
 #------------------------------------------------------------------------------
 # Parse from handler.
 
-	my $self = shift;
-	my $tmp = shift || $self->{'input_file_handler'};
-	my $out = shift || $self->{'output_handler'};
-	$self->{'pyx_parser'}->parse_handler($tmp, $out);
-}
-
-#------------------------------------------------------------------------------
-sub get_tags_code {
-#------------------------------------------------------------------------------
-# Gets tags code.
-
-	my $self = shift;
-	return $self->{'tag_code'};
+	my ($self, $input_file_handler, $out) = @_;
+	$self->{'pyx_parser'}->parse_handler($input_file_handler, $out);
 }
 
 #------------------------------------------------------------------------------

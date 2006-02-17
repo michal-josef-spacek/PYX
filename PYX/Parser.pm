@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Parser;
 #------------------------------------------------------------------------------
-# $Id: Parser.pm,v 1.27 2005-11-14 17:04:47 skim Exp $
+# $Id: Parser.pm,v 1.28 2006-02-17 13:49:21 skim Exp $
 
 # Pragmas.
 use strict;
@@ -19,9 +19,6 @@ sub new {
 
 	my $class = shift;
 	my $self = bless {}, $class;
-
-	# Input file handler.
-	$self->{'input_file_handler'} = '';
 
 	# Parse handlers.
 	$self->{'attribute'} = '';
@@ -58,16 +55,24 @@ sub new {
 #------------------------------------------------------------------------------
 sub parse {
 #------------------------------------------------------------------------------
-# Parse pyx format.
+# Parse pyx text or array of pyx text.
 
-	my $self = shift;
-	my $pyx_array_ref = shift;
-	err "No input data." unless $pyx_array_ref;
-	my $out = shift || $self->{'output_handler'};
+	my ($self, $pyx, $out) = @_;
+	$out = $self->{'output_handler'} unless $out;
+
+	# Input data.
+	my @text;
+	if (ref $pyx eq 'ARRAY') {
+		@text = @{$pyx};
+	} else {
+		@text = split(/\n/, $pyx);
+	}
+
+	# Parse.
 	if ($self->{'init'}) {
 		&{$self->{'init'}}($self);
 	}
-	foreach my $line (@{$pyx_array_ref}) {
+	foreach my $line (@text) {
 		$self->{'line'} = $line;
 		$self->_parse($out);
 	}
@@ -77,18 +82,29 @@ sub parse {
 }
 
 #------------------------------------------------------------------------------
+sub parse_file {
+#------------------------------------------------------------------------------
+# Parse file with PYX data.
+
+	my ($self, $input_file) = @_;
+	open(INF, "<$input_file");
+	$self->parse_handler(*INF);
+	close(INF);
+}
+
+#------------------------------------------------------------------------------
 sub parse_handler {
 #------------------------------------------------------------------------------
-# Parse PYX file.
+# Parse PYX handler.
 
-	my $self = shift;
-	my $tmp = shift || $self->{'input_file_handler'};
-	err "No input handler." unless $tmp;
-	my $out = shift || $self->{'output_handler'};
+	my ($self, $input_file_handler, $out) = @_;
+	err "No input handler." unless $input_file_handler 
+		&& ref $input_file_handler ne 'GLOB';
+	$out = $self->{'output_handler'} unless $out;
 	if ($self->{'init'}) {
 		&{$self->{'init'}}($self);
 	}
-	while (my $line = <$tmp>) {
+	while (my $line = <$input_file_handler>) {
 		chomp $line;
 		$self->{'line'} = $line;
 		$self->_parse($out);

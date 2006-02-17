@@ -1,11 +1,9 @@
-$Id: TODO,v 1.48 2006-01-09 13:14:21 skim Exp $
+$Id: TODO,v 1.49 2006-02-17 13:49:20 skim Exp $
 
 TODO
 ====
 7. Pokud bude komentar, tak umoznit jeho odstraneni. To by melo byt ve filterch.
 8. Nejak promyslet PYX::Filter;
-21. Do PYX::Parser pridat parsovani souboru.
-22. Do PYX::Parser pridat parsovani stringu primo funkci.
 24. Pro PYX::Write::Tags::Code udelat dokumentaci.
 25. Pridat kompatibilitu pro puvodni XML::PYX?.
 30. Udelat skript pro zjisteni cetnosti.
@@ -122,3 +120,9 @@ OK [20050926] skim
 
 39. Optimalizovat PYX::Parser pomoci _is_sub. Hlavne odzkouset.
 OK [20050926] skim
+
+21. Do PYX::Parser pridat parsovani souboru.
+OK [20060217] skim
+
+22. Do PYX::Parser pridat parsovani stringu primo funkci.
+OK [20060217] skim

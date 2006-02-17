@@ -1,4 +1,4 @@
-# $Id: 00_subs.t,v 1.7 2005-11-14 17:00:52 skim Exp $
+# $Id: 00_subs.t,v 1.8 2006-02-17 13:49:37 skim Exp $
 
 # Modules.
 use IO::Scalar;
@@ -9,8 +9,7 @@ sub go {
 #------------------------------------------------------------------------------
 # First version. Output is default '*STDOUT' at Tags::Running.
 
-	my $class = shift;
-	my $file = shift;
+	my ($class, $file) = @_;
 
 	# Tags::Running object.
 	my $tags = Tags::Running->new(
@@ -18,13 +17,8 @@ sub go {
 		'data_optimalization' => 1,
 	);
 
-	# Open file.
-	my $input_handler;
-	open($input_handler, "<$file");
-
 	# PYX::Write::Tags object.
 	my $obj = $class->new(
-		'input_file_handler' => $input_handler,
 		'tags_obj' => $tags,
 	);
 
@@ -32,13 +26,12 @@ sub go {
 	my $stdout;
 	tie *STDOUT, 'IO::Scalar', \$stdout;
 	eval {
-		$obj->parse_handler;
+		$obj->parse_file($file);
 	};
 	if ($@) {
 		print STDERR $@;
 	}
 	untie *STDOUT;
-	close($input_handler);
 	return $stdout;
 }
 
@@ -47,8 +40,7 @@ sub go2 {
 #------------------------------------------------------------------------------
 # Second version. Output is Tags::Running '*STDERR'.
 
-	my $class = shift;
-	my $file = shift;
+	my ($class, $file) = @_;
 
 	# Tags::Running object.
 	my $tags = Tags::Running->new(
@@ -57,13 +49,8 @@ sub go2 {
 		'output_handler' => *STDERR,
 	);
 
-	# Open file.
-	my $input_handler;
-	open($input_handler, "<$file");
-
 	# PYX::Write::Tags object.
 	my $obj = $class->new(
-		'input_file_handler' => $input_handler,
 		'tags_obj' => $tags,
 	);
 
@@ -71,13 +58,12 @@ sub go2 {
 	my $stdout;
 	tie *STDERR, 'IO::Scalar', \$stdout;
 	eval {
-		$obj->parse_handler;
+		$obj->parse_file($file);
 	};
 	if ($@) {
 		print STDERR $@;
 	}
 	untie *STDERR;
-	close($input_handler);
 	return $stdout;
 }
 

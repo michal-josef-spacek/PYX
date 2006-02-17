@@ -1,5 +1,5 @@
 #!/usr/bin/env perl
-# $Id: pyx_xml_normalization,v 1.14 2006-02-17 12:39:28 skim Exp $
+# $Id: pyx_xml_normalization,v 1.15 2006-02-17 13:49:25 skim Exp $
 
 # Pragmas.
 use strict;
@@ -22,7 +22,6 @@ if ($ARGV[0]) {
 
 # PYX::XMLNorm object.
 my $sorter = PYX::XMLNorm->new(
-	'input_file_handler' => $input_file_handler,
 	'rules' => {
 		'tr' => ['th', 'td', 'tr'],
 		'td' => ['td'],
@@ -34,7 +33,7 @@ my $sorter = PYX::XMLNorm->new(
 		'*' => ['br', 'hr', 'link', 'meta', 'input', 'img']
 	},
 );
-$sorter->parse_handler;
+$sorter->parse_handler($input_file_handler);
 
 # Close file.
 if ($ARGV[0]) {

@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Filter;
 #------------------------------------------------------------------------------
-# $Id: Filter.pm,v 1.9 2005-11-14 17:04:47 skim Exp $
+# $Id: Filter.pm,v 1.10 2006-02-17 13:49:21 skim Exp $
 # Rules:
 # - policy - accept, drop
 # - accept
@@ -27,6 +27,9 @@ sub new {
 	my $class = shift;
 	my $self = bless {}, $class;
 
+	# Output handler.
+	$self->{'output_handler'} = *STDOUT;
+
 	# Rules.
 	$self->{'rule'} = []; 
 
@@ -40,7 +43,6 @@ sub new {
 
 	# PYX::Parser object.
 	$self->{'pyx_parser'} = PYX::Parser->new(
-		'input_file_handler' => $self->{'input_file_handler'},
 		'output_handler' => $self->{'output_handler'},
 		'start_tag' => \&_start_tag,
 		'end_tag' => \&_end_tag,

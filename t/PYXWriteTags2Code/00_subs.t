@@ -1,25 +1,18 @@
-# $Id: 00_subs.t,v 1.3 2005-11-14 17:00:56 skim Exp $
+# $Id: 00_subs.t,v 1.4 2006-02-17 13:49:40 skim Exp $
 
 #------------------------------------------------------------------------------
 sub go {
 #------------------------------------------------------------------------------
 # Helper.
 
-	my $class = shift;
-	my $file = shift;
-
-	# Open file.
-	my $input_handler;
-	open($input_handler, "<$file");
+	my ($class, $file) = @_;
 
 	# PYX::Write::Tags2::Code object.
-	my $obj = $class->new(
-		'input_file_handler' => $input_handler,
-	);
+	my $obj = $class->new;
 
 	# Parse.
 	eval {
-		$obj->parse_handler;
+		$obj->parse_file($file);
 	};
 	if ($@) {
 		print STDERR $@;

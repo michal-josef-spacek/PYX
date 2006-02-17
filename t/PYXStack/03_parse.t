@@ -1,4 +1,4 @@
-# $Id: 03_parse.t,v 1.4 2005-11-14 17:10:30 skim Exp $
+# $Id: 03_parse.t,v 1.5 2006-02-17 13:49:33 skim Exp $
 
 # Modules.
 use IO::Scalar;
@@ -6,26 +6,18 @@ use IO::Scalar;
 # Test directory.
 my $test_dir = "$ENV{'PWD'}/t/PYXStack";
 
-print "Testing: parse() method.\n" if $debug;
-
-# Open file.
-my $input_handler;
-open($input_handler, "<$test_dir/data/example1.pyx");
+print "Testing: parse_file() method.\n" if $debug;
 
 # PYX::Parser object.
 my $obj = $class->new(
-	'input_file_handler' => $input_handler,
 	'verbose' => 1,
 );
 
 # Parse.
 my $stdout;
 tie *STDOUT, 'IO::Scalar', \$stdout;
-$obj->parse_handler;
+$obj->parse_file($test_dir.'/data/example1.pyx');
 untie *STDOUT;
-
-# Close file.
-close($input_handler);
 
 # Right output.
 my $right_out = <<"END";
