@@ -177,3 +177,4 @@ t/PYXXMLNorm/03_parse.t
 t/PYXXMLNorm/data/example1.pyx
 t/PYXXMLNorm/data/example2.pyx
 t/PYXXMLNorm/data/example3.pyx
+META.yml                                 Module meta-data (added by MakeMaker)
