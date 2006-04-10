@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Parser;
 #------------------------------------------------------------------------------
-# $Id: Parser.pm,v 1.28 2006-02-17 13:49:21 skim Exp $
+# $Id: Parser.pm,v 1.29 2006-04-10 01:08:40 skim Exp $
 
 # Pragmas.
 use strict;
@@ -10,7 +10,7 @@ use strict;
 use Error::Simple::Multiple;
 
 # Version.
-our $VERSION = 0.01;
+our $VERSION = 0.02;
 
 #------------------------------------------------------------------------------
 sub new {
@@ -88,7 +88,7 @@ sub parse_file {
 
 	my ($self, $input_file) = @_;
 	open(INF, "<$input_file");
-	$self->parse_handler(*INF);
+	$self->parse_handler(\*INF);
 	close(INF);
 }
 
@@ -98,8 +98,8 @@ sub parse_handler {
 # Parse PYX handler.
 
 	my ($self, $input_file_handler, $out) = @_;
-	err "No input handler." unless $input_file_handler 
-		&& ref $input_file_handler ne 'GLOB';
+	err "No input handler." if ! $input_file_handler 
+		|| ref $input_file_handler ne 'GLOB';
 	$out = $self->{'output_handler'} unless $out;
 	if ($self->{'init'}) {
 		&{$self->{'init'}}($self);
