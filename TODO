@@ -1,4 +1,4 @@
-$Id: TODO,v 1.49 2006-02-17 13:49:20 skim Exp $
+$Id: TODO,v 1.50 2006-04-10 01:25:52 skim Exp $
 
 TODO
 ====
@@ -18,7 +18,8 @@ TODO
 43. PYX::Optimalization navazat na dtd (preserve).
 44. Udelat skript pyx_sort pro setrideni celeho dokumentu. Pro testovani 
     stejnosti xml dokumentu.
-45.
+45. Predelat skripty tak, aby stdin se bral pomoci -.
+46.
 
 Applied
 =======
