@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Write::Tags;
 #------------------------------------------------------------------------------
-# $Id: Tags.pm,v 1.19 2006-02-17 13:49:22 skim Exp $
+# $Id: Tags.pm,v 1.20 2006-04-10 03:03:48 skim Exp $
 
 # Pragmas.
 use strict;
@@ -12,10 +12,10 @@ use PYX::Parser;
 use PYX::Utils qw(encode);
 
 # Version.
-our $VERSION = 0.01;
+our $VERSION = 0.02;
 
 # Global variables.
-use vars qw($tags @tag);
+use vars qw($tags_obj @tags);
 
 #------------------------------------------------------------------------------
 sub new {
@@ -36,11 +36,13 @@ sub new {
                 $self->{$key} = $val;
         }
 
-	# If doesn't exist Tags object.
-	unless ($self->{'tags_obj'} && ($self->{'tags_obj'}->isa('Tags')
-		|| $self->{'tags_obj'}->isa('Tags::Running'))) {
+	# Check to 'Tags::*' object.
+	unless ($self->{'tags_obj'} 
+		&& (UNIVERSAL::isa($self->{'tags_obj'}, 'Tags')
+		|| UNIVERSAL::isa($self->{'tags_obj'}, 'Tags::Running')
+		|| UNIVERSAL::isa($self->{'tags_obj'}, 'Tags::Structure'))) {
 
-		err "Bad 'Tags' object '$self->{'tags_obj'}'.";
+		err "Bad 'Tags::*' object '$self->{'tags_obj'}'.";
 	}
 
 	# PYX::Parser object.
@@ -53,10 +55,10 @@ sub new {
 	);
 
 	# Tags object.
-	$tags = $self->{'tags_obj'};
+	$tags_obj = $self->{'tags_obj'};
 
 	# Tag values.
-	@tag = ();
+	@tags = ();
 
 	# Object.
 	return $self;
@@ -94,25 +96,15 @@ sub parse_handler {
 #------------------------------------------------------------------------------
 
 #------------------------------------------------------------------------------
-sub _start_tag {
+sub _attribute {
 #------------------------------------------------------------------------------
-# Process start of tag.
+# Process attribute.
 
 	shift;
-	my $tag = shift;
-	_flush_tag();
-	push @tag, $tag;
-}
-
-#------------------------------------------------------------------------------
-sub _end_tag {
-#------------------------------------------------------------------------------
-# Process end of tag.
-
-	shift;
-	my $tag = shift;
-	_flush_tag();
-	$tags->print(['end_'.$tag]);
+	if (ref $tags[-1] ne 'ARRAY') {
+		push @tags, [];
+	}
+	push @{$tags[-1]}, @_;
 }
 
 #------------------------------------------------------------------------------
@@ -123,19 +115,29 @@ sub _data {
 	shift;
 	my $data = encode(shift);
 	_flush_tag();
-	$tags->print([\$data]);
+	$tags_obj->print([\$data]);
 }
 
 #------------------------------------------------------------------------------
-sub _attribute {
+sub _end_tag {
 #------------------------------------------------------------------------------
-# Process attribute.
+# Process end of tag.
 
 	shift;
-	if (ref $tag[-1] ne 'ARRAY') {
-		push @tag, [];
+	my $tag = shift;
+	_flush_tag();
+	$tags_obj->print(['end_'.$tag]);
+}
+
+#------------------------------------------------------------------------------
+sub _flush_tag {
+#------------------------------------------------------------------------------
+# Flush tag values.
+
+	if ($#tags > -1) {
+		$tags_obj->print([@tags]);
+		@tags = ();
 	}
-	push @{$tag[-1]}, @_;
 }
 
 #------------------------------------------------------------------------------
@@ -149,14 +151,14 @@ sub _instruction {
 }
 
 #------------------------------------------------------------------------------
-sub _flush_tag {
+sub _start_tag {
 #------------------------------------------------------------------------------
-# Flush tag values.
+# Process start of tag.
 
-	if ($#tag > -1) {
-		$tags->print([@tag]);
-		@tag = ();
-	}
+	shift;
+	my $tag = shift;
+	_flush_tag();
+	push @tags, $tag;
 }
 
 1;
