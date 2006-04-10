@@ -1,5 +1,5 @@
 #!/usr/bin/env perl
-# $Id: pyx2xml_tags_without_indent,v 1.8 2006-04-10 01:23:47 skim Exp $
+# $Id: pyx2xml_tags_without_indent,v 1.9 2006-04-10 13:18:13 skim Exp $
 
 # Pragmas.
 use strict;
@@ -9,13 +9,12 @@ use warnings;
 use PYX::Write::Tags;
 use Tags::Running;
 
-# Open file.
-my $input_file_handler = \*STDIN;
-if ($ARGV[0]) {
-	if (! open(INF, "<$ARGV[0]")) {
-		die "Cannot open file '$ARGV[0]'.";
-	}
-	$input_file_handler = \*INF;
+# Arguments.
+if ($#ARGV < 0) {
+	print "Usage: $0 [filename] [-]\n";
+	print "\tfilename\tprocess on filename\n";
+	print "\t-\t\tprocess on stdin\n";
+	exit 1;
 }
 
 # Tags::Running object.
@@ -28,10 +27,12 @@ my $tags = Tags::Running->new(
 my $writer = PYX::Write::Tags->new(
 	'tags_obj' => $tags,
 );
-$writer->parse_handler($input_file_handler);
 
-# Close file.
-if ($ARGV[0]) {
-	close(INF);
+# Parse from stdin.
+if ($ARGV[0] eq '-') {
+	$writer->parse_handler(\*STDIN);
+
+# Parse file.
+} else {
+	$writer->parse_file($ARGV[0]);
 }
-

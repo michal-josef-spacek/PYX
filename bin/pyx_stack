@@ -1,5 +1,5 @@
 #!/usr/bin/env perl
-# $Id: pyx_stack,v 1.7 2006-04-10 01:23:47 skim Exp $
+# $Id: pyx_stack,v 1.8 2006-04-10 13:18:13 skim Exp $
 
 # Pragmas.
 use strict;
@@ -8,23 +8,24 @@ use warnings;
 # Modules.
 use PYX::Stack;
 
-# Open file.
-my $input_file_handler = \*STDIN;
-if ($ARGV[0]) {
-	if (! open(INF, "<$ARGV[0]")) {
-		die "Cannot open file '$ARGV[0]'.";
-	}
-	$input_file_handler = \*INF;
+# Arguments.
+if ($#ARGV < 0) {
+	print "Usage: $0 [filename] [-]\n";
+	print "\tfilename\tprocess on filename\n";
+	print "\t-\t\tprocess on stdin\n";
+	exit 1;
 }
 
 # PYX::Stack object.
 my $stack = PYX::Stack->new(
 	'verbose' => 1,
 );
-$stack->parse_handler($input_file_handler);
 
-# Close file.
-if ($ARGV[0]) {
-	close(INF);
+# Parse from stdin.
+if ($ARGV[0] eq '-') {
+	$stack->parse_handler(\*STDIN);
+
+# Parse file.
+} else {
+	$stack->parse_file($ARGV[0]);
 }
-
