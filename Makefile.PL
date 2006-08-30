@@ -1,4 +1,4 @@
-# $Id: Makefile.PL,v 1.22 2006-08-30 16:52:57 skim Exp $
+# $Id: Makefile.PL,v 1.23 2006-08-30 16:57:29 skim Exp $
 
 # Modules.
 use ExtUtils::MakeMaker;
@@ -25,5 +25,5 @@ WriteMakefile(
 		'Exporter' => 0,
 		'PYX::Utils' => 0.01,
 	},
-	'VERSION' => '0.02',
+	'VERSION' => '0.03',
 );
