@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Parser;
 #------------------------------------------------------------------------------
-# $Id: Parser.pm,v 1.29 2006-04-10 01:08:40 skim Exp $
+# $Id: Parser.pm,v 1.30 2006-08-30 16:57:20 skim Exp $
 
 # Pragmas.
 use strict;
@@ -73,8 +73,7 @@ sub parse {
 		&{$self->{'init'}}($self);
 	}
 	foreach my $line (@text) {
-		$self->{'line'} = $line;
-		$self->_parse($out);
+		$self->_parse($line, $out);
 	}
 	if ($self->{'final'}) {
 		&{$self->{'final'}}($self);
@@ -106,8 +105,7 @@ sub parse_handler {
 	}
 	while (my $line = <$input_file_handler>) {
 		chomp $line;
-		$self->{'line'} = $line;
-		$self->_parse($out);
+		$self->_parse($line, $out);
 	}
 	if ($self->{'final'}) {
 		&{$self->{'final'}}($self);
@@ -123,8 +121,8 @@ sub _parse {
 #------------------------------------------------------------------------------
 # Parse text string.
 
-	my ($self, $out) = @_;
-	my $line = $self->{'line'};
+	my ($self, $line, $out) = @_;
+	$self->{'line'} = $line;
 	my ($type, $value) = $line =~ m/\A([A()\?\-_])(.*)\Z/;
 	if (! $type) { $type = 'X'; }
 
