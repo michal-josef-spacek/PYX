@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Stack;
 #------------------------------------------------------------------------------
-# $Id: Stack.pm,v 1.11 2006-02-17 13:49:21 skim Exp $
+# $Id: Stack.pm,v 1.12 2006-09-11 13:22:55 skim Exp $
 
 # Pragmas.
 use strict;
@@ -40,8 +40,8 @@ sub new {
 
 	# PYX::Parser object.
 	$self->{'pyx_parser'} = PYX::Parser->new(
-		'output_handler' => $self->{'output_handler'},
 		'end_tag' => \&_end_tag,
+		'output_handler' => $self->{'output_handler'},
 		'start_tag' => \&_start_tag,
 	);
 
