@@ -1,4 +1,4 @@
-$Id: TODO,v 1.53 2006-09-11 13:29:31 skim Exp $
+$Id: TODO,v 1.54 2006-09-11 19:08:40 skim Exp $
 
 TODO
 ====
@@ -19,7 +19,6 @@ TODO
 44. Udelat skript pyx_sort pro setrideni celeho dokumentu. Pro testovani 
     stejnosti xml dokumentu.
 46. Dedit tridy.
-47. PYX::GraphViz.
 48. Testy pro PYX::GraphViz.
 49.
 
@@ -132,3 +131,6 @@ OK [20060217] skim
 
 45. Predelat skripty tak, aby stdin se bral pomoci -.
 OK [20060410] skim
+
+47. PYX::GraphViz.
+OK [20060911] skim
