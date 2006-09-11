@@ -1,4 +1,4 @@
-# $Id: Makefile.PL,v 1.23 2006-08-30 16:57:29 skim Exp $
+# $Id: Makefile.PL,v 1.24 2006-09-11 19:08:19 skim Exp $
 
 # Modules.
 use ExtUtils::MakeMaker;
@@ -18,11 +18,13 @@ WriteMakefile(
 		'bin/pyx_stack',
 		'bin/pyx_optimalization',
 		'bin/pyx_xml_normalization',
+		'bin/pyx2graphviz',
 	],
 	'NAME' => 'PYX',
 	'PREREQ_PM' => {
 		'Error::Simple::Multiple' => 0.02,
 		'Exporter' => 0,
+		'GraphViz' => 0,
 		'PYX::Utils' => 0.01,
 	},
 	'VERSION' => '0.03',

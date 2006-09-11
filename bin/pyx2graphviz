@@ -1,0 +1,29 @@
+#!/usr/bin/env perl
+# $Id: pyx2graphviz,v 1.1 2006-09-11 19:08:21 skim Exp $
+
+# Pragmas.
+use strict;
+use warnings;
+
+# Modules.
+use PYX::GraphViz;
+
+# Arguments.
+if ($#ARGV < 0) {
+	print "Usage: $0 [filename] [-]\n";
+	print "\tfilename\tprocess on filename\n";
+	print "\t-\t\tprocess on stdin\n";
+	exit 1;
+}
+
+# PYX::GraphViz object.
+my $g = PYX::GraphViz->new;
+
+# Parse from stdin.
+if ($ARGV[0] eq '-') {
+	$g->parse_handler(\*STDIN);
+
+# Parse file.
+} else {
+	$g->parse_file($ARGV[0]);
+}

@@ -1,3 +1,4 @@
+bin/pyx2graphviz
 bin/pyx2tags2_code
 bin/pyx2tags_code
 bin/pyx2xml_raw
@@ -16,6 +17,7 @@ MANIFEST			This list of files
 PYX.pm
 PYX/Checker.pm
 PYX/Get.pm
+PYX/GraphViz.pm
 PYX/Optimalization.pm
 PYX/Parser.pm
 PYX/Sort.pm
