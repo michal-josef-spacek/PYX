@@ -1,4 +1,4 @@
-$Id: TODO,v 1.55 2006-09-18 09:30:51 skim Exp $
+$Id: TODO,v 1.56 2006-09-18 10:06:28 skim Exp $
 
 TODO
 ====
@@ -20,7 +20,23 @@ TODO
     stejnosti xml dokumentu.
 46. Dedit tridy.
 48. Testy pro PYX::GraphViz.
-50.
+50. Resit PYX::XMLNorm s flush.
+    Mam vstup:
+    (xml
+    (gogo
+    )xml
+    Vystup normalne to dava:
+    (xml
+    (gogo
+    )xml
+    Vystup s flush stackem dava:
+    (xml
+    (gogo
+    )xml
+    )gogo
+    )xml
+    Coz je demence :)
+51. 
 
 Applied
 =======
