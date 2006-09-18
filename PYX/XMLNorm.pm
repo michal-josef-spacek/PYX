@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::XMLNorm;
 #------------------------------------------------------------------------------
-# $Id: XMLNorm.pm,v 1.15 2006-02-17 13:49:21 skim Exp $
+# $Id: XMLNorm.pm,v 1.16 2006-09-18 09:31:49 skim Exp $
 
 # Pragmas.
 use strict;
@@ -12,7 +12,7 @@ use PYX qw(end_tag);
 use PYX::Parser;
 
 # Version.
-our $VERSION = 0.01;
+our $VERSION = 0.02;
 
 # Global variables.
 use vars qw($stack $rules $flush_stack);
@@ -109,21 +109,15 @@ sub _start_tag {
 	my $tag = shift;
 	if (exists $rules->{'*'}) {
 		foreach my $tmp (@{$rules->{'*'}}) {
-			if ($#{$stack} > -1 && $stack->[-1] eq $tmp) {
-				print $out end_tag($tmp), "\n";
-				if ($stack->[-1] eq $tmp) {
-					pop @{$stack};
-				}
+			if ($#{$stack} > -1 && lc($stack->[-1]) eq $tmp) {
+				print $out end_tag(pop @{$stack}), "\n";
 			}
 		}
 	}
-	if (exists $rules->{$tag}) {
-		foreach my $tmp (@{$rules->{$tag}}) {
-			if ($#{$stack} > -1 && $stack->[-1] eq $tmp) {
-				print $out end_tag($tmp), "\n";
-				if ($stack->[-1] eq $tmp) {
-					pop @{$stack};
-				}
+	if (exists $rules->{lc($tag)}) {
+		foreach my $tmp (@{$rules->{lc($tag)}}) {
+			if ($#{$stack} > -1 && lc($stack->[-1]) eq $tmp) {
+				print $out end_tag(pop @{$stack}), "\n";
 			}
 		}
 	}
@@ -141,25 +135,19 @@ sub _end_tag {
 	my $tag = shift;
 	if (exists $rules->{'*'}) {
 		foreach my $tmp (@{$rules->{'*'}}) {
-			if ($tmp ne $tag && $stack->[-1] eq $tmp) {
-				print $out end_tag($tmp), "\n";
-				if ($stack->[-1] eq $tmp) {
-					pop @{$stack};
-				}
+			if (lc($tag) ne $tmp && lc($stack->[-1]) eq $tmp) {
+				print $out end_tag(pop @{$stack}), "\n";
 			}
 		}
-	}
+	} 
 	if (exists $rules->{$tag}) {
 		foreach my $tmp (@{$rules->{$tag}}) {
-			if ($tmp ne $tag && $stack->[-1] eq $tmp) {
-				print $out end_tag($tmp), "\n";
-				if ($stack->[-1] eq $tmp) {
-					pop @{$stack};
-				}
+			if (lc($tag) ne $tmp && lc($stack->[-1]) eq $tmp) {
+				print $out end_tag(pop @{$stack}), "\n";
 			}
 		}	
 	}
-	if ($stack->[-1] eq $tag) {
+	if (lc($stack->[-1]) eq lc($tag)) {
 		pop @{$stack};
 	}
 	print $out $pyx_parser->{'line'}, "\n";
@@ -175,7 +163,7 @@ sub _final {
 	if ($#{$stack} > -1) {
 		if (exists $rules->{'*'}) {
 			foreach my $tmp (@{$rules->{'*'}}) {
-				if ($stack->[-1] eq $tmp) {
+				if (lc($stack->[-1]) eq $tmp) {
 					print $out end_tag($tmp), "\n";
 				}
 			}
