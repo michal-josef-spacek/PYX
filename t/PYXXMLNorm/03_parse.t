@@ -1,4 +1,4 @@
-# $Id: 03_parse.t,v 1.1 2005-08-14 09:41:01 skim Exp $
+# $Id: 03_parse.t,v 1.2 2006-09-18 09:55:50 skim Exp $
 
 # Test directory.
 my $test_dir = "$ENV{'PWD'}/t/PYXXMLNorm";
@@ -56,4 +56,31 @@ END
 ok($ret, $right_ret);
 
 $ret = go($class, "$test_dir/data/example3.pyx", $rules);
+ok($ret, $right_ret);
+
+$ret = go($class, "$test_dir/data/example4.pyx", $rules);
+$right_ret = <<"END";
+(html
+(head
+(LINK
+)LINK
+(meta
+)meta
+(META
+)META
+)head
+(body
+(input
+)input
+(br
+)br
+(BR
+)BR
+(hr
+)hr
+(hr
+)hr
+)body
+)html
+END
 ok($ret, $right_ret);
