@@ -1,5 +1,5 @@
 #!/usr/bin/env perl
-# $Id: pyx_xml_normalization,v 1.17 2006-04-10 13:18:13 skim Exp $
+# $Id: pyx_xml_normalization,v 1.18 2006-09-18 09:52:05 skim Exp $
 
 # Pragmas.
 use strict;
@@ -7,20 +7,25 @@ use warnings;
 
 # Modules.
 use PYX::XMLNorm;
+use Getopt::Std;
 
 # Arguments.
-if ($#ARGV < 0) {
-	print "Usage: $0 [filename] [-]\n";
+my $opt = {
+	'h' => 0,
+	'f' => 0,
+};
+getopts('hf', $opt);
+if ($opt->{'h'} || $#ARGV < 0) {
+	print "Usage: $0 [-f] [filename] [-]\n";
+	print "\t-f\t\tflush stack on end of processing\n";
 	print "\tfilename\tprocess on filename\n";
 	print "\t-\t\tprocess on stdin\n";
 	exit 1;
 }
 
-# TODO
-# Pridat flag pro flush stack :p
-
 # PYX::XMLNorm object.
 my $normalizer = PYX::XMLNorm->new(
+	'flush_stack' => $opt->{'f'},
 	'rules' => {
 		'tr' => ['th', 'td', 'tr'],
 		'td' => ['td'],
