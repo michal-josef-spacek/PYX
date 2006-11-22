@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Parser;
 #------------------------------------------------------------------------------
-# $Id: Parser.pm,v 1.30 2006-08-30 16:57:20 skim Exp $
+# $Id: Parser.pm,v 1.31 2006-11-22 22:10:07 skim Exp $
 
 # Pragmas.
 use strict;
@@ -85,9 +85,9 @@ sub parse_file {
 #------------------------------------------------------------------------------
 # Parse file with PYX data.
 
-	my ($self, $input_file) = @_;
+	my ($self, $input_file, $out) = @_;
 	open(INF, "<$input_file");
-	$self->parse_handler(\*INF);
+	$self->parse_handler(\*INF, $out);
 	close(INF);
 }
 
