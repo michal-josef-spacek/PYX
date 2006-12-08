@@ -1,7 +1,9 @@
 #------------------------------------------------------------------------------
 package PYX::Filter;
 #------------------------------------------------------------------------------
-# $Id: Filter.pm,v 1.10 2006-02-17 13:49:21 skim Exp $
+# $Id: Filter.pm,v 1.11 2006-12-08 08:01:09 skim Exp $
+
+# TODO
 # Rules:
 # - policy - accept, drop
 # - accept
@@ -9,6 +11,11 @@ package PYX::Filter;
 #   - full_tag.
 #   - end_tag.
 #   - data.
+        
+# Real rules:
+# Accept only.
+# from => ['(tag', 'Astyle blabla'],
+# to   => [)tag],
 
 # Pragmas.
 use strict;
@@ -31,7 +38,20 @@ sub new {
 	$self->{'output_handler'} = *STDOUT;
 
 	# Rules.
-	$self->{'rule'} = []; 
+	# {
+	#   'first' => {
+	#     'from' => ['(tag'], 
+	#     'to' => [')tag'],
+	#     'including' => 1,
+	#     'callback' => \&function,
+	#   }
+	#   'second' => {
+	#     'from' => [')tag', '(br', ')br', '(tag2'], 
+	#     'to' => [')oo'],
+	#   }
+	# }
+	# TODO Check rules.
+	$self->{'rules'} = {}; 
 
 	# Process params.
         while (@_) {
@@ -41,78 +61,134 @@ sub new {
                 $self->{$key} = $val;
         }
 
-	# PYX::Parser object.
-	$self->{'pyx_parser'} = PYX::Parser->new(
-		'output_handler' => $self->{'output_handler'},
-		'start_tag' => \&_start_tag,
-		'end_tag' => \&_end_tag,
-		'data' => \&_data,
-		'instruction' => \&_instruction,
-		'attribute' => \&_attribute,
-		'comment' => \&_comment,
-	);
+	# Inicialization.
+	$self->_init;
+
+	# Actual stay.
+#	$self->{'act_stay'} = {};
+#	foreach (keys %{$rules}) {
+#		$act_stay->{$_} = 0;
+#	}
+
+	# Results.
+	# {
+	#   'first' => [
+	#     ['(br', ')br'],
+	#     ['-text'],
+	#   ]
+	# }
+	$self->{'res'} = {};
 
 	# Object.
 	return $self;
 }
 
 #------------------------------------------------------------------------------
-sub add_rule {
+sub parse {
+#------------------------------------------------------------------------------
+# Parse pyx text or array of pyx text.
+# TODO $out in arguments?
+
+	my ($self, $pyx) = @_;
+
+	# Input data.
+	my @text;
+	if (ref $pyx eq 'ARRAY') {
+		@text = @{$pyx};
+	} else {
+		@text = split(/\n/, $pyx);
+	}
+
+	# Parse.
+	foreach my $line (@text) {
+		$self->_process($line);
+	}
+}
+
+#------------------------------------------------------------------------------
+sub parse_file {
+#------------------------------------------------------------------------------
+# Parse file with pyx text.
+# TODO $out in arguments?
+
+	my ($self, $input_file) = @_;
+	open(INF, "<$input_file") || err "Cannot open file '$input_file'.";
+	$self->parse_handler(\*INF);
+	close(INF) || err "Cannot close file '$input_file'.";
+}
+
+#------------------------------------------------------------------------------
+sub parse_handler {
+#------------------------------------------------------------------------------
+# Parse from handler.
+# TODO $out in arguments?
+
+	my ($self, $input_file_handler) = @_;
+	err "No input handler." if ! $input_file_handler 
+		|| ref $input_file_handler ne 'GLOB';
+	while (my $line = <$input_file_handler>) {
+		chomp $line;
+		$self->_process($line);
+	}
+}
+
+#------------------------------------------------------------------------------
+#sub add_rule {
 #------------------------------------------------------------------------------
 # Adding filter rule.
+# TODO
 
-	my $self = shift;
-}
-
-#------------------------------------------------------------------------------
-sub filter {
-#------------------------------------------------------------------------------
-# Filter output.
-
-	my $self = shift;
-	my $string = shift;
-}
+#	my $self = shift;
+#}
 
 #------------------------------------------------------------------------------
-sub get_rules {
+#sub get_rules {
 #------------------------------------------------------------------------------
 # Gets filtering rules.
+# TODO
 
-	my $self = shift;
-	return $self->{'rule'};
-}
+#	my $self = shift;
+#	return $self->{'rule'};
+#}
 
 #------------------------------------------------------------------------------
 # Internal functions.
 #------------------------------------------------------------------------------
 
 #------------------------------------------------------------------------------
-sub _start_tag {
+sub _init {
 #------------------------------------------------------------------------------
-# Process start tag.
+# Inicialization.
+
+	my $self = shift;
+
+	# Print flag.
+	$self->{'print_flag'} = 0;
 }
 
 #------------------------------------------------------------------------------
-sub _end_tag {
+sub _process {
 #------------------------------------------------------------------------------
-# Process end tag.
-}
+# Process pyx item.
 
-#------------------------------------------------------------------------------
-sub _data {
-#------------------------------------------------------------------------------
-# Process data.
-}
+	my ($self, $line) = @_;
+	foreach my $res (keys %{$self->{'res'}}) {
+		
+	}
+	foreach my $rule (keys %{$self->{'rules'}}) {
 
-#------------------------------------------------------------------------------
-sub _comment {
-#------------------------------------------------------------------------------
-# Process comment.
-}
+		# 
 
-#------------------------------------------------------------------------------
-sub _instruction {
-#------------------------------------------------------------------------------
+		
+#		if ($act_stay->{$rule} == $#{$rules->{$rule}->{'from'}}) {
+#			last;
+#		}
+	}
+	
+#	if ($self->{'print_flag'}) {
+#		my $out = $self->{'output_handler'};
+#		print $out $line, "\n";
+#	}
 }
 
 1;
