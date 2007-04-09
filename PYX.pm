@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX;
 #------------------------------------------------------------------------------
-# $Id: PYX.pm,v 1.14 2006-08-30 16:57:29 skim Exp $
+# $Id: PYX.pm,v 1.15 2007-04-09 03:26:38 skim Exp $
 
 # Pragmas.
 use strict;
@@ -90,6 +90,40 @@ PYX - A perl module for pyx handling.
 
 =head1 SYNOPSIS
 
+TODO
+
+=head1 DESCRIPTION
+
+TODO
+
+=head1 SUBROUTINES
+
+=over 8
+
+=item B<char()>
+
+TODO
+
+=item B<comment()>
+
+TODO
+
+=item B<end_tag()>
+
+TODO
+
+=item B<instruction()>
+
+TODO
+
+=item B<start_tag()>
+
+TODO
+
+=back
+
+=head1 EXAMPLE
+
  # Pragmas.
  use strict;
  use warnings;
@@ -101,36 +135,17 @@ PYX - A perl module for pyx handling.
  my $pyx = PYX->new(
  );
 
-=head1 DESCRIPTION
+=head1 REQUIREMENTS
 
-TODO
+L<Exporter>,
+L<PYX::Utils>
 
-=head1 METHODS
+=head1 AUTHOR
 
-=over 4
+Michal Spacek L<skim@skim.cz>.
 
-=item char
+=head1 VERSION
 
-TODO
-
-=item comment
-
-TODO
-
-=item end_tag
-
-TODO
-
-=item instruction
-
-TODO
-
-=item start_tag
-
-TODO
-
-=head1 AUTHORS
-
-Michal Spacek <F<skim@skim.cz>> wrote version 0.1.
+0.03
 
 =cut
