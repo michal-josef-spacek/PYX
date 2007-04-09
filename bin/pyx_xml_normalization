@@ -1,5 +1,5 @@
 #!/usr/bin/env perl
-# $Id: pyx_xml_normalization,v 1.19 2007-04-09 09:15:45 skim Exp $
+# $Id: pyx_xml_normalization,v 1.20 2007-04-09 09:19:41 skim Exp $
 
 # Pragmas.
 use strict;
@@ -32,7 +32,7 @@ my $normalizer = PYX::XMLNorm->new(
 		'th' => ['th'],
 		'p' => ['p'],
 		'div' => ['p'],
-		'table' => ['td', 'tr'],
+		'table' => ['tr'],
 		'html' => ['body'],
 		'*' => ['br', 'hr', 'link', 'meta', 'input', 'img']
 	},
