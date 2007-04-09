@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Write::Tags2;
 #------------------------------------------------------------------------------
-# $Id: Tags2.pm,v 1.10 2007-04-09 09:00:24 skim Exp $
+# $Id: Tags2.pm,v 1.11 2007-04-09 09:03:21 skim Exp $
 
 # Pragmas.
 use strict;
@@ -37,8 +37,11 @@ sub new($%) {
         }
 
 	# If doesn't exist Tags object.
-	unless ($self->{'tags_obj'} && ($self->{'tags_obj'}->isa('Tags2'))) {
-		err "Bad 'Tags2' object '$self->{'tags_obj'}'.";
+	unless ($self->{'tags_obj'} 
+		&& ($self->{'tags_obj'}->isa('Tags2::Output::Indent'))) {
+
+		err "Bad 'Tags2::Ooutput::Indent' object ".
+			"'$self->{'tags_obj'}'.";
 	}
 
 	# PYX::Parser object.
