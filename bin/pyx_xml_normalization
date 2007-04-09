@@ -1,13 +1,13 @@
 #!/usr/bin/env perl
-# $Id: pyx_xml_normalization,v 1.18 2006-09-18 09:52:05 skim Exp $
+# $Id: pyx_xml_normalization,v 1.19 2007-04-09 09:15:45 skim Exp $
 
 # Pragmas.
 use strict;
 use warnings;
 
 # Modules.
-use PYX::XMLNorm;
 use Getopt::Std;
+use PYX::XMLNorm;
 
 # Arguments.
 my $opt = {
