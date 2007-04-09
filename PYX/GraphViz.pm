@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::GraphViz;
 #------------------------------------------------------------------------------
-# $Id: GraphViz.pm,v 1.2 2007-04-09 11:32:42 skim Exp $
+# $Id: GraphViz.pm,v 1.3 2007-04-09 11:34:51 skim Exp $
 
 # Pragmas.
 use strict;
@@ -178,3 +178,59 @@ sub _final($) {
 }
 
 1;
+
+=pod
+
+=head1 NAME
+
+PYX::GraphViz - TODO
+
+=head1 SYNOPSIS
+
+TODO
+
+=head1 DESCRIPTION
+
+TODO
+
+=head1 METHODS
+
+=over 8
+
+=item B<new()>
+
+TODO
+
+=item B<parse()>
+
+TODO
+
+=item B<parse_file()>
+
+TODO
+
+=item B<parse_handler()>
+
+TODO
+
+=back
+
+=head1 EXAMPLE
+
+TODO
+
+=head1 REQUIREMENTS
+
+L<Error::Simple::Multiple>,
+L<GraphViz>,
+L<PYX::Parser>
+
+=head1 AUTHOR
+
+Michal Spacek L<tupinek@gmail.com>
+
+=head1 VERSION
+
+0.01
+
+=cut

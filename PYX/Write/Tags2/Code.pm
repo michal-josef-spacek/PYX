@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 package PYX::Write::Tags2::Code;
 #------------------------------------------------------------------------------
-# $Id: Code.pm,v 1.8 2007-04-09 11:36:06 skim Exp $
+# $Id: Code.pm,v 1.9 2007-04-09 11:38:27 skim Exp $
 
 # Pragmas.
 use strict;
@@ -154,3 +154,63 @@ sub _comment($$) {
 }
 
 1;
+
+=pod
+
+=head1 NAME
+
+PYX::Write::Tags2::Code - TODO
+
+=head1 SYNOPSIS
+
+TODO
+
+=head1 DESCRIPTION
+
+TODO
+
+=head1 METHODS
+
+=over 8
+
+=item B<new()>
+
+TODO
+
+=item B<get_tags_code()>
+
+TODO
+
+=item B<parse()>
+
+TODO
+
+=item B<parse_file()>
+
+TODO
+
+=item B<parse_handler()>
+
+TODO
+
+=back
+
+=head1 EXAMPLE
+
+TODO
+
+=head1 REQUIREMENTS
+
+L<Error::Simple::Multiple>,
+L<PYX::Parser>,
+L<PYX::Utils>
+
+=head1 AUTHOR
+
+Michal Spacek L<tupinek@gmail.com>
+
+=head1 VERSION
+
+0.01
+
+=cut
