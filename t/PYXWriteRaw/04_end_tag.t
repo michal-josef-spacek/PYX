@@ -1,4 +1,3 @@
-# $Id: 04_end_tag.t,v 1.3 2005-07-02 13:03:27 skim Exp $
 
 # Test directory.
 my $test_dir = "$ENV{'PWD'}/t/PYXWriteRaw";

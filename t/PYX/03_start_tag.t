@@ -1,4 +1,3 @@
-# $Id: 03_start_tag.t,v 1.3 2005-08-13 20:37:54 skim Exp $
 
 print "Testing: start_tag() function.\n" if $debug;
 my $tag = 'tag';

@@ -1,4 +1,3 @@
-# $Id: 03_parse.t,v 1.6 2006-02-17 13:49:29 skim Exp $
 
 # Test directory.
 my $test_dir = "$ENV{'PWD'}/t/PYXParser";

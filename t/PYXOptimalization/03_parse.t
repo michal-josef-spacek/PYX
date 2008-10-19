@@ -1,4 +1,3 @@
-# $Id: 03_parse.t,v 1.2 2005-09-26 17:24:52 skim Exp $
 
 # Test directory.
 my $test_dir = "$ENV{'PWD'}/t/PYXOptimalization";

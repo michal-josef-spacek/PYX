@@ -1,5 +1,4 @@
 #!/usr/bin/env perl
-# $Id: 11_pyx_optimalization.t,v 1.1 2005-08-14 07:28:24 skim Exp $
 
 # Pragmas.
 use strict;

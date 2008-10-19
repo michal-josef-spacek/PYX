@@ -1,5 +1,4 @@
 #!/usr/bin/env perl
-# $Id: pyx_filter,v 1.1 2005-08-09 08:58:43 skim Exp $
 
 # Pragmas.
 use strict;

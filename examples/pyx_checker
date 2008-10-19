@@ -1,5 +1,4 @@
 #!/usr/bin/env perl
-# $Id: pyx_checker,v 1.4 2005-08-27 12:36:52 skim Exp $
 
 # Pragmas.
 use strict;

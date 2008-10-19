@@ -1,5 +1,4 @@
 #!/usr/bin/env perl
-# $Id: pyx_xml_normalization,v 1.20 2007-04-09 09:19:41 skim Exp $
 
 # Pragmas.
 use strict;

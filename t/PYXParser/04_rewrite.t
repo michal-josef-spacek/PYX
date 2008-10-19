@@ -1,4 +1,3 @@
-# $Id: 04_rewrite.t,v 1.3 2005-08-13 14:19:08 skim Exp $
 
 # Test directory.
 my $test_dir = "$ENV{'PWD'}/t/PYXParser";

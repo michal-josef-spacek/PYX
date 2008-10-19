@@ -1,4 +1,3 @@
-# $Id: Makefile.PL,v 1.26 2008-10-19 23:35:26 skim Exp $
 
 # Modules.
 use ExtUtils::MakeMaker;

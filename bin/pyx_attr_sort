@@ -1,5 +1,4 @@
 #!/usr/bin/env perl
-# $Id: pyx_attr_sort,v 1.8 2006-04-10 13:18:13 skim Exp $
 
 # Pragmas.
 use strict;

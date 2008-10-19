@@ -1,5 +1,4 @@
 #!/usr/bin/env perl
-# $Id: pyx2graphviz,v 1.1 2006-09-11 19:08:21 skim Exp $
 
 # Pragmas.
 use strict;

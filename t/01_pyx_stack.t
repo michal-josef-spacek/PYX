@@ -1,5 +1,4 @@
 #!/usr/bin/env perl
-# $Id: 01_pyx_stack.t,v 1.1 2005-08-10 14:25:26 skim Exp $
 
 # Pragmas.
 use strict;

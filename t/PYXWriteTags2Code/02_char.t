@@ -1,4 +1,3 @@
-# $Id: 02_char.t,v 1.1 2005-07-18 12:35:20 skim Exp $
 
 # Test directory.
 my $test_dir = "$ENV{'PWD'}/t/PYXWriteTagsCode";

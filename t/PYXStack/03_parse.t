@@ -1,4 +1,3 @@
-# $Id: 03_parse.t,v 1.5 2006-02-17 13:49:33 skim Exp $
 
 # Modules.
 use IO::Scalar;

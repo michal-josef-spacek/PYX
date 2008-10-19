@@ -1,4 +1,3 @@
-# $Id: 02_constructor.t,v 1.4 2005-12-13 22:58:05 skim Exp $
 
 # Modules.
 use IO::Scalar;

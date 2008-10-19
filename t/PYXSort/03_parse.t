@@ -1,4 +1,3 @@
-# $Id: 03_parse.t,v 1.1 2005-08-10 14:55:01 skim Exp $
 
 # Test directory.
 my $test_dir = "$ENV{'PWD'}/t/PYXSort";

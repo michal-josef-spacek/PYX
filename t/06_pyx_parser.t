@@ -1,5 +1,4 @@
 #!/usr/bin/env perl
-# $Id: 06_pyx_parser.t,v 1.4 2005-08-09 08:50:09 skim Exp $
 
 # Pragmas.
 use strict;

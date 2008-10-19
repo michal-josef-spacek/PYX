@@ -1,5 +1,4 @@
 #!/usr/bin/env perl
-# $Id: pyx2xml_tags2,v 1.10 2007-04-09 09:03:09 skim Exp $
 
 # Pragmas.
 use strict;
