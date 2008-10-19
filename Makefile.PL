@@ -1,11 +1,11 @@
-# $Id: Makefile.PL,v 1.25 2008-01-29 20:32:47 skim Exp $
+# $Id: Makefile.PL,v 1.26 2008-10-19 23:35:26 skim Exp $
 
 # Modules.
 use ExtUtils::MakeMaker;
 
 # Definition.
 WriteMakefile(
-	'AUTHOR' => 'Michal Spacek',
+	'AUTHOR' => 'Michal Špaček',
 	'EXE_FILES' => [
 		'bin/pyx2xml_tags',
 		'bin/pyx2xml_tags_without_indent',
