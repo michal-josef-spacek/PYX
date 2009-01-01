@@ -1,4 +1,3 @@
-
 print "Testing: char() function.\n" if $debug;
 my $char = 'char';
 my $ret = eval $class.'::char($char)';
