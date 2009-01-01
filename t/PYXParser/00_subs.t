@@ -1,4 +1,3 @@
-
 # Modules.
 use IO::Scalar;
 
@@ -30,4 +29,3 @@ sub go {
 	untie *STDOUT;
 	return $stdout;
 }
-

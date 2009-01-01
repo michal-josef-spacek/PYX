@@ -1,4 +1,3 @@
-
 print "Testing: start_tag() function.\n" if $debug;
 my $tag = 'tag';
 my @attr = ();

@@ -1,4 +1,3 @@
-
 # Modules.
 use IO::Scalar;
 
@@ -21,4 +20,3 @@ sub go {
 	# Output.
 	return $stdout;
 }
-

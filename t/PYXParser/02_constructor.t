@@ -1,4 +1,3 @@
-
 # Modules.
 use IO::Scalar;
 
@@ -14,4 +13,3 @@ eval {
 	$obj = $class->new('something' => 'value');
 };
 ok($@, "Unknown parameter 'something'.\n");
-

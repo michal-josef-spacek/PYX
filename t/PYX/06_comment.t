@@ -1,4 +1,3 @@
-
 print "Testing: comment() function.\n" if $debug;
 my $comment = 'comment';
 my $ret = eval $class.'::comment($comment)';

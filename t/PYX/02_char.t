@@ -6,4 +6,3 @@ ok($ret, '-char');
 $char = "char\nchar";
 $ret = eval $class.'::char($char)';
 ok($ret, '-char\nchar');
-

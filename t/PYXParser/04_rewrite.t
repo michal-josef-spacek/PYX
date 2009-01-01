@@ -1,4 +1,3 @@
-
 # Test directory.
 my $test_dir = "$ENV{'PWD'}/t/PYXParser";
 
@@ -50,4 +49,3 @@ ok(go($class, "$test_dir/data/example1.pyx"), <<'END');
 -text
 )xml
 END
-
