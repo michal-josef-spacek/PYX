@@ -20,7 +20,7 @@ WriteMakefile(
 	],
 	'NAME' => 'PYX',
 	'PREREQ_PM' => {
-		'Error::Simple::Multiple' => 0.07,
+		'Error::Simple::Multiple' => 0.05,
 		'Exporter' => 0,
 		'GraphViz' => 0,
 		'PYX::Utils' => 0.01,
