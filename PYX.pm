@@ -3,24 +3,23 @@ package PYX;
 #------------------------------------------------------------------------------
 
 # Pragmas.
+use base qw(Exporter);
 use strict;
+use warnings;
 
 # Modules.
-use Exporter;
 use PYX::Utils qw(decode);
+use Readonly;
 
-# Inheritance.
-our @ISA = ('Exporter');
-
-# Export.
-our @EXPORT_OK = ('char', 'comment', 'end_tag', 'start_tag', 'instruction', 
-	'attribute');
+# Constants.
+Readonly::Array our @EXPORT_OK = ('char', 'comment', 'end_tag', 'start_tag', 
+	'instruction', 'attribute');
 
 # Version.
-our $VERSION = 0.03;
+our $VERSION = 0.04;
 
 #------------------------------------------------------------------------------
-sub char($) {
+sub char {
 #------------------------------------------------------------------------------
 # Process char between tags.
 
@@ -29,7 +28,7 @@ sub char($) {
 }
 
 #------------------------------------------------------------------------------
-sub comment($) {
+sub comment {
 #------------------------------------------------------------------------------
 # Process comment.
 
@@ -38,7 +37,7 @@ sub comment($) {
 }
 
 #------------------------------------------------------------------------------
-sub end_tag($) {
+sub end_tag {
 #------------------------------------------------------------------------------
 # Process end tag.
 
@@ -47,7 +46,7 @@ sub end_tag($) {
 }
 
 #------------------------------------------------------------------------------
-sub instruction($) {
+sub instruction {
 #------------------------------------------------------------------------------
 # Process instruction.
 
@@ -56,7 +55,7 @@ sub instruction($) {
 }
 
 #------------------------------------------------------------------------------
-sub start_tag($;@) {
+sub start_tag {
 #------------------------------------------------------------------------------
 # Process begin tag.
 
@@ -68,7 +67,7 @@ sub start_tag($;@) {
 }
 
 #------------------------------------------------------------------------------
-sub attribute(;@) {
+sub attribute {
 #------------------------------------------------------------------------------
 # Process attribute.
 
@@ -82,6 +81,12 @@ sub attribute(;@) {
 }
 
 1;
+
+__END__
+
+=pod
+
+=encoding utf8
 
 =head1 NAME
 
@@ -134,17 +139,18 @@ TODO
  my $pyx = PYX->new(
  );
 
-=head1 REQUIREMENTS
+=head1 DEPENDENCIES
 
-L<Exporter>,
-L<PYX::Utils>
+L<Exporter(3pm)>,
+L<PYX::Utils(3pm)>,
+L<Readonly(3pm)>.
 
 =head1 AUTHOR
 
-Michal Spacek L<skim@skim.cz>.
+Michal Špaček L<skim@skim.cz>.
 
 =head1 VERSION
 
-0.03
+0.04
 
 =cut
