@@ -35,7 +35,7 @@ sub new {
 	$self->{'output_rewrite'} = 0;
 
 	# Output handler.
-	$self->{'output_handler'} = *STDOUT;
+	$self->{'output_handler'} = \*STDOUT;
 
 	# Process params.
         while (@_) {

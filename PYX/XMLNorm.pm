@@ -26,7 +26,7 @@ sub new {
 	my $self = bless {}, $class;
 
 	# Output handler.
-	$self->{'output_handler'} = *STDOUT;
+	$self->{'output_handler'} = \*STDOUT;
 
 	# XML normalization rules.
 	$self->{'rules'} = {};
