@@ -4,6 +4,7 @@ package PYX::Get;
 
 # Pragmas.
 use strict;
+use warnings;
 
 # Modules.
 use Error::Simple::Multiple;

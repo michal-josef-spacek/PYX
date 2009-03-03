@@ -4,6 +4,7 @@ package PYX::Optimalization;
 
 # Pragmas.
 use strict;
+use warnings;
 
 # Modules.
 use Error::Simple::Multiple;

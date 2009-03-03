@@ -4,6 +4,7 @@ package PYX::GraphViz;
 
 # Pragmas.
 use strict;
+use warnings;
 
 # Modules.
 use Error::Simple::Multiple;

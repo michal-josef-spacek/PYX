@@ -4,6 +4,7 @@ package PYX::Write::Tags2;
 
 # Pragmas.
 use strict;
+use warnings;
 
 # Modules.
 use Error::Simple::Multiple;

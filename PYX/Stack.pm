@@ -4,6 +4,7 @@ package PYX::Stack;
 
 # Pragmas.
 use strict;
+use warnings;
 
 # Modules.
 use Error::Simple::Multiple;

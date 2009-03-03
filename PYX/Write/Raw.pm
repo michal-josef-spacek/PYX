@@ -4,6 +4,7 @@ package PYX::Write::Raw;
 
 # Pragmas.
 use strict;
+use warnings;
 
 # Modules.
 use Error::Simple::Multiple;
