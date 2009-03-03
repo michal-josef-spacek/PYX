@@ -21,7 +21,7 @@ use strict;
 use warnings;
 
 # Modules.
-use Error::Simple::Multiple;
+use Error::Simple::Multiple qw(err);
 
 # Version.
 our $VERSION = 0.01;

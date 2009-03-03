@@ -7,7 +7,7 @@ use strict;
 use warnings;
 
 # Modules.
-use Error::Simple::Multiple;
+use Error::Simple::Multiple qw(err);
 use PYX qw(char comment);
 use PYX::Parser;
 use PYX::Utils qw(encode decode);
