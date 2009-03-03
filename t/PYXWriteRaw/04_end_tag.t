@@ -1,4 +1,3 @@
-
 # Test directory.
 my $test_dir = "$ENV{'PWD'}/t/PYXWriteRaw";
 

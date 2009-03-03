@@ -1,4 +1,3 @@
-
 # Modules.
 use IO::Scalar;
 

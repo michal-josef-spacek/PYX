@@ -1,4 +1,3 @@
-
 print "Testing: new('') bad constructor.\n" if $debug;
 my $obj;
 eval {
