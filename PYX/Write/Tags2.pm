@@ -22,17 +22,19 @@ sub new {
 #------------------------------------------------------------------------------
 # Constructor.
 
-	my $class = shift;
+	my ($class, @params) = @_;
 	my $self = bless {}, $class;
 
 	# Tags object.
 	$self->{'tags_obj'} = '';
 
 	# Process params.
-        while (@_) {
-                my $key = shift;
-                my $val = shift;
-                err "Bad parameter '$key'." unless exists $self->{$key};
+        while (@params) {
+                my $key = shift @params;
+                my $val = shift @params;
+		if (! exists $self->{$key}) {
+	                err "Bad parameter '$key'.";
+		}
                 $self->{$key} = $val;
         }
 
