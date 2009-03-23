@@ -39,8 +39,9 @@ sub new {
         }
 
 	# If doesn't exist Tags object.
-	unless ($self->{'tags_obj'} 
-		&& ($self->{'tags_obj'}->isa('Tags2::Output::Indent'))) {
+	if (! $self->{'tags_obj'} 
+		|| (! $self->{'tags_obj'}->isa('Tags2::Output::Indent')
+		&& !  $self->{'tags_obj'}->isa('Tags2::Output::Raw'))) {
 
 		err "Bad 'Tags2::Ooutput::Indent' object ".
 			"'$self->{'tags_obj'}'.";
