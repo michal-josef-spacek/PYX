@@ -18,7 +18,7 @@ if ($#ARGV < 0) {
 
 # Tags2 object.
 my $tags = Tags2::Output::Indent->new(
-	'output_handler' => *STDOUT,
+	'output_handler' => \*STDOUT,
 );
 
 # PYX::Write::Tags2 object.
