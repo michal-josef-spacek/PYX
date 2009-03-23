@@ -44,7 +44,7 @@ sub go2 {
 	my $tags = Tags::Running->new(
 		'set_indent' => 1,
 		'data_optimalization' => 1,
-		'output_handler' => *STDERR,
+		'output_handler' => \*STDERR,
 	);
 
 	# PYX::Write::Tags object.

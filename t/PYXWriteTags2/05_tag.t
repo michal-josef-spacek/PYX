@@ -1,5 +1,5 @@
 # Test directory.
-my $test_dir = "$ENV{'PWD'}/t/PYXWriteTags";
+my $test_dir = "$ENV{'PWD'}/t/PYXWriteTags2";
 
 print "Testing: Tag writing.\n" if $debug;
 #ok(go($class, "$test_dir/data/tag1.pyx"), "<tag>\n</tag>\n");

@@ -1,6 +1,7 @@
 # Modules.
 use IO::Scalar;
-use Tags2;
+use Tags2::Output::Indent;
+use Tags2::Output::Raw;
 
 #------------------------------------------------------------------------------
 sub go {
@@ -10,7 +11,9 @@ sub go {
 	my ($class, $file) = @_;
 
 	# Tags2 object.
-	my $tags = Tags2->new;
+	my $tags = Tags2::Output::Raw->new(
+		'xml' => 1,
+	);
 
 	# PYX::Write::Tags2 object.
 	my $obj = $class->new(
@@ -34,13 +37,14 @@ sub go {
 #------------------------------------------------------------------------------
 sub go2 {
 #------------------------------------------------------------------------------
-# Second version. Output is Tags2 '*STDERR'.
+# Second version. Output is Tags2::Output::Indent '*STDERR'.
 
 	my ($class, $file) = @_;
 
 	# Tags2 object.
-	my $tags = Tags2->new(
-		'output_handler' => *STDERR,
+	my $tags = Tags2::Output::Raw->new(
+		'output_handler' => \*STDERR,
+		'xml' => 1,
 	);
 
 	# PYX::Write::Tags2 object.
@@ -65,18 +69,20 @@ sub go2 {
 #------------------------------------------------------------------------------
 sub go3 {
 #------------------------------------------------------------------------------
-# Third version. Output is PYX::Write::Tags2 '*STDERR'. Tags2 output is
-# default ''.
+# Third version. Output is PYX::Write::Tags2 '*STDERR'. Tags2::Output::Indent 
+# output is default ''.
 
 	my ($class, $file) = @_;
 
 	# Tags2 object.
-	my $tags = Tags2->new;
+	my $tags = Tags2::Output::Indent->new(
+		'xml' => 1,
+	);
 
 	# PYX::Write::Tags2 object.
 	my $obj = $class->new(
 		'tags_obj' => $tags,
-		'output_handler' => *STDERR,
+		'output_handler' => \*STDERR,
 	);
 
 	# Parse example.
