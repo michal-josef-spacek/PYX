@@ -12,8 +12,8 @@ use PYX::Utils qw(decode);
 use Readonly;
 
 # Constants.
-Readonly::Array our @EXPORT_OK = ('char', 'comment', 'end_tag', 'start_tag', 
-	'instruction', 'attribute');
+Readonly::Array our @EXPORT_OK => qw(char comment end_tag start_tag 
+	instruction attribute);
 
 # Version.
 our $VERSION = 0.04;
