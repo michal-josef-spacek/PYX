@@ -84,8 +84,7 @@ sub _data {
 #------------------------------------------------------------------------------
 # Process data.
 
-	my $pyx_parser_obj = shift;
-	my $data = shift;
+	my ($pyx_parser_obj, $data) = @_;
 	my $tmp = encode($data);
 	if ($tmp =~ /^[\s\n]*$/) {
 		return;
@@ -112,8 +111,7 @@ sub _comment {
 #------------------------------------------------------------------------------
 # Process comment.
 
-	my $pyx_parser_obj = shift;
-	my $comment = shift;
+	my ($pyx_parser_obj, $comment) = @_;
 	my $tmp = encode($comment);
 	if ($tmp =~ /^[\s\n]*$/) {
 		return;
