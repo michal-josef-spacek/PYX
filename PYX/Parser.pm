@@ -90,9 +90,9 @@ sub parse_file {
 # Parse file with PYX data.
 
 	my ($self, $input_file, $out) = @_;
-	open(INF, "<$input_file");
-	$self->parse_handler(\*INF, $out);
-	close(INF);
+	open my $inf , '<', $input_file;
+	$self->parse_handler($inf, $out);
+	close $inf;
 }
 
 #------------------------------------------------------------------------------
