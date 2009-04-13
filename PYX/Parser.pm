@@ -41,7 +41,9 @@ sub new {
         while (@_) {
                 my $key = shift;
                 my $val = shift;
-                err "Unknown parameter '$key'." unless exists $self->{$key};
+		if (! exists $self->{$key}) {
+	                err "Unknown parameter '$key'.";
+		}
                 $self->{$key} = $val;
         }
 
@@ -58,7 +60,9 @@ sub parse {
 # Parse pyx text or array of pyx text.
 
 	my ($self, $pyx, $out) = @_;
-	$out = $self->{'output_handler'} unless $out;
+	if (! $out) {
+		$out = $self->{'output_handler'};
+	}
 
 	# Input data.
 	my @text;
@@ -99,7 +103,9 @@ sub parse_handler {
 	my ($self, $input_file_handler, $out) = @_;
 	err "No input handler." if ! $input_file_handler 
 		|| ref $input_file_handler ne 'GLOB';
-	$out = $self->{'output_handler'} unless $out;
+	if (! $out) {
+		$out = $self->{'output_handler'};
+	}
 	if ($self->{'init'}) {
 		&{$self->{'init'}}($self);
 	}
