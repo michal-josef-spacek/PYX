@@ -102,7 +102,7 @@ sub parse_handler {
 
 	my ($self, $input_file_handler, $out) = @_;
 	if (! $input_file_handler || ref $input_file_handler ne 'GLOB') {
-		err "No input handler.";
+		err 'No input handler.';
 	}
 	if (! $out) {
 		$out = $self->{'output_handler'};
