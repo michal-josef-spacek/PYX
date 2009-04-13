@@ -114,9 +114,10 @@ sub parse_file {
 # TODO $out in arguments?
 
 	my ($self, $input_file) = @_;
-	open(INF, "<$input_file") || err "Cannot open file '$input_file'.";
-	$self->parse_handler(\*INF);
-	close(INF) || err "Cannot close file '$input_file'.";
+	open my $inf, '<', $input_file 
+		or err "Cannot open file '$input_file'.";
+	$self->parse_handler($inf);
+	close $inf or err "Cannot close file '$input_file'.";
 }
 
 #------------------------------------------------------------------------------
