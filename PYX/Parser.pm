@@ -69,7 +69,7 @@ sub parse {
 	if (ref $pyx eq 'ARRAY') {
 		@text = @{$pyx};
 	} else {
-		@text = split(/\n/, $pyx);
+		@text = split /\n/ms, $pyx;
 	}
 
 	# Parse.
