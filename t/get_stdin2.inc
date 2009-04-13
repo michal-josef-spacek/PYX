@@ -1,8 +1,9 @@
 # Modules.
+use English qw(-no_match_vars);
 use IO::Scalar;
 
 #------------------------------------------------------------------------------
-sub go {
+sub get_stdin2 {
 #------------------------------------------------------------------------------
 # Helper function.
 
@@ -15,7 +16,9 @@ sub go {
 		'output_rewrite' => 1,
 	);
 	untie *STDERR;
-	$stderr =~ s/(.*)\ at.*\n/$1/ if $stderr;
+	if ($stderr) {
+		$stderr =~ s/(.*)\ at.*\n/$1/;
+	}
 
 	# Parse example.
 	my $stdout;
@@ -23,8 +26,8 @@ sub go {
 	eval {
 		$obj->parse_file($file);
 	};
-	if ($@) {
-		print STDERR $@;
+	if ($EVAL_ERROR) {
+		print STDERR $EVAL_ERROR;
 	}
 	untie *STDOUT;
 	return $stdout;
