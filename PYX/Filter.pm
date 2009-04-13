@@ -1,4 +1,4 @@
-#------------------------------------------------------------------------------
+------------------------------------------------------------------------------
 package PYX::Filter;
 #------------------------------------------------------------------------------
 
@@ -205,7 +205,7 @@ __END__
 
 =head1 NAME
 
-PYX::Parser - TODO
+PYX::Filter - TODO
 
 =head1 SYNOPSIS
 
@@ -252,10 +252,10 @@ TODO
  use warnings;
 
  # Modules.
- use PYX::Parser;
+ use PYX::Filter;
 
- # PYX::Parser object.
- my $pyx = PYX::Parser->new(
+ # PYX::Filter object.
+ my $pyx = PYX::Filter->new(
    TODO
  );
 
