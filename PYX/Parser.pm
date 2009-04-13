@@ -101,8 +101,9 @@ sub parse_handler {
 # Parse PYX handler.
 
 	my ($self, $input_file_handler, $out) = @_;
-	err "No input handler." if ! $input_file_handler 
-		|| ref $input_file_handler ne 'GLOB';
+	if (! $input_file_handler || ref $input_file_handler ne 'GLOB') {
+		err "No input handler.";
+	}
 	if (! $out) {
 		$out = $self->{'output_handler'};
 	}
@@ -130,7 +131,9 @@ sub _parse {
 	my ($self, $line, $out) = @_;
 	$self->{'line'} = $line;
 	my ($type, $value) = $line =~ m/\A([A()\?\-_])(.*)\Z/;
-	if (! $type) { $type = 'X'; }
+	if (! $type) { 
+		$type = 'X';
+	}
 
 	# Attribute.
 	if ($type eq 'A') {
