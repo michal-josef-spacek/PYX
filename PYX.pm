@@ -124,6 +124,10 @@ TODO
 
 TODO
 
+=item B<attribute()>
+
+TODO
+
 =back
 
 =head1 EXAMPLE
@@ -137,6 +141,7 @@ TODO
 
  # PYX object.
  my $pyx = PYX->new(
+   TODO
  );
 
 =head1 DEPENDENCIES
@@ -148,6 +153,10 @@ L<Readonly(3pm)>.
 =head1 AUTHOR
 
 Michal Špaček L<skim@skim.cz>.
+
+=head1 LICENSE AND COPYRIGHT
+
+BSD license.
 
 =head1 VERSION
 
