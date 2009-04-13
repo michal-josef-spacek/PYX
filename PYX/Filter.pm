@@ -127,8 +127,9 @@ sub parse_handler {
 # TODO $out in arguments?
 
 	my ($self, $input_file_handler) = @_;
-	err "No input handler." if ! $input_file_handler 
-		|| ref $input_file_handler ne 'GLOB';
+	if (! $input_file_handler || ref $input_file_handler ne 'GLOB') {
+		err 'No input handler.';
+	}
 	while (my $line = <$input_file_handler>) {
 		chomp $line;
 		$self->_process($line);
