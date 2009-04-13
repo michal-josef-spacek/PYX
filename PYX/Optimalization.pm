@@ -103,7 +103,7 @@ sub _data {
 
 	$data = decode($tmp);
 	my $out = $pyx_parser_obj->{'output_handler'};
-	print $out char($data), "\n";
+	print {$out} char($data), "\n";
 }
 
 #------------------------------------------------------------------------------
@@ -120,7 +120,7 @@ sub _comment {
 	$tmp =~ s/[\s\n]*$//s;
 	$comment = decode($tmp);
 	my $out = $pyx_parser_obj->{'output_handler'};
-	print $out comment($comment), "\n";
+	print {$out} comment($comment), "\n";
 }
 
 1;
