@@ -6,7 +6,7 @@ use PYX::Optimalization;
 use Test::More 'tests' => 4;
 
 # Include helpers.
-do $test_main_dir.'/get_stdout.inc';
+do $test_main_dir.'/get_stdin.inc';
 
 print "Testing: parse() method.\n";
 my $ret = get_stdin('PYX::Optimalization', "$test_main_dir/data/example1.pyx");
