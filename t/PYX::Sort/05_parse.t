@@ -6,10 +6,10 @@ use PYX::Sort;
 use Test::More 'tests' => 2;
 
 # Include helpers.
-do $test_main_dir.'/get_stdin.inc';
+do $test_main_dir.'/get_stdout.inc';
 
 print "Testing: parse() method.\n";
-my $ret = get_stdin('PYX::Sort', "$test_main_dir/data/example6.pyx");
+my $ret = get_stdout('PYX::Sort', "$test_main_dir/data/example6.pyx");
 my $right_ret = <<"END";
 (tag
 Aattr1="value"
@@ -20,5 +20,5 @@ Aattr3="value"
 END
 is($ret, $right_ret);
 
-$ret = get_stdin('PYX::Sort', "$test_main_dir/data/example7.pyx");
+$ret = get_stdout('PYX::Sort', "$test_main_dir/data/example7.pyx");
 is($ret, $right_ret);
