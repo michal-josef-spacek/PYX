@@ -32,6 +32,7 @@ WriteMakefile(
 			't/PYX::Filter/*.t '.
 			't/PYX::Optimalization/*.t '.
 			't/PYX::Parser/*.t '.
-			't/PYX::Sort/*.t',
+			't/PYX::Sort/*.t '.
+			't/PYX::Stack/*.t',
 	},
 );
