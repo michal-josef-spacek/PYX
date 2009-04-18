@@ -94,9 +94,7 @@ sub _attribute {
 #------------------------------------------------------------------------------
 # Process attribute.
 
-	my $pyx_parser_obj = shift;
-	my $out = $pyx_parser_obj->{'output_handler'};
-	my ($att, $attval) = (shift, shift);
+	my ($pyx_parser_obj, $att, $attval) = @_;
 	$TAG->{$att} = $attval;
 	return;
 }
