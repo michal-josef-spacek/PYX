@@ -62,6 +62,7 @@ sub parse {
 
 	my ($self, $pyx, $out) = @_;
 	$self->{'pyx_parser'}->parse($pyx, $out);
+	return;
 }
 
 #------------------------------------------------------------------------------
@@ -71,6 +72,7 @@ sub parse_file {
 
 	my ($self, $file) = @_;
 	$self->{'pyx_parser'}->parse_file($file);
+	return;
 }
 
 #------------------------------------------------------------------------------
@@ -80,6 +82,7 @@ sub parse_handler {
 
 	my ($self, $input_file_handler, $out) = @_;
 	$self->{'pyx_parser'}->parse_handler($input_file_handler, $out);
+	return;
 }
 
 #------------------------------------------------------------------------------
@@ -95,6 +98,7 @@ sub _attribute {
 	my $out = $pyx_parser_obj->{'output_handler'};
 	my ($att, $attval) = (shift, shift);
 	$TAG->{$att} = $attval;
+	return;
 }
 
 #------------------------------------------------------------------------------
@@ -106,6 +110,7 @@ sub _tag {
 	my $out = $pyx_parser_obj->{'output_handler'};
 	_flush($pyx_parser_obj);
 	print $out $pyx_parser_obj->{'line'}, "\n";
+	return;
 }
 
 #------------------------------------------------------------------------------
@@ -121,6 +126,7 @@ sub _flush {
 		}
 		$TAG = {};
 	}
+	return;
 }
 
 1;
