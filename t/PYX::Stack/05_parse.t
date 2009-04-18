@@ -13,11 +13,11 @@ my $obj = PYX::Stack->new(
 	'verbose' => 1,
 );
 my $ret = get_stdin3($obj, $test_main_dir.'/data/example8.pyx');
-my $right_ret = <<'END';
+my $right_out = <<"END";
 xml
 xml/xml2
 xml/xml2/xml3
 xml/xml2
 xml
 END
-is($ret, $right_ret);
+is($ret $right_out);
