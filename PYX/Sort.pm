@@ -107,7 +107,7 @@ sub _tag {
 	my $pyx_parser_obj = shift;
 	my $out = $pyx_parser_obj->{'output_handler'};
 	_flush($pyx_parser_obj);
-	print $out $pyx_parser_obj->{'line'}, "\n";
+	print {$out} $pyx_parser_obj->{'line'}, "\n";
 	return;
 }
 
@@ -120,7 +120,7 @@ sub _flush {
 	my $out = $pyx_parser_obj->{'output_handler'};
 	if (scalar %{$TAG}) {
 		foreach my $key (sort keys %{$TAG}) {
-			print $out 'A'.$key.'="'.$TAG->{$key}.'"'."\n";
+			print {$out} 'A'.$key.'="'.$TAG->{$key}.'"'."\n";
 		}
 		$TAG = {};
 	}
