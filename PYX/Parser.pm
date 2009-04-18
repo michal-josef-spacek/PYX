@@ -293,9 +293,9 @@ TODO
  # Modules.
  use PYX::Parser;
 
- # PYX::Filter object.
+ # PYX::Parser object.
  my $pyx = PYX::Parser->new(
-   TODO
+         TODO
  );
 
 =head1 DEPENDENCIES
