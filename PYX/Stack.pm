@@ -64,6 +64,7 @@ sub parse {
 
 	my ($self, $pyx, $out) = @_;
 	$self->{'pyx_parser'}->parse($pyx, $out);
+	return;
 }
 
 #------------------------------------------------------------------------------
@@ -73,6 +74,7 @@ sub parse_file {
 
 	my ($self, $file) = @_;
 	$self->{'pyx_parser'}->parse_file($file);
+	return;
 }
 
 #------------------------------------------------------------------------------
@@ -82,6 +84,7 @@ sub parse_handler {
 
 	my ($self, $input_file_handler, $out) = @_;
 	$self->{'pyx_parser'}->parse_handler($input_file_handler, $out);
+	return;
 }
 
 #------------------------------------------------------------------------------
@@ -100,6 +103,7 @@ sub _start_tag {
 	if ($verbose) {
 		print {$out} join('/', @{$stack}), "\n";
 	}
+	return;
 }
 
 #------------------------------------------------------------------------------
@@ -116,6 +120,7 @@ sub _end_tag {
 	if ($verbose && $#{$stack} > -1) {
 		print {$out} join('/', @{$stack}), "\n";
 	}
+	return;
 }
 
 1;
