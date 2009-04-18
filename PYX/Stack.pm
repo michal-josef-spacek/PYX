@@ -14,7 +14,8 @@ use PYX::Parser;
 our $VERSION = 0.01;
 
 # Global variables.
-use vars qw($stack $verbose);
+our $STACK;
+our $VERBOSE;
 
 #------------------------------------------------------------------------------
 sub new {
@@ -48,10 +49,10 @@ sub new {
 	);
 
 	# Tag values.
-	$stack = [];
+	$STACK = [];
 
 	# Verbose.
-	$verbose = $self->{'verbose'};
+	$VERBOSE = $self->{'verbose'};
 
 	# Object.
 	return $self;
@@ -98,9 +99,9 @@ sub _start_tag {
 
 	my ($pyx_parser_obj, $tag) = @_;
 	my $out = $pyx_parser_obj->{'output_handler'};
-	push @{$stack}, $tag;
-	if ($verbose) {
-		print {$out} join('/', @{$stack}), "\n";
+	push @{$STACK}, $tag;
+	if ($VERBOSE) {
+		print {$out} join('/', @{$STACK}), "\n";
 	}
 	return;
 }
@@ -112,13 +113,102 @@ sub _end_tag {
 
 	my ($pyx_parser_obj, $tag) = @_;
 	my $out = $pyx_parser_obj->{'output_handler'};
-	if ($stack->[-1] eq $tag) {
-		pop @{$stack};
+	if ($STACK->[-1] eq $tag) {
+		pop @{$STACK};
 	}
-	if ($verbose && $#{$stack} > -1) {
-		print {$out} join('/', @{$stack}), "\n";
+	if ($VERBOSE && $#{$STACK} > -1) {
+		print {$out} join('/', @{$STACK}), "\n";
 	}
 	return;
 }
 
 1;
+
+__END__
+
+=pod
+
+=encoding utf8
+
+=head1 NAME
+
+PYX::Stack - TODO
+
+=head1 SYNOPSIS
+
+TODO
+
+=head1 METHODS
+
+=over 8
+
+=item B<new(%parameters)>
+
+ Constructor.
+
+=over 8
+
+=item * B<output_handler>
+
+TODO
+
+=item * B<verbose>
+
+TODO
+
+=back
+
+=item B<parse()>
+
+TODO
+
+=item B<parse_file()>
+
+TODO
+
+=item B<parse_handler()>
+
+TODO
+
+=back
+
+=head1 ERRORS
+
+TODO
+
+=head1 EXAMPLE
+
+ # Pragmas.
+ use strict;
+ use warnings;
+
+ # Modules.
+ use PYX::Stack;
+
+ # PYX::Stack object.
+ my $pyx = PYX::Stack->new(
+         TODO
+ );
+
+=head1 DEPENDENCIES
+
+L<Error::Simple::Multiple(3pm)>,
+L<PYX::Parser(3pm)>.
+
+=head1 SEE ALSO
+
+TODO
+
+=head1 AUTHOR
+
+Michal Špaček L<skim@skim.cz>.
+
+=head1 LICENSE AND COPYRIGHT
+
+BSD license.
+
+=head1 VERSION
+
+0.01
+
+=cut
