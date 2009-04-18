@@ -27,4 +27,11 @@ WriteMakefile(
 		'Readonly' => 0,
 	},
 	'VERSION' => '0.04',
+	'test' => {
+		'TESTS' => 't/PYX/*.t '.
+			't/PYX::Filter/*.t '.
+			't/PYX::Optimalization/*.t '.
+			't/PYX::Parser/*.t '.
+			't/PYX::Sort/*.t',
+	},
 );

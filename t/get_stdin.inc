@@ -8,7 +8,7 @@ sub get_stdin {
 
 	my ($class, $file) = @_;
 
-	# PYX::Optimalization object.
+	# Object.
 	my $obj = $class->new;
 
 	# Parse example.
