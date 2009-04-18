@@ -97,7 +97,9 @@ sub _start_tag {
 	my $tag = shift;
 	my $out = $pyx_parser_obj->{'output_handler'};
 	push @{$stack}, $tag;
-	print $out join('/', @{$stack}), "\n" if $verbose;
+	if ($verbose) {
+		print {$out} join('/', @{$stack}), "\n";
+	}
 }
 
 #------------------------------------------------------------------------------
@@ -111,7 +113,9 @@ sub _end_tag {
 	if ($stack->[-1] eq $tag) {
 		pop @{$stack};
 	}
-	print $out join('/', @{$stack}), "\n" if $verbose && $#{$stack} > -1;
+	if ($verbose && $#{$stack} > -1) {
+		print {$out} join('/', @{$stack}), "\n";
+	}
 }
 
 1;
