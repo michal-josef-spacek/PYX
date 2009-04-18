@@ -14,7 +14,7 @@ use PYX::Parser;
 our $VERSION = 0.01;
 
 # Global variables.
-use vars qw($tag);
+our $TAG;
 
 #------------------------------------------------------------------------------
 sub new {
@@ -47,7 +47,7 @@ sub new {
 	);
 
 	# Tag values.
-	$tag = {};
+	$TAG = {};
 
 	# Object.
 	return $self;
@@ -92,7 +92,7 @@ sub _attribute {
 	my $pyx_parser_obj = shift;
 	my $out = $pyx_parser_obj->{'output_handler'};
 	my ($att, $attval) = (shift, shift);
-	$tag->{$att} = $attval;
+	$TAG->{$att} = $attval;
 }
 
 #------------------------------------------------------------------------------
@@ -113,11 +113,11 @@ sub _flush {
 
 	my $pyx_parser_obj = shift;
 	my $out = $pyx_parser_obj->{'output_handler'};
-	if (scalar %{$tag}) {
-		foreach my $key (sort keys %{$tag}) {
-			print $out 'A'.$key.'="'.$tag->{$key}.'"'."\n";
+	if (scalar %{$TAG}) {
+		foreach my $key (sort keys %{$TAG}) {
+			print $out 'A'.$key.'="'.$TAG->{$key}.'"'."\n";
 		}
-		$tag = {};
+		$TAG = {};
 	}
 }
 
