@@ -65,6 +65,7 @@ sub parse {
 
 	my ($self, $pyx, $out) = @_;
 	$self->{'pyx_parser'}->parse($pyx, $out);
+	return;
 }
 
 #------------------------------------------------------------------------------
@@ -74,6 +75,7 @@ sub parse_file {
 
 	my ($self, $file) = @_;
 	$self->{'pyx_parser'}->parse_file($file);
+	return;
 }
 
 #------------------------------------------------------------------------------
@@ -83,6 +85,7 @@ sub parse_handler {
 
 	my ($self, $input_file_handler, $out) = @_;
 	$self->{'pyx_parser'}->parse_handler($input_file_handler, $out);
+	return;
 }
 
 #------------------------------------------------------------------------------
@@ -100,6 +103,7 @@ sub _start_tag {
 	_end_of_start_tag($pyx_parser_obj);
 	print $out "<$tag";
 	${$tag_open} = 1;
+	return;
 }
 
 #------------------------------------------------------------------------------
@@ -112,6 +116,7 @@ sub _end_tag {
 	my $tag = shift;
 	_end_of_start_tag($pyx_parser_obj);
 	print $out "</$tag>";
+	return;
 }
 
 #------------------------------------------------------------------------------
@@ -124,6 +129,7 @@ sub _data {
 	my $data = encode(shift);
 	_end_of_start_tag($pyx_parser_obj);
 	print $out entity_encode($data);
+	return;
 }
 
 #------------------------------------------------------------------------------
@@ -135,6 +141,7 @@ sub _attribute {
 	my $out = $pyx_parser_obj->{'output_handler'};
 	my ($att, $attval) = (shift, shift);
 	print $out " $att=\"", entity_encode($attval), '"';
+	return;
 }
 
 #------------------------------------------------------------------------------
@@ -147,6 +154,7 @@ sub _instruction {
 	my ($target, $data) = @_;
 	_end_of_start_tag($pyx_parser_obj);
 	print $out "<?$target ", encode($data), "?>";
+	return;
 }
 
 #------------------------------------------------------------------------------
@@ -160,6 +168,7 @@ sub _end_of_start_tag {
 		print $out '>';
 		${$tag_open} = 0;
 	}
+	return;
 }
 
 #------------------------------------------------------------------------------
@@ -171,6 +180,7 @@ sub _comment {
 	my $out = $pyx_parser_obj->{'output_handler'};
 	my $comment = shift;
 	print $out '<!--'.encode($comment).'-->';
+	return;
 }
 
 1;
