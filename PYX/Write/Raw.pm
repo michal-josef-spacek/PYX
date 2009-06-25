@@ -101,7 +101,7 @@ sub _start_tag {
 	my $out = $pyx_parser_obj->{'output_handler'};
 	my $tag = shift;
 	_end_of_start_tag($pyx_parser_obj);
-	print $out "<$tag";
+	print {$out} "<$tag";
 	${$tag_open} = 1;
 	return;
 }
@@ -115,7 +115,7 @@ sub _end_tag {
 	my $out = $pyx_parser_obj->{'output_handler'};
 	my $tag = shift;
 	_end_of_start_tag($pyx_parser_obj);
-	print $out "</$tag>";
+	print {$out} "</$tag>";
 	return;
 }
 
@@ -128,7 +128,7 @@ sub _data {
 	my $out = $pyx_parser_obj->{'output_handler'};
 	my $data = encode(shift);
 	_end_of_start_tag($pyx_parser_obj);
-	print $out entity_encode($data);
+	print {$out} entity_encode($data);
 	return;
 }
 
@@ -140,7 +140,7 @@ sub _attribute {
 	my $pyx_parser_obj = shift;
 	my $out = $pyx_parser_obj->{'output_handler'};
 	my ($att, $attval) = (shift, shift);
-	print $out " $att=\"", entity_encode($attval), '"';
+	print {$out} " $att=\"", entity_encode($attval), '"';
 	return;
 }
 
@@ -153,7 +153,7 @@ sub _instruction {
 	my $out = $pyx_parser_obj->{'output_handler'};
 	my ($target, $data) = @_;
 	_end_of_start_tag($pyx_parser_obj);
-	print $out "<?$target ", encode($data), "?>";
+	print {$out} "<?$target ", encode($data), "?>";
 	return;
 }
 
@@ -165,7 +165,7 @@ sub _end_of_start_tag {
 	my $pyx_parser_obj = shift;
 	my $out = $pyx_parser_obj->{'output_handler'};
 	if (${$tag_open}) {
-		print $out '>';
+		print {$out} '>';
 		${$tag_open} = 0;
 	}
 	return;
@@ -179,7 +179,7 @@ sub _comment {
 	my $pyx_parser_obj = shift;
 	my $out = $pyx_parser_obj->{'output_handler'};
 	my $comment = shift;
-	print $out '<!--'.encode($comment).'-->';
+	print {$out} '<!--'.encode($comment).'-->';
 	return;
 }
 
