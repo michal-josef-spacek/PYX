@@ -33,6 +33,7 @@ WriteMakefile(
 			't/PYX::Optimalization/*.t '.
 			't/PYX::Parser/*.t '.
 			't/PYX::Sort/*.t '.
-			't/PYX::Stack/*.t',
+			't/PYX::Stack/*.t '.
+			't/PYX::Write::Raw/*.t',
 	},
 );
