@@ -123,7 +123,7 @@ sub _data {
 	my $out = $pyx_parser_obj->{'output_handler'};
 	my $data = encode(shift);
 	_end_of_start_tag($pyx_parser_obj);
-	print $out entity_encode($data);	
+	print $out entity_encode($data);
 }
 
 #------------------------------------------------------------------------------
