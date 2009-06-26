@@ -36,7 +36,7 @@ is(get_stdout2('PYX::Parser', "$test_main_dir/data/end_tag1.pyx"), <<'END');
 END
 
 is(get_stdout2('PYX::Parser', "$test_main_dir/data/instruction1.pyx"), <<'END');
-?target data
+?target code
 END
 
 is(get_stdout2('PYX::Parser', "$test_main_dir/data/instruction2.pyx"), <<'END');

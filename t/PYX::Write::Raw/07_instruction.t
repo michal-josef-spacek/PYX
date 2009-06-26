@@ -10,7 +10,7 @@ do $test_main_dir.'/get_stdout.inc';
 
 print "Testing: Instruction writing.\n";
 my $ret = get_stdout('PYX::Write::Raw', $test_main_dir.'/data/instruction1.pyx');
-is($ret, '<?target data?>');
+is($ret, '<?target code?>');
 
 $ret = get_stdout('PYX::Write::Raw', $test_main_dir.'/data/instruction2.pyx');
 is($ret, "<?target data\ndata?>");

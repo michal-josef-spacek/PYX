@@ -62,8 +62,8 @@ sub instruction {
 #------------------------------------------------------------------------------
 # Process instruction.
 
-	my ($self, $target, $data) = @_;
-	is($self->{'line'}, "?$target $data");
+	my ($self, $target, $code) = @_;
+	is($self->{'line'}, "?$target $code");
 }
 
 #------------------------------------------------------------------------------
