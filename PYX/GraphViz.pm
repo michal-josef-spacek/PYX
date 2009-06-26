@@ -22,7 +22,7 @@ sub new {
 #------------------------------------------------------------------------------
 # Constructor.
 
-	my $class = shift;
+	my ($class, @params) = @_;
 	my $self = bless {}, $class;
 
 	# Colors.
@@ -59,9 +59,9 @@ sub new {
 	$self->{'output_handler'} = *STDOUT;
 
 	# Process params.
-	while (@_) {
-		my $key = shift;
-		my $val = shift;
+	while (@params) {
+		my $key = shift @params;
+		my $val = shift @params;
 		err "Unknown parameter '$key'." unless exists $self->{$key};
 		$self->{$key} = $val;
 	}
