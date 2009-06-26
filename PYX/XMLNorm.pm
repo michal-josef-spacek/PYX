@@ -25,14 +25,14 @@ sub new {
 	my $class = shift;
 	my $self = bless {}, $class;
 
+	# Flush stack on finalization.
+	$self->{'flush_stack'} = 0;
+
 	# Output handler.
 	$self->{'output_handler'} = \*STDOUT;
 
 	# XML normalization rules.
 	$self->{'rules'} = {};
-
-	# Flush stack on finalization.
-	$self->{'flush_stack'} = 0;
 
 	# Process params.
 	while (@_) {
