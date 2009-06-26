@@ -9,11 +9,12 @@ use Test::More 'tests' => 3;
 do $test_main_dir.'/get_stdout.inc';
 
 print "Testing: Tag writing.\n";
-my $ret = get_stdout('PYX::Write::Raw', $test_main_dir.'/data/tag1.pyx');
+my $obj = PYX::Write::Raw->new;
+my $ret = get_stdout($obj, $test_main_dir.'/data/tag1.pyx');
 is($ret, '<tag></tag>');
 
-$ret = get_stdout('PYX::Write::Raw', $test_main_dir.'/data/tag2.pyx');
+$ret = get_stdout($obj, $test_main_dir.'/data/tag2.pyx');
 is($ret, '<tag par="val"></tag>');
 
-$ret = get_stdout('PYX::Write::Raw', $test_main_dir.'/data/tag3.pyx');
+$ret = get_stdout($obj, $test_main_dir.'/data/tag3.pyx');
 is($ret, '<tag par="val\nval"></tag>');

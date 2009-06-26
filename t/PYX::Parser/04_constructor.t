@@ -11,6 +11,8 @@ is($EVAL_ERROR, "Unknown parameter ''.\n");
 
 print "Testing: new('something' => 'value') bad constructor.\n";
 eval {
-	PYX::Parser->new('something' => 'value');
+	PYX::Parser->new(
+		'something' => 'value',
+	);
 };
 is($EVAL_ERROR, "Unknown parameter 'something'.\n");

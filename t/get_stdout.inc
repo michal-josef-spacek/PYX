@@ -6,17 +6,14 @@ sub get_stdout {
 #------------------------------------------------------------------------------
 # Helper function.
 
-	my ($class, $file) = @_;
-
-	# Object.
-	my $obj = $class->new;
+	my ($obj, $file) = @_;
 
 	# Parse example.
 	my $stdout;
 	tie *STDOUT, 'IO::Scalar', \$stdout;
-	$obj->parse_file($file);
+	eval {
+		$obj->parse_file($file);
+	};
 	untie *STDOUT;
-
-	# Output.
 	return $stdout;
 }

@@ -12,6 +12,8 @@ is($EVAL_ERROR, "Unknown parameter ''.\n");
 
 print "Testing: new('something' => 'value') bad constructor.\n";
 eval {
-	$obj = PYX::Sort->new('something' => 'value');
+	$obj = PYX::Sort->new(
+		'something' => 'value',
+	);
 };
 is($EVAL_ERROR, "Unknown parameter 'something'.\n");

@@ -9,5 +9,6 @@ use Test::More 'tests' => 1;
 do $test_main_dir.'/get_stdout.inc';
 
 print "Testing: End tag writing.\n";
-my $ret = get_stdout('PYX::Write::Raw', $test_main_dir.'/data/end_tag1.pyx');
+my $obj = PYX::Write::Raw->new;
+my $ret = get_stdout($obj, $test_main_dir.'/data/end_tag1.pyx');
 is($ret, '</tag>');

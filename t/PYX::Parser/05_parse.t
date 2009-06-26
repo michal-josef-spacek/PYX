@@ -1,5 +1,5 @@
 # Test directory.
-my $test_main_dir = "$ENV{'PWD'}/t/";
+my $test_main_dir = "$ENV{'PWD'}/t";
 
 # Modules.
 use PYX::Parser;

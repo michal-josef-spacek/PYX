@@ -9,7 +9,8 @@ use Test::More 'tests' => 4;
 do $test_main_dir.'/get_stdout.inc';
 
 print "Testing: parse() method.\n";
-my $ret = get_stdout('PYX::Optimalization', "$test_main_dir/data/example1.pyx");
+my $obj = PYX::Optimalization->new;
+my $ret = get_stdout($obj, "$test_main_dir/data/example1.pyx");
 my $right_ret = <<"END";
 _comment
 _comment
@@ -20,7 +21,7 @@ _comment
 END
 is($ret, $right_ret);
 
-$ret = get_stdout('PYX::Optimalization', "$test_main_dir/data/example2.pyx");
+$ret = get_stdout($obj, "$test_main_dir/data/example2.pyx");
 $right_ret = <<"END";
 -data
 -data
@@ -31,7 +32,7 @@ $right_ret = <<"END";
 END
 is($ret, $right_ret);
 
-$ret = get_stdout('PYX::Optimalization', "$test_main_dir/data/example3.pyx");
+$ret = get_stdout($obj, "$test_main_dir/data/example3.pyx");
 $right_ret = <<"END";
 _comment
 (tag
@@ -42,7 +43,7 @@ Aattr value
 END
 is($ret, $right_ret);
 
-$ret = get_stdout('PYX::Optimalization', "$test_main_dir/data/example4.pyx");
+$ret = get_stdout($obj, "$test_main_dir/data/example4.pyx");
 $right_ret = <<"END";
 -data data
 -data data

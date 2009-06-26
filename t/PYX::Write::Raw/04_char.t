@@ -9,8 +9,9 @@ use Test::More 'tests' => 2;
 do $test_main_dir.'/get_stdout.inc';
 
 print "Testing: Char writing.\n";
-my $ret = get_stdout('PYX::Write::Raw', $test_main_dir.'/data/char1.pyx');
+my $obj = PYX::Write::Raw->new;
+my $ret = get_stdout($obj, $test_main_dir.'/data/char1.pyx');
 is($ret, 'char');
 
-$ret = get_stdout('PYX::Write::Raw', $test_main_dir.'/data/char2.pyx');
+$ret = get_stdout($obj, $test_main_dir.'/data/char2.pyx');
 is($ret, "char\nchar");
