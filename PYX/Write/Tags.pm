@@ -71,6 +71,7 @@ sub parse {
 
 	my ($self, $pyx, $out) = @_;
 	$self->{'pyx_parser'}->parse($pyx, $out);
+	return;
 }
 
 #------------------------------------------------------------------------------
@@ -80,6 +81,7 @@ sub parse_file {
 
 	my ($self, $file) = @_;
 	$self->{'pyx_parser'}->parse_file($file);
+	return;
 }
 
 #------------------------------------------------------------------------------
@@ -89,6 +91,7 @@ sub parse_handler {
 
 	my ($self, $input_file_handler, $out) = @_;
 	$self->{'pyx_parser'}->parse_handler($input_file_handler, $out);
+	return;
 }
 
 #------------------------------------------------------------------------------
@@ -105,6 +108,7 @@ sub _attribute {
 		push @tags, [];
 	}
 	push @{$tags[-1]}, @_;
+	return;
 }
 
 #------------------------------------------------------------------------------
@@ -116,6 +120,7 @@ sub _data {
 	my $data = encode(shift);
 	_flush_tag();
 	$tags_obj->print([\$data]);
+	return;
 }
 
 #------------------------------------------------------------------------------
@@ -127,6 +132,7 @@ sub _end_tag {
 	my $tag = shift;
 	_flush_tag();
 	$tags_obj->print(['end_'.$tag]);
+	return;
 }
 
 #------------------------------------------------------------------------------
@@ -138,6 +144,7 @@ sub _flush_tag {
 		$tags_obj->print([@tags]);
 		@tags = ();
 	}
+	return;
 }
 
 #------------------------------------------------------------------------------
@@ -148,6 +155,7 @@ sub _instruction {
 	shift;
 	my ($target, $data) = @_;
 	# XXX Doesn't support.
+	return;
 }
 
 #------------------------------------------------------------------------------
@@ -159,6 +167,7 @@ sub _start_tag {
 	my $tag = shift;
 	_flush_tag();
 	push @tags, $tag;
+	return;
 }
 
 1;
