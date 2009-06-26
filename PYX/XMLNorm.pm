@@ -117,12 +117,12 @@ sub _start_tag {
 	if (exists $rules->{lc($tag)}) {
 		foreach my $tmp (@{$rules->{lc($tag)}}) {
 			if ($#{$stack} > -1 && lc($stack->[-1]) eq $tmp) {
-				print $out end_tag(pop @{$stack}), "\n";
+				print {$out} end_tag(pop @{$stack}), "\n";
 			}
 		}
 	}
 	push @{$stack}, $tag;
-	print $out $pyx_parser->{'line'}, "\n";
+	print {$out} $pyx_parser->{'line'}, "\n";
 }
 
 #------------------------------------------------------------------------------
@@ -136,21 +136,21 @@ sub _end_tag {
 	if (exists $rules->{'*'}) {
 		foreach my $tmp (@{$rules->{'*'}}) {
 			if (lc($tag) ne $tmp && lc($stack->[-1]) eq $tmp) {
-				print $out end_tag(pop @{$stack}), "\n";
+				print {$out} end_tag(pop @{$stack}), "\n";
 			}
 		}
 	} 
 	if (exists $rules->{$tag}) {
 		foreach my $tmp (@{$rules->{$tag}}) {
 			if (lc($tag) ne $tmp && lc($stack->[-1]) eq $tmp) {
-				print $out end_tag(pop @{$stack}), "\n";
+				print {$out} end_tag(pop @{$stack}), "\n";
 			}
 		}	
 	}
 	if (lc($stack->[-1]) eq lc($tag)) {
 		pop @{$stack};
 	}
-	print $out $pyx_parser->{'line'}, "\n";
+	print {$out} $pyx_parser->{'line'}, "\n";
 }
 
 #------------------------------------------------------------------------------
@@ -164,7 +164,7 @@ sub _final {
 		if (exists $rules->{'*'}) {
 			foreach my $tmp (@{$rules->{'*'}}) {
 				if (lc($stack->[-1]) eq $tmp) {
-					print $out end_tag($tmp), "\n";
+					print {$out} end_tag($tmp), "\n";
 				}
 			}
 		}
@@ -172,7 +172,7 @@ sub _final {
 		# If set, than flush stack.
 		if ($flush_stack) {
 			foreach my $tmp (reverse @{$stack}) {
-				print $out end_tag($tmp), "\n";
+				print {$out} end_tag($tmp), "\n";
 			}
 		}
 	}

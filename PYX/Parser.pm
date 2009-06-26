@@ -190,7 +190,7 @@ sub _is_sub {
 
 	# Raw output to output handler handler.
 	} elsif ($self->{'output_rewrite'}) {
-		print $out $self->{'line'}, "\n";
+		print {$out} $self->{'line'}, "\n";
 	}
 }
 

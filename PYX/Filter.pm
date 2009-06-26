@@ -191,7 +191,7 @@ sub _process {
 	
 #	if ($self->{'print_flag'}) {
 #		my $out = $self->{'output_handler'};
-#		print $out $line, "\n";
+#		print {$out} $line, "\n";
 #	}
 }
 
