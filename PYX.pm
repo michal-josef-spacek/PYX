@@ -51,7 +51,11 @@ sub instruction {
 # Process instruction.
 
 	my ($target, $code) = @_;
-	return '?'.decode($target).' '.decode($code);
+	my $ret = '?'.decode($target);
+	if ($code) {
+		$ret .= ' '.decode($code);
+	}
+	return $ret;
 }
 
 #------------------------------------------------------------------------------
