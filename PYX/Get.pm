@@ -102,7 +102,7 @@ sub _start_tag {
 	my $out = $pyx_parser_obj->{'output_handler'};
 	push @{$stack}, $tag;
 	if ($verbose) {
-		print $out join('/', @{$stack}), "\n";
+		print {$out} join('/', @{$stack}), "\n";
 	}
 	return;
 }
@@ -118,7 +118,7 @@ sub _end_tag {
 		pop @{$stack};
 	}
 	if ($verbose && $#{$stack} > -1) {
-		print $out join('/', @{$stack}), "\n";
+		print {$out} join('/', @{$stack}), "\n";
 	}
 	return;
 }
