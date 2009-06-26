@@ -70,6 +70,7 @@ sub parse {
 
 	my ($self, $pyx, $out) = @_;
 	$self->{'pyx_parser'}->parse($pyx, $out);
+	return;
 }
 
 #------------------------------------------------------------------------------
@@ -79,6 +80,7 @@ sub parse_file {
 
 	my ($self, $file) = @_;
 	$self->{'pyx_parser'}->parse_file($file);
+	return;
 }
 
 #------------------------------------------------------------------------------
@@ -88,6 +90,7 @@ sub parse_handler {
 
 	my ($self, $input_file_handler, $out) = @_;
 	$self->{'pyx_parser'}->parse_handler($input_file_handler, $out);
+	return;
 }
 
 #------------------------------------------------------------------------------
@@ -102,6 +105,7 @@ sub _start_tag {
 	shift;
 	my $tag = shift;
 	push @{$tag_code}, ['b', $tag];
+	return;
 }
 
 #------------------------------------------------------------------------------
@@ -112,6 +116,7 @@ sub _end_tag {
 	shift;
 	my $tag = shift;
 	push @{$tag_code}, ['e', $tag];
+	return;
 }
 
 #------------------------------------------------------------------------------
@@ -122,6 +127,7 @@ sub _data {
 	shift;
 	my $data = encode(shift);
 	push @{$tag_code}, ['d', $data];
+	return;
 }
 
 #------------------------------------------------------------------------------
@@ -131,6 +137,7 @@ sub _attribute {
 
 	shift;
 	push @{$tag_code}, ['a', @_];
+	return;
 }
 
 #------------------------------------------------------------------------------
@@ -141,6 +148,7 @@ sub _instruction {
 	shift;
 	my ($target, $data) = @_;
 	push @{$tag_code}, ['i', $target, $data];
+	return;
 }
 
 #------------------------------------------------------------------------------
@@ -151,6 +159,7 @@ sub _comment {
 	shift;
 	my $comment = encode(shift);
 	push @{$tag_code}, ['c', $comment];
+	return;
 }
 
 1;
