@@ -50,8 +50,8 @@ sub instruction {
 #------------------------------------------------------------------------------
 # Process instruction.
 
-	my $data = shift;
-	return '?'.decode($data);
+	my ($target, $code) = @_;
+	return '?'.decode($target).' '.decode($code);
 }
 
 #------------------------------------------------------------------------------
@@ -62,7 +62,9 @@ sub start_tag {
 	my ($tag, @attr) = @_;
 	my @ret = ();
 	push @ret, '('.$tag;
-	push @ret, attribute(@attr) if $#attr > -1;
+	if (@attr) {
+		push @ret, attribute(@attr);
+	}
 	return @ret;
 }
 
@@ -141,7 +143,7 @@ TODO
 
  # PYX object.
  my $pyx = PYX->new(
-   TODO
+         TODO
  );
 
 =head1 DEPENDENCIES
