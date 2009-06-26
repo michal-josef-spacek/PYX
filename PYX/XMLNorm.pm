@@ -179,3 +179,99 @@ sub _final {
 }
 
 1;
+
+__END__
+
+=pod
+
+=encoding utf8
+
+=head1 NAME
+
+PYX::XMLNorm - TODO
+
+=head1 SYNOPSIS
+
+ use PYX::XMLNorm;
+ my $xml_norm = PYX::XMLNorm->new(%parameters);
+ TODO
+
+=head1 METHODS
+
+=over 8
+
+=item B<new()>
+
+ Constructor.
+
+=over 8
+
+=item * B<flush_stack>
+
+ TODO
+
+=item * B<output_handler>
+
+ TODO
+
+=item * B<rules>
+
+ TODO
+
+=back
+
+=item B<parse()>
+
+ TODO
+
+=item B<parse_file()>
+
+ TODO
+
+=item B<parse_handler()>
+
+ TODO
+
+=back
+
+=head1 ERRORS
+
+ TODO
+
+=head1 EXAMPLE
+
+ # Pragmas.
+ use strict;
+ use warnings;
+
+ # Modules.
+ use PYX::XMLNorm;
+
+ # Object.
+ my $xml_norm = PYX::XMLNorm->new(
+   TODO
+ );
+
+=head1 DEPENDENCIES
+
+L<Error::Simple::Multiple(3pm)>,
+L<PYX(3pm)>,
+L<PYX::Parser(3pm)>.
+
+=head1 SEE ALSO
+
+ TODO
+
+=head1 AUTHOR
+
+Michal Špaček L<skim@skim.cz>.
+
+=head1 LICENSE AND COPYRIGHT
+
+BSD license.
+
+=head1 VERSION
+
+0.02
+
+=cut
