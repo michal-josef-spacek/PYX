@@ -67,8 +67,7 @@ sub add_tag {
 #------------------------------------------------------------------------------
 # Adding tag.
 
-	my $self = shift;
-	my $tag = shift;
+	my ($self, $tag) = @_;
 	print "Start of '$tag'.\n" if $self->{'debug'};
 	push @{$self->{'stack'}}, $tag;
 	return;
@@ -79,8 +78,7 @@ sub remove_tag {
 #------------------------------------------------------------------------------
 # Removing tag.
 
-	my $self = shift;
-	my $tag = shift;
+	my ($self, $tag) = @_;
 	print "End of '$tag'.\n" if $self->{'debug'};
 	if (${$self->{'stack'}}[-1] =~ $tag) {
 		pop @{$self->{'stack'}};
