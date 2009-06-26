@@ -103,11 +103,11 @@ sub _attribute {
 #------------------------------------------------------------------------------
 # Process attribute.
 
-	shift;
+	my (undef, $attr, $value) = @_;
 	if (ref $tags[-1] ne 'ARRAY') {
 		push @tags, [];
 	}
-	push @{$tags[-1]}, @_;
+	push @{$tags[-1]}, $attr, $value;
 	return;
 }
 
@@ -116,8 +116,8 @@ sub _data {
 #------------------------------------------------------------------------------
 # Process data.
 
-	shift;
-	my $data = encode(shift);
+	my (undef, $decoded_data) = @_;
+	my $data = encode($decoded_data);
 	_flush_tag();
 	$tags_obj->print([\$data]);
 	return;
@@ -128,8 +128,7 @@ sub _end_tag {
 #------------------------------------------------------------------------------
 # Process end of tag.
 
-	shift;
-	my $tag = shift;
+	my (undef, $tag) = @_;
 	_flush_tag();
 	$tags_obj->print(['end_'.$tag]);
 	return;
@@ -152,8 +151,7 @@ sub _instruction {
 #------------------------------------------------------------------------------
 # Process instruction tag.
 
-	shift;
-	my ($target, $data) = @_;
+	my (undef, $target, $code) = @_;
 	# XXX Doesn't support.
 	return;
 }
@@ -163,8 +161,7 @@ sub _start_tag {
 #------------------------------------------------------------------------------
 # Process start of tag.
 
-	shift;
-	my $tag = shift;
+	my (undef, $tag) = @_;
 	_flush_tag();
 	push @tags, $tag;
 	return;

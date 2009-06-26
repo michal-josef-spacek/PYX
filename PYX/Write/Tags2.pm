@@ -106,8 +106,8 @@ sub _start_tag {
 #------------------------------------------------------------------------------
 # Process start of tag.
 
-	shift;
-	$tags->put(['b', shift]);
+	my (undef, $tag) = @_;
+	$tags->put(['b', $tag]);
 	return;
 }
 
@@ -116,8 +116,8 @@ sub _end_tag {
 #------------------------------------------------------------------------------
 # Process end of tag.
 
-	shift;
-	$tags->put(['e', shift]);
+	my (undef, $tag) = @_;
+	$tags->put(['e', $tag]);
 	return;
 }
 
@@ -126,9 +126,8 @@ sub _data {
 #------------------------------------------------------------------------------
 # Process data.
 
-	shift;
-	my @data = @_;
-	$tags->put(['d', map(encode($_), @data)]);
+	my (undef, $data) = @_;
+	$tags->put(['d', encode($data)]);
 	return;
 }
 
@@ -137,8 +136,8 @@ sub _attribute {
 #------------------------------------------------------------------------------
 # Process attribute.
 
-	shift;
-	$tags->put(['a', @_]);
+	my (undef, $attr, $value) = @_;
+	$tags->put(['a', $attr, $value]);
 	return;
 }
 
@@ -147,8 +146,8 @@ sub _instruction {
 #------------------------------------------------------------------------------
 # Process instruction tag.
 
-	shift;
-	$tags->put(['i', @_]);
+	my (undef, $target, $code) = @_;
+	$tags->put(['i', $target, $code]);
 	return;
 }
 
@@ -157,8 +156,8 @@ sub _comment {
 #------------------------------------------------------------------------------
 # Process comments.
 
-	shift;
-	$tags->put(['c', encode(shift)]);
+	my (undef, $comment) = @_;
+	$tags->put(['c', encode($comment)]);
 	return;
 }
 
