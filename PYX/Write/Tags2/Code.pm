@@ -102,8 +102,7 @@ sub _start_tag {
 #------------------------------------------------------------------------------
 # Process start of tag.
 
-	shift;
-	my $tag = shift;
+	my (undef, $tag) = @_;
 	push @{$tag_code}, ['b', $tag];
 	return;
 }
@@ -113,8 +112,7 @@ sub _end_tag {
 #------------------------------------------------------------------------------
 # Process end of tag.
 
-	shift;
-	my $tag = shift;
+	my (undef, $tag) = @_;
 	push @{$tag_code}, ['e', $tag];
 	return;
 }
@@ -124,8 +122,8 @@ sub _data {
 #------------------------------------------------------------------------------
 # Process data.
 
-	shift;
-	my $data = encode(shift);
+	my (undef, $decoded_data) = @_;
+	my $data = encode($decoded_data);
 	push @{$tag_code}, ['d', $data];
 	return;
 }
@@ -135,8 +133,8 @@ sub _attribute {
 #------------------------------------------------------------------------------
 # Process attribute.
 
-	shift;
-	push @{$tag_code}, ['a', @_];
+	my (undef, $attr, $value) = @_;
+	push @{$tag_code}, ['a', $attr, $value];
 	return;
 }
 
@@ -145,9 +143,8 @@ sub _instruction {
 #------------------------------------------------------------------------------
 # Process instruction tag.
 
-	shift;
-	my ($target, $data) = @_;
-	push @{$tag_code}, ['i', $target, $data];
+	my (undef, $target, $code) = @_;
+	push @{$tag_code}, ['i', $target, $code];
 	return;
 }
 
@@ -156,8 +153,8 @@ sub _comment {
 #------------------------------------------------------------------------------
 # Process comments.
 
-	shift;
-	my $comment = encode(shift);
+	my (undef, $decoded_comment) = @_;
+	my $comment = encode($decoded_comment);
 	push @{$tag_code}, ['c', $comment];
 	return;
 }
