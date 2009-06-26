@@ -91,3 +91,87 @@ sub remove_tag {
 }
 
 1;
+
+__END__
+
+=pod
+
+=encoding utf8
+
+=head1 NAME
+
+PYX::Checker - TODO
+
+=head1 SYNOPSIS
+
+TODO
+
+=head1 METHODS
+
+=over 8
+
+=item B<new(%parameters)>
+
+ Constructor.
+
+=over 8
+
+=item * B<debug>
+
+TODO
+
+=back
+
+=item B<data()>
+
+TODO
+
+=item B<add_tag()>
+
+TODO
+
+=item B<remove_tag()>
+
+TODO
+
+=back
+
+=head1 ERRORS
+
+ TODO
+
+=head1 EXAMPLE
+
+ # Pragmas.
+ use strict;
+ use warnings;
+
+ # Modules.
+ use PYX::Checker;
+
+ # PYX::Filter object.
+ my $pyx = PYX::Checker->new(
+   TODO
+ );
+
+=head1 DEPENDENCIES
+
+L<Error::Simple::Multiple(3pm)>.
+
+=head1 SEE ALOS
+
+ TODO
+
+=head1 AUTHOR
+
+Michal Špaček L<skim@skim.cz>.
+
+=head1 LICENSE AND COPYRIGHT
+
+BSD license.
+
+=head1 VERSION
+
+0.01
+
+=cut
