@@ -97,9 +97,8 @@ sub _start_tag {
 #------------------------------------------------------------------------------
 # Process start of tag.
 
-	my $pyx_parser_obj = shift;
+	my ($pyx_parser_obj, $tag) = @_;
 	my $out = $pyx_parser_obj->{'output_handler'};
-	my $tag = shift;
 	_end_of_start_tag($pyx_parser_obj);
 	print {$out} "<$tag";
 	${$tag_open} = 1;
