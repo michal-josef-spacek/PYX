@@ -43,7 +43,8 @@ sub data {
 #------------------------------------------------------------------------------
 # Procesing data.
 
-	my ($self, $data) = @_;
+	my $self = shift;
+	my $data = shift;
 
 	# Begin of tag.
 	if ($data =~ /^\(/) {
