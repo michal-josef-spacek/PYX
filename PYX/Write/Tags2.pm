@@ -163,7 +163,11 @@ sub _comment {
 
 1;
 
+__END__
+
 =pod
+
+=encoding utf8
 
 =head1 NAME
 
@@ -173,17 +177,21 @@ PYX::Write::Tags2 - TODO
 
 TODO
 
-=head1 DESCRIPTION
-
-TODO
-
 =head1 METHODS
 
 =over 8
 
 =item B<new()>
 
-TODO
+Constructor.
+
+=over 8
+
+=item * B<tags_obj>
+
+ TODO
+
+=back
 
 =item B<parse()>
 
@@ -199,19 +207,27 @@ TODO
 
 =back
 
+=head1 ERRORS
+
+TODO
+
 =head1 EXAMPLE
 
 TODO
 
-=head1 REQUIREMENTS
+=head1 DEPENDENCIES
 
-L<Error::Simple::Multiple>,
-L<PYX::Parser>,
-L<PYX::Utils>
+L<Error::Simple::Multiple(3pm)>,
+L<PYX::Parser(3pm)>,
+L<PYX::Utils(3pm)>
+
+=head1 SEE ALSO
+
+ TODO
 
 =head1 AUTHOR
 
-Michal Spacek L<tupinek@gmail.com>
+Michal Špaček L<tupinek@gmail.com>
 
 =head1 VERSION
 
