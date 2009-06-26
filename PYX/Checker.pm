@@ -59,6 +59,7 @@ sub data {
 	# Nop.
 	} else {
 	}
+	return;
 }
 
 #------------------------------------------------------------------------------
@@ -70,6 +71,7 @@ sub add_tag {
 	my $tag = shift;
 	print "Start of '$tag'.\n" if $self->{'debug'};
 	push @{$self->{'stack'}}, $tag;
+	return;
 }
 
 #------------------------------------------------------------------------------
@@ -85,6 +87,7 @@ sub remove_tag {
 	} else {
 		err "Cannot remove tag '$tag'.";
 	}
+	return;
 }
 
 1;

@@ -106,6 +106,7 @@ sub parse($$) {
 
 	my ($self, $pyx) = @_;
 	$self->{'pyx_parser'}->parse($pyx);
+	return;
 }
 
 #------------------------------------------------------------------------------
@@ -115,6 +116,7 @@ sub parse_file($$) {
 
 	my ($self, $file) = @_;
 	$self->{'pyx_parser'}->parse_file($file);
+	return;
 }
 
 #------------------------------------------------------------------------------
@@ -124,6 +126,7 @@ sub parse_handler($$) {
 
 	my ($self, $input_file_handler) = @_;
 	$self->{'pyx_parser'}->parse_handler($input_file_handler);
+	return;
 }
 
 #------------------------------------------------------------------------------
@@ -154,6 +157,7 @@ sub _start_tag($$) {
 		'weight' => 2,
 	) if $#{$stack} > -1;
 	push @{$stack}, [$tag, $num];
+	return;
 }
 
 #------------------------------------------------------------------------------
@@ -165,6 +169,7 @@ sub _end_tag($$) {
 	if ($stack->[-1]->[0] eq $tag) {
 		pop @{$stack};
 	}
+	return;
 }
 
 #------------------------------------------------------------------------------
@@ -175,6 +180,7 @@ sub _final($) {
 	my $pyx_parser_obj = shift;
 	my $out = $pyx_parser_obj->{'output_handler'};
 	$object->{'graphviz'}->as_png($out);
+	return;
 }
 
 1;
