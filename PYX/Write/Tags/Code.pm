@@ -173,3 +173,95 @@ sub _comment {
 }
 
 1;
+
+__END__
+
+=pod
+
+=encoding utf8
+
+=head1 NAME
+
+PYX::Write::Tags::Code - TODO
+
+=head1 SYNOPSIS
+
+ use PYX::Write::Tags::Code;
+ my $xml_norm = PYX::Write::Tags::Code->new(%parameters);
+ TODO
+
+=head1 METHODS
+
+=over 8
+
+=item B<new()>
+
+ Constructor.
+
+=over 8
+
+=item * B<output_handler>
+
+ TODO
+
+=back
+
+=item B<get_tags_code()>
+
+ TODO
+
+=item B<parse()>
+
+ TODO
+
+=item B<parse_file()>
+
+ TODO
+
+=item B<parse_handler()>
+
+ TODO
+
+=back
+
+=head1 ERRORS
+
+ TODO
+
+=head1 EXAMPLE
+
+ # Pragmas.
+ use strict;
+ use warnings;
+
+ # Modules.
+ use PYX::Write::Tags::Code;
+
+ # Object.
+ my $tags_code = PYX::Write::Tags::Code->new(
+   TODO
+ );
+
+=head1 DEPENDENCIES
+
+L<Error::Simple::Multiple(3pm)>,
+L<PYX::Parser(3pm)>,
+L<PYX::Utils(3pm)>.
+
+=head1 SEE ALSO
+
+ TODO
+
+=head1 AUTHOR
+
+Michal Špaček L<skim@skim.cz>.
+
+=head1 LICENSE AND COPYRIGHT
+
+BSD license.
+
+=head1 VERSION
+
+0.01
+
+=cut
