@@ -43,8 +43,7 @@ sub data {
 #------------------------------------------------------------------------------
 # Procesing data.
 
-	my $self = shift;
-	my $data = shift;
+	my ($self, $data) = @_;
 
 	# Begin of tag.
 	if ($data =~ /^\(/) {
@@ -68,7 +67,9 @@ sub add_tag {
 # Adding tag.
 
 	my ($self, $tag) = @_;
-	print "Start of '$tag'.\n" if $self->{'debug'};
+	if ($self->{'debug'}) {
+		print "Start of '$tag'.\n";
+	}
 	push @{$self->{'stack'}}, $tag;
 	return;
 }
@@ -79,7 +80,9 @@ sub remove_tag {
 # Removing tag.
 
 	my ($self, $tag) = @_;
-	print "End of '$tag'.\n" if $self->{'debug'};
+	if ($self->{'debug'}) {
+		print "End of '$tag'.\n";
+	}
 	if (${$self->{'stack'}}[-1] =~ $tag) {
 		pop @{$self->{'stack'}};
 	} else {

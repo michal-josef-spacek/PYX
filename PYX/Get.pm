@@ -98,8 +98,7 @@ sub _start_tag {
 #------------------------------------------------------------------------------
 # Process tag.
 
-	my $pyx_parser_obj = shift;
-	my $tag = shift;
+	my ($pyx_parser_obj, $tag) = @_;
 	my $out = $pyx_parser_obj->{'output_handler'};
 	push @{$stack}, $tag;
 	print $out join('/', @{$stack}), "\n" if $verbose;
@@ -111,8 +110,7 @@ sub _end_tag {
 #------------------------------------------------------------------------------
 # Process tag.
 
-	my $pyx_parser_obj = shift;
-	my $tag = shift;
+	my ($pyx_parser_obj, $tag) = @_;
 	my $out = $pyx_parser_obj->{'output_handler'};
 	if ($stack->[-1] eq $tag) {
 		pop @{$stack};
