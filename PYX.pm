@@ -96,10 +96,6 @@ PYX - A perl module for pyx handling.
 
 TODO
 
-=head1 DESCRIPTION
-
-TODO
-
 =head1 SUBROUTINES
 
 =over 8
@@ -130,6 +126,10 @@ TODO
 
 =back
 
+=head1 ERRORS
+
+ No errors.
+
 =head1 EXAMPLE
 
  # Pragmas.
@@ -149,6 +149,10 @@ TODO
 L<Exporter(3pm)>,
 L<PYX::Utils(3pm)>,
 L<Readonly(3pm)>.
+
+=head1 SEE ALSO
+
+ TODO
 
 =head1 AUTHOR
 
