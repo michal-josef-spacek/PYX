@@ -61,8 +61,12 @@ sub get_tags_code {
 #------------------------------------------------------------------------------
 # Gets tags code.
 
-	my $self = shift;
-	return $self->{'tag_code'};
+	my ($self, $reset_flag) = @_;
+	my $tags_ar = $self->{'tag_code'};
+	if ($reset_flag) {
+		$self->reset;
+	}
+	return $tags_ar;
 }
 
 #------------------------------------------------------------------------------
@@ -92,6 +96,16 @@ sub parse_handler {
 
 	my ($self, $input_file_handler, $out) = @_;
 	$self->{'pyx_parser'}->parse_handler($input_file_handler, $out);
+	return;
+}
+
+#------------------------------------------------------------------------------
+sub reset {
+#------------------------------------------------------------------------------
+# Reset internal structures.
+
+	my $self = shift;
+	$tag_code = $self->{'tag_code'} = [];
 	return;
 }
 
@@ -213,7 +227,7 @@ PYX::Write::Tags::Code - TODO
 
 =back
 
-=item B<get_tags_code()>
+=item B<get_tags_code($reset_flag)>
 
  TODO
 
@@ -226,6 +240,10 @@ PYX::Write::Tags::Code - TODO
  TODO
 
 =item B<parse_handler()>
+
+ TODO
+
+=item B<reset()>
 
  TODO
 
