@@ -3,7 +3,6 @@ TODO
 ====
 7. Pokud bude komentar, tak umoznit jeho odstraneni. To by melo byt ve filterch.
 8. Nejak promyslet PYX::Filter;
-24. Pro PYX::Write::Tags::Code udelat dokumentaci.
 25. Pridat kompatibilitu pro puvodni XML::PYX?.
 30. Udelat skript pro zjisteni cetnosti.
 31. Udelat konfiguraci, ktera bude platit pro vsechny skripty.
@@ -153,3 +152,6 @@ OK [20060911] skim
 
 49. Chyba v PYX::XMLNorm, kdy tagy 'INPUT' se nevybiraji podle pravidel 'input'.
 OK [20060918] skim
+
+24. Pro PYX::Write::Tags::Code udelat dokumentaci.
+OK [20090627] skim
