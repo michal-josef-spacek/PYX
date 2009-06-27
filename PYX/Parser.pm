@@ -82,6 +82,7 @@ sub parse {
 	if ($self->{'final'}) {
 		&{$self->{'final'}}($self);
 	}
+	return;
 }
 
 #------------------------------------------------------------------------------
@@ -90,9 +91,10 @@ sub parse_file {
 # Parse file with PYX data.
 
 	my ($self, $input_file, $out) = @_;
-	open my $inf , '<', $input_file;
+	open my $inf, '<', $input_file;
 	$self->parse_handler($inf, $out);
 	close $inf;
+	return;
 }
 
 #------------------------------------------------------------------------------
@@ -117,6 +119,7 @@ sub parse_handler {
 	if ($self->{'final'}) {
 		&{$self->{'final'}}($self);
 	}
+	return;
 }
 
 #------------------------------------------------------------------------------
@@ -169,6 +172,7 @@ sub _parse {
 			err "Bad PYX tag at line '$line'.";
 		}
 	}
+	return;
 }
 
 #------------------------------------------------------------------------------
@@ -192,6 +196,7 @@ sub _is_sub {
 	} elsif ($self->{'output_rewrite'}) {
 		print {$out} $self->{'line'}, "\n";
 	}
+	return;
 }
 
 1;
