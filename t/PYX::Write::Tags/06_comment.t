@@ -1,14 +1,18 @@
 # Test directory.
-my $test_main_dir = "$ENV{'PWD'}/t/PYXWriteTags";
+my $test_main_dir = "$ENV{'PWD'}/t";
 
 # Modules.
 use PYX::Write::Tags;
-#use Test::More 'tests' => 2;
+use Tags::Running;
+use Test::More 'tests' => 2;
 
 # Include helpers.
 do $test_main_dir.'/get_stdout.inc';
 
 print "Testing: Comment writing.\n";
-# TODO Cannot implement.
-# ok(go($class, "$test_main_dir/data/comment1.pyx"), '<!--comment-->');
-# ok(go($class, "$test_main_dir/data/comment2.pyx"), "<!--comment\ncomment-->");
+my $tags = Tags::Running->new;
+my $obj = PYX::Write::Tags->new(
+	'tags_obj' => $tags,
+);
+is(get_stdout($obj, "$test_main_dir/data/comment1.pyx"), undef);
+is(get_stdout($obj, "$test_main_dir/data/comment2.pyx"), undef);
