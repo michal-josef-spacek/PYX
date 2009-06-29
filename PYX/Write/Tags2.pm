@@ -9,7 +9,7 @@ use warnings;
 # Modules.
 use Error::Simple::Multiple qw(err);
 use PYX::Parser;
-use PYX::Utils qw(encode);
+use PYX::Utils qw(encode set_params);
 
 # Version.
 our $VERSION = 0.01;
@@ -29,14 +29,7 @@ sub new {
 	$self->{'tags_obj'} = '';
 
 	# Process params.
-        while (@params) {
-                my $key = shift @params;
-                my $val = shift @params;
-		if (! exists $self->{$key}) {
-	                err "Bad parameter '$key'.";
-		}
-                $self->{$key} = $val;
-        }
+	set_params($self, @params);
 
 	# If doesn't exist Tags object.
 	if (! $self->{'tags_obj'} 
@@ -209,7 +202,11 @@ TODO
 
 =head1 ERRORS
 
-TODO
+ Mine:
+   TODO
+
+ From PYX::Utils::set_params():
+   Unknown parameter '%s'.
 
 =head1 EXAMPLE
 

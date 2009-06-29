@@ -10,6 +10,7 @@ use warnings;
 use Error::Simple::Multiple qw(err);
 use PYX qw(end_tag);
 use PYX::Parser;
+use PYX::Utils qw(set_params);
 
 # Version.
 our $VERSION = 0.02;
@@ -22,7 +23,7 @@ sub new {
 #------------------------------------------------------------------------------
 # Constructor.
 
-	my $class = shift;
+	my ($class, @params) = @_;
 	my $self = bless {}, $class;
 
 	# Flush stack on finalization.
@@ -35,12 +36,7 @@ sub new {
 	$self->{'rules'} = {};
 
 	# Process params.
-	while (@_) {
-		my $key = shift;
-		my $val = shift;
-		err "Unknown parameter '$key'." unless exists $self->{$key};
-		$self->{$key} = $val;
-	}
+	set_params($self, @params);
 
 	# Check to rules.
 	err "Cannot exist XML normalization rules."
@@ -236,7 +232,11 @@ PYX::XMLNorm - TODO
 
 =head1 ERRORS
 
- TODO
+ Mine:
+   TODO
+
+ From PYX::Utils::set_params():
+   Unknown parameter '%s'.
 
 =head1 EXAMPLE
 
@@ -256,7 +256,8 @@ PYX::XMLNorm - TODO
 
 L<Error::Simple::Multiple(3pm)>,
 L<PYX(3pm)>,
-L<PYX::Parser(3pm)>.
+L<PYX::Parser(3pm)>,
+L<PYX::Utils(3pm)>.
 
 =head1 SEE ALSO
 

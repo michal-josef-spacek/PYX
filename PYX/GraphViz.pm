@@ -10,6 +10,7 @@ use warnings;
 use Error::Simple::Multiple qw(err);
 use GraphViz;
 use PYX::Parser;
+use PYX::Utils qw(set_params);
 
 # Version.
 our $VERSION = 0.01;
@@ -59,12 +60,7 @@ sub new {
 	$self->{'output_handler'} = *STDOUT;
 
 	# Process params.
-	while (@params) {
-		my $key = shift @params;
-		my $val = shift @params;
-		err "Unknown parameter '$key'." unless exists $self->{$key};
-		$self->{$key} = $val;
-	}
+	set_params($self, @params);
 
 	# PYX::Parser object.
 	$self->{'pyx_parser'} = PYX::Parser->new(
@@ -221,6 +217,14 @@ TODO
 
 =back
 
+=head1 ERRORS
+
+ Mine:
+   TODO
+
+ From PYX::Utils::set_params():
+   Unknown parameter '%s'.
+
 =head1 EXAMPLE
 
 TODO
@@ -230,6 +234,7 @@ TODO
 L<Error::Simple::Multiple>,
 L<GraphViz>,
 L<PYX::Parser>
+L<PYX::Utils>
 
 =head1 AUTHOR
 

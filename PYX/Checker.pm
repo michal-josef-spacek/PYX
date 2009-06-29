@@ -8,6 +8,7 @@ use warnings;
 
 # Modules.
 use Error::Simple::Multiple qw(err);
+use PYX::Utils qw(set_params);
 
 # Version.
 our $VERSION = 0.01;
@@ -24,12 +25,7 @@ sub new {
 	$self->{'debug'} = 0;
 
 	# Process params.
-        while (@params) {
-                my $key = shift @params;
-                my $val = shift @params;
-                err "Unknown parameter '$key'." unless exists $self->{$key};
-                $self->{$key} = $val;
-        }
+	set_params($self, @params);
 
 	# Stack of tags.
 	$self->{'stack'} = [];
@@ -43,8 +39,7 @@ sub data {
 #------------------------------------------------------------------------------
 # Procesing data.
 
-	my $self = shift;
-	my $data = shift;
+	my ($self, $data) = @_;
 
 	# Begin of tag.
 	if ($data =~ /^\(/) {
@@ -140,7 +135,11 @@ TODO
 
 =head1 ERRORS
 
- TODO
+ Mine:
+   TODO
+
+ From PYX::Utils::set_params():
+   Unknown parameter '%s'.
 
 =head1 EXAMPLE
 
@@ -158,9 +157,10 @@ TODO
 
 =head1 DEPENDENCIES
 
-L<Error::Simple::Multiple(3pm)>.
+L<Error::Simple::Multiple(3pm)>,
+L<PYX::Utils(3pm)>.
 
-=head1 SEE ALOS
+=head1 SEE ALSO
 
  TODO
 

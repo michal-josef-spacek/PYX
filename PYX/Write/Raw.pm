@@ -9,7 +9,7 @@ use warnings;
 # Modules.
 use Error::Simple::Multiple qw(err);
 use PYX::Parser;
-use PYX::Utils qw(encode entity_encode);
+use PYX::Utils qw(encode entity_encode set_params);
 
 # Global variables.
 use vars qw(@tag $tag_open);
@@ -29,12 +29,7 @@ sub new {
 	$self->{'output_handler'} = \*STDOUT;
 
 	# Process params.
-        while (@params) {
-                my $key = shift @params;
-                my $val = shift @params;
-                err "Unknown parameter '$key'." unless exists $self->{$key};
-                $self->{$key} = $val;
-        }
+	set_params($self, @params);
 
 	# PYX::Parser object.
 	$self->{'pyx_parser'} = PYX::Parser->new(
@@ -226,7 +221,11 @@ TODO
 
 =head1 ERRORS
 
-TODO
+ Mine:
+   TODO
+
+ From PYX::Utils::set_params():
+   Unknown parameter '%s'.
 
 =head1 EXAMPLE
 

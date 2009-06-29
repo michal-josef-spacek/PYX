@@ -10,7 +10,7 @@ use warnings;
 use Error::Simple::Multiple qw(err);
 use PYX qw(char comment);
 use PYX::Parser;
-use PYX::Utils qw(encode decode);
+use PYX::Utils qw(encode decode set_params);
 
 # Version.
 our $VERSION = 0.01;
@@ -27,14 +27,7 @@ sub new {
 	$self->{'output_handler'} = \*STDOUT;
 
 	# Process params.
-	while (@params) {
-		my $key = shift @params;
-		my $val = shift @params;
-		if (! exists $self->{$key}) {
-			err "Unknown parameter '$key'.";
-		}
-		$self->{$key} = $val;
-	}
+	set_params($self, @params);
 
 	# PYX::Parser object.
 	$self->{'pyx_parser'} = PYX::Parser->new(
@@ -171,7 +164,11 @@ TODO
 
 =head1 ERRORS
 
-TODO
+ Mine:
+   TODO
+
+ From PYX::Utils::set_params():
+   Unknown parameter '%s'.
 
 =head1 EXAMPLE
 
@@ -189,7 +186,8 @@ TODO
 
 =head1 DEPENDENCIES
 
-L<Error::Simple::Multiple(3pm)>.
+L<Error::Simple::Multiple(3pm)>,
+L<PYX::Utils(3pm)>.
 
 =head1 SEE ALSO
 

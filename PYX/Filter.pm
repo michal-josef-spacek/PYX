@@ -22,6 +22,7 @@ use warnings;
 
 # Modules.
 use Error::Simple::Multiple qw(err);
+use PYX::Utils qw(set_params);
 
 # Version.
 our $VERSION = 0.01;
@@ -54,14 +55,7 @@ sub new {
 	$self->{'rules'} = {}; 
 
 	# Process params.
-        while (@params) {
-                my $key = shift @params;
-                my $val = shift @params;
-		if (! exists $self->{$key}) {
-	                err "Unknown parameter '$key'.";
-		}
-                $self->{$key} = $val;
-        }
+	set_params($self, @params);
 
 	# Initialization.
 	$self->_init;
@@ -245,6 +239,14 @@ TODO
 
 =back
 
+=head1 ERRORS
+
+ Mine:
+   TODO
+
+ From PYX::Utils::set_params():
+   Unknown parameter '%s'.
+
 =head1 EXAMPLE
 
  # Pragmas.
@@ -261,7 +263,8 @@ TODO
 
 =head1 DEPENDENCIES
 
-L<Error::Simple::Multiple(3pm)>.
+L<Error::Simple::Multiple(3pm)>,
+L<PYX::Utils(3pm)>.
 
 =head1 AUTHOR
 

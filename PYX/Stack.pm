@@ -9,6 +9,7 @@ use warnings;
 # Modules.
 use Error::Simple::Multiple qw(err);
 use PYX::Parser;
+use PYX::Utils qw(set_params);
 
 # Version.
 our $VERSION = 0.01;
@@ -32,14 +33,7 @@ sub new {
 	$self->{'verbose'} = 0;
 
 	# Process params.
-	while (@params) {
-		my $key = shift @params;
-		my $val = shift @params;
-		if (! exists $self->{$key}) {
-			err "Unknown parameter '$key'.";
-		}
-		$self->{$key} = $val;
-	}
+	set_params($self, @params);
 
 	# PYX::Parser object.
 	$self->{'pyx_parser'} = PYX::Parser->new(
@@ -174,7 +168,11 @@ TODO
 
 =head1 ERRORS
 
-TODO
+ Mine:
+   TODO
+
+ From PYX::Utils::set_params():
+   Unknown parameter '%s'.
 
 =head1 EXAMPLE
 
@@ -193,7 +191,8 @@ TODO
 =head1 DEPENDENCIES
 
 L<Error::Simple::Multiple(3pm)>,
-L<PYX::Parser(3pm)>.
+L<PYX::Parser(3pm)>,
+L<PYX::Utils(3pm)>.
 
 =head1 SEE ALSO
 
