@@ -156,7 +156,11 @@ sub _comment {
 
 1;
 
+__END__
+
 =pod
+
+=encoding utf8
 
 =head1 NAME
 
@@ -208,15 +212,23 @@ TODO
 
 TODO
 
-=head1 REQUIREMENTS
+=head1 DEPENDENCIES
 
-L<Error::Simple::Multiple>,
-L<PYX::Parser>,
-L<PYX::Utils>
+L<Error::Simple::Multiple(3pm)>,
+L<PYX::Parser(3pm)>,
+L<PYX::Utils(3pm)>.
+
+=head1 SEE ALSO
+
+ TODO
 
 =head1 AUTHOR
 
-Michal Spacek L<tupinek@gmail.com>
+Michal Špaček L<skim@skim.cz>.
+
+=head1 LICENSE AND COPYRIGHT
+
+BSD license.
 
 =head1 VERSION
 
