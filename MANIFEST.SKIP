@@ -7,3 +7,5 @@ PYX/Filter.pm
 concept
 bin/pyx_filter
 MANIFEST.SKIP
+\bblib\b
+pm_to_blib
