@@ -1,14 +1,10 @@
 # Modules.
 use English qw(-no_match_vars);
-use FindBin qw($Bin);
-use File::Spec;
+use File::Object;
 use Test::More 'tests' => 1;
 
 eval 'use Test::Pod 1.00';
 if ($EVAL_ERROR) {
 	plan 'skip_all' => 'Test::Pod 1.00 required for testing POD';
 }
-my @path = File::Spec->splitdir($Bin);
-splice @path, -2;
-push @path, 'PYX', 'XMLNorm.pm';
-pod_file_ok(File::Spec->catfile(@path));
+pod_file_ok(File::Object->new->up(2)->file_path('PYX/XMLNorm.pm')->serialize);

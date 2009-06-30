@@ -1,16 +1,15 @@
-# Test directory.
-my $test_main_dir = "$ENV{'PWD'}/t/";
-
 # Modules.
+use File::Object;
 use PYX::Optimalization;
 use Test::More 'tests' => 4;
 
 # Include helpers.
-do $test_main_dir.'/get_stdout.inc';
+my $data_dir = File::Object->new->up->dir('data')->serialize;
+do File::Object->new->up->file('get_stdout.inc')->serialize;
 
 print "Testing: parse() method.\n";
 my $obj = PYX::Optimalization->new;
-my $ret = get_stdout($obj, "$test_main_dir/data/example1.pyx");
+my $ret = get_stdout($obj, "$data_dir/example1.pyx");
 my $right_ret = <<"END";
 _comment
 _comment
@@ -21,7 +20,7 @@ _comment
 END
 is($ret, $right_ret);
 
-$ret = get_stdout($obj, "$test_main_dir/data/example2.pyx");
+$ret = get_stdout($obj, "$data_dir/example2.pyx");
 $right_ret = <<"END";
 -data
 -data
@@ -32,7 +31,7 @@ $right_ret = <<"END";
 END
 is($ret, $right_ret);
 
-$ret = get_stdout($obj, "$test_main_dir/data/example3.pyx");
+$ret = get_stdout($obj, "$data_dir/example3.pyx");
 $right_ret = <<"END";
 _comment
 (tag
@@ -43,7 +42,7 @@ Aattr value
 END
 is($ret, $right_ret);
 
-$ret = get_stdout($obj, "$test_main_dir/data/example4.pyx");
+$ret = get_stdout($obj, "$data_dir/example4.pyx");
 $right_ret = <<"END";
 -data data
 -data data
