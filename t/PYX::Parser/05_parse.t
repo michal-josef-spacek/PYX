@@ -1,7 +1,5 @@
-# Test directory.
-my $test_main_dir = "$ENV{'PWD'}/t";
-
 # Modules.
+use File::Object;
 use PYX::Parser;
 use Test::More 'tests' => 7;
 
@@ -18,8 +16,14 @@ my $obj = PYX::Parser->new(
 	'other' => \&other,
 );
 
+# Directories.
+my $data_dir = File::Object->new->up->dir('data')->serialize;
+
+# Include helpers.
+do File::Object->new->up->file('get_stdout.inc')->serialize;
+
 # Parse.
-$obj->parse_file($test_main_dir.'/data/parse.pyx');
+$obj->parse_file($data_dir.'/parse.pyx');
 
 #------------------------------------------------------------------------------
 sub attribute {

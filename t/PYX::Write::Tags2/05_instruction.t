@@ -1,13 +1,14 @@
-# Test directory.
-my $test_main_dir = "$ENV{'PWD'}/t";
-
 # Modules.
+use File::Object;
 use PYX::Write::Tags2;
 use Tags2::Output::Raw;
 use Test::More 'tests' => 2;
 
+# Directories.
+my $data_dir = File::Object->new->up->dir('data')->serialize;
+
 # Include helpers.
-do $test_main_dir.'/get_stdout.inc';
+do File::Object->new->up->file('get_stdout.inc')->serialize;
 
 print "Testing: Instruction writing.\n";
 my $tags2 = Tags2::Output::Raw->new(
@@ -16,9 +17,9 @@ my $tags2 = Tags2::Output::Raw->new(
 my $obj = PYX::Write::Tags2->new(
 	'tags_obj' => $tags2,
 );
-get_stdout($obj, "$test_main_dir/data/instruction1.pyx");
+get_stdout($obj, "$data_dir/instruction1.pyx");
 is($tags2->flush, '<?target code?>');
 
 $tags2->reset;
-get_stdout($obj, "$test_main_dir/data/instruction2.pyx");
+get_stdout($obj, "$data_dir/instruction2.pyx");
 is($tags2->flush, "<?target data\\ndata?>");

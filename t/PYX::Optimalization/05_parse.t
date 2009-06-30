@@ -3,8 +3,10 @@ use File::Object;
 use PYX::Optimalization;
 use Test::More 'tests' => 4;
 
-# Include helpers.
+# Directories.
 my $data_dir = File::Object->new->up->dir('data')->serialize;
+
+# Include helpers.
 do File::Object->new->up->file('get_stdout.inc')->serialize;
 
 print "Testing: parse() method.\n";

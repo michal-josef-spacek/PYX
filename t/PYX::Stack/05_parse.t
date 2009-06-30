@@ -1,18 +1,19 @@
-# Test directory.
-my $test_main_dir = "$ENV{'PWD'}/t";
-
 # Modules.
+use File::Object;
 use PYX::Stack;
 use Test::More 'tests' => 1;
 
+# Directories.
+my $data_dir = File::Object->new->up->dir('data')->serialize;
+
 # Include helpers.
-do $test_main_dir.'/get_stdout.inc';
+do File::Object->new->up->file('get_stdout.inc')->serialize;
 
 print "Testing: parse_file() method.\n";
 my $obj = PYX::Stack->new(
 	'verbose' => 1,
 );
-my $ret = get_stdout($obj, $test_main_dir.'/data/example8.pyx');
+my $ret = get_stdout($obj, $data_dir.'/example8.pyx');
 my $right_ret = <<'END';
 xml
 xml/xml2
