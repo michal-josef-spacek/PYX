@@ -26,14 +26,14 @@ if ($opt->{'h'} || $#ARGV < 0) {
 my $normalizer = PYX::XMLNorm->new(
 	'flush_stack' => $opt->{'f'},
 	'rules' => {
-		'tr' => ['th', 'td', 'tr'],
+		'*' => ['br', 'hr', 'link', 'meta', 'input', 'img']
+		'div' => ['p'],
+		'html' => ['body'],
+		'p' => ['p'],
+		'table' => ['tr'],
 		'td' => ['td'],
 		'th' => ['th'],
-		'p' => ['p'],
-		'div' => ['p'],
-		'table' => ['tr'],
-		'html' => ['body'],
-		'*' => ['br', 'hr', 'link', 'meta', 'input', 'img']
+		'tr' => ['th', 'td', 'tr'],
 	},
 );
 
