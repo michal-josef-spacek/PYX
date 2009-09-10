@@ -39,8 +39,9 @@ sub new {
 	set_params($self, @params);
 
 	# Check to rules.
-	err "Cannot exist XML normalization rules."
-		if keys %{$self->{'rules'}} == 0;
+	if (! keys %{$self->{'rules'}}) {
+		err 'Cannot exist XML normalization rules.';
+	}
 
 	# PYX::Parser object.
 	$self->{'pyx_parser'} = PYX::Parser->new(
