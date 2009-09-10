@@ -104,9 +104,8 @@ sub _start_tag {
 #------------------------------------------------------------------------------
 # Process start of tag.
 
-	my $pyx_parser = shift;
+	my ($pyx_parser, $tag) = @_;
 	my $out = $pyx_parser->{'output_handler'};
-	my $tag = shift;
 	if (exists $rules->{'*'}) {
 		foreach my $tmp (@{$rules->{'*'}}) {
 			if ($#{$stack} > -1 && lc($stack->[-1]) eq $tmp) {
@@ -131,9 +130,8 @@ sub _end_tag {
 #------------------------------------------------------------------------------
 # Process tag.
 
-	my $pyx_parser = shift;
+	my ($pyx_parser, $tag) = @_;
 	my $out = $pyx_parser->{'output_handler'};
-	my $tag = shift;
 	if (exists $rules->{'*'}) {
 		foreach my $tmp (@{$rules->{'*'}}) {
 			if (lc($tag) ne $tmp && lc($stack->[-1]) eq $tmp) {
