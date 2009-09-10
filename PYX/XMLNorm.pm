@@ -71,6 +71,7 @@ sub parse {
 
 	my ($self, $pyx, $out) = @_;
 	$self->{'pyx_parser'}->parse($pyx, $out);
+	return;
 }
 
 #------------------------------------------------------------------------------
@@ -80,6 +81,7 @@ sub parse_file {
 
 	my ($self, $file) = @_;
 	$self->{'pyx_parser'}->parse_file($file);
+	return;
 }
 
 #------------------------------------------------------------------------------
@@ -89,6 +91,7 @@ sub parse_handler {
 
 	my ($self, $input_file_handler, $out) = @_;
 	$self->{'pyx_parser'}->parse_handler($input_file_handler, $out);
+	return;
 }
 
 #------------------------------------------------------------------------------
@@ -119,6 +122,7 @@ sub _start_tag {
 	}
 	push @{$stack}, $tag;
 	print {$out} $pyx_parser->{'line'}, "\n";
+	return;
 }
 
 #------------------------------------------------------------------------------
@@ -147,6 +151,7 @@ sub _end_tag {
 		pop @{$stack};
 	}
 	print {$out} $pyx_parser->{'line'}, "\n";
+	return;
 }
 
 #------------------------------------------------------------------------------
@@ -172,6 +177,7 @@ sub _final {
 			}
 		}
 	}
+	return;
 }
 
 1;
