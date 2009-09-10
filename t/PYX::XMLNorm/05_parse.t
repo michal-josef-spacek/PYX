@@ -1,7 +1,7 @@
 # Modules.
 use File::Object;
 use PYX::XMLNorm;
-use Test::More 'tests' => 4;
+use Test::More 'tests' => 5;
 
 # Directories.
 my $data_dir = File::Object->new->up->dir('data')->serialize;
@@ -11,11 +11,12 @@ do File::Object->new->up->file('get_stdout.inc')->serialize;
 
 print "Testing: parse() method.\n";
 my $rules = {
-	'tr' => ['td', 'tr'],
-	'td' => ['td'],
-	'table' => ['td', 'tr'],
+	'*' => ['br', 'hr', 'link', 'meta', 'input'],
 	'html' => ['body'],
-	'*' => ['br', 'hr', 'link', 'meta', 'input']
+	'table' => ['tr'],
+	'td' => ['td'],
+	'th' => ['th'],
+	'tr' => ['td', 'th', 'tr'],
 };
 my $obj = PYX::XMLNorm->new(
 	'rules' => $rules,
@@ -91,5 +92,22 @@ $right_ret = <<"END";
 )hr
 )body
 )html
+END
+is($ret, $right_ret);
+
+$ret = get_stdout($obj, "$data_dir/example13.pyx");
+$right_ret = <<"END";
+(td
+(table
+(tr
+(td
+-text1
+)td
+(td
+-text2
+)td
+)tr
+)table
+)td
 END
 is($ret, $right_ret);
