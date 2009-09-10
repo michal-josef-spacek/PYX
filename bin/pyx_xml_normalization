@@ -13,8 +13,7 @@ my $opt = {
 	'h' => 0,
 	'f' => 0,
 };
-getopts('hf', $opt);
-if ($opt->{'h'} || $#ARGV < 0) {
+if (! getopts('hf', $opt) || $opt->{'h'} || @ARGV < 1) {
 	print "Usage: $0 [-f] [filename] [-]\n";
 	print "\t-f\t\tflush stack on end of processing\n";
 	print "\tfilename\tprocess on filename\n";
