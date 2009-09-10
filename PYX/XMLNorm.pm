@@ -161,13 +161,6 @@ sub _final {
 	my $pyx_parser = shift;
 	my $out = $pyx_parser->{'output_handler'};
 	if ($#{$stack} > -1) {
-		if (exists $rules->{'*'}) {
-			foreach my $tmp (@{$rules->{'*'}}) {
-				if (lc($stack->[-1]) eq $tmp) {
-					print {$out} end_tag($tmp), "\n";
-				}
-			}
-		}
 
 		# If set, than flush stack.
 		if ($flush_stack) {
