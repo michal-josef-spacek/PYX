@@ -35,7 +35,10 @@ TODO
     )xml
     Coz je demence :)
 51. Do PYX::Parser dat osetreni open a close.
-52.
+52. Prepsat PYX::Parser tak, aby tam byl podobne jako v XML::Parser parameter
+    pro externi nastaveni objektu. Pak patri prepsat PYX::XMLNorm tak, aby se
+    zrusily globalni parametery.
+53.
 
 Applied
 =======
