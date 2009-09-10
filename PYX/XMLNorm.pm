@@ -44,6 +44,10 @@ sub new {
 	}
 
 	# PYX::Parser object.
+# XXX Patri pridat i data, protoze priklad:
+# (br
+# -data
+# musi skoncit tak, ze -data spusti ukonceni )br.
 	$self->{'pyx_parser'} = PYX::Parser->new(
 		'output_handler' => $self->{'output_handler'},
 		'output_rewrite' => 1,
