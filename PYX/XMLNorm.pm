@@ -109,7 +109,7 @@ sub _start_tag {
 	if (exists $rules->{'*'}) {
 		foreach my $tmp (@{$rules->{'*'}}) {
 			if ($#{$stack} > -1 && lc($stack->[-1]) eq $tmp) {
-				print $out end_tag(pop @{$stack}), "\n";
+				print {$out} end_tag(pop @{$stack}), "\n";
 			}
 		}
 	}
