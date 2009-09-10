@@ -139,6 +139,7 @@ sub _end_tag {
 			}
 		}
 	} 
+# XXX Myslim, ze tenhle blok je spatne.
 	if (exists $rules->{$tag}) {
 		foreach my $tmp (@{$rules->{$tag}}) {
 			if (lc($tag) ne $tmp && lc($stack->[-1]) eq $tmp) {
