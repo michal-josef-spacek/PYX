@@ -25,14 +25,16 @@ if (! getopts('hf', $opt) || $opt->{'h'} || @ARGV < 1) {
 my $normalizer = PYX::XMLNorm->new(
 	'flush_stack' => $opt->{'f'},
 	'rules' => {
-		'*' => ['br', 'hr', 'link', 'meta', 'input', 'img']
+		'*' => ['br', 'hr', 'link', 'meta', 'input', 'img'],
 		'div' => ['p'],
 		'html' => ['body'],
+		'option' => ['option'],
 		'p' => ['p'],
+		'select' => ['option'],
 		'table' => ['tr'],
 		'td' => ['td'],
 		'th' => ['th'],
-		'tr' => ['th', 'td', 'tr'],
+		'tr' => ['td', 'th', 'tr'],
 	},
 );
 
