@@ -1,7 +1,7 @@
 # Modules.
 use File::Object;
 use PYX::XMLNorm;
-use Test::More 'tests' => 7;
+use Test::More 'tests' => 8;
 
 # Directories.
 my $data_dir = File::Object->new->up->dir('data')->serialize;
@@ -139,5 +139,18 @@ $right_ret = <<"END";
 (br
 )br
 -text
+END
+is($ret, $right_ret);
+
+# Test.
+$ret = get_stdout($obj, "$data_dir/example16.pyx");
+$right_ret = <<"END";
+(table
+(tr
+(td
+-text
+)td
+)tr
+)table
 END
 is($ret, $right_ret);

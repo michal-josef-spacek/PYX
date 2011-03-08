@@ -135,18 +135,15 @@ sub _end_tag_simple {
 
 	my $pyx_parser = shift;
 
-	# No work.
-	if (! exists $rules->{'*'}) {
-		return;
-	}
-
 	# Output handler.
 	my $out = $pyx_parser->{'output_handler'};
 
 	# Process.
-	foreach my $tmp (@{$rules->{'*'}}) {
-		if (lc $stack->[-1] eq $tmp) {
-			print {$out} end_tag(pop @{$stack}), "\n";
+	if (exists $rules->{'*'}) {
+		foreach my $tmp (@{$rules->{'*'}}) {
+			if (lc $stack->[-1] eq $tmp) {
+				print {$out} end_tag(pop @{$stack}), "\n";
+			}
 		}
 	}
 
