@@ -5,6 +5,7 @@ TODO
 8. Nejak promyslet PYX::Filter;
 25. Pridat kompatibilitu pro puvodni XML::PYX?.
 30. Udelat skript pro zjisteni cetnosti.
+    pyx_hist.pl?
 31. Udelat konfiguraci, ktera bude platit pro vsechny skripty.
 32. Skript check_xml. Vypise, jestli je to xml. Jestli jde validovat podle dtd 
     a podobne informace.
