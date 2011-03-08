@@ -8,12 +8,13 @@ use warnings;
 use PYX::Stack;
 
 # Arguments.
-if ($#ARGV < 0) {
+if (@ARGV < 1) {
 	print "Usage: $0 [filename] [-]\n";
 	print "\tfilename\tprocess on filename\n";
 	print "\t-\t\tprocess on stdin\n";
 	exit 1;
 }
+my $arg = $ARGV[0];
 
 # PYX::Stack object.
 my $stack = PYX::Stack->new(
@@ -21,10 +22,10 @@ my $stack = PYX::Stack->new(
 );
 
 # Parse from stdin.
-if ($ARGV[0] eq '-') {
+if ($arg eq '-') {
 	$stack->parse_handler(\*STDIN);
 
 # Parse file.
 } else {
-	$stack->parse_file($ARGV[0]);
+	$stack->parse_file($arg);
 }
