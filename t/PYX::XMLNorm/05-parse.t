@@ -1,7 +1,7 @@
 # Modules.
 use File::Object;
 use PYX::XMLNorm;
-use Test::More 'tests' => 5;
+use Test::More 'tests' => 7;
 
 # Directories.
 my $data_dir = File::Object->new->up->dir('data')->serialize;
@@ -121,3 +121,23 @@ $right_ret = <<"END";
 END
 is($ret, $right_ret);
 }
+
+# Test.
+$ret = get_stdout($obj, "$data_dir/example14.pyx");
+$right_ret = <<"END";
+(br
+)br
+-text
+END
+is($ret, $right_ret);
+
+# Test.
+$ret = get_stdout($obj, "$data_dir/example15.pyx");
+$right_ret = <<"END";
+(br
+)br
+(br
+)br
+-text
+END
+is($ret, $right_ret);
