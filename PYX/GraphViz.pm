@@ -64,9 +64,11 @@ sub new {
 
 	# PYX::Parser object.
 	$self->{'pyx_parser'} = PYX::Parser->new(
+		'output_handler' => $self->{'output_handler'},
+
+		# Handlers.
 		'end_tag' => \&_end_tag,
 		'final' => \&_final,
-		'output_handler' => $self->{'output_handler'},
 		'start_tag' => \&_start_tag,
 	);
 

@@ -16,7 +16,7 @@ print "Testing: parse() method.\n";
 my $rules_hr = {
 	'*' => ['br', 'hr', 'link', 'meta', 'input'],
 	'html' => ['body'],
-	'table' => ['tr'],
+	'table' => ['td', 'tr'],
 	'td' => ['td'],
 	'th' => ['th'],
 	'tr' => ['td', 'th', 'tr'],
@@ -46,8 +46,6 @@ END
 is($ret, $right_ret);
 
 # Test.
-SKIP: {
-skip "Bug", 1;
 $ret = get_stdout($obj, "$data_dir/example10.pyx");
 $right_ret = <<"END";
 (table
@@ -70,14 +68,10 @@ $right_ret = <<"END";
 )table
 END
 is($ret, $right_ret);
-}
 
 # Test.
-SKIP: {
-skip "Bug.", 1;
 $ret = get_stdout($obj, "$data_dir/example11.pyx");
 is($ret, $right_ret);
-}
 
 # Test.
 $ret = get_stdout($obj, "$data_dir/example12.pyx");
@@ -109,9 +103,7 @@ is($ret, $right_ret);
 
 # Test.
 SKIP: {
-skip "Bug.", 1;
-
-# Test.
+skip "Bug", 1;
 $ret = get_stdout($obj, "$data_dir/example13.pyx");
 $right_ret = <<"END";
 (td
