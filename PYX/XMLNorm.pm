@@ -111,14 +111,14 @@ sub _start_tag {
 	my $out = $pyx_parser->{'output_handler'};
 	if (exists $rules->{'*'}) {
 		foreach my $tmp (@{$rules->{'*'}}) {
-			if ($#{$stack} > -1 && lc($stack->[-1]) eq $tmp) {
+			if (@{$stack} > 0 && lc($stack->[-1]) eq $tmp) {
 				print {$out} end_tag(pop @{$stack}), "\n";
 			}
 		}
 	}
 	if (exists $rules->{lc($tag)}) {
 		foreach my $tmp (@{$rules->{lc($tag)}}) {
-			if ($#{$stack} > -1 && lc($stack->[-1]) eq $tmp) {
+			if (@{$stack} > 0 && lc($stack->[-1]) eq $tmp) {
 				print {$out} end_tag(pop @{$stack}), "\n";
 			}
 		}
@@ -192,7 +192,7 @@ sub _final {
 
 	my $pyx_parser = shift;
 	my $out = $pyx_parser->{'output_handler'};
-	if ($#{$stack} > -1) {
+	if (@{$stack} > 0) {
 
 		# If set, than flush stack.
 		if ($flush_stack) {
