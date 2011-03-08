@@ -9,6 +9,10 @@ use warnings;
 # Modules.
 use Error::Simple::Multiple qw(err);
 use PYX::Utils qw(set_params);
+use Readonly;
+
+# Constants.
+Readonly::Scalar my $EMPTY_STR => q{};
 
 # Version.
 our $VERSION = 0.02;
@@ -22,15 +26,15 @@ sub new {
 	my $self = bless {}, $class;
 
 	# Parse handlers.
-	$self->{'attribute'} = '';
-	$self->{'comment'} = '';
-	$self->{'data'} = '';
-	$self->{'end_tag'} = '';
-	$self->{'final'} = '';
-	$self->{'init'} = '';
-	$self->{'instruction'} = '';
-	$self->{'start_tag'} = '';
-	$self->{'other'} = '';
+	$self->{'attribute'} = undef;
+	$self->{'comment'} = undef;
+	$self->{'data'} = undef;
+	$self->{'end_tag'} = undef;
+	$self->{'final'} = undef;
+	$self->{'init'} = undef;
+	$self->{'instruction'} = undef;
+	$self->{'start_tag'} = undef;
+	$self->{'other'} = undef;
 
 	# Output rewrite.
 	$self->{'output_rewrite'} = 0;
@@ -42,7 +46,7 @@ sub new {
 	set_params($self, @params);
 
 	# Processing line.
-	$self->{'line'} = '';
+	$self->{'line'} = $EMPTY_STR;
 
 	# Object.
 	return $self;
