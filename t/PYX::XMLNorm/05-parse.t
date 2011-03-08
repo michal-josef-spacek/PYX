@@ -102,8 +102,6 @@ END
 is($ret, $right_ret);
 
 # Test.
-SKIP: {
-skip "Bug", 1;
 $ret = get_stdout($obj, "$data_dir/example13.pyx");
 $right_ret = <<"END";
 (td
@@ -120,7 +118,6 @@ $right_ret = <<"END";
 )td
 END
 is($ret, $right_ret);
-}
 
 # Test.
 $ret = get_stdout($obj, "$data_dir/example14.pyx");
