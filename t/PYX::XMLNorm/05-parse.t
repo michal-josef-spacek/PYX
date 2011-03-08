@@ -9,7 +9,10 @@ my $data_dir = File::Object->new->up->dir('data')->serialize;
 # Include helpers.
 do File::Object->new->up->file('get_stdout.inc')->serialize;
 
+# Debug print.
 print "Testing: parse() method.\n";
+
+# Test.
 my $rules_hr = {
 	'*' => ['br', 'hr', 'link', 'meta', 'input'],
 	'html' => ['body'],
@@ -42,6 +45,7 @@ my $right_ret = <<"END";
 END
 is($ret, $right_ret);
 
+# Test.
 SKIP: {
 skip "Bug", 1;
 $ret = get_stdout($obj, "$data_dir/example10.pyx");
@@ -68,12 +72,14 @@ END
 is($ret, $right_ret);
 }
 
+# Test.
 SKIP: {
 skip "Bug.", 1;
 $ret = get_stdout($obj, "$data_dir/example11.pyx");
 is($ret, $right_ret);
 }
 
+# Test.
 $ret = get_stdout($obj, "$data_dir/example12.pyx");
 $right_ret = <<"END";
 (html
@@ -101,9 +107,11 @@ $right_ret = <<"END";
 END
 is($ret, $right_ret);
 
+# Test.
 SKIP: {
 skip "Bug.", 1;
 
+# Test.
 $ret = get_stdout($obj, "$data_dir/example13.pyx");
 $right_ret = <<"END";
 (td
