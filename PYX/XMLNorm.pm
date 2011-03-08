@@ -44,13 +44,12 @@ sub new {
 	}
 
 	# PYX::Parser object.
-# XXX Patri pridat i data, protoze priklad:
-# (br
-# -data
-# musi skoncit tak, ze -data spusti ukonceni )br.
 	$self->{'pyx_parser'} = PYX::Parser->new(
 		'output_handler' => $self->{'output_handler'},
 		'output_rewrite' => 1,
+
+		# Handlers.
+		'data' => \&_end_tag_simple,
 		'end_tag' => \&_end_tag,
 		'final' => \&_final,
 		'start_tag' => \&_start_tag,
@@ -130,6 +129,34 @@ sub _start_tag {
 }
 
 #------------------------------------------------------------------------------
+sub _end_tag_simple {
+#------------------------------------------------------------------------------
+# Add implicit end_tag.
+
+	my $pyx_parser = shift;
+
+	# No work.
+	if (! exists $rules->{'*'}) {
+		return;
+	}
+
+	# Output handler.
+	my $out = $pyx_parser->{'output_handler'};
+
+	# Process.
+	foreach my $tmp (@{$rules->{'*'}}) {
+		if (lc $stack->[-1] eq $tmp) {
+			print {$out} end_tag(pop @{$stack}), "\n";
+		}
+	}
+
+	# Print line.
+	print {$out} $pyx_parser->{'line'}, "\n";
+
+	return;
+}
+
+#------------------------------------------------------------------------------
 sub _end_tag {
 #------------------------------------------------------------------------------
 # Process tag.
@@ -142,7 +169,7 @@ sub _end_tag {
 				print {$out} end_tag(pop @{$stack}), "\n";
 			}
 		}
-	} 
+	}
 # XXX Myslim, ze tenhle blok je spatne.
 	if (exists $rules->{$tag}) {
 		foreach my $tmp (@{$rules->{$tag}}) {
