@@ -10,7 +10,7 @@ my $data_dir = File::Object->new->up->dir('data')->serialize;
 do File::Object->new->up->file('get_stdout.inc')->serialize;
 
 print "Testing: parse() method.\n";
-my $rules = {
+my $rules_hr = {
 	'*' => ['br', 'hr', 'link', 'meta', 'input'],
 	'html' => ['body'],
 	'table' => ['tr'],
@@ -19,7 +19,7 @@ my $rules = {
 	'tr' => ['td', 'th', 'tr'],
 };
 my $obj = PYX::XMLNorm->new(
-	'rules' => $rules,
+	'rules' => $rules_hr,
 );
 my $ret = get_stdout($obj, "$data_dir/example9.pyx");
 my $right_ret = <<"END";
