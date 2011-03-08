@@ -9,9 +9,10 @@ use PYX::Checker;
 
 # Open file.
 my $file_handler = *STDIN;
-if ($ARGV[0]) {
-	if (! open(INF, "<$ARGV[0]")) {
-		die "Cannot open file '$ARGV[0]'.";
+my $file = $ARGV[0];
+if ($file) {
+	if (! open(INF, '<', $file)) {
+		die "Cannot open file '$file'.";
 	}
 	$file_handler = *INF;
 }
@@ -28,7 +29,6 @@ while (my $line = <$file_handler>) {
 }
 
 # Close file.
-if ($ARGV[0]) {
+if ($file) {
 	close(INF);
 }
-
