@@ -8,24 +8,24 @@ use warnings;
 use PYX::Parser;
 
 # Open file.
-my $file_handler = *STDIN;
-if ($ARGV[0]) {
-	if (! open(INF, "<$ARGV[0]")) {
-		die "Cannot open file '$ARGV[0]'.";
+my $file_handler = \*STDIN;
+my $file = $ARGV[0];
+if ($file) {
+	if (! open(INF, '<', $file)) {
+		die "Cannot open file '$file'.";
 	}
-	$file_handler = *INF;
+	$file_handler = \*INF;
 }
 
 # PYX::Parser object.
 my $parser = PYX::Parser->new(
-	'input_file_handler' => $file_handler,
 	'start_tag' => \&start_tag,
 	'end_tag' => \&end_tag,
 );
-$parser->parse;
+$parser->parse_handler($file_handler);
 
 # Close file.
-if ($ARGV[0]) {
+if ($file) {
 	close(INF);
 }
 
@@ -34,7 +34,7 @@ sub start_tag {
 #------------------------------------------------------------------------------
 # Start tag handler.
 
-	my $tag = shift;
+	my ($self, $tag) = @_;
 	print "Start of tag '$tag'.\n";
 }
 
@@ -43,6 +43,6 @@ sub end_tag {
 #------------------------------------------------------------------------------
 # End tag handler.
 
-	my $tag = shift;
+	my ($self, $tag) = @_;
 	print "End of tag '$tag'.\n";
 }
