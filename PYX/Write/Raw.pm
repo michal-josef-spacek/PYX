@@ -1,6 +1,4 @@
-#------------------------------------------------------------------------------
 package PYX::Write::Raw;
-#------------------------------------------------------------------------------
 
 # Pragmas.
 use strict;
@@ -17,11 +15,8 @@ use vars qw(@tag $tag_open);
 # Version.
 our $VERSION = 0.01;
 
-#------------------------------------------------------------------------------
-sub new {
-#------------------------------------------------------------------------------
 # Constructor.
-
+sub new {
 	my ($class, @params) = @_;
 	my $self = bless {}, $class;
 
@@ -53,45 +48,29 @@ sub new {
 	return $self;
 }
 
-#------------------------------------------------------------------------------
-sub parse {
-#------------------------------------------------------------------------------
 # Parse pyx text or array of pyx text.
-
+sub parse {
 	my ($self, $pyx, $out) = @_;
 	$self->{'pyx_parser'}->parse($pyx, $out);
 	return;
 }
 
-#------------------------------------------------------------------------------
-sub parse_file {
-#------------------------------------------------------------------------------
 # Parse file with pyx text.
-
+sub parse_file {
 	my ($self, $file) = @_;
 	$self->{'pyx_parser'}->parse_file($file);
 	return;
 }
 
-#------------------------------------------------------------------------------
-sub parse_handler {
-#------------------------------------------------------------------------------
 # Parse from handler.
-
+sub parse_handler {
 	my ($self, $input_file_handler, $out) = @_;
 	$self->{'pyx_parser'}->parse_handler($input_file_handler, $out);
 	return;
 }
 
-#------------------------------------------------------------------------------
-# Internal functions.
-#------------------------------------------------------------------------------
-
-#------------------------------------------------------------------------------
-sub _start_tag {
-#------------------------------------------------------------------------------
 # Process start of tag.
-
+sub _start_tag {
 	my ($pyx_parser_obj, $tag) = @_;
 	my $out = $pyx_parser_obj->{'output_handler'};
 	_end_of_start_tag($pyx_parser_obj);
@@ -100,11 +79,8 @@ sub _start_tag {
 	return;
 }
 
-#------------------------------------------------------------------------------
-sub _end_tag {
-#------------------------------------------------------------------------------
 # Process end of tag.
-
+sub _end_tag {
 	my ($pyx_parser_obj, $tag) = @_;
 	my $out = $pyx_parser_obj->{'output_handler'};
 	_end_of_start_tag($pyx_parser_obj);
@@ -112,11 +88,8 @@ sub _end_tag {
 	return;
 }
 
-#------------------------------------------------------------------------------
-sub _data {
-#------------------------------------------------------------------------------
 # Process data.
-
+sub _data {
 	my ($pyx_parser_obj, $decoded_data) = @_;
 	my $out = $pyx_parser_obj->{'output_handler'};
 	my $data = encode($decoded_data);
@@ -125,22 +98,16 @@ sub _data {
 	return;
 }
 
-#------------------------------------------------------------------------------
-sub _attribute {
-#------------------------------------------------------------------------------
 # Process attribute.
-
+sub _attribute {
 	my ($pyx_parser_obj, $att, $attval) = @_;
 	my $out = $pyx_parser_obj->{'output_handler'};
 	print {$out} " $att=\"", entity_encode($attval), '"';
 	return;
 }
 
-#------------------------------------------------------------------------------
-sub _instruction {
-#------------------------------------------------------------------------------
 # Process instruction.
-
+sub _instruction {
 	my ($pyx_parser_obj, $target, $data) = @_;
 	my $out = $pyx_parser_obj->{'output_handler'};
 	_end_of_start_tag($pyx_parser_obj);
@@ -148,11 +115,8 @@ sub _instruction {
 	return;
 }
 
-#------------------------------------------------------------------------------
-sub _end_of_start_tag {
-#------------------------------------------------------------------------------
 # Ends start tag.
-
+sub _end_of_start_tag {
 	my $pyx_parser_obj = shift;
 	my $out = $pyx_parser_obj->{'output_handler'};
 	if (${$tag_open}) {
@@ -162,11 +126,8 @@ sub _end_of_start_tag {
 	return;
 }
 
-#------------------------------------------------------------------------------
-sub _comment {
-#------------------------------------------------------------------------------
 # Process comment.
-
+sub _comment {
 	my ($pyx_parser_obj, $comment) = @_;
 	my $out = $pyx_parser_obj->{'output_handler'};
 	print {$out} '<!--'.encode($comment).'-->';
