@@ -4,8 +4,8 @@
 \.old$
 TODO
 PYX/Filter.pm
-concept
-bin/pyx_filter
+CONCEPT
+Bin/pyx_filter
 MANIFEST.SKIP
 \bblib\b
 pm_to_blib
