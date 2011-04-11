@@ -5,10 +5,11 @@ use strict;
 use warnings;
 
 # Modules.
+use Class::Utils qw(set_params);
 use Error::Simple::Multiple qw(err);
 use PYX qw(char comment);
 use PYX::Parser;
-use PYX::Utils qw(encode decode set_params);
+use PYX::Utils qw(encode decode);
 
 # Version.
 our $VERSION = 0.01;
@@ -143,7 +144,7 @@ TODO
  Mine:
    TODO
 
- From PYX::Utils::set_params():
+ From Class::Utils::set_params():
    Unknown parameter '%s'.
 
 =head1 EXAMPLE
@@ -162,6 +163,7 @@ TODO
 
 =head1 DEPENDENCIES
 
+L<Class::Utils(3pm)>,
 L<Error::Simple::Multiple(3pm)>,
 L<PYX::Utils(3pm)>.
 

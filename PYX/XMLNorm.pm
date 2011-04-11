@@ -5,10 +5,10 @@ use strict;
 use warnings;
 
 # Modules.
+use Class::Utils qw(set_params);
 use Error::Simple::Multiple qw(err);
 use PYX qw(end_tag);
 use PYX::Parser;
-use PYX::Utils qw(set_params);
 
 # Version.
 our $VERSION = 0.02;
@@ -251,10 +251,10 @@ PYX::XMLNorm - TODO
 
 =head1 DEPENDENCIES
 
+L<Class::Utils(3pm)>,
 L<Error::Simple::Multiple(3pm)>,
 L<PYX(3pm)>,
-L<PYX::Parser(3pm)>,
-L<PYX::Utils(3pm)>.
+L<PYX::Parser(3pm)>.
 
 =head1 SEE ALSO
 
