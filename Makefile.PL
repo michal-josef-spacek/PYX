@@ -7,7 +7,7 @@ use ExtUtils::MakeMaker;
 
 # Definition.
 WriteMakefile(
-	'AUTHOR' => 'Michal Špaček',
+	'AUTHOR' => 'Michal Špaček <skim@cpan.org>',
 	'EXE_FILES' => [
 		'bin/pyx2xml_tags',
 		'bin/pyx2xml_tags_without_indent',
