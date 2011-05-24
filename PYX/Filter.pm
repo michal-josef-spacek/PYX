@@ -20,7 +20,7 @@ use warnings;
 
 # Modules.
 use Class::Utils qw(set_params);
-use Error::Simple::Multiple qw(err);
+use Error::Pure qw(err);
 
 # Version.
 our $VERSION = 0.01;
@@ -234,7 +234,7 @@ TODO
 =head1 DEPENDENCIES
 
 L<Class::Utils(3pm)>,
-L<Error::Simple::Multiple(3pm)>.
+L<Error::Pure(3pm)>.
 
 =head1 AUTHOR
 

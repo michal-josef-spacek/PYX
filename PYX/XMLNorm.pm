@@ -6,7 +6,7 @@ use warnings;
 
 # Modules.
 use Class::Utils qw(set_params);
-use Error::Simple::Multiple qw(err);
+use Error::Pure qw(err);
 use PYX qw(end_tag);
 use PYX::Parser;
 
@@ -252,7 +252,7 @@ PYX::XMLNorm - TODO
 =head1 DEPENDENCIES
 
 L<Class::Utils(3pm)>,
-L<Error::Simple::Multiple(3pm)>,
+L<Error::Pure(3pm)>,
 L<PYX(3pm)>,
 L<PYX::Parser(3pm)>.
 
