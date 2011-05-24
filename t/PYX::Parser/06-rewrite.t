@@ -9,7 +9,6 @@ my $data_dir = File::Object->new->up->dir('data')->serialize;
 # Include helpers.
 do File::Object->new->up->file('get_stdout.inc')->serialize;
 
-print "Testing: parse() method with output_rewrite.\n";
 my $obj = PYX::Parser->new(
 	'output_rewrite' => 1,
 );

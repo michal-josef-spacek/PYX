@@ -3,8 +3,6 @@ use File::Object;
 use PYX::Parser;
 use Test::More 'tests' => 7;
 
-print "Testing: parse_file() method.\n";
-
 # PYX::Parser object.
 my $obj = PYX::Parser->new(
 	'attribute' => \&attribute,
