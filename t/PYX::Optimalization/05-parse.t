@@ -9,7 +9,6 @@ my $data_dir = File::Object->new->up->dir('data')->serialize;
 # Include helpers.
 do File::Object->new->up->file('get_stdout.inc')->serialize;
 
-print "Testing: parse() method.\n";
 my $obj = PYX::Optimalization->new;
 my $ret = get_stdout($obj, "$data_dir/example1.pyx");
 my $right_ret = <<"END";
