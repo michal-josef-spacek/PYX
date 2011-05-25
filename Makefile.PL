@@ -9,7 +9,6 @@ use ExtUtils::MakeMaker;
 WriteMakefile(
 	'AUTHOR' => 'Michal Špaček <skim@cpan.org>',
 	'EXE_FILES' => [
-		'bin/pyx2xml_raw',
 		'bin/pyx_html_simple',
 		'bin/pyx_attr_sort',
 		'bin/pyx2tags_code',
@@ -40,7 +39,6 @@ WriteMakefile(
 			't/PYX::Parser/*.t '.
 			't/PYX::Sort/*.t '.
 			't/PYX::Stack/*.t '.
-			't/PYX::Write::Raw/*.t '.
 			't/PYX::Write::Tags2::Code/*.t '.
 			't/PYX::Write::Tags::Code/*.t '.
 			't/PYX::XMLNorm/*.t',
