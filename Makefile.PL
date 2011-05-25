@@ -42,7 +42,6 @@ WriteMakefile(
 			't/PYX::Sort/*.t '.
 			't/PYX::Stack/*.t '.
 			't/PYX::Write::Raw/*.t '.
-			't/PYX::Write::Tags2/*.t '.
 			't/PYX::Write::Tags2::Code/*.t '.
 			't/PYX::Write::Tags::Code/*.t '.
 			't/PYX::XMLNorm/*.t',

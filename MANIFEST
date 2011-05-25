@@ -22,7 +22,6 @@ PYX/Sort.pm
 PYX/Stack.pm
 PYX/Write/Raw.pm
 PYX/Write/Tags/Code.pm
-PYX/Write/Tags2.pm
 PYX/Write/Tags2/Code.pm
 PYX/XMLNorm.pm
 pyx_examples/ex1.pyx
@@ -119,14 +118,6 @@ t/PYX::Write::Raw/06-end_tag.t
 t/PYX::Write::Raw/07-instruction.t
 t/PYX::Write::Raw/08-comment.t
 t/PYX::Write::Raw/09-tag.t
-t/PYX::Write::Tags2/00-use.t
-t/PYX::Write::Tags2/01-version.t
-t/PYX::Write::Tags2/02-pod_coverage.t
-t/PYX::Write::Tags2/03-pod.t
-t/PYX::Write::Tags2/04-char.t
-t/PYX::Write::Tags2/05-instruction.t
-t/PYX::Write::Tags2/06-comment.t
-t/PYX::Write::Tags2/07-tag.t
 t/PYX::Write::Tags2::Code/00-use.t
 t/PYX::Write::Tags2::Code/01-version.t
 t/PYX::Write::Tags2::Code/02-pod_coverage.t
