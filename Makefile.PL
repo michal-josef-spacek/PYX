@@ -11,8 +11,6 @@ WriteMakefile(
 	'EXE_FILES' => [
 		'bin/pyx_html_simple',
 		'bin/pyx_attr_sort',
-		'bin/pyx2tags_code',
-		'bin/pyx2tags2_code',
 		'bin/pyx_stack',
 		'bin/pyx_optimalization',
 		'bin/pyx_xml_normalization',
@@ -36,8 +34,6 @@ WriteMakefile(
 			't/PYX::Parser/*.t '.
 			't/PYX::Sort/*.t '.
 			't/PYX::Stack/*.t '.
-			't/PYX::Write::Tags2::Code/*.t '.
-			't/PYX::Write::Tags::Code/*.t '.
 			't/PYX::XMLNorm/*.t',
 	},
 );

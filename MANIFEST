@@ -1,4 +1,3 @@
-bin/pyx2tags2_code
 bin/pyx_attr_sort
 bin/pyx_html_simple
 bin/pyx_optimalization
@@ -15,7 +14,6 @@ PYX/Optimalization.pm
 PYX/Parser.pm
 PYX/Sort.pm
 PYX/Stack.pm
-PYX/Write/Tags2/Code.pm
 PYX/XMLNorm.pm
 pyx_examples/ex1.pyx
 pyx_examples/ex2.pyx
@@ -97,14 +95,6 @@ t/PYX::Stack/02-pod_coverage.t
 t/PYX::Stack/03-pod.t
 t/PYX::Stack/04-constructor.t
 t/PYX::Stack/05-parse.t
-t/PYX::Write::Tags2::Code/00-use.t
-t/PYX::Write::Tags2::Code/01-version.t
-t/PYX::Write::Tags2::Code/02-pod_coverage.t
-t/PYX::Write::Tags2::Code/03-pod.t
-t/PYX::Write::Tags2::Code/04-char.t
-t/PYX::Write::Tags2::Code/05-instruction.t
-t/PYX::Write::Tags2::Code/06-comment.t
-t/PYX::Write::Tags2::Code/07-tag.t
 t/PYX::XMLNorm/00-use.t
 t/PYX::XMLNorm/01-version.t
 t/PYX::XMLNorm/02-pod_coverage.t
