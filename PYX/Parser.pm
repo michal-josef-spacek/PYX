@@ -292,7 +292,7 @@ TODO
 
 =head1 AUTHOR
 
-Michal Špaček L<skim@skim.cz>.
+Michal Špaček L<skim@cpan.org>.
 
 =head1 LICENSE AND COPYRIGHT
 
