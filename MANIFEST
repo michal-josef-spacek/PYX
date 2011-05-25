@@ -1,8 +1,6 @@
 bin/pyx2graphviz
 bin/pyx2tags2_code
 bin/pyx2tags_code
-bin/pyx2xml_raw
-bin/pyx2xml_tags2
 bin/pyx_attr_sort
 bin/pyx_html_simple
 bin/pyx_optimalization
@@ -20,7 +18,6 @@ PYX/Optimalization.pm
 PYX/Parser.pm
 PYX/Sort.pm
 PYX/Stack.pm
-PYX/Write/Raw.pm
 PYX/Write/Tags/Code.pm
 PYX/Write/Tags2/Code.pm
 PYX/XMLNorm.pm
@@ -108,16 +105,6 @@ t/PYX::Stack/02-pod_coverage.t
 t/PYX::Stack/03-pod.t
 t/PYX::Stack/04-constructor.t
 t/PYX::Stack/05-parse.t
-t/PYX::Write::Raw/00-use.t
-t/PYX::Write::Raw/01-version.t
-t/PYX::Write::Raw/02-pod_coverage.t
-t/PYX::Write::Raw/03-pod.t
-t/PYX::Write::Raw/04-char.t
-t/PYX::Write::Raw/05-start_tag.t
-t/PYX::Write::Raw/06-end_tag.t
-t/PYX::Write::Raw/07-instruction.t
-t/PYX::Write::Raw/08-comment.t
-t/PYX::Write::Raw/09-tag.t
 t/PYX::Write::Tags2::Code/00-use.t
 t/PYX::Write::Tags2::Code/01-version.t
 t/PYX::Write::Tags2::Code/02-pod_coverage.t
