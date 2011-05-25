@@ -9,8 +9,6 @@ use ExtUtils::MakeMaker;
 WriteMakefile(
 	'AUTHOR' => 'Michal Špaček <skim@cpan.org>',
 	'EXE_FILES' => [
-		'bin/pyx2xml_tags',
-		'bin/pyx2xml_tags_without_indent',
 		'bin/pyx2xml_tags2',
 		'bin/pyx2xml_raw',
 		'bin/pyx_html_simple',
@@ -44,7 +42,6 @@ WriteMakefile(
 			't/PYX::Sort/*.t '.
 			't/PYX::Stack/*.t '.
 			't/PYX::Write::Raw/*.t '.
-			't/PYX::Write::Tags/*.t '.
 			't/PYX::Write::Tags2/*.t '.
 			't/PYX::Write::Tags2::Code/*.t '.
 			't/PYX::Write::Tags::Code/*.t '.
