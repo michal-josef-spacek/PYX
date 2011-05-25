@@ -9,7 +9,6 @@ use ExtUtils::MakeMaker;
 WriteMakefile(
 	'AUTHOR' => 'Michal Špaček <skim@cpan.org>',
 	'EXE_FILES' => [
-		'bin/pyx2xml_tags2',
 		'bin/pyx2xml_raw',
 		'bin/pyx_html_simple',
 		'bin/pyx_attr_sort',
