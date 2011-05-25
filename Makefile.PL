@@ -16,7 +16,6 @@ WriteMakefile(
 		'bin/pyx_stack',
 		'bin/pyx_optimalization',
 		'bin/pyx_xml_normalization',
-		'bin/pyx2graphviz',
 	],
 	'NAME' => 'PYX',
 	'PREREQ_PM' => {
@@ -24,7 +23,6 @@ WriteMakefile(
 		'Error::Pure' => 0.01,
 		'Exporter' => 0,
 		'File::Object' => 0,
-		'GraphViz' => 0,
 		'PYX::Utils' => 0.01,
 		'Readonly' => 0,
 	},
@@ -34,7 +32,6 @@ WriteMakefile(
 			't/PYX::Checker/*.t '.
 			't/PYX::Filter/*.t '.
 			't/PYX::Get/*.t '.
-			't/PYX::GraphViz/*.t '.
 			't/PYX::Optimalization/*.t '.
 			't/PYX::Parser/*.t '.
 			't/PYX::Sort/*.t '.

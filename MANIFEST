@@ -1,4 +1,3 @@
-bin/pyx2graphviz
 bin/pyx2tags2_code
 bin/pyx2tags_code
 bin/pyx_attr_sort
@@ -13,7 +12,6 @@ MANIFEST			This list of files
 PYX.pm
 PYX/Checker.pm
 PYX/Get.pm
-PYX/GraphViz.pm
 PYX/Optimalization.pm
 PYX/Parser.pm
 PYX/Sort.pm
@@ -76,10 +74,6 @@ t/PYX::Get/00-use.t
 t/PYX::Get/01-version.t
 t/PYX::Get/02-pod_coverage.t
 t/PYX::Get/03-pod.t
-t/PYX::GraphViz/00-use.t
-t/PYX::GraphViz/01-version.t
-t/PYX::GraphViz/02-pod_coverage.t
-t/PYX::GraphViz/03-pod.t
 t/PYX::Optimalization/00-use.t
 t/PYX::Optimalization/01-version.t
 t/PYX::Optimalization/02-pod_coverage.t
