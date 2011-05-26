@@ -21,9 +21,6 @@ my $obj = PYX::Parser->new(
 # Directories.
 my $data_dir = File::Object->new->up->dir('data');
 
-# Include helpers.
-do File::Object->new->up->file('get_stdout.inc')->s;
-
 # Parse.
 $obj->parse_file($data_dir->file('parse.pyx')->s);
 
