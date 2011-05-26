@@ -62,10 +62,6 @@ t/PYX::Checker/00-use.t
 t/PYX::Checker/01-version.t
 t/PYX::Checker/02-pod_coverage.t
 t/PYX::Checker/03-pod.t
-t/PYX::Filter/00-use.t
-t/PYX::Filter/01-version.t
-t/PYX::Filter/02-pod_coverage.t
-t/PYX::Filter/03-pod.t
 t/PYX::Get/00-use.t
 t/PYX::Get/01-version.t
 t/PYX::Get/02-pod_coverage.t
