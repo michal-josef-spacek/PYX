@@ -15,8 +15,6 @@ WriteMakefile(
 	'PREREQ_PM' => {
 		'Class::Utils' => 0.01,
 		'Error::Pure' => 0.01,
-		'Exporter' => 0,
-		'File::Object' => 0,
 		'PYX::Utils' => 0.01,
 		'Readonly' => 0,
 	},
