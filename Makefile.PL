@@ -12,7 +12,6 @@ WriteMakefile(
 		'bin/pyx_html_simple',
 		'bin/pyx_attr_sort',
 		'bin/pyx_stack',
-		'bin/pyx_optimalization',
 	],
 	'NAME' => 'PYX',
 	'PREREQ_PM' => {
@@ -27,7 +26,6 @@ WriteMakefile(
 	'test' => {
 		'TESTS' => 't/PYX/*.t '.
 			't/PYX::Get/*.t '.
-			't/PYX::Optimalization/*.t '.
 			't/PYX::Parser/*.t '.
 			't/PYX::Sort/*.t '.
 			't/PYX::Stack/*.t',
