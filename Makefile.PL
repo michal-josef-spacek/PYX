@@ -13,7 +13,6 @@ WriteMakefile(
 		'bin/pyx_attr_sort',
 		'bin/pyx_stack',
 		'bin/pyx_optimalization',
-		'bin/pyx_xml_normalization',
 	],
 	'NAME' => 'PYX',
 	'PREREQ_PM' => {
@@ -31,7 +30,6 @@ WriteMakefile(
 			't/PYX::Optimalization/*.t '.
 			't/PYX::Parser/*.t '.
 			't/PYX::Sort/*.t '.
-			't/PYX::Stack/*.t '.
-			't/PYX::XMLNorm/*.t',
+			't/PYX::Stack/*.t',
 	},
 );
