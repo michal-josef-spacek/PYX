@@ -4,14 +4,14 @@ use PYX::Sort;
 use Test::More 'tests' => 2;
 
 # Directories.
-my $data_dir = File::Object->new->up->dir('data')->serialize;
+my $data_dir = File::Object->new->up->dir('data');
 
 # Include helpers.
-do File::Object->new->up->file('get_stdout.inc')->serialize;
+do File::Object->new->up->file('get_stdout.inc')->s;
 
 print "Testing: parse() method.\n";
 my $obj = PYX::Sort->new;
-my $ret = get_stdout($obj, "$data_dir/example6.pyx");
+my $ret = get_stdout($obj, $data_dir->file('example6.pyx')->s);
 my $right_ret = <<"END";
 (tag
 Aattr1="value"
@@ -22,5 +22,5 @@ Aattr3="value"
 END
 is($ret, $right_ret);
 
-$ret = get_stdout($obj, "$data_dir/example7.pyx");
+$ret = get_stdout($obj, $data_dir->file('example7.pyx')->s);
 is($ret, $right_ret);

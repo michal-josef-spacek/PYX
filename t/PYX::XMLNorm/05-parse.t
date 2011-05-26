@@ -4,10 +4,10 @@ use PYX::XMLNorm;
 use Test::More 'tests' => 8;
 
 # Directories.
-my $data_dir = File::Object->new->up->dir('data')->serialize;
+my $data_dir = File::Object->new->up->dir('data');
 
 # Include helpers.
-do File::Object->new->up->file('get_stdout.inc')->serialize;
+do File::Object->new->up->file('get_stdout.inc')->s;
 
 # Debug print.
 print "Testing: parse() method.\n";
@@ -24,7 +24,7 @@ my $rules_hr = {
 my $obj = PYX::XMLNorm->new(
 	'rules' => $rules_hr,
 );
-my $ret = get_stdout($obj, "$data_dir/example9.pyx");
+my $ret = get_stdout($obj, $data_dir->file('example9.pyx')->s);
 my $right_ret = <<"END";
 (html
 (head
@@ -46,7 +46,7 @@ END
 is($ret, $right_ret);
 
 # Test.
-$ret = get_stdout($obj, "$data_dir/example10.pyx");
+$ret = get_stdout($obj, $data_dir->file('example10.pyx')->s);
 $right_ret = <<"END";
 (table
 (tr
@@ -70,11 +70,11 @@ END
 is($ret, $right_ret);
 
 # Test.
-$ret = get_stdout($obj, "$data_dir/example11.pyx");
+$ret = get_stdout($obj, $data_dir->file('example11.pyx')->s);
 is($ret, $right_ret);
 
 # Test.
-$ret = get_stdout($obj, "$data_dir/example12.pyx");
+$ret = get_stdout($obj, $data_dir->file('example12.pyx')->s);
 $right_ret = <<"END";
 (html
 (head
@@ -102,7 +102,7 @@ END
 is($ret, $right_ret);
 
 # Test.
-$ret = get_stdout($obj, "$data_dir/example13.pyx");
+$ret = get_stdout($obj, $data_dir->file('example13.pyx')->s);
 $right_ret = <<"END";
 (td
 (table
@@ -120,7 +120,7 @@ END
 is($ret, $right_ret);
 
 # Test.
-$ret = get_stdout($obj, "$data_dir/example14.pyx");
+$ret = get_stdout($obj, $data_dir->file('example14.pyx')->s);
 $right_ret = <<"END";
 (br
 )br
@@ -129,7 +129,7 @@ END
 is($ret, $right_ret);
 
 # Test.
-$ret = get_stdout($obj, "$data_dir/example15.pyx");
+$ret = get_stdout($obj, $data_dir->file('example15.pyx')->s);
 $right_ret = <<"END";
 (br
 )br
@@ -140,7 +140,7 @@ END
 is($ret, $right_ret);
 
 # Test.
-$ret = get_stdout($obj, "$data_dir/example16.pyx");
+$ret = get_stdout($obj, $data_dir->file('example16.pyx')->s);
 $right_ret = <<"END";
 (table
 (tr
