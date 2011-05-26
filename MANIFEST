@@ -17,9 +17,6 @@ t/data/comment1.pyx
 t/data/comment2.pyx
 t/data/end_tag1.pyx
 t/data/example5.pyx
-t/data/example6.pyx
-t/data/example7.pyx
-t/data/example8.pyx
 t/data/instruction1.pyx
 t/data/instruction2.pyx
 t/data/parse.pyx
