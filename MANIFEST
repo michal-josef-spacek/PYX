@@ -27,7 +27,6 @@ t/data/tag1.pyx
 t/data/tag2.pyx
 t/data/tag3.pyx
 t/data/tag4.pyx
-t/get_stdout.inc
 t/PYX/00-use.t
 t/PYX/01-version.t
 t/PYX/02-pod_coverage.t
