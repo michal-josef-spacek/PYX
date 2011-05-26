@@ -1,3 +1,7 @@
+# Pragmas.
+use strict;
+use warnings;
+
 # Modules.
 use PYX qw(start_tag);
 use Test::More 'tests' => 5;
