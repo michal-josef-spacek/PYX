@@ -3,12 +3,10 @@ bin/pyx_html_simple
 bin/pyx_optimalization
 bin/pyx_stack
 bin/pyx_xml_normalization
-examples/pyx_checker
 examples/pyx_parser
 Makefile.PL
 MANIFEST			This list of files
 PYX.pm
-PYX/Checker.pm
 PYX/Get.pm
 PYX/Optimalization.pm
 PYX/Parser.pm
@@ -58,10 +56,6 @@ t/PYX/05-start_tag.t
 t/PYX/06-end_tag.t
 t/PYX/07-instruction.t
 t/PYX/08-comment.t
-t/PYX::Checker/00-use.t
-t/PYX::Checker/01-version.t
-t/PYX::Checker/02-pod_coverage.t
-t/PYX::Checker/03-pod.t
 t/PYX::Get/00-use.t
 t/PYX::Get/01-version.t
 t/PYX::Get/02-pod_coverage.t

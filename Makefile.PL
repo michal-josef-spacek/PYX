@@ -27,7 +27,6 @@ WriteMakefile(
 	'VERSION' => '0.04',
 	'test' => {
 		'TESTS' => 't/PYX/*.t '.
-			't/PYX::Checker/*.t '.
 			't/PYX::Get/*.t '.
 			't/PYX::Optimalization/*.t '.
 			't/PYX::Parser/*.t '.
