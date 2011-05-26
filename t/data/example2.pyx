@@ -1,6 +1,0 @@
--data
--   data
--data   
--\ndata
--data\n
--   \n   data   \n   

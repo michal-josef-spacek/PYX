@@ -21,10 +21,6 @@ t/data/char2.pyx
 t/data/comment1.pyx
 t/data/comment2.pyx
 t/data/end_tag1.pyx
-t/data/example1.pyx
-t/data/example2.pyx
-t/data/example3.pyx
-t/data/example4.pyx
 t/data/example5.pyx
 t/data/example6.pyx
 t/data/example7.pyx
