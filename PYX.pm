@@ -14,7 +14,7 @@ Readonly::Array our @EXPORT_OK => qw(char comment end_tag start_tag
 	instruction attribute);
 
 # Version.
-our $VERSION = 0.04;
+our $VERSION = 0.01;
 
 # Process char between tags.
 sub char {
@@ -150,6 +150,6 @@ BSD license.
 
 =head1 VERSION
 
-0.04
+0.01
 
 =cut

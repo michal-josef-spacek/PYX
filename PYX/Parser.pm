@@ -13,7 +13,7 @@ use Readonly;
 Readonly::Scalar my $EMPTY_STR => q{};
 
 # Version.
-our $VERSION = 0.02;
+our $VERSION = 0.01;
 
 # Constructor.
 sub new {
@@ -300,6 +300,6 @@ BSD license.
 
 =head1 VERSION
 
-0.02
+0.01
 
 =cut

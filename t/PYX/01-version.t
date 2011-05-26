@@ -7,4 +7,4 @@ use PYX;
 use Test::More 'tests' => 1;
 
 # Test.
-is($PYX::VERSION, 0.04, 'Version.');
+is($PYX::VERSION, 0.01, 'Version.');
