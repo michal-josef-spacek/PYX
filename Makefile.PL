@@ -11,7 +11,6 @@ WriteMakefile(
 	'EXE_FILES' => [
 		'bin/pyx_html_simple',
 		'bin/pyx_attr_sort',
-		'bin/pyx_stack',
 	],
 	'NAME' => 'PYX',
 	'PREREQ_PM' => {
@@ -26,7 +25,6 @@ WriteMakefile(
 	'test' => {
 		'TESTS' => 't/PYX/*.t '.
 			't/PYX::Parser/*.t '.
-			't/PYX::Sort/*.t '.
-			't/PYX::Stack/*.t',
+			't/PYX::Sort/*.t',
 	},
 );
