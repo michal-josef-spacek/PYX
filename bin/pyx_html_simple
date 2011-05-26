@@ -46,9 +46,13 @@ sub _start_tag {
 	my $obj = shift;
 	my $tag = shift;
 	_single();
-	print "push: " if $debug;	
+	if ($debug) {
+		print 'push: ';	
+	}
 	push @stack, $tag;
-	print "$tag\n" if $debug;
+	if ($debug) {
+		print "$tag\n";
+	}
 	print $obj->{'line'}, "\n";
 }
 
@@ -56,9 +60,7 @@ sub _start_tag {
 sub _end_tag {
 	my $obj = shift;
 	_single();
-	print "pop: " if $debug;
-	my $x = pop @stack;
-	print "$x\n" if $debug;
+	_pop_stack();
 	print $obj->{'line'}, "\n";
 }
 
@@ -72,10 +74,19 @@ sub _data {
 # Process end of single.
 sub _single {
 	my $tag = $stack[-1];
-	if ($tag && grep(/^$tag$/, @tags)) {
+	if ($tag && grep(m/^$tag$/ms, @tags)) {
 		print ')'.$tag."\n";
-		print "pop: " if $debug;
-		my $x = pop @stack;
-		print "$x\n" if $debug;
+		_pop_stack();
 	}
+}
+
+sub _pop_stack {
+	if ($debug) {
+		print 'pop: ';
+	}
+	my $x = pop @stack;
+	if ($debug) {
+		print "$x\n";
+	}
+	return;
 }
