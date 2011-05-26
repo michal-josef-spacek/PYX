@@ -8,10 +8,10 @@ use warnings;
 use PYX::Parser;
 
 # Tags, that are simple.
-our @tags = ('meta', 'link', 'br', 'hr', 'img', 'input', 'option');
+our @TAGS = ('meta', 'link', 'br', 'hr', 'img', 'input', 'option');
 
 # Debug.
-our $debug = 0;
+our $DEBUG = 0;
 
 # Stack.
 our @stack;
@@ -46,11 +46,11 @@ sub _start_tag {
 	my $obj = shift;
 	my $tag = shift;
 	_single();
-	if ($debug) {
+	if ($DEBUG) {
 		print 'push: ';	
 	}
 	push @stack, $tag;
-	if ($debug) {
+	if ($DEBUG) {
 		print "$tag\n";
 	}
 	print $obj->{'line'}, "\n";
@@ -74,18 +74,18 @@ sub _data {
 # Process end of single.
 sub _single {
 	my $tag = $stack[-1];
-	if ($tag && grep(m/^$tag$/ms, @tags)) {
+	if ($tag && grep(m/^$tag$/ms, @TAGS)) {
 		print ')'.$tag."\n";
 		_pop_stack();
 	}
 }
 
 sub _pop_stack {
-	if ($debug) {
+	if ($DEBUG) {
 		print 'pop: ';
 	}
 	my $x = pop @stack;
-	if ($debug) {
+	if ($DEBUG) {
 		print "$x\n";
 	}
 	return;
