@@ -1,5 +1,4 @@
 bin/pyx_html_simple
-bin/pyx_stack
 CHANGES
 examples/pyx_parser
 Makefile.PL
