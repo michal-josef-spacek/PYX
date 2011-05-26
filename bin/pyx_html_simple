@@ -27,10 +27,10 @@ my $filename_or_stdin = $ARGV[0];
 
 # PYX::Parser object.
 my $pyx_parser = PYX::Parser->new(
-	'start_tag' => \&_start_tag,
-	'end_tag' => \&_end_tag,
 	'data' => \&_data,
+	'end_tag' => \&_end_tag,
 	'output_rewrite' => 1,
+	'start_tag' => \&_start_tag,
 );
 
 # Parse from stdin.
