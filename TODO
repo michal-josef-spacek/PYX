@@ -15,7 +15,6 @@ TODO
 44. Udelat skript pyx_sort pro setrideni celeho dokumentu. Pro testovani 
     stejnosti xml dokumentu.
 46. Dedit tridy.
-48. Testy pro PYX::GraphViz.
 50. Resit PYX::XMLNorm s flush.
     Mam vstup:
     (xml
@@ -164,4 +163,8 @@ NONE [20110526] skim
 
 8. Nejak promyslet PYX::Filter;
 Přesunuto do PYX-Filter.
+NONE [20110526] skim
+
+48. Testy pro PYX::GraphViz.
+Přesunuto do PYX-GraphViz.
 NONE [20110526] skim
