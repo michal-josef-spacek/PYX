@@ -80,6 +80,7 @@ sub _single {
 	}
 }
 
+# Pop stack helper.
 sub _pop_stack {
 	if ($DEBUG) {
 		print 'pop: ';
