@@ -2,7 +2,6 @@
 use PYX qw(start_tag);
 use Test::More 'tests' => 5;
 
-print "Testing: start_tag() function.\n";
 my $tag = 'tag';
 my @attr = ();
 my ($ret) = start_tag($tag, @attr);

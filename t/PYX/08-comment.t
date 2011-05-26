@@ -2,7 +2,6 @@
 use PYX qw(comment);
 use Test::More 'tests' => 2;
 
-print "Testing: comment() function.\n";
 my $comment = 'comment';
 my $ret = comment($comment);
 is($ret, '_comment');
