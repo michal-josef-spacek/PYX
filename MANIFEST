@@ -1,6 +1,7 @@
 bin/pyx_attr_sort
 bin/pyx_html_simple
 bin/pyx_stack
+CHANGES
 examples/pyx_parser
 Makefile.PL
 MANIFEST			This list of files
@@ -21,9 +22,6 @@ t/data/comment1.pyx
 t/data/comment2.pyx
 t/data/end_tag1.pyx
 t/data/example1.pyx
-t/data/example10.pyx
-t/data/example11.pyx
-t/data/example12.pyx
 t/data/example2.pyx
 t/data/example3.pyx
 t/data/example4.pyx
@@ -31,7 +29,6 @@ t/data/example5.pyx
 t/data/example6.pyx
 t/data/example7.pyx
 t/data/example8.pyx
-t/data/example9.pyx
 t/data/instruction1.pyx
 t/data/instruction2.pyx
 t/data/parse.pyx
