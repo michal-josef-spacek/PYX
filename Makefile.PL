@@ -10,7 +10,6 @@ WriteMakefile(
 	'AUTHOR' => 'Michal Špaček <skim@cpan.org>',
 	'EXE_FILES' => [
 		'bin/pyx_html_simple',
-		'bin/pyx_attr_sort',
 	],
 	'NAME' => 'PYX',
 	'PREREQ_PM' => {
@@ -24,7 +23,6 @@ WriteMakefile(
 	'VERSION' => '0.04',
 	'test' => {
 		'TESTS' => 't/PYX/*.t '.
-			't/PYX::Parser/*.t '.
-			't/PYX::Sort/*.t',
+			't/PYX::Parser/*.t',
 	},
 );
