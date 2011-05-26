@@ -1,7 +1,5 @@
 TODO
 ====
-7. Pokud bude komentar, tak umoznit jeho odstraneni. To by melo byt ve filterch.
-8. Nejak promyslet PYX::Filter;
 25. Pridat kompatibilitu pro puvodni XML::PYX?.
 30. Udelat skript pro zjisteni cetnosti.
     pyx_hist.pl?
@@ -159,3 +157,11 @@ OK [20060918] skim
 
 24. Pro PYX::Write::Tags::Code udelat dokumentaci.
 OK [20090627] skim
+
+7. Pokud bude komentar, tak umoznit jeho odstraneni. To by melo byt ve filterch.
+Přesunuto do PYX-Filter.
+NONE [20110526] skim
+
+8. Nejak promyslet PYX::Filter;
+Přesunuto do PYX-Filter.
+NONE [20110526] skim
