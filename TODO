@@ -15,22 +15,6 @@ TODO
 44. Udelat skript pyx_sort pro setrideni celeho dokumentu. Pro testovani 
     stejnosti xml dokumentu.
 46. Dedit tridy.
-50. Resit PYX::XMLNorm s flush.
-    Mam vstup:
-    (xml
-    (gogo
-    )xml
-    Vystup normalne to dava:
-    (xml
-    (gogo
-    )xml
-    Vystup s flush stackem dava:
-    (xml
-    (gogo
-    )xml
-    )gogo
-    )xml
-    Coz je demence :)
 51. Do PYX::Parser dat osetreni open a close.
 52. Prepsat PYX::Parser tak, aby tam byl podobne jako v XML::Parser parameter
     pro externi nastaveni objektu. Pak patri prepsat PYX::XMLNorm tak, aby se
@@ -168,3 +152,22 @@ NONE [20110526] skim
 48. Testy pro PYX::GraphViz.
 Přesunuto do PYX-GraphViz.
 NONE [20110526] skim
+
+50. Resit PYX::XMLNorm s flush.
+    Mam vstup:
+    (xml
+    (gogo
+    )xml
+    Vystup normalne to dava:
+    (xml
+    (gogo
+    )xml
+    Vystup s flush stackem dava:
+    (xml
+    (gogo
+    )xml
+    )gogo
+    )xml
+    Coz je demence :)
+Přesunuto do PYX-XMLNorm.
+NONE [20110531] skim
