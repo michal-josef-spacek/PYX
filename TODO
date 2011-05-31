@@ -17,7 +17,6 @@ TODO
 52. Prepsat PYX::Parser tak, aby tam byl podobne jako v XML::Parser parameter
     pro externi nastaveni objektu. Pak patri prepsat PYX::XMLNorm tak, aby se
     zrusily globalni parametery.
-53. Nastaveni XML normalizace pro html by mohlo byt v nejake knihovne.
 54.
 
 Applied
@@ -174,4 +173,8 @@ NONE [20110531] skim
     nainstalovane, jinak skip.
 Tohle se tohoto modulu uz netyka. S tim, ze existuje 'BUILD_REQUIRES' v
 Makefile.PL uz to neni potreba resit.
+NONE [20110531] skim
+
+53. Nastaveni XML normalizace pro html by mohlo byt v nejake knihovne.
+Přesunuto do PYX-XMLNorm.
 NONE [20110531] skim
