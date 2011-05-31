@@ -6,8 +6,6 @@ TODO
 31. Udelat konfiguraci, ktera bude platit pro vsechny skripty.
 32. Skript check_xml. Vypise, jestli je to xml. Jestli jde validovat podle dtd 
     a podobne informace.
-34. Kdyz se testuje Vystup do Tags a Tags2, tak musi byt ty moduly 
-    nainstalovane, jinak skip.
 38. Implementovat to same jako SimpleXML
 40. Testy pro handler 'rewrite' u PYX::Parser.
 42. Skript na odstraneni komentaru.
@@ -170,4 +168,10 @@ NONE [20110526] skim
     )xml
     Coz je demence :)
 Přesunuto do PYX-XMLNorm.
+NONE [20110531] skim
+
+34. Kdyz se testuje Vystup do Tags a Tags2, tak musi byt ty moduly 
+    nainstalovane, jinak skip.
+Tohle se tohoto modulu uz netyka. S tim, ze existuje 'BUILD_REQUIRES' v
+Makefile.PL uz to neni potreba resit.
 NONE [20110531] skim
