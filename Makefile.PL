@@ -28,7 +28,7 @@ WriteMakefile(
 		'PYX::Utils' => 0.01,
 		'Readonly' => 0,
 	},
-	'VERSION' => '0.04',
+	'VERSION' => '0.01',
 	'test' => {
 		'TESTS' => 't/PYX/*.t '.
 			't/PYX::Parser/*.t',
