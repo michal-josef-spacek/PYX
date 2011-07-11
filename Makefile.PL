@@ -21,6 +21,7 @@ WriteMakefile(
 	'EXE_FILES' => [
 		'bin/pyx_html_simple',
 	],
+	'LICENSE' => 'bsd',
 	'NAME' => 'PYX',
 	'PREREQ_PM' => {
 		'Class::Utils' => 0.01,
