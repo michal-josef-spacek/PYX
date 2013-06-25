@@ -35,10 +35,10 @@ t/PYX/05-start_tag.t
 t/PYX/06-end_tag.t
 t/PYX/07-instruction.t
 t/PYX/08-comment.t
-t/PYX::Parser/00-use.t
-t/PYX::Parser/01-version.t
-t/PYX::Parser/02-pod_coverage.t
-t/PYX::Parser/03-pod.t
-t/PYX::Parser/04-new.t
-t/PYX::Parser/05-parse.t
-t/PYX::Parser/06-rewrite.t
+t/PYX-Parser/00-use.t
+t/PYX-Parser/01-version.t
+t/PYX-Parser/02-pod_coverage.t
+t/PYX-Parser/03-pod.t
+t/PYX-Parser/04-new.t
+t/PYX-Parser/05-parse.t
+t/PYX-Parser/06-rewrite.t

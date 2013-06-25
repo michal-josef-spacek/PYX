@@ -32,6 +32,6 @@ WriteMakefile(
 	'VERSION' => '0.01',
 	'test' => {
 		'TESTS' => 't/PYX/*.t '.
-			't/PYX::Parser/*.t',
+			't/PYX-Parser/*.t',
 	},
 );
