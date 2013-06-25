@@ -1,5 +1,7 @@
 bin/pyx_html_simple
 Changes
+examples/ex1.pl
+examples/ex2.pl
 Makefile.PL
 MANIFEST			This list of files
 PYX.pm
@@ -26,6 +28,13 @@ t/data/tag1.pyx
 t/data/tag2.pyx
 t/data/tag3.pyx
 t/data/tag4.pyx
+t/PYX-Parser/00-use.t
+t/PYX-Parser/01-version.t
+t/PYX-Parser/02-pod_coverage.t
+t/PYX-Parser/03-pod.t
+t/PYX-Parser/04-new.t
+t/PYX-Parser/05-parse.t
+t/PYX-Parser/06-rewrite.t
 t/PYX/00-use.t
 t/PYX/01-version.t
 t/PYX/02-pod_coverage.t
@@ -35,10 +44,3 @@ t/PYX/05-start_tag.t
 t/PYX/06-end_tag.t
 t/PYX/07-instruction.t
 t/PYX/08-comment.t
-t/PYX-Parser/00-use.t
-t/PYX-Parser/01-version.t
-t/PYX-Parser/02-pod_coverage.t
-t/PYX-Parser/03-pod.t
-t/PYX-Parser/04-new.t
-t/PYX-Parser/05-parse.t
-t/PYX-Parser/06-rewrite.t
