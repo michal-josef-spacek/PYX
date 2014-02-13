@@ -193,67 +193,67 @@ TODO
 
 =over 8
 
-=item B<new(%parameters)>
+=item C<new(%parameters)>
 
  Constructor.
 
 =over 8
 
-=item * B<attribute>
+=item * C<attribute>
 
 TODO
 
-=item * B<comment>
+=item * C<comment>
 
 TODO
 
-=item * B<data>
+=item * C<data>
 
 TODO
 
-=item * B<end_tag>
+=item * C<end_tag>
 
 TODO
 
-=item * B<final>
+=item * C<final>
 
 TODO
 
-=item * B<init>
+=item * C<init>
 
 TODO
 
-=item * B<instruction>
+=item * C<instruction>
 
 TODO
 
-=item * B<start_tag>
+=item * C<start_tag>
 
 TODO
 
-=item * B<output_rewrite>
+=item * C<output_rewrite>
 
 TODO
 
-=item * B<output_handler>
+=item * C<output_handler>
 
 TODO
 
-=item * B<other>
+=item * C<other>
 
 TODO
 
 =back
 
-=item B<parse()>
+=item C<parse()>
 
 TODO
 
-=item B<parse_file()>
+=item C<parse_file()>
 
 TODO
 
-=item B<parse_handler()>
+=item C<parse_handler()>
 
 TODO
 

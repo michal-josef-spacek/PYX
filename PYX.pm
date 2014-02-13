@@ -86,27 +86,27 @@ TODO
 
 =over 8
 
-=item B<char()>
+=item C<char()>
 
 TODO
 
-=item B<comment()>
+=item C<comment()>
 
 TODO
 
-=item B<end_tag()>
+=item C<end_tag()>
 
 TODO
 
-=item B<instruction()>
+=item C<instruction()>
 
 TODO
 
-=item B<start_tag()>
+=item C<start_tag()>
 
 TODO
 
-=item B<attribute()>
+=item C<attribute()>
 
 TODO
 
