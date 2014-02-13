@@ -132,9 +132,9 @@ TODO
 
 =head1 DEPENDENCIES
 
-L<Exporter(3pm)>,
-L<PYX::Utils(3pm)>,
-L<Readonly(3pm)>.
+L<Exporter>,
+L<PYX::Utils>,
+L<Readonly>.
 
 =head1 SEE ALSO
 

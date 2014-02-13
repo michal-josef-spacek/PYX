@@ -312,8 +312,8 @@ TODO
 
 =head1 DEPENDENCIES
 
-L<Class::Utils(3pm)>,
-L<Error::Pure(3pm)>.
+L<Class::Utils>,
+L<Error::Pure>.
 
 =head1 SEE ALSO
 
