@@ -10,11 +10,22 @@ use PYX::Utils qw(decode);
 use Readonly;
 
 # Constants.
-Readonly::Array our @EXPORT_OK => qw(char comment end_tag start_tag 
-	instruction attribute);
+Readonly::Array our @EXPORT_OK => qw(attribute char comment end_tag instruction
+	start_tag);
 
 # Version.
 our $VERSION = 0.01;
+
+# Process attribute.
+sub attribute {
+	my (@attr) = @_;
+	my @ret = ();
+	while (@attr) {
+		my ($key, $val) = (shift @attr, shift @attr);
+		push @ret, "A$key ".decode($val);
+	}
+	return @ret;
+}
 
 # Process char between tags.
 sub char {
@@ -51,17 +62,6 @@ sub start_tag {
 	push @ret, '('.$tag;
 	if (@attr) {
 		push @ret, attribute(@attr);
-	}
-	return @ret;
-}
-
-# Process attribute.
-sub attribute {
-	my (@attr) = @_;
-	my @ret = ();
-	while (@attr) {
-		my ($key, $val) = (shift @attr, shift @attr);
-		push @ret, "A$key ".decode($val);
 	}
 	return @ret;
 }
