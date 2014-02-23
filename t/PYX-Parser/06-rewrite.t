@@ -5,7 +5,8 @@ use warnings;
 # Modules.
 use File::Object;
 use PYX::Parser;
-use Test::More 'tests' => 11;
+use Test::More 'tests' => 12;
+use Test::NoWarnings;
 use Test::Output;
 
 # Directories.

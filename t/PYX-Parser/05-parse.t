@@ -5,7 +5,8 @@ use warnings;
 # Modules.
 use File::Object;
 use PYX::Parser;
-use Test::More 'tests' => 7;
+use Test::More 'tests' => 8;
+use Test::NoWarnings;
 
 # PYX::Parser object.
 my $obj = PYX::Parser->new(

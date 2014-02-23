@@ -4,7 +4,8 @@ use warnings;
 
 # Modules.
 use PYX qw(char);
-use Test::More 'tests' => 2;
+use Test::More 'tests' => 3;
+use Test::NoWarnings;
 
 # Test.
 my $char = 'char';

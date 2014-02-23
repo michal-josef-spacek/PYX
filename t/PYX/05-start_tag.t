@@ -4,7 +4,8 @@ use warnings;
 
 # Modules.
 use PYX qw(start_tag);
-use Test::More 'tests' => 5;
+use Test::More 'tests' => 6;
+use Test::NoWarnings;
 
 # Test.
 my $tag = 'tag';
