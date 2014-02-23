@@ -3,36 +3,34 @@ use strict;
 use warnings;
 
 # Modules.
-use ExtUtils::MakeMaker;
+use inc::Module::Install;
 
 # Definition.
-WriteMakefile(
-	'AUTHOR' => 'Michal Špaček <skim@cpan.org>',
-	'BUILD_REQUIRES' => {
-		'English' => 0,
-		'File::Object' => 0,
-		'Test::More' => 0,
-		'Test::NoWarnings' => 0,
-		'Test::Pod' => 0,
-		'Test::Pod::Coverage' => 0,
-	},
-	'CONFIGURE_REQUIRES' => {
-		'ExtUtils::MakeMaker' => 0,
-	},
-	'EXE_FILES' => [
-		'bin/pyx_html_simple',
-	],
-	'LICENSE' => 'bsd',
-	'NAME' => 'PYX',
-	'PREREQ_PM' => {
-		'Class::Utils' => 0.01,
-		'Error::Pure' => 0.01,
-		'PYX::Utils' => 0.01,
-		'Readonly' => 0,
-	},
-	'VERSION' => '0.01',
-	'test' => {
-		'TESTS' => 't/PYX/*.t '.
-			't/PYX-Parser/*.t',
-	},
-);
+abstract 'A perl module for PYX handling.';
+author 'Michal Špaček <skim@cpan.org>';
+install_script 'bin/pyx_html_simple';
+license 'bsd';
+name 'PYX';
+readme_from 'PYX.pm';
+requires 'Class::Utils' => 0.05;
+requires 'Error::Pure' => 0.16;
+requires 'PYX::Utils' => 0.01;
+requires 'Readonly' => 0;
+requires 'perl' => '5.6.2';
+resources 'bugtracker' => 'https://rt.cpan.org/Public/Dist/Display.html'.
+	'?Name=PYX';
+resources 'homepage' => 'https://github.com/tupinek/PYX';
+resources 'repository' => 'git://github.com/tupinek/PYX';
+test_requires 'English' => 0;
+test_requires 'Error::Pure::Utils' => 0.16;
+test_requires 'File::Object' => 0.07;
+test_requires 'Test::More' => 0;
+test_requires 'Test::NoWarnings' => 0;
+test_requires 'Test::Output' => 1.02;
+test_requires 'Test::Pod' => 0;
+test_requires 'Test::Pod::Coverage' => 0;
+tests_recursive;
+version '0.01';
+
+# Run.
+WriteAll();
