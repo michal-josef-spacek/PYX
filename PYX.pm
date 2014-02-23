@@ -76,45 +76,53 @@ __END__
 
 =head1 NAME
 
-PYX - A perl module for pyx handling.
+PYX - A perl module for PYX handling.
 
 =head1 SYNOPSIS
 
-TODO
+ use PYX qw(attribute char comment end_tag instruction start_tag);
+ my @data = attribute(@attr);
+ my @data = char($char);
+ my @data = comment($comment);
+ my @data = end_tag($tag);
+ my @data = instruction($target, $code);
+ my @data = start_tag($tag, @attr);
 
 =head1 SUBROUTINES
 
 =over 8
 
-=item C<char()>
+=item C<attribute(@attr)>
 
-TODO
+ Encode attribute as PYX.
+ Returns array of encoded lines.
 
-=item C<comment()>
+=item C<char($char)>
 
-TODO
+ Encode characters between elements as PYX.
+ Returns array of encoded lines.
 
-=item C<end_tag()>
+=item C<comment($comment)>
 
-TODO
+ Encode comment as PYX.
+ Returns array of encoded lines.
 
-=item C<instruction()>
+=item C<end_tag($tag)>
 
-TODO
+ Encode end of element as PYX.
+ Returns array of encoded lines.
 
-=item C<start_tag()>
+=item C<instruction($target, $code)>
 
-TODO
+ Encode instruction as PYX.
+ Returns array of encoded lines.
 
-=item C<attribute()>
+=item C<start_tag($tag, @attr)>
 
-TODO
+ Encode begin of element as PYX.
+ Returns array of encoded lines.
 
 =back
-
-=head1 ERRORS
-
- No errors.
 
 =head1 EXAMPLE
 
@@ -123,12 +131,28 @@ TODO
  use warnings;
 
  # Modules.
- use PYX;
+ use PYX qw(attribute char comment end_tag instruction start_tag);
 
- # PYX object.
- my $pyx = PYX->new(
-         TODO
+ # Example output.
+ my @data = (
+         instruction('xml', 'foo'),
+         start_tag('tag'),
+         attribute('key', 'val'),
+         comment('comment'),
+         char('data'),
+         end_tag('tag'),
  );
+
+ # Print out.
+ map { print $_."\n" } @data;
+
+ # Output:
+ # ?xml foo
+ # (tag
+ # Akey val
+ # _comment
+ # -data
+ # )tag
 
 =head1 DEPENDENCIES
 
@@ -138,7 +162,19 @@ L<Readonly>.
 
 =head1 SEE ALSO
 
- TODO
+L<App::SGML2PYX>,
+L<PYX::Checker>,
+L<PYX::Filter>,
+L<PYX::GraphViz>,
+L<PYX::Optimalization>,
+L<PYX::Parser>,
+L<PYX::Sort>,
+L<PYX::Stack>,
+L<PYX::Utils>,
+L<PYX::Write::Raw>,
+L<PYX::Write::Tags>,
+L<PYX::Write::Tags::Code>,
+L<PYX::XMLNorm>.
 
 =head1 AUTHOR
 

@@ -5,9 +5,20 @@ use strict;
 use warnings;
 
 # Modules.
-use PYX;
+use PYX qw(attribute char comment end_tag instruction start_tag);
 
-# PYX object.
-my $pyx = PYX->new(
-        TODO
+# Example output.
+my @data = (
+        instruction('xml', 'foo'),
+        start_tag('tag'),
+        attribute('key', 'val'),
+        comment('comment'),
+        char('data'),
+        end_tag('tag'),
 );
+
+# Print out.
+map { print $_."\n" } @data;
+
+# Output:
+# TODO
