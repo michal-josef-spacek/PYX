@@ -21,4 +21,9 @@ my @data = (
 map { print $_."\n" } @data;
 
 # Output:
-# TODO
+# ?xml foo
+# (tag
+# Akey val
+# _comment
+# -data
+# )tag
