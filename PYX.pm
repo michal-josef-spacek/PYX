@@ -16,7 +16,7 @@ Readonly::Array our @EXPORT_OK => qw(attribute char comment end_tag instruction
 # Version.
 our $VERSION = 0.01;
 
-# Process attribute.
+# Encode attribute as PYX.
 sub attribute {
 	my (@attr) = @_;
 	my @ret = ();
@@ -27,25 +27,25 @@ sub attribute {
 	return @ret;
 }
 
-# Process char between tags.
+# Encode characters between elements as PYX.
 sub char {
 	my $char = shift;
 	return '-'.decode($char);
 }
 
-# Process comment.
+# Encode comment as PYX.
 sub comment {
 	my $comment = shift;
 	return '_'.decode($comment);
 }
 
-# Process end tag.
+# Encode end of element as PYX.
 sub end_tag {
 	my $tag = shift;
 	return ')'.$tag;
 }
 
-# Process instruction.
+# Encode instruction as PYX.
 sub instruction {
 	my ($target, $code) = @_;
 	my $ret = '?'.decode($target);
@@ -55,7 +55,7 @@ sub instruction {
 	return $ret;
 }
 
-# Process begin tag.
+# Encode begin of element as PYX.
 sub start_tag {
 	my ($tag, @attr) = @_;
 	my @ret = ();
