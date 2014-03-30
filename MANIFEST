@@ -37,6 +37,8 @@ t/data/parse.pyx
 t/data/start_tag1.pyx
 t/data/start_tag2.pyx
 t/data/start_tag3.pyx
+t/data/start_tag4.pyx
+t/data/start_tag5.pyx
 t/data/tag1.pyx
 t/data/tag2.pyx
 t/data/tag3.pyx

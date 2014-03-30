@@ -5,7 +5,7 @@ use warnings;
 # Modules.
 use File::Object;
 use PYX::Parser;
-use Test::More 'tests' => 12;
+use Test::More 'tests' => 14;
 use Test::NoWarnings;
 use Test::Output;
 
@@ -72,6 +72,31 @@ END
 stdout_is(
 	sub {
 		$obj->parse_file($data_dir->file('start_tag3.pyx')->s);
+		return;
+	},
+	$right_ret,
+);
+
+# Test.
+$right_ret = <<'END';
+(prefix:tag
+END
+stdout_is(
+	sub {
+		$obj->parse_file($data_dir->file('start_tag4.pyx')->s);
+		return;
+	},
+	$right_ret,
+);
+
+# Test.
+$right_ret = <<'END';
+(prefix:tag
+Aprefix:par val
+END
+stdout_is(
+	sub {
+		$obj->parse_file($data_dir->file('start_tag5.pyx')->s);
 		return;
 	},
 	$right_ret,
