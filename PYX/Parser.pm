@@ -183,11 +183,15 @@ __END__
 
 =head1 NAME
 
-PYX::Parser - TODO
+PYX::Parser - PYX parser with handlers.
 
 =head1 SYNOPSIS
 
-TODO
+use PYX::Parser;
+my $obj = PYX::Parser->new(%parameters);
+$obj->parse($pyx, $out);
+$obj->parse_file($input_file, $out);
+$obj->parse_handle($input_file_handler, $out);
 
 =head1 METHODS
 
@@ -201,61 +205,78 @@ TODO
 
 =item * C<attribute>
 
-TODO
+ Attribute handler.
+ Default value is undef.
 
 =item * C<comment>
 
-TODO
+ Comment handler.
+ Default value is undef.
 
 =item * C<data>
 
-TODO
+ Data handler.
+ Default value is undef.
 
 =item * C<end_tag>
 
-TODO
+ End of tag handler.
+ Default value is undef.
 
 =item * C<final>
 
-TODO
+ Final handler.
+ Default value is undef.
 
 =item * C<init>
 
-TODO
+ Init handler.
+ Default value is undef.
 
 =item * C<instruction>
 
-TODO
+ Instruction handler.
+ Default value is undef.
 
 =item * C<start_tag>
 
-TODO
+ Start of tag handler.
+ Default value is undef.
 
 =item * C<output_rewrite>
 
-TODO
+ Output rewrite.
+ Default value is 0.
 
 =item * C<output_handler>
 
-TODO
+ Output handler.
+ Default value is \*STDOUT.
 
 =item * C<other>
 
-TODO
+ Other handler.
+ Default value is undef.
 
 =back
 
-=item C<parse()>
+=item C<parse($pyx[, $out])>
 
-TODO
+ Parse PYX text or array of PYX text.
+ If $out not present, use 'output_handler'.
+ Returns undef.
 
-=item C<parse_file()>
+=item C<parse_file($input_file[, $out])>
 
-TODO
+ Parse file with PYX data.
+ If $out not present, use 'output_handler'.
+ Returns undef.
 
-=item C<parse_handler()>
+=item C<parse_handler($input_file_handler[, $out])>
 
-TODO
+ Parse PYX handler.
+ If $out not present, use 'output_handler'.
+ Returns undef.
 
 =back
 
@@ -326,7 +347,8 @@ L<Error::Pure>.
 
 =head1 SEE ALSO
 
-TODO
+L<PYX>,
+L<PYX::Utils>.
 
 =head1 AUTHOR
 
