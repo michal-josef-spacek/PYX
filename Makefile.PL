@@ -7,7 +7,7 @@ use inc::Module::Install;
 
 # Definition.
 abstract 'A perl module for PYX handling.';
-author 'Michal Špaček <skim@cpan.org>';
+author 'Michal Spacek <skim@cpan.org>';
 install_script 'bin/pyx_html_simple';
 license 'bsd';
 name 'PYX';
