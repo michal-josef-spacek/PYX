@@ -4,7 +4,7 @@ use warnings;
 
 # Modules.
 use PYX qw(instruction);
-use Test::More 'tests' => 3;
+use Test::More 'tests' => 4;
 use Test::NoWarnings;
 
 # Test.
@@ -16,3 +16,7 @@ is($ret, '?target data');
 $data = "target data\ndata";
 $ret = instruction($data);
 is($ret, '?target data\ndata');
+
+# Test.
+$ret = instruction('target', 'data');
+is($ret, '?target data', 'Get PYX code for instruction with target and data.');
