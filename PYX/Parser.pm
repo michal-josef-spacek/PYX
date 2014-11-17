@@ -47,7 +47,7 @@ sub new {
 	return $self;
 }
 
-# Parse pyx text or array of pyx text.
+# Parse PYX text or array of PYX text.
 sub parse {
 	my ($self, $pyx, $out) = @_;
 	if (! $out) {
