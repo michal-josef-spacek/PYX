@@ -261,11 +261,20 @@ TODO
 
 =head1 ERRORS
 
- Mine:
-   TODO
+ new():
+         From Class::Utils::set_params():
+                 Unknown parameter '%s'.
 
- From Class::Utils::set_params():
-   Unknown parameter '%s'.
+ parse():
+         Bad PYX tag at line '%s'.
+
+ parse_file():
+         Bad PYX tag at line '%s'.
+         No input handler.
+
+ parse_handler():
+         Bad PYX tag at line '%s'.
+         No input handler.
 
 =head1 EXAMPLE
 
