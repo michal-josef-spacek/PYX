@@ -14,7 +14,7 @@ Readonly::Array our @EXPORT_OK => qw(attribute char comment end_tag instruction
 	start_tag);
 
 # Version.
-our $VERSION = 0.01;
+our $VERSION = 0.02;
 
 # Encode attribute as PYX.
 sub attribute {
@@ -186,6 +186,6 @@ BSD 2-Clause License
 
 =head1 VERSION
 
-0.01
+0.02
 
 =cut
