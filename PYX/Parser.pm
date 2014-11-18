@@ -187,11 +187,11 @@ PYX::Parser - PYX parser with handlers.
 
 =head1 SYNOPSIS
 
-use PYX::Parser;
-my $obj = PYX::Parser->new(%parameters);
-$obj->parse($pyx, $out);
-$obj->parse_file($input_file, $out);
-$obj->parse_handle($input_file_handler, $out);
+ use PYX::Parser;
+ my $obj = PYX::Parser->new(%parameters);
+ $obj->parse($pyx, $out);
+ $obj->parse_file($input_file, $out);
+ $obj->parse_handle($input_file_handler, $out);
 
 =head1 METHODS
 
