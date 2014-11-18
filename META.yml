@@ -30,6 +30,7 @@ no_index:
 requires:
   Class::Utils: 0.05
   Error::Pure: 0.16
+  Exporter: 0
   PYX::Utils: 0.01
   Readonly: 0
   perl: 5.8.0
