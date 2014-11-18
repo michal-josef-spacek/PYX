@@ -1,0 +1,86 @@
+This file contains message digests of all files listed in MANIFEST,
+signed via the Module::Signature module, version 0.70.
+
+To verify the content in this distribution, first make sure you have
+Module::Signature installed, then type:
+
+    % cpansign -v
+
+It will check each file's integrity, as well as the signature's
+validity.  If "==> Signature verified OK! <==" is not displayed,
+the distribution may already have been compromised, and you should
+not run its Makefile.PL or Build.PL.
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+SHA1 e09e521a79235c9883487407669ea05bcf909d86 Changes
+SHA1 e8c12ce4733a1880823cc266a697a6db2b087344 LICENSE
+SHA1 e231b97c91d43a31615e7554c571129980dc233d MANIFEST
+SHA1 aa6c661e8fce3d035a9a073689feda7839a3347d META.yml
+SHA1 fc7242e9081a8cfdbf5361b8f5dfd951c17b565d Makefile.PL
+SHA1 e1986c8b015d00d2695767a7776fd30842eae1f4 PYX.pm
+SHA1 cec008040811294c499b4bf27f173dc33865dbf9 PYX/Parser.pm
+SHA1 0a79428dcf0203f7080cee8fe1ef6d03f6ee7806 README
+SHA1 0e3530dddbf313941e6623afff5faff7070d2279 examples/ex1.pl
+SHA1 325314d581c28b020f7007bf9b3c1939c8234bae examples/ex2.pl
+SHA1 d2664c57b65686abbfbbe1e71229761625be4922 inc/Module/Install.pm
+SHA1 da41a8d9904f7b409b49a5f6c338d3eb305a2b4b inc/Module/Install/Base.pm
+SHA1 0db0afe19cd298abba248fa089e5525bd5ab3ab6 inc/Module/Install/Can.pm
+SHA1 e7152bfd5ca67d0e33f96d09c59d600bca5c1f15 inc/Module/Install/Fetch.pm
+SHA1 29ee1cb0dc262b00983e3a2f5cf00b538dff5069 inc/Module/Install/Makefile.pm
+SHA1 e963f80cfe255f16e55067d1feb6841cff3ed2fe inc/Module/Install/Metadata.pm
+SHA1 79f5b4199f622e8b05aac266b0c39f6a85bb303f inc/Module/Install/ReadmeFromPod.pm
+SHA1 65a1f09af1f4f9e47a98b6b45667c328b1b2f9c0 inc/Module/Install/Win32.pm
+SHA1 f191c49475b3f51775180cd4f7e41e3bdab7f85a inc/Module/Install/WriteAll.pm
+SHA1 3692673acc5527c0db6017bbbed4e325f1de519b pyx_examples/ex1.pyx
+SHA1 e2ce585c7d76181b6c6ba5a2b104b2eb83c208a1 pyx_examples/ex2.pyx
+SHA1 a83e9da7e6f98996c5bc68ae67dd0b40eeb1915d pyx_examples/ex3.pyx
+SHA1 86da04c705ef56c5dd911e628b7f856b2d3b2dd3 pyx_examples/ex4.pyx
+SHA1 d7f9559a46df04c1d6a20a66743d140a18743e6b pyx_examples/ex5.pyx
+SHA1 9b16f469342d815ce53d468115fb6c4168d30820 pyx_examples/ex6.pyx
+SHA1 e73099ba74eda473a2b2ec16e7f1c99a64e10cf0 t/PYX-Parser/00-use.t
+SHA1 f71e419cb7ced70ac111f5376037a10e60545c6b t/PYX-Parser/01-version.t
+SHA1 8615b294fdc26ceb215430ac7347918f7ac0fe6f t/PYX-Parser/02-pod_coverage.t
+SHA1 434798bb22072a61c116e92dacdf503f5f233066 t/PYX-Parser/03-pod.t
+SHA1 25d2abcd523914dc9589629768658d028e2518c4 t/PYX-Parser/04-new.t
+SHA1 f496673169911610af379fb662fca624f905a11f t/PYX-Parser/05-parse.t
+SHA1 38d4886610875bd01c3426646377da278627e4b3 t/PYX-Parser/06-rewrite.t
+SHA1 480b32d70b2528199a8204904c53dca3bc7bb43d t/PYX/00-use.t
+SHA1 c16cf1bb88693ad14d4b2c7877c1a884be86aa8b t/PYX/01-version.t
+SHA1 c21a0d196c4cd892ed3870314a1282a12081eac0 t/PYX/02-pod_coverage.t
+SHA1 3c8bea75fb30827bf6c294fa7273809c6e8c825c t/PYX/03-pod.t
+SHA1 e8e93b66802fb377753057e67569a454c47b5ef9 t/PYX/04-char.t
+SHA1 615b97d8499aad27904e0c34807adc2a234765e7 t/PYX/05-start_tag.t
+SHA1 2326dda3d28bb5559a3776976ff4a737ee5b5b2a t/PYX/06-end_tag.t
+SHA1 4ca4cfbee239504ebfda6a9e6b38a5d764ddd076 t/PYX/07-instruction.t
+SHA1 6d2b0f9ae22a9118ce11be18cb24d0bd4a2ed997 t/PYX/08-comment.t
+SHA1 acdb3822e3f9407eb7112244141b16fae4ba148f t/data/char1.pyx
+SHA1 ab84cb603a94e57dc53774fa1bc99a2280a3b236 t/data/char2.pyx
+SHA1 e078943c5e96dfdbfd35f9c30d6d005d5e2e72be t/data/comment1.pyx
+SHA1 0c0f811e2d2a074edb98116d36975db4674180bb t/data/comment2.pyx
+SHA1 038aa47b4de5b7b93a8c6ba4c3f61ef25a9eb40f t/data/end_tag1.pyx
+SHA1 94392d13163cfe4947d9c502fdba86e18888c540 t/data/example5.pyx
+SHA1 b8ea03c263d314f0eb829e9f14d9303b78cedae7 t/data/instruction1.pyx
+SHA1 28c1f6c54a1f700482c30a3c765177cabad1c378 t/data/instruction2.pyx
+SHA1 813ea5f16db048691caa1a7ffa1319ec4b9f9c35 t/data/parse.pyx
+SHA1 d828d6cdb910a358b34b2d00975989e8f6ad8844 t/data/start_tag1.pyx
+SHA1 688df076418352a56a6e3f71866b33a28a678159 t/data/start_tag2.pyx
+SHA1 a89c918593ddea1d9cc3468e1582555c5e232e93 t/data/start_tag3.pyx
+SHA1 e7df58a62216461ff1651cd98a5c5b737cd0bd0b t/data/start_tag4.pyx
+SHA1 0b6e84c13d1f27d72b4604fc2d7aa5f434a787d6 t/data/start_tag5.pyx
+SHA1 62e4b213fc3e67db97e647e865929188ff6883c6 t/data/tag1.pyx
+SHA1 1285e641b51d707aa2c051dce42a472674c61bb0 t/data/tag2.pyx
+SHA1 b4530008ba8974a5808bfdaf6a20ef66fa20caf1 t/data/tag3.pyx
+SHA1 8e285f9babee89d05a50c6b3c0a5964528b1e06f t/data/tag4.pyx
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.12 (GNU/Linux)
+
+iQEcBAEBAgAGBQJUaud3AAoJEAwa+cf4dLBaTroH/1MF4o3f6e6rjQLGJCSg6NLt
+9VWQMJtRE2nJjFg9sQNrRdeA0KUaU8G5GOOYT7SI3UeEq/LPSPinaMHS72WQFsZR
+wFou+RY8sJWEeMx0SZtIaNPkMiCY6n8BlOKuFqe+f7Y5hsvYeSAKGsWKYnzALZNA
+ElRd0HQ2Le4kJKdnWMWxVTbEhJHZPCqWpuKbG6Ra5LOjI40oEcyH6Fk478HhU5cn
+MXzf03g7nULVHoOwnKxkGjwG7PX9NnxWbqNZJpH0Pe1FG4jETuB6PHewzxkSuxSO
+uMBSut3N6grrcyRTUOGdUOJAshvNcpnDv5ugOIVG5RMpM7apCgRu+vmo9r3nJro=
+=5sWa
+-----END PGP SIGNATURE-----

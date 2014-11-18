@@ -23,6 +23,7 @@ pyx_examples/ex4.pyx
 pyx_examples/ex5.pyx
 pyx_examples/ex6.pyx
 README
+SIGNATURE
 t/data/char1.pyx
 t/data/char2.pyx
 t/data/comment1.pyx
