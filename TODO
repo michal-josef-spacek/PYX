@@ -13,7 +13,8 @@ TODO
     pro externi nastaveni objektu. Pak patri prepsat PYX::XMLNorm tak, aby se
     zrusily globalni parametery.
 54. Prejmenovat end_tag a start_tag na end_element a start_elements.
-55.
+55. Priklad v PYX::Parser upravit, aby to davalo smysl (output, argumenty)
+56.
 
 Applied
 =======
