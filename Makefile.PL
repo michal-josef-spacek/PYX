@@ -14,7 +14,7 @@ readme_from 'PYX.pm';
 requires 'Class::Utils' => 0.05;
 requires 'Error::Pure' => 0.16;
 requires 'Exporter' => 0;
-requires 'PYX::Utils' => 0.01;
+requires 'PYX::Utils' => 0.02;
 requires 'Readonly' => 0;
 requires 'perl' => '5.8.0';
 resources 'bugtracker' => 'https://rt.cpan.org/Public/Dist/Display.html'.
