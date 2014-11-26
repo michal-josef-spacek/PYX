@@ -73,10 +73,13 @@ SEE ALSO
     PYX::Write::Raw, PYX::Write::Tags, PYX::Write::Tags::Code, PYX::XMLNorm.
 
 AUTHOR
-    Michal Špaček skim@cpan.org.
+    Michal Špaček <mailto:skim@cpan.org>
+
+    <http://skim.cz>
 
 LICENSE AND COPYRIGHT
-    BSD 2-Clause License
+     © Michal Špaček 2005-2014
+     BSD 2-Clause License
 
 VERSION
     0.02
