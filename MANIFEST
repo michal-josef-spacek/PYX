@@ -47,7 +47,7 @@ t/PYX-Parser/01-version.t
 t/PYX-Parser/02-pod_coverage.t
 t/PYX-Parser/03-pod.t
 t/PYX-Parser/04-new.t
-t/PYX-Parser/05-parse.t
+t/PYX-Parser/05-parse_file.t
 t/PYX-Parser/06-rewrite.t
 t/PYX/00-use.t
 t/PYX/01-version.t
