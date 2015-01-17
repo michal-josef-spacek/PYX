@@ -28,41 +28,41 @@ $obj->parse_file($data_dir->file('parse.pyx')->s);
 # Process attributes.
 sub attribute {
 	my ($self, $att, $attval) = @_;
-	is($self->{'line'}, "A$att $attval");
+	is($self->{'_line'}, "A$att $attval");
 }
 
 # Process start tag.
 sub start_tag {
 	my ($self, $tag) = @_;
-	is($self->{'line'}, "($tag");
+	is($self->{'_line'}, "($tag");
 }
 
 # Process end tag.
 sub end_tag {
 	my ($self, $tag) = @_;
-	is($self->{'line'}, ")$tag");
+	is($self->{'_line'}, ")$tag");
 }
 
 # Process data.
 sub data {
 	my ($self, $data) = @_;
-	is($self->{'line'}, "-$data");
+	is($self->{'_line'}, "-$data");
 }
 
 # Process instruction.
 sub instruction {
 	my ($self, $target, $code) = @_;
-	is($self->{'line'}, "?$target $code");
+	is($self->{'_line'}, "?$target $code");
 }
 
 # Process comment.
 sub comment {
 	my ($self, $comment) = @_;
-	is($self->{'line'}, "_$comment");
+	is($self->{'_line'}, "_$comment");
 }
 
 # Process other.
 sub other {
 	my ($self, $other) = @_;
-	is($self->{'line'}, $other);
+	is($self->{'_line'}, $other);
 }

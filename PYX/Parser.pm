@@ -41,7 +41,7 @@ sub new {
 	set_params($self, @params);
 
 	# Processing line.
-	$self->{'line'} = $EMPTY_STR;
+	$self->{'_line'} = $EMPTY_STR;
 
 	# Object.
 	return $self;
@@ -109,7 +109,7 @@ sub parse_handler {
 # Parse text string.
 sub _parse {
 	my ($self, $line, $out) = @_;
-	$self->{'line'} = $line;
+	$self->{'_line'} = $line;
 	my ($type, $value) = $line =~ m/\A([A()\?\-_])(.*)\Z/;
 	if (! $type) { 
 		$type = 'X';
@@ -164,11 +164,11 @@ sub _is_sub {
 	} elsif (exists $self->{'rewrite'} 
 		&& ref $self->{'rewrite'} eq 'CODE') {
 
-		&{$self->{'rewrite'}}($self, $self->{'line'});
+		&{$self->{'rewrite'}}($self, $self->{'_line'});
 
 	# Raw output to output handler handler.
 	} elsif ($self->{'output_rewrite'}) {
-		print {$out} $self->{'line'}, "\n";
+		print {$out} $self->{'_line'}, "\n";
 	}
 	return;
 }
