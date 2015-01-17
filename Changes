@@ -1,6 +1,7 @@
 0.02
  [Common]
  - Improve AUTHOR and LICENSE AND COPYRIGHT sections in doc.
+ - Update copyright years.
 
  [PYX::Parser]
  - Fix SYNOPSIS section in doc.
