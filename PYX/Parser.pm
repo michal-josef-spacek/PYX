@@ -46,6 +46,13 @@ sub new {
 	# Process params.
 	set_params($self, @params);
 
+	# Check output handler.
+	if (defined $self->{'output_handler'}
+		&& ref $self->{'output_handler'} ne 'GLOB') {
+
+		err 'Bad output handler.';
+	}
+
 	# Processing line.
 	$self->{'_line'} = $EMPTY_STR;
 
@@ -310,6 +317,7 @@ PYX::Parser - PYX parser with callbacks.
 =head1 ERRORS
 
  new():
+         Bad output handler.
          From Class::Utils::set_params():
                  Unknown parameter '%s'.
 

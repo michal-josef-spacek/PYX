@@ -5,6 +5,7 @@
 
  [PYX::Parser]
  - Add 'non_parser_options' parameter.
+ - Add error check for 'output_handler' parameter.
  - Add test comments for parse_file() method.
  - Fix SYNOPSIS section in doc.
  - Fix check for $out variable in parse(), parse_file() and parse_handler()
