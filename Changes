@@ -5,6 +5,7 @@
 
  [PYX::Parser]
  - Add 'non_parser_options' parameter.
+ - Add test comments for parse_file() method.
  - Fix SYNOPSIS section in doc.
  - Rename 'line' parameter to internal name '_line'.
  - Rename test to right name (parse -> parse_file).
