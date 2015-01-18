@@ -20,16 +20,19 @@ sub new {
 	my ($class, @params) = @_;
 	my $self = bless {}, $class;
 
-	# Parse handlers.
-	$self->{'attribute'} = undef;
-	$self->{'comment'} = undef;
-	$self->{'data'} = undef;
-	$self->{'end_tag'} = undef;
-	$self->{'final'} = undef;
-	$self->{'init'} = undef;
-	$self->{'instruction'} = undef;
-	$self->{'start_tag'} = undef;
-	$self->{'other'} = undef;
+	# Parse callbacks.
+	$self->{'callbacks'} = {
+		'attribute' => undef,
+		'comment' => undef,
+		'data' => undef,
+		'end_tag' => undef,
+		'final' => undef,
+		'init' => undef,
+		'instruction' => undef,
+		'rewrite' => undef,
+		'start_tag' => undef,
+		'other' => undef,
+	},
 
 	# Non parser options.
 	$self->{'non_parser_options'} = {};
@@ -66,14 +69,14 @@ sub parse {
 	}
 
 	# Parse.
-	if ($self->{'init'}) {
-		&{$self->{'init'}}($self);
+	if ($self->{'callbacks'}->{'init'}) {
+		&{$self->{'callbacks'}->{'init'}}($self);
 	}
 	foreach my $line (@text) {
 		$self->_parse($line, $out);
 	}
-	if ($self->{'final'}) {
-		&{$self->{'final'}}($self);
+	if ($self->{'callbacks'}->{'final'}) {
+		&{$self->{'callbacks'}->{'final'}}($self);
 	}
 	return;
 }
@@ -96,15 +99,15 @@ sub parse_handler {
 	if (! defined $out) {
 		$out = $self->{'output_handler'};
 	}
-	if ($self->{'init'}) {
-		&{$self->{'init'}}($self);
+	if ($self->{'callbacks'}->{'init'}) {
+		&{$self->{'callbacks'}->{'init'}}($self);
 	}
 	while (my $line = <$input_file_handler>) {
 		chomp $line;
 		$self->_parse($line, $out);
 	}
-	if ($self->{'final'}) {
-		&{$self->{'final'}}($self);
+	if ($self->{'callbacks'}->{'final'}) {
+		&{$self->{'callbacks'}->{'final'}}($self);
 	}
 	return;
 }
@@ -146,8 +149,8 @@ sub _parse {
 
 	# Others.
 	} else {
-		if ($self->{'other'}) {
-			&{$self->{'other'}}($self, $line);
+		if ($self->{'callbacks'}->{'other'}) {
+			&{$self->{'callbacks'}->{'other'}}($self, $line);
 		} else {
 			err "Bad PYX tag at line '$line'.";
 		}
@@ -155,21 +158,23 @@ sub _parse {
 	return;
 }
 
-# Helper to defined handlers.
+# Helper to defined callbacks.
 sub _is_sub {
 	my ($self, $key, $out, @values) = @_;
 
-	# Handler with name '$key'.
-	if (exists $self->{$key} && ref $self->{$key} eq 'CODE') {
-		&{$self->{$key}}($self, @values);
+	# Callback with name '$key'.
+	if (exists $self->{'callbacks'}->{$key}
+		&& ref $self->{'callbacks'}->{$key} eq 'CODE') {
 
-	# Handler rewrite.
-	} elsif (exists $self->{'rewrite'} 
-		&& ref $self->{'rewrite'} eq 'CODE') {
+		&{$self->{'callbacks'}->{$key}}($self, @values);
 
-		&{$self->{'rewrite'}}($self, $self->{'_line'});
+	# Rewrite callback.
+	} elsif (exists $self->{'callbacks'}->{'rewrite'} 
+		&& ref $self->{'callbacks'}->{'rewrite'} eq 'CODE') {
 
-	# Raw output to output handler handler.
+		&{$self->{'callbacks'}->{'rewrite'}}($self, $self->{'_line'});
+
+	# Raw output to output file handler.
 	} elsif ($self->{'output_rewrite'}) {
 		print {$out} $self->{'_line'}, "\n";
 	}
@@ -186,7 +191,7 @@ __END__
 
 =head1 NAME
 
-PYX::Parser - PYX parser with handlers.
+PYX::Parser - PYX parser with callbacks.
 
 =head1 SYNOPSIS
 
@@ -206,50 +211,69 @@ PYX::Parser - PYX parser with handlers.
 
 =over 8
 
+=item * C<callbacks>
+
+ Callbacks.
+
+=over 8
+
 =item * C<attribute>
 
- Attribute handler.
+ Attribute callback.
  Default value is undef.
 
 =item * C<comment>
 
- Comment handler.
+ Comment callback.
  Default value is undef.
 
 =item * C<data>
 
- Data handler.
+ Data callback.
  Default value is undef.
 
 =item * C<end_tag>
 
- End of tag handler.
+ End of tag callback.
  Default value is undef.
 
 =item * C<final>
 
- Final handler.
+ Final callback.
  Default value is undef.
 
 =item * C<init>
 
- Init handler.
+ Init callback.
  Default value is undef.
 
 =item * C<instruction>
 
- Instruction handler.
+ Instruction callback.
  Default value is undef.
+
+=item * C<rewrite>
+
+ Rewrite callback.
+ Callback is used on every line.
+ Default value is undef.
+
+=item * C<start_tag>
+
+ Start of tag callback.
+ Default value is undef.
+
+=item * C<other>
+
+ Other Callback.
+ Default value is undef.
+
+=back
 
 =item * C<non_parser_options>
 
  Non parser options.
  Default value is blank reference to hash.
-
-=item * C<start_tag>
-
- Start of tag handler.
- Default value is undef.
 
 =item * C<output_rewrite>
 
@@ -260,11 +284,6 @@ PYX::Parser - PYX parser with handlers.
 
  Output handler.
  Default value is \*STDOUT.
-
-=item * C<other>
-
- Other handler.
- Default value is undef.
 
 =back
 
@@ -326,8 +345,10 @@ PYX::Parser - PYX parser with handlers.
  
  # PYX::Parser object.
  my $parser = PYX::Parser->new(
-        'start_tag' => \&start_tag,
-        'end_tag' => \&end_tag,
+	'callbacks' => {
+        	'start_tag' => \&start_tag,
+        	'end_tag' => \&end_tag,
+	},
  );
  $parser->parse_handler($file_handler);
  

@@ -10,13 +10,15 @@ use Test::NoWarnings;
 
 # PYX::Parser object.
 my $obj = PYX::Parser->new(
-	'attribute' => \&attribute,
-	'start_tag' => \&start_tag,
-	'end_tag' => \&end_tag,
-	'data' => \&data,
-	'instruction' => \&instruction,
-	'comment' => \&comment,
-	'other' => \&other,
+	'callbacks' => {
+		'attribute' => \&attribute,
+		'start_tag' => \&start_tag,
+		'end_tag' => \&end_tag,
+		'data' => \&data,
+		'instruction' => \&instruction,
+		'comment' => \&comment,
+		'other' => \&other,
+	},
 );
 
 # Directories.
