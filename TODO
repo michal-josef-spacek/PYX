@@ -9,9 +9,6 @@ TODO
 42. Skript na odstraneni komentaru.
 46. Dedit tridy.
 51. Do PYX::Parser dat osetreni open a close.
-52. Prepsat PYX::Parser tak, aby tam byl podobne jako v XML::Parser parameter
-    pro externi nastaveni objektu. Pak patri prepsat PYX::XMLNorm tak, aby se
-    zrusily globalni parametery.
 54. Prejmenovat end_tag a start_tag na end_element a start_elements.
 55. Priklad v PYX::Parser upravit, aby to davalo smysl (output, argumenty)
 56.
@@ -189,3 +186,9 @@ NONE [20140223] skim
     stejnosti xml dokumentu.
 Presunuto do PYX::Sort.
 NONE [20140223] skim
+
+52. Prepsat PYX::Parser tak, aby tam byl podobne jako v XML::Parser parameter
+    pro externi nastaveni objektu. Pak patri prepsat PYX::XMLNorm tak, aby se
+    zrusily globalni parametery.
+'non_parser_options' = {},
+OK [20150118] skim

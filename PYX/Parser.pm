@@ -31,6 +31,9 @@ sub new {
 	$self->{'start_tag'} = undef;
 	$self->{'other'} = undef;
 
+	# Non parser options.
+	$self->{'non_parser_options'} = {};
+
 	# Output rewrite.
 	$self->{'output_rewrite'} = 0;
 
@@ -237,6 +240,11 @@ PYX::Parser - PYX parser with handlers.
 
  Instruction handler.
  Default value is undef.
+
+=item * C<non_parser_options>
+
+ Non parser options.
+ Default value is blank reference to hash.
 
 =item * C<start_tag>
 

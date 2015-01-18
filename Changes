@@ -4,6 +4,7 @@
  - Update copyright years.
 
  [PYX::Parser]
+ - Add 'non_parser_options' parameter.
  - Fix SYNOPSIS section in doc.
  - Rename 'line' parameter to internal name '_line'.
  - Rename test to right name (parse -> parse_file).
