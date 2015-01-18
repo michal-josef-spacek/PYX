@@ -4,6 +4,8 @@
  - Update copyright years.
 
  [PYX::Parser]
+ - REWRITE API: Rewrite raw constructor parameters to 'callbacks' hash
+   reference.
  - Add 'non_parser_options' parameter.
  - Add error check for 'output_handler' parameter.
  - Add test comments for parse_file() method.
@@ -12,7 +14,6 @@
    methods.
  - Rename 'line' parameter to internal name '_line'.
  - Rename test to right name (parse -> parse_file).
- - Rewrite API to 'callbacks' hash reference.
 
 0.01 2014-11-18T07:30:12+01:00
  - First version.
