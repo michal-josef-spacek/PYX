@@ -10,7 +10,8 @@ TODO
 46. Dedit tridy.
 51. Do PYX::Parser dat osetreni open a close.
 55. Priklad v PYX::Parser upravit, aby to davalo smysl (output, argumenty)
-56.
+56. Test komentare.
+57.
 
 Applied
 =======
