@@ -5,16 +5,16 @@ use strict;
 use warnings;
 
 # Modules.
-use PYX qw(attribute char comment end_tag instruction start_tag);
+use PYX qw(attribute char comment end_element instruction start_element);
 
 # Example output.
 my @data = (
         instruction('xml', 'foo'),
-        start_tag('tag'),
+        start_element('element'),
         attribute('key', 'val'),
         comment('comment'),
         char('data'),
-        end_tag('tag'),
+        end_element('element'),
 );
 
 # Print out.
@@ -22,8 +22,8 @@ map { print $_."\n" } @data;
 
 # Output:
 # ?xml foo
-# (tag
+# (element
 # Akey val
 # _comment
 # -data
-# )tag
+# )element

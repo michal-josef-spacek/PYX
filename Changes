@@ -3,6 +3,10 @@
  - Improve AUTHOR and LICENSE AND COPYRIGHT sections in doc.
  - Update copyright years.
 
+ [PYX]
+ - REWRITE API: Rename start_tag() subroutine to start_element().
+ - REWRITE API: Rename end_tag() subroutine to end_element().
+
  [PYX::Parser]
  - REWRITE API: Rewrite raw constructor parameters to 'callbacks' hash
    reference.

@@ -3,11 +3,11 @@ use strict;
 use warnings;
 
 # Modules.
-use PYX qw(end_tag);
+use PYX qw(end_element);
 use Test::More 'tests' => 2;
 use Test::NoWarnings;
 
 # Test.
-my $tag = 'tag';
-my $ret = end_tag($tag);
-is($ret, ')tag');
+my $element = 'element';
+my $ret = end_element($element);
+is($ret, ')element');

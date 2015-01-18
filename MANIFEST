@@ -54,7 +54,7 @@ t/PYX/01-version.t
 t/PYX/02-pod_coverage.t
 t/PYX/03-pod.t
 t/PYX/04-char.t
-t/PYX/05-start_tag.t
-t/PYX/06-end_tag.t
+t/PYX/05-start_element.t
+t/PYX/06-end_element.t
 t/PYX/07-instruction.t
 t/PYX/08-comment.t

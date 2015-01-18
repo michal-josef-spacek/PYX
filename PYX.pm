@@ -10,8 +10,8 @@ use PYX::Utils qw(decode);
 use Readonly;
 
 # Constants.
-Readonly::Array our @EXPORT_OK => qw(attribute char comment end_tag instruction
-	start_tag);
+Readonly::Array our @EXPORT_OK => qw(attribute char comment end_element instruction
+	start_element);
 
 # Version.
 our $VERSION = 0.02;
@@ -40,9 +40,9 @@ sub comment {
 }
 
 # Encode end of element as PYX.
-sub end_tag {
-	my $tag = shift;
-	return ')'.$tag;
+sub end_element {
+	my $elem = shift;
+	return ')'.$elem;
 }
 
 # Encode instruction as PYX.
@@ -56,10 +56,10 @@ sub instruction {
 }
 
 # Encode begin of element as PYX.
-sub start_tag {
-	my ($tag, @attr) = @_;
+sub start_element {
+	my ($elem, @attr) = @_;
 	my @ret = ();
-	push @ret, '('.$tag;
+	push @ret, '('.$elem;
 	if (@attr) {
 		push @ret, attribute(@attr);
 	}
@@ -80,13 +80,13 @@ PYX - A perl module for PYX handling.
 
 =head1 SYNOPSIS
 
- use PYX qw(attribute char comment end_tag instruction start_tag);
+ use PYX qw(attribute char comment end_element instruction start_element);
  my @data = attribute(@attr);
  my @data = char($char);
  my @data = comment($comment);
- my @data = end_tag($tag);
+ my @data = end_element($elem);
  my @data = instruction($target, $code);
- my @data = start_tag($tag, @attr);
+ my @data = start_element($elem, @attr);
 
 =head1 SUBROUTINES
 
@@ -107,7 +107,7 @@ PYX - A perl module for PYX handling.
  Encode comment as PYX.
  Returns array of encoded lines.
 
-=item C<end_tag($tag)>
+=item C<end_element($elem)>
 
  Encode end of element as PYX.
  Returns array of encoded lines.
@@ -117,7 +117,7 @@ PYX - A perl module for PYX handling.
  Encode instruction as PYX.
  Returns array of encoded lines.
 
-=item C<start_tag($tag, @attr)>
+=item C<start_element($elem, @attr)>
 
  Encode begin of element as PYX.
  Returns array of encoded lines.
@@ -131,16 +131,16 @@ PYX - A perl module for PYX handling.
  use warnings;
 
  # Modules.
- use PYX qw(attribute char comment end_tag instruction start_tag);
+ use PYX qw(attribute char comment end_element instruction start_element);
 
  # Example output.
  my @data = (
          instruction('xml', 'foo'),
-         start_tag('tag'),
+         start_element('element'),
          attribute('key', 'val'),
          comment('comment'),
          char('data'),
-         end_tag('tag'),
+         end_element('element'),
  );
 
  # Print out.
@@ -148,11 +148,11 @@ PYX - A perl module for PYX handling.
 
  # Output:
  # ?xml foo
- # (tag
+ # (element
  # Akey val
  # _comment
  # -data
- # )tag
+ # )element
 
 =head1 DEPENDENCIES
 
