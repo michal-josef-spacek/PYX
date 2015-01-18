@@ -25,12 +25,12 @@ sub new {
 		'attribute' => undef,
 		'comment' => undef,
 		'data' => undef,
-		'end_tag' => undef,
+		'end_element' => undef,
 		'final' => undef,
 		'init' => undef,
 		'instruction' => undef,
 		'rewrite' => undef,
-		'start_tag' => undef,
+		'start_element' => undef,
 		'other' => undef,
 	},
 
@@ -133,13 +133,13 @@ sub _parse {
 		my ($att, $attval) = $line =~ m/\AA([^\s]+)\s*(.*)\Z/;
 		$self->_is_sub('attribute', $out, $att, $attval);
 
-	# Start of tag.
+	# Start of element.
 	} elsif ($type eq '(') {
-		$self->_is_sub('start_tag', $out, $value);
+		$self->_is_sub('start_element', $out, $value);
 
-	# End of tag.
+	# End of element.
 	} elsif ($type eq ')') {
-		$self->_is_sub('end_tag', $out, $value);
+		$self->_is_sub('end_element', $out, $value);
 
 	# Data.
 	} elsif ($type eq '-') {
@@ -159,7 +159,7 @@ sub _parse {
 		if ($self->{'callbacks'}->{'other'}) {
 			&{$self->{'callbacks'}->{'other'}}($self, $line);
 		} else {
-			err "Bad PYX tag at line '$line'.";
+			err "Bad PYX line '$line'.";
 		}
 	}
 	return;
@@ -239,9 +239,9 @@ PYX::Parser - PYX parser with callbacks.
  Data callback.
  Default value is undef.
 
-=item * C<end_tag>
+=item * C<end_element>
 
- End of tag callback.
+ End of element callback.
  Default value is undef.
 
 =item * C<final>
@@ -265,9 +265,9 @@ PYX::Parser - PYX parser with callbacks.
  Callback is used on every line.
  Default value is undef.
 
-=item * C<start_tag>
+=item * C<start_element>
 
- Start of tag callback.
+ Start of element callback.
  Default value is undef.
 
 =item * C<other>
@@ -322,14 +322,14 @@ PYX::Parser - PYX parser with callbacks.
                  Unknown parameter '%s'.
 
  parse():
-         Bad PYX tag at line '%s'.
+         Bad PYX line '%s'.
 
  parse_file():
-         Bad PYX tag at line '%s'.
+         Bad PYX line '%s'.
          No input handler.
 
  parse_handler():
-         Bad PYX tag at line '%s'.
+         Bad PYX line '%s'.
          No input handler.
 
 =head1 EXAMPLE
@@ -354,8 +354,8 @@ PYX::Parser - PYX parser with callbacks.
  # PYX::Parser object.
  my $parser = PYX::Parser->new(
 	'callbacks' => {
-        	'start_tag' => \&start_tag,
-        	'end_tag' => \&end_tag,
+        	'start_element' => \&start_element,
+        	'end_element' => \&end_element,
 	},
  );
  $parser->parse_handler($file_handler);
@@ -365,17 +365,17 @@ PYX::Parser - PYX parser with callbacks.
         close(INF);
  }
  
- # Start tag handler.
- sub start_tag {
-        my ($self, $tag) = @_;
-        print "Start of tag '$tag'.\n";
+ # Start element callback.
+ sub start_element {
+        my ($self, $elem) = @_;
+        print "Start of element '$elem'.\n";
         return;
  }
 
- # End tag handler.
- sub end_tag {
-        my ($self, $tag) = @_;
-        print "End of tag '$tag'.\n";
+ # End element callback.
+ sub end_element {
+        my ($self, $elem) = @_;
+        print "End of element '$elem'.\n";
         return;
  }
 

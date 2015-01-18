@@ -12,8 +12,8 @@ use Test::NoWarnings;
 my $obj = PYX::Parser->new(
 	'callbacks' => {
 		'attribute' => \&attribute,
-		'start_tag' => \&start_tag,
-		'end_tag' => \&end_tag,
+		'start_element' => \&start_element,
+		'end_element' => \&end_element,
 		'data' => \&data,
 		'instruction' => \&instruction,
 		'comment' => \&comment,
@@ -34,17 +34,17 @@ sub attribute {
 	return;
 }
 
-# Process start tag.
-sub start_tag {
-	my ($self, $tag) = @_;
-	is($self->{'_line'}, "($tag", 'Start of tag callback.');
+# Process start element.
+sub start_element {
+	my ($self, $elem) = @_;
+	is($self->{'_line'}, "($elem", 'Start of element callback.');
 	return;
 }
 
-# Process end tag.
-sub end_tag {
-	my ($self, $tag) = @_;
-	is($self->{'_line'}, ")$tag", 'End of tag callback.');
+# Process end element.
+sub end_element {
+	my ($self, $elem) = @_;
+	is($self->{'_line'}, ")$elem", 'End of element callback.');
 	return;
 }
 

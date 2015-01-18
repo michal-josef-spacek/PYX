@@ -20,8 +20,8 @@ if ($file) {
 # PYX::Parser object.
 my $parser = PYX::Parser->new(
 'callbacks' => {
-       	'start_tag' => \&start_tag,
-       	'end_tag' => \&end_tag,
+       	'start_element' => \&start_element,
+       	'end_element' => \&end_element,
 },
 );
 $parser->parse_handler($file_handler);
@@ -31,16 +31,16 @@ if ($file) {
        close(INF);
 }
 
-# Start tag handler.
-sub start_tag {
-       my ($self, $tag) = @_;
-       print "Start of tag '$tag'.\n";
+# Start element callback.
+sub start_element {
+       my ($self, $elem) = @_;
+       print "Start of element '$elem'.\n";
        return;
 }
 
-# End tag handler.
-sub end_tag {
-       my ($self, $tag) = @_;
-       print "End of tag '$tag'.\n";
+# End element callback.
+sub end_element {
+       my ($self, $elem) = @_;
+       print "End of element '$elem'.\n";
        return;
 }

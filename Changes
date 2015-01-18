@@ -10,6 +10,8 @@
  [PYX::Parser]
  - REWRITE API: Rewrite raw constructor parameters to 'callbacks' hash
    reference.
+ - REWRITE API: Rewrite 'start_tag' to 'start_element' callback.
+ - REWRITE API: Rewrite 'end_tag' to 'end_element' callback.
  - Add 'non_parser_options' parameter.
  - Add error check for 'output_handler' parameter.
  - Add test comments for parse_file() method.
