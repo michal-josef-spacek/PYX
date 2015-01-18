@@ -53,7 +53,7 @@ sub new {
 # Parse PYX text or array of PYX text.
 sub parse {
 	my ($self, $pyx, $out) = @_;
-	if (! $out) {
+	if (! defined $out) {
 		$out = $self->{'output_handler'};
 	}
 
@@ -93,7 +93,7 @@ sub parse_handler {
 	if (! $input_file_handler || ref $input_file_handler ne 'GLOB') {
 		err 'No input handler.';
 	}
-	if (! $out) {
+	if (! defined $out) {
 		$out = $self->{'output_handler'};
 	}
 	if ($self->{'init'}) {

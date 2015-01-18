@@ -7,6 +7,8 @@
  - Add 'non_parser_options' parameter.
  - Add test comments for parse_file() method.
  - Fix SYNOPSIS section in doc.
+ - Fix check for $out variable in parse(), parse_file() and parse_handler()
+   methods.
  - Rename 'line' parameter to internal name '_line'.
  - Rename test to right name (parse -> parse_file).
 
