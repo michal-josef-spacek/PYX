@@ -19,8 +19,10 @@ if ($file) {
 
 # PYX::Parser object.
 my $parser = PYX::Parser->new(
-       'start_tag' => \&start_tag,
-       'end_tag' => \&end_tag,
+'callbacks' => {
+       	'start_tag' => \&start_tag,
+       	'end_tag' => \&end_tag,
+},
 );
 $parser->parse_handler($file_handler);
 
@@ -33,10 +35,12 @@ if ($file) {
 sub start_tag {
        my ($self, $tag) = @_;
        print "Start of tag '$tag'.\n";
+       return;
 }
 
 # End tag handler.
 sub end_tag {
        my ($self, $tag) = @_;
        print "End of tag '$tag'.\n";
+       return;
 }
