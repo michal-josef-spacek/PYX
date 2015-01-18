@@ -369,12 +369,14 @@ PYX::Parser - PYX parser with callbacks.
  sub start_tag {
         my ($self, $tag) = @_;
         print "Start of tag '$tag'.\n";
+        return;
  }
 
  # End tag handler.
  sub end_tag {
         my ($self, $tag) = @_;
         print "End of tag '$tag'.\n";
+        return;
  }
 
 =head1 DEPENDENCIES
