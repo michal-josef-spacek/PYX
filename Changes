@@ -4,6 +4,7 @@
  - Fix SEE ALSO section to reality.
 
  [PYX::Parser]
+ - Add REPOSITORY section to doc.
  - Fix SEE ALSO section to reality.
 
 0.02 2015-01-18T17:24:28+01:00

@@ -393,6 +393,10 @@ L<PYX::Stack>,
 L<PYX::Utils>,
 L<Task::PYX>.
 
+=head1 REPOSITORY
+
+L<https://github.com/tupinek/PYX>
+
 =head1 AUTHOR
 
 Michal Špaček L<mailto:skim@cpan.org>
