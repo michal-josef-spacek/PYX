@@ -68,9 +68,8 @@ DEPENDENCIES
     Exporter, PYX::Utils, Readonly.
 
 SEE ALSO
-    App::SGML2PYX, PYX::Checker, PYX::Filter, PYX::GraphViz,
-    PYX::Optimalization, PYX::Parser, PYX::Sort, PYX::Stack, PYX::Utils,
-    PYX::Write::Raw, PYX::Write::Tags, PYX::Write::Tags::Code, PYX::XMLNorm.
+    PYX::GraphViz, PYX::Hist, PYX::Parser, PYX::Stack, PYX::Utils,
+    Task::PYX.
 
 AUTHOR
     Michal Špaček <mailto:skim@cpan.org>

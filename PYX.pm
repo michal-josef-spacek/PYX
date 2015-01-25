@@ -162,19 +162,12 @@ L<Readonly>.
 
 =head1 SEE ALSO
 
-L<App::SGML2PYX>,
-L<PYX::Checker>,
-L<PYX::Filter>,
 L<PYX::GraphViz>,
-L<PYX::Optimalization>,
+L<PYX::Hist>,
 L<PYX::Parser>,
-L<PYX::Sort>,
 L<PYX::Stack>,
 L<PYX::Utils>,
-L<PYX::Write::Raw>,
-L<PYX::Write::Tags>,
-L<PYX::Write::Tags::Code>,
-L<PYX::XMLNorm>.
+L<Task::PYX>.
 
 =head1 AUTHOR
 
