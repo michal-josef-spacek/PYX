@@ -1,5 +1,6 @@
 0.03
  [PYX]
+ - Add REPOSITORY section to doc.
  - Fix SEE ALSO section to reality.
 
  [PYX::Parser]
