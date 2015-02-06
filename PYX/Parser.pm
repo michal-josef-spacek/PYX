@@ -60,6 +60,12 @@ sub new {
 	return $self;
 }
 
+# Get actual parsing line.
+sub line {
+	my $self = shift;
+	return $self->{'_line'};
+}
+
 # Parse PYX text or array of PYX text.
 sub parse {
 	my ($self, $pyx, $out) = @_;
@@ -204,6 +210,7 @@ PYX::Parser - PYX parser with callbacks.
 
  use PYX::Parser;
  my $obj = PYX::Parser->new(%parameters);
+ my $line = $obj->line;
  $obj->parse($pyx, $out);
  $obj->parse_file($input_file, $out);
  $obj->parse_handle($input_file_handler, $out);
@@ -293,6 +300,11 @@ PYX::Parser - PYX parser with callbacks.
  Default value is \*STDOUT.
 
 =back
+
+=item C<line()>
+
+ Get actual parsing line.
+ Returns string.
 
 =item C<parse($pyx[, $out])>
 
