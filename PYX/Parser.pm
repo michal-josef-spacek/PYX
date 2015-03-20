@@ -401,6 +401,7 @@ L<Error::Pure>.
 L<PYX>,
 L<PYX::GraphViz>,
 L<PYX::Hist>,
+L<PYX::Sort>,
 L<PYX::Stack>,
 L<PYX::Utils>,
 L<Task::PYX>.

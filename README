@@ -68,8 +68,8 @@ DEPENDENCIES
     Exporter, PYX::Utils, Readonly.
 
 SEE ALSO
-    PYX::GraphViz, PYX::Hist, PYX::Parser, PYX::Stack, PYX::Utils,
-    Task::PYX.
+    PYX::GraphViz, PYX::Hist, PYX::Parser, PYX::Sort, PYX::Stack,
+    PYX::Utils, Task::PYX.
 
 REPOSITORY
     <https://github.com/tupinek/PYX>

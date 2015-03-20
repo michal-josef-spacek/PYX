@@ -165,6 +165,7 @@ L<Readonly>.
 L<PYX::GraphViz>,
 L<PYX::Hist>,
 L<PYX::Parser>,
+L<PYX::Sort>,
 L<PYX::Stack>,
 L<PYX::Utils>,
 L<Task::PYX>.
