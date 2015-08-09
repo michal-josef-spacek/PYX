@@ -130,7 +130,7 @@ sub _parse {
 	my ($self, $line, $out) = @_;
 	$self->{'_line'} = $line;
 	my ($type, $value) = $line =~ m/\A([A()\?\-_])(.*)\Z/;
-	if (! $type) { 
+	if (! $type) {
 		$type = 'X';
 	}
 
@@ -182,7 +182,7 @@ sub _is_sub {
 		&{$self->{'callbacks'}->{$key}}($self, @values);
 
 	# Rewrite callback.
-	} elsif (exists $self->{'callbacks'}->{'rewrite'} 
+	} elsif (exists $self->{'callbacks'}->{'rewrite'}
 		&& ref $self->{'callbacks'}->{'rewrite'} eq 'CODE') {
 
 		&{$self->{'callbacks'}->{'rewrite'}}($self, $self->{'_line'});
@@ -349,10 +349,10 @@ PYX::Parser - PYX parser with callbacks.
  # Pragmas.
  use strict;
  use warnings;
- 
+
  # Modules.
  use PYX::Parser;
- 
+
  # Open file.
  my $file_handler = \*STDIN;
  my $file = $ARGV[0];
@@ -362,7 +362,7 @@ PYX::Parser - PYX parser with callbacks.
         }
         $file_handler = \*INF;
  }
- 
+
  # PYX::Parser object.
  my $parser = PYX::Parser->new(
 	'callbacks' => {
@@ -371,12 +371,12 @@ PYX::Parser - PYX parser with callbacks.
 	},
  );
  $parser->parse_handler($file_handler);
- 
+
  # Close file.
  if ($file) {
         close(INF);
  }
- 
+
  # Start element callback.
  sub start_element {
         my ($self, $elem) = @_;
