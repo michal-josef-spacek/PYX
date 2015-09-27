@@ -14,7 +14,7 @@ Readonly::Array our @EXPORT_OK => qw(attribute char comment end_element instruct
 	start_element);
 
 # Version.
-our $VERSION = 0.04;
+our $VERSION = 0.05;
 
 # Encode attribute as PYX.
 sub attribute {
@@ -187,6 +187,6 @@ L<http://skim.cz>
 
 =head1 VERSION
 
-0.04
+0.05
 
 =cut
