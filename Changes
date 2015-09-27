@@ -1,6 +1,7 @@
 0.04
  [Common]
  - Improve SEE ALSO section in doc.
+ - Move author tests to xt/ directory.
  - Remove trailing whitespace.
  - Update Module::Install to 1.16 version.
 
