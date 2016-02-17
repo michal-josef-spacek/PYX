@@ -12,7 +12,8 @@ TODO
 55. Priklad v PYX::Parser upravit, aby to davalo smysl (output, argumenty)
 56. Test komentare.
 57. Co s UTF-8?
-58.
+58. Pridat PYX::Format s dukumentaci jazyka?
+59.
 
 Applied
 =======
