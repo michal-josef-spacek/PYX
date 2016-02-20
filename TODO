@@ -11,7 +11,6 @@ TODO
 51. Do PYX::Parser dat osetreni open a close.
 55. Priklad v PYX::Parser upravit, aby to davalo smysl (output, argumenty)
 56. Test komentare.
-58. Pridat PYX::Format s dukumentaci jazyka?
 59.
 
 Applied
@@ -199,4 +198,7 @@ OK [20150118] skim
 
 57. Co s UTF-8?
 Input encoding is ok, output is outside of this module.
+OK [20160220] skim
+
+58. Pridat PYX::Format s dukumentaci jazyka?
 OK [20160220] skim

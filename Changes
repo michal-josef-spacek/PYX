@@ -2,6 +2,9 @@
  [Common]
  - Update copyright years.
 
+ [PYX::Format]
+ - First version.
+
  [PYX::Parser]
  - Add 'input_encoding' parameter.
  - Fix dependencies.
