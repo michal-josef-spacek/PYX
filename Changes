@@ -2,6 +2,9 @@
  [Common]
  - Update copyright years.
 
+ [PYX::Parser]
+ - Fix dependencies.
+
 0.04 2015-09-27T22:54:17+02:00
  [Common]
  - Improve SEE ALSO section in doc.

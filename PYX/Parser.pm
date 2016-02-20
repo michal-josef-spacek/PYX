@@ -394,7 +394,8 @@ PYX::Parser - PYX parser with callbacks.
 =head1 DEPENDENCIES
 
 L<Class::Utils>,
-L<Error::Pure>.
+L<Error::Pure>,
+L<Readonly>.
 
 =head1 SEE ALSO
 
