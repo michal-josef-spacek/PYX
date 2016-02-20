@@ -6,6 +6,7 @@ use warnings;
 
 # Modules.
 use Class::Utils qw(set_params);
+use Encode qw(decode);
 use Error::Pure qw(err);
 use Readonly;
 
@@ -33,6 +34,9 @@ sub new {
 		'start_element' => undef,
 		'other' => undef,
 	},
+
+	# Input encoding.
+	$self->{'input_encoding'} = 'utf-8';
 
 	# Non parser options.
 	$self->{'non_parser_options'} = {};
@@ -128,6 +132,7 @@ sub parse_handler {
 # Parse text string.
 sub _parse {
 	my ($self, $line, $out) = @_;
+	$line = decode($self->{'input_encoding'}, $line);
 	$self->{'_line'} = $line;
 	my ($type, $value) = $line =~ m/\A([A()\?\-_])(.*)\Z/;
 	if (! $type) {
@@ -284,6 +289,11 @@ PYX::Parser - PYX parser with callbacks.
 
 =back
 
+=item * C<input_encoding>
+
+ Input encoding.
+ Default value is 'utf-8'.
+
 =item * C<non_parser_options>
 
  Non parser options.
@@ -394,6 +404,7 @@ PYX::Parser - PYX parser with callbacks.
 =head1 DEPENDENCIES
 
 L<Class::Utils>,
+L<Encode>,
 L<Error::Pure>,
 L<Readonly>.
 

@@ -28,6 +28,7 @@ no_index:
     - xt
 requires:
   Class::Utils: 0.05
+  Encode: 0
   Error::Pure: 0.16
   Exporter: 0
   PYX::Utils: 0.02

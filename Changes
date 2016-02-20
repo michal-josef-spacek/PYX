@@ -3,6 +3,7 @@
  - Update copyright years.
 
  [PYX::Parser]
+ - Add 'input_encoding' parameter.
  - Fix dependencies.
 
 0.04 2015-09-27T22:54:17+02:00

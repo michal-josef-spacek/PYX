@@ -19,6 +19,7 @@ name 'PYX';
 readme_from 'PYX.pm';
 recursive_author_tests('xt');
 requires 'Class::Utils' => 0.05;
+requires 'Encode' => 0;
 requires 'Error::Pure' => 0.16;
 requires 'Exporter' => 0;
 requires 'PYX::Utils' => 0.02;
