@@ -1,4 +1,6 @@
 0.06
+ [Common]
+ - Rewrite tag to better element (in XML terminology) in tests and data.
 
 0.05 2016-02-20T23:27:55+01:00
  [Common]

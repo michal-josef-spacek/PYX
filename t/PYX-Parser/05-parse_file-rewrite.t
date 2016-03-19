@@ -41,11 +41,11 @@ stdout_is(
 
 # Test.
 $right_ret = <<'END';
-(tag
+(element
 END
 stdout_is(
 	sub {
-		$obj->parse_file($data_dir->file('start_tag1.pyx')->s);
+		$obj->parse_file($data_dir->file('start_element1.pyx')->s);
 		return;
 	},
 	$right_ret,
@@ -53,12 +53,12 @@ stdout_is(
 
 # Test.
 $right_ret = <<'END';
-(tag
+(element
 Apar val
 END
 stdout_is(
 	sub {
-		$obj->parse_file($data_dir->file('start_tag2.pyx')->s);
+		$obj->parse_file($data_dir->file('start_element2.pyx')->s);
 		return;
 	},
 	$right_ret,
@@ -66,12 +66,12 @@ stdout_is(
 
 # Test.
 $right_ret = <<'END';
-(tag
+(element
 Apar val\nval
 END
 stdout_is(
 	sub {
-		$obj->parse_file($data_dir->file('start_tag3.pyx')->s);
+		$obj->parse_file($data_dir->file('start_element3.pyx')->s);
 		return;
 	},
 	$right_ret,
@@ -79,11 +79,11 @@ stdout_is(
 
 # Test.
 $right_ret = <<'END';
-(prefix:tag
+(prefix:element
 END
 stdout_is(
 	sub {
-		$obj->parse_file($data_dir->file('start_tag4.pyx')->s);
+		$obj->parse_file($data_dir->file('start_element4.pyx')->s);
 		return;
 	},
 	$right_ret,
@@ -91,12 +91,12 @@ stdout_is(
 
 # Test.
 $right_ret = <<'END';
-(prefix:tag
+(prefix:element
 Aprefix:par val
 END
 stdout_is(
 	sub {
-		$obj->parse_file($data_dir->file('start_tag5.pyx')->s);
+		$obj->parse_file($data_dir->file('start_element5.pyx')->s);
 		return;
 	},
 	$right_ret,
@@ -104,11 +104,11 @@ stdout_is(
 
 # Test.
 $right_ret = <<'END';
-)tag
+)element
 END
 stdout_is(
 	sub {
-		$obj->parse_file($data_dir->file('end_tag1.pyx')->s);
+		$obj->parse_file($data_dir->file('end_element1.pyx')->s);
 		return;
 	},
 	$right_ret,
@@ -170,7 +170,7 @@ $right_ret = <<'END';
 END
 stdout_is(
 	sub {
-		$obj->parse_file($data_dir->file('example5.pyx')->s);
+		$obj->parse_file($data_dir->file('element5.pyx')->s);
 		return;
 	},
 	$right_ret,

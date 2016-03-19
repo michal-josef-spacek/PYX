@@ -4,7 +4,7 @@ PYX commands:
 -------------
 -char
 _comment
-(tag
+(element
 Aattribute value
-)tag
+)element
 ?target value
