@@ -1,10 +1,8 @@
 package PYX::Format;
 
-# Pragmas.
 use strict;
 use warnings;
 
-# Version.
 our $VERSION = 0.06;
 
 1;

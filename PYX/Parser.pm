@@ -1,10 +1,8 @@
 package PYX::Parser;
 
-# Pragmas.
 use strict;
 use warnings;
 
-# Modules.
 use Class::Utils qw(set_params);
 use Encode qw(decode);
 use Error::Pure qw(err);
@@ -13,7 +11,6 @@ use Readonly;
 # Constants.
 Readonly::Scalar my $EMPTY_STR => q{};
 
-# Version.
 our $VERSION = 0.06;
 
 # Constructor.
@@ -356,11 +353,9 @@ PYX::Parser - PYX parser with callbacks.
 
 =head1 EXAMPLE
 
- # Pragmas.
  use strict;
  use warnings;
 
- # Modules.
  use PYX::Parser;
 
  # Open file.

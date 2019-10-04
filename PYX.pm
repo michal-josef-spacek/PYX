@@ -1,11 +1,9 @@
 package PYX;
 
-# Pragmas.
 use base qw(Exporter);
 use strict;
 use warnings;
 
-# Modules.
 use PYX::Utils qw(decode);
 use Readonly;
 
@@ -13,7 +11,6 @@ use Readonly;
 Readonly::Array our @EXPORT_OK => qw(attribute char comment end_element instruction
 	start_element);
 
-# Version.
 our $VERSION = 0.06;
 
 # Encode attribute as PYX.
@@ -126,11 +123,9 @@ PYX - A perl module for PYX handling.
 
 =head1 EXAMPLE
 
- # Pragmas.
  use strict;
  use warnings;
 
- # Modules.
  use PYX qw(attribute char comment end_element instruction start_element);
 
  # Example output.
