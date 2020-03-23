@@ -211,6 +211,7 @@ PYX::Parser - PYX parser with callbacks.
 =head1 SYNOPSIS
 
  use PYX::Parser;
+
  my $obj = PYX::Parser->new(%parameters);
  my $line = $obj->line;
  $obj->parse($pyx, $out);

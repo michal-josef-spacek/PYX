@@ -78,6 +78,7 @@ PYX - A perl module for PYX handling.
 =head1 SYNOPSIS
 
  use PYX qw(attribute char comment end_element instruction start_element);
+
  my @data = attribute(@attr);
  my @data = char($char);
  my @data = comment($comment);
