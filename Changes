@@ -1,4 +1,4 @@
-0.06
+0.06 2020-03-23T11:23:38+01:00
  [Common]
  - Fix Makefile.PL fails with no '.' in @INC.
  - Improve SYNOPSIS section in doc.
