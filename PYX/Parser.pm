@@ -415,7 +415,7 @@ Install the PYX modules.
 
 =head1 REPOSITORY
 
-L<https://github.com/tupinek/PYX>
+L<https://github.com/michal-josef-spacek/PYX>
 
 =head1 AUTHOR
 

@@ -4,6 +4,7 @@
  - Rewrite tag to better element (in XML terminology) in tests and data.
  - Update LICENSE AND COPYRIGHT sections in doc.
  - Update Module::Install to 1.19 version.
+ - Update author github username.
  - Update author name.
 
 0.05 2016-02-20T23:27:55+01:00
