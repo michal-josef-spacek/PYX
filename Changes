@@ -1,4 +1,7 @@
 0.07
+ [Common]
+ - Rewrite doc SUBROUTINES/METHODS to POD =head2.
+
  [PYX::Parser]
  - Add test for iso-8859-2 encoded data.
  - Add test for utf-8 encoded data.
