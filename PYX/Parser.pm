@@ -38,6 +38,9 @@ sub new {
 	# Non parser options.
 	$self->{'non_parser_options'} = {};
 
+	# Output encoding.
+	$self->{'output_encoding'} = 'utf-8';
+
 	# Output rewrite.
 	$self->{'output_rewrite'} = 0;
 
@@ -200,7 +203,11 @@ sub _is_sub {
 
 	# Raw output to output file handler.
 	} elsif ($self->{'output_rewrite'}) {
-		print {$out} $self->{'_line'}, "\n";
+		my $encoded_line = Encode::encode(
+			$self->{'output_encoding'},
+			$self->{'_line'},
+		);
+		print {$out} $encoded_line, "\n";
 	}
 
 	return;
@@ -306,6 +313,11 @@ Constructor.
 
  Non parser options.
  Default value is blank reference to hash.
+
+=item * C<output_encoding>
+
+ Output encoding.
+ Default value is 'utf-8'.
 
 =item * C<output_rewrite>
 
