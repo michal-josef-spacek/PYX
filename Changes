@@ -6,6 +6,7 @@
 
  [PYX::Parser]
  - Add 'output_encoding' parameter and implement to output.
+ - Add information about input encoding to doc.
  - Improve doc by C<>.
  - Sort parameters in code and doc.
 

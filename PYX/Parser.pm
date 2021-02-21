@@ -344,6 +344,7 @@ Returns string.
  $obj->parse($pyx, $out);
 
 Parse PYX text or array of PYX text.
+C<$pyx> string is decoded by 'input_encoding'.
 If C<$out> not present, use 'output_handler'.
 
 Returns undef.
@@ -353,6 +354,7 @@ Returns undef.
  $obj->parse_file($input_file, $out);
 
 Parse file with PYX data.
+C<$input_file> file is decoded by 'input_encoding'.
 If C<$out> not present, use 'output_handler'.
 
 Returns undef.
@@ -362,6 +364,7 @@ Returns undef.
  $obj->parse_handle($input_file_handler, $out);
 
 Parse PYX handler.
+C<$input_file_handler> handler is decoded by 'input_encoding'.
 If C<$out> not present, use 'output_handler'.
 
 Returns undef.
