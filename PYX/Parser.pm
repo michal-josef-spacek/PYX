@@ -41,11 +41,11 @@ sub new {
 	# Output encoding.
 	$self->{'output_encoding'} = 'utf-8';
 
-	# Output rewrite.
-	$self->{'output_rewrite'} = 0;
-
 	# Output handler.
 	$self->{'output_handler'} = \*STDOUT;
+
+	# Output rewrite.
+	$self->{'output_rewrite'} = 0;
 
 	# Process params.
 	set_params($self, @params);
@@ -319,15 +319,15 @@ Constructor.
  Output encoding.
  Default value is 'utf-8'.
 
-=item * C<output_rewrite>
-
- Output rewrite.
- Default value is 0.
-
 =item * C<output_handler>
 
  Output handler.
  Default value is \*STDOUT.
+
+=item * C<output_rewrite>
+
+ Output rewrite.
+ Default value is 0.
 
 =back
 
