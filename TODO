@@ -11,7 +11,10 @@ TODO
 51. Do PYX::Parser dat osetreni open a close.
 55. Priklad v PYX::Parser upravit, aby to davalo smysl (output, argumenty)
 56. Test komentare.
-59.
+59. PYX::Parser je spatne navrzeny, nemelo by byt v jedne tride parsovani souboru a retezcu.
+Idealni je to rozdelit. Priklad: decode ma smysl u souboru, ale ne u retezcu,
+protoze tam chci pracovat uz primo v internim kodovani Perlu.
+60.
 
 Applied
 =======
