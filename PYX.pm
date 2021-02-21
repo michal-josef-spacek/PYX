@@ -16,50 +16,59 @@ our $VERSION = 0.08;
 # Encode attribute as PYX.
 sub attribute {
 	my (@attr) = @_;
+
 	my @ret = ();
 	while (@attr) {
 		my ($key, $val) = (shift @attr, shift @attr);
 		push @ret, "A$key ".decode($val);
 	}
+
 	return @ret;
 }
 
 # Encode characters between elements as PYX.
 sub char {
 	my $char = shift;
+
 	return '-'.decode($char);
 }
 
 # Encode comment as PYX.
 sub comment {
 	my $comment = shift;
+
 	return '_'.decode($comment);
 }
 
 # Encode end of element as PYX.
 sub end_element {
 	my $elem = shift;
+
 	return ')'.$elem;
 }
 
 # Encode instruction as PYX.
 sub instruction {
 	my ($target, $code) = @_;
+
 	my $ret = '?'.decode($target);
 	if ($code) {
 		$ret .= ' '.decode($code);
 	}
+
 	return $ret;
 }
 
 # Encode begin of element as PYX.
 sub start_element {
 	my ($elem, @attr) = @_;
+
 	my @ret = ();
 	push @ret, '('.$elem;
 	if (@attr) {
 		push @ret, attribute(@attr);
 	}
+
 	return @ret;
 }
 

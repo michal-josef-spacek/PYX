@@ -64,12 +64,14 @@ sub new {
 # Get actual parsing line.
 sub line {
 	my $self = shift;
+
 	return $self->{'_line'};
 }
 
 # Parse PYX text or array of PYX text.
 sub parse {
 	my ($self, $pyx, $out) = @_;
+
 	if (! defined $out) {
 		$out = $self->{'output_handler'};
 	}
@@ -92,21 +94,25 @@ sub parse {
 	if ($self->{'callbacks'}->{'final'}) {
 		&{$self->{'callbacks'}->{'final'}}($self);
 	}
+
 	return;
 }
 
 # Parse file with PYX data.
 sub parse_file {
 	my ($self, $input_file, $out) = @_;
+
 	open my $inf, '<', $input_file;
 	$self->parse_handler($inf, $out);
 	close $inf;
+
 	return;
 }
 
 # Parse PYX handler.
 sub parse_handler {
 	my ($self, $input_file_handler, $out) = @_;
+
 	if (! $input_file_handler || ref $input_file_handler ne 'GLOB') {
 		err 'No input handler.';
 	}
@@ -123,12 +129,14 @@ sub parse_handler {
 	if ($self->{'callbacks'}->{'final'}) {
 		&{$self->{'callbacks'}->{'final'}}($self);
 	}
+
 	return;
 }
 
 # Parse text string.
 sub _parse {
 	my ($self, $line, $out) = @_;
+
 	$line = decode($self->{'input_encoding'}, $line);
 	$self->{'_line'} = $line;
 	my ($type, $value) = $line =~ m/\A([A()\?\-_])(.*)\Z/;
@@ -170,6 +178,7 @@ sub _parse {
 			err "Bad PYX line '$line'.";
 		}
 	}
+
 	return;
 }
 
@@ -193,6 +202,7 @@ sub _is_sub {
 	} elsif ($self->{'output_rewrite'}) {
 		print {$out} $self->{'_line'}, "\n";
 	}
+
 	return;
 }
 
