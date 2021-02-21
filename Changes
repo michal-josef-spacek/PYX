@@ -7,6 +7,7 @@
  [PYX::Parser]
  - Add 'output_encoding' parameter and implement to output.
  - Add information about input encoding to doc.
+ - Change api - parse() cannot decode input PYX via 'input_encoding'.
  - Improve doc by C<>.
  - Sort parameters in code and doc.
 

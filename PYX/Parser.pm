@@ -127,6 +127,7 @@ sub parse_handler {
 	}
 	while (my $line = <$input_file_handler>) {
 		chomp $line;
+		$line = decode($self->{'input_encoding'}, $line);
 		$self->_parse($line, $out);
 	}
 	if ($self->{'callbacks'}->{'final'}) {
@@ -140,7 +141,6 @@ sub parse_handler {
 sub _parse {
 	my ($self, $line, $out) = @_;
 
-	$line = decode($self->{'input_encoding'}, $line);
 	$self->{'_line'} = $line;
 	my ($type, $value) = $line =~ m/\A([A()\?\-_])(.*)\Z/;
 	if (! $type) {
@@ -306,7 +306,7 @@ Constructor.
 
 =item * C<input_encoding>
 
- Input encoding.
+ Input encoding for parse_file() and parse_handler() usage.
  Default value is 'utf-8'.
 
 =item * C<non_parser_options>
@@ -344,7 +344,6 @@ Returns string.
  $obj->parse($pyx, $out);
 
 Parse PYX text or array of PYX text.
-C<$pyx> string is decoded by 'input_encoding'.
 If C<$out> not present, use 'output_handler'.
 
 Returns undef.
