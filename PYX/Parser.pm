@@ -388,6 +388,8 @@ Returns undef.
 
 =head1 EXAMPLE
 
+=for comment filename=pyx_parser.pl
+
  use strict;
  use warnings;
 

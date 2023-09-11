@@ -147,6 +147,8 @@ Returns array of encoded lines.
 
 =head1 EXAMPLE
 
+=for comment filename=serialize_pyx.pl
+
  use strict;
  use warnings;
 
